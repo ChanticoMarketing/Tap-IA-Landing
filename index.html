@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TAP-IA | Programa 10 Días</title>
+    <title>TAP-IA | Arquitectura de Dominio Digital</title>
 
     <!-- Fuentes -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -26,6 +26,7 @@
                     colors: {
                         charcoal: '#0f1115',
                         matte: '#16191f',
+                        gold: '#d4af37',
                         royal: '#3b82f6',
                         offwhite: '#e2e4e9',
                         subtle: '#9ca3af',
@@ -83,7 +84,7 @@
 
         /* Checkbox Styles */
         input[type="checkbox"] {
-            accent-color: #3b82f6;
+            accent-color: #d4af37;
             width: 1.2em;
             height: 1.2em;
             cursor: pointer;
@@ -102,11 +103,11 @@
 
         .option-label:hover {
             background: rgba(255, 255, 255, 0.05);
-            border-color: rgba(59, 130, 246, 0.3);
+            border-color: rgba(212, 175, 55, 0.3);
         }
 
         input:checked+span {
-            color: #3b82f6;
+            color: #d4af37;
             font-weight: 500;
         }
 
@@ -122,15 +123,15 @@
 
         .input-field:focus {
             outline: none;
-            border-color: #3b82f6;
-            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+            border-color: #d4af37;
+            box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.2);
             background: rgba(0, 0, 0, 0.4);
         }
 
         /* Estilo personalizado para Select */
         select.input-field {
             appearance: none;
-            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%233b82f6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23d4af37' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
             background-repeat: no-repeat;
             background-position: right 1rem center;
             background-size: 1em;
@@ -172,7 +173,7 @@
     </style>
 </head>
 
-<body class="bg-charcoal text-offwhite font-sans antialiased selection:bg-royal selection:text-white overflow-x-hidden">
+<body class="bg-charcoal text-offwhite font-sans antialiased selection:bg-gold selection:text-white overflow-x-hidden">
 
     <div class="noise-overlay"></div>
 
@@ -199,31 +200,31 @@
     <!-- HERO SECTION -->
     <section class="relative min-h-screen flex flex-col items-center justify-center pt-28 pb-20 px-6">
         <div
-            class="absolute -top-24 -right-24 w-[600px] h-[600px] bg-royal/20 rounded-full blur-[120px] animate-pulse-slow -z-10 pointer-events-none">
+            class="absolute -top-24 -right-24 w-[600px] h-[600px] bg-royal/35 rounded-full blur-[120px] animate-pulse-slow -z-10 pointer-events-none">
         </div>
 
         <div class="max-w-4xl mx-auto text-center relative z-10">
             <span
-                class="inline-block py-1 px-3 rounded-full bg-royal/10 border border-royal/20 text-xs tracking-widest text-royal mb-6 uppercase font-semibold">
-                Programa 10 Días
+                class="inline-block py-1 px-3 rounded-full bg-gold/10 border border-gold/20 text-xs tracking-widest text-gold mb-6 uppercase font-semibold">
+                Arquitectura de Dominio Digital
             </span>
-            <h1
-                class="font-serif text-5xl md:text-7xl leading-[1.1] mb-8 text-transparent bg-clip-text bg-gradient-to-b from-white to-white/60">
-                IA en tu marketing y ventas, <br>
-                <span class="italic font-light opacity-80">lista hasta en 10 días.</span>
+            <h1 class="font-serif text-5xl md:text-7xl leading-[1.1] mb-8 text-white">
+                Su empresa merece <br>
+                <span class="italic font-light text-white/50">ser la respuesta.</span>
             </h1>
             <p class="text-lg md:text-xl text-subtle max-w-2xl mx-auto mb-10 font-light">
-                Soluciones de IA claras, operativas y medibles, diseñadas para agencias, servicios B2B y negocios con
-                alta carga operativa.
+                La mayoría de las agencias solo le construyen una web. Nosotros construimos su <strong
+                    class="text-white font-normal">infraestructura de autoridad</strong> para que domine los buscadores
+                hoy y sea la referencia de la IA mañana.
             </p>
             <div class="flex flex-col items-center gap-4">
                 <a href="#contacto"
-                    class="px-8 py-4 bg-white text-charcoal font-medium rounded-full hover:bg-royal hover:text-white transition-all duration-300 shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:shadow-[0_0_30px_rgba(59,130,246,0.4)] text-lg">
-                    Agenda Diagnóstico (15 min)
+                    class="px-8 py-4 bg-white text-charcoal font-medium rounded-full hover:bg-gold hover:text-white transition-all duration-300 shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:shadow-[0_0_30px_rgba(59,130,246,0.4)] text-lg">
+                    Diagnóstico de Visibilidad (SEO + GEO)
                 </a>
                 <p class="text-xs text-subtle uppercase tracking-wider opacity-80 mt-2">
-                    <i class="fa-solid fa-check mr-2 text-royal"></i>Sin automatizaciones "mágicas". Una solución real,
-                    con SOP y métricas, lista hasta en 10 días.
+                    <i class="fa-solid fa-check mr-2 text-gold"></i>Sin jerga técnica. Solo el sistema que su negocio
+                    necesita para crecer.
                 </p>
             </div>
         </div>
@@ -253,71 +254,128 @@
     <!-- PROBLEMAS & SOLUCIONES (Grid) -->
     <section id="problemas" class="py-20 px-6 relative">
         <div
-            class="absolute -bottom-32 -left-32 w-[500px] h-[500px] bg-royal/20 rounded-full blur-[120px] animate-pulse-slow pointer-events-none -z-10">
+            class="absolute -bottom-32 -left-32 w-[500px] h-[500px] bg-royal/35 rounded-full blur-[120px] animate-pulse-slow pointer-events-none -z-10">
         </div>
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16">
-                <h2 class="font-serif text-4xl mb-4">Dolor vs Solución</h2>
-                <p class="text-subtle">Transformamos cuellos de botella en sistemas autónomos.</p>
+                <h2 class="font-serif text-4xl mb-4">Radiografía del Dolor</h2>
+                <p class="text-subtle">¿Dónde está perdiendo dinero su empresa hoy?</p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="matte-card p-8 rounded-2xl flex flex-col h-full border-t-2 border-t-royal/50">
-                    <div class="mb-6 text-royal"><i class="fa-solid fa-filter text-3xl"></i></div>
-                    <h3 class="font-serif text-2xl mb-2 text-white">Leads que no convierten</h3>
-                    <p class="text-sm text-red-300/80 mb-4 italic">"Mucha gente pregunta, pocos agendan."</p>
+                <!-- CARD 1 -->
+                <div class="matte-card p-8 rounded-2xl flex flex-col h-full border-t-2 border-t-gold/50">
+                    <div class="mb-6 text-gold"><i class="fa-solid fa-ghost text-3xl"></i></div>
+                    <h3 class="font-serif text-2xl mb-2 text-white">El Fantasma Digital</h3>
+                    <p class="text-sm text-red-300/80 mb-4 italic">"Usted es el mejor, pero nadie lo sabe."</p>
                     <div class="h-[1px] bg-white/10 w-full mb-4"></div>
-                    <p class="text-subtle text-sm leading-relaxed mb-4">
-                        <strong class="text-white">Solución:</strong> Flujo de nurturing con IA que responde, clasifica
-                        y da seguimiento.
+                    <ul class="text-subtle text-sm space-y-2 mb-6 flex-grow">
+                        <li class="flex gap-2"><i
+                                class="fa-solid fa-circle-exclamation text-gold/50 mt-1 text-[10px]"></i> Su
+                            competencia capta clientes que ni saben que usted existe.</li>
+                        <li class="flex gap-2"><i
+                                class="fa-solid fa-circle-exclamation text-gold/50 mt-1 text-[10px]"></i> Su prestigio
+                            real no se refleja en su imagen digital.</li>
+                        <li class="flex gap-2"><i
+                                class="fa-solid fa-circle-exclamation text-gold/50 mt-1 text-[10px]"></i> Pierde
+                            oportunidades ante opciones de menor calidad.</li>
+                    </ul>
+                    <p class="text-xs text-gold font-bold uppercase tracking-wider mb-4">
+                        Problema: Invisibilidad de Mercado.
                     </p>
+                    <button onclick="selectProblem('trust')"
+                        class="w-full text-center py-2 border border-white/10 rounded hover:bg-white/5 transition-colors text-sm text-subtle hover:text-white group">
+                        Me identifico <i
+                            class="fa-solid fa-arrow-down ml-2 opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                    </button>
                 </div>
-                <div class="matte-card p-8 rounded-2xl flex flex-col h-full border-t-2 border-t-royal/50">
-                    <div class="mb-6 text-royal"><i class="fa-solid fa-robot text-3xl"></i></div>
-                    <h3 class="font-serif text-2xl mb-2 text-white">Prospección lenta y manual</h3>
-                    <p class="text-sm text-red-300/80 mb-4 italic">"Tu equipo pierde horas haciendo tareas repetitivas."
-                    </p>
+                <!-- CARD 2 -->
+                <div class="matte-card p-8 rounded-2xl flex flex-col h-full border-t-2 border-t-gold/50">
+                    <div class="mb-6 text-gold"><i class="fa-solid fa-magnifying-glass-minus text-3xl"></i></div>
+                    <h3 class="font-serif text-2xl mb-2 text-white">La Web Desaparecida</h3>
+                    <p class="text-sm text-red-300/80 mb-4 italic">"Ignorado por Google."</p>
                     <div class="h-[1px] bg-white/10 w-full mb-4"></div>
-                    <p class="text-subtle text-sm leading-relaxed mb-4">
-                        <strong class="text-white">Solución:</strong> Sistema de prospección IA que personaliza mensajes
-                        y prioriza oportunidades.
+                    <ul class="text-subtle text-sm space-y-2 mb-6 flex-grow">
+                        <li class="flex gap-2"><i
+                                class="fa-solid fa-circle-exclamation text-gold/50 mt-1 text-[10px]"></i> Google lo
+                            entierra en páginas que nadie visita.</li>
+                        <li class="flex gap-2"><i
+                                class="fa-solid fa-circle-exclamation text-gold/50 mt-1 text-[10px]"></i> Su sitio es
+                            un folleto estático, no una máquina de ventas.</li>
+                        <li class="flex gap-2"><i
+                                class="fa-solid fa-circle-exclamation text-gold/50 mt-1 text-[10px]"></i> Los usuarios
+                            abandonan su web por falta de claridad técnica.</li>
+                    </ul>
+                    <p class="text-xs text-gold font-bold uppercase tracking-wider mb-4">
+                        Problema: Falta de SEO Técnico.
                     </p>
+                    <button onclick="selectProblem('invisibility')"
+                        class="w-full text-center py-2 border border-white/10 rounded hover:bg-white/5 transition-colors text-sm text-subtle hover:text-white group">
+                        Me identifico <i
+                            class="fa-solid fa-arrow-down ml-2 opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                    </button>
                 </div>
-                <div class="matte-card p-8 rounded-2xl flex flex-col h-full border-t-2 border-t-royal/50">
-                    <div class="mb-6 text-royal"><i class="fa-solid fa-layer-group text-3xl"></i></div>
-                    <h3 class="font-serif text-2xl mb-2 text-white">Falta de estructura</h3>
-                    <p class="text-sm text-red-300/80 mb-4 italic">"No hay procesos claros ni consistencia."</p>
+                <!-- CARD 3 -->
+                <div class="matte-card p-8 rounded-2xl flex flex-col h-full border-t-2 border-t-gold/50">
+                    <div class="mb-6 text-gold"><i class="fa-solid fa-robot text-3xl"></i></div>
+                    <h3 class="font-serif text-2xl mb-2 text-white">La Exclusión de la IA</h3>
+                    <p class="text-sm text-red-300/80 mb-4 italic">"Invisible para ChatGPT y Gemini."</p>
                     <div class="h-[1px] bg-white/10 w-full mb-4"></div>
-                    <p class="text-subtle text-sm leading-relaxed mb-4">
-                        <strong class="text-white">Solución:</strong> Automatización lista, con SOP + video + dashboard.
+                    <ul class="text-subtle text-sm space-y-2 mb-6 flex-grow">
+                        <li class="flex gap-2"><i
+                                class="fa-solid fa-circle-exclamation text-gold/50 mt-1 text-[10px]"></i> ChatGPT y
+                            Gemini no citan su marca como autoridad.</li>
+                        <li class="flex gap-2"><i
+                                class="fa-solid fa-circle-exclamation text-gold/50 mt-1 text-[10px]"></i> Queda
+                            excluido del nuevo ecosistema de búsqueda por IA.</li>
+                        <li class="flex gap-2"><i
+                                class="fa-solid fa-circle-exclamation text-gold/50 mt-1 text-[10px]"></i> Su empresa es
+                            inexistente para el consumidor del 2026.</li>
+                    </ul>
+                    <p class="text-xs text-gold font-bold uppercase tracking-wider mb-4">
+                        Problema: Falta de Estrategia GEO.
                     </p>
+                    <button onclick="selectProblem('tech')"
+                        class="w-full text-center py-2 border border-white/10 rounded hover:bg-white/5 transition-colors text-sm text-subtle hover:text-white group">
+                        Me identifico <i
+                            class="fa-solid fa-arrow-down ml-2 opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                    </button>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- RADAR IA (LEAD MAGNET 1) -->
+    <!-- OFERTA DE RESULTADOS (Was Radar IA) -->
     <section class="py-20 px-6 border-y border-white/5 bg-white/[0.01] relative">
-        <div class="max-w-4xl mx-auto text-center relative z-10">
-            <h2 class="font-serif text-4xl mb-6">¿Todavía no sabes por dónde empezar con IA?</h2>
-            <p class="text-lg text-subtle mb-8 max-w-2xl mx-auto">
-                Haz el Radar IA para marketing y ventas y en 5 minutos sabrás en qué nivel estás y cuál debería ser tu
-                primer movimiento con IA.
-            </p>
-            <a href="#"
-                class="inline-block px-8 py-4 bg-royal text-white font-medium rounded-full hover:bg-royal/80 transition-all duration-300 shadow-[0_0_20px_rgba(59,130,246,0.3)] hover:shadow-[0_0_30px_rgba(59,130,246,0.5)] text-lg">
-                Hacer Radar IA ahora
-            </a>
+        <div class="max-w-5xl mx-auto text-center relative z-10">
+            <h2 class="font-serif text-4xl mb-12">Oferta de Resultados</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
+                <div>
+                    <h3 class="text-xl font-serif text-white mb-2">Infraestructura de Conversión</h3>
+                    <p class="text-subtle text-sm">Diseño de alto impacto enfocado 100% en ventas. Velocidad, estética y
+                        persuasión.</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-serif text-white mb-2">Dominio de Búsqueda (SEO)</h3>
+                    <p class="text-subtle text-sm">Ingeniería para Google. Optimizamos estructura técnica para ganar la
+                        primera página.</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-serif text-white mb-2">Dominio Generativo (GEO)</h3>
+                    <p class="text-subtle text-sm">Optimización para IA. Estructuramos sus datos para que ChatGPT y
+                        Gemini lo citen como autoridad.</p>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- TIMELINE & ENTREGABLES -->
     <section id="metodo" class="py-20 px-6 relative">
         <div
-            class="absolute top-1/2 right-0 -translate-y-1/2 w-[500px] h-[500px] bg-royal/15 rounded-full blur-[120px] animate-pulse-slow pointer-events-none">
+            class="absolute top-1/2 right-0 -translate-y-1/2 w-[500px] h-[500px] bg-royal/30 rounded-full blur-[120px] animate-pulse-slow pointer-events-none">
         </div>
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row gap-16 relative z-10">
-            <div class="md:w-1/2">
-                <h2 class="font-serif text-4xl mb-8">¿Qué puedes tener listo en unos 10 días?</h2>
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row gap-16 md:gap-0 relative z-10">
+            <div class="flex-1 md:pr-12">
+                <h2 class="font-serif text-4xl mb-8">El Ciclo de Dominio (10 Días)</h2>
 
                 <div class="space-y-3">
                     <details
@@ -325,17 +383,18 @@
                         <summary class="flex justify-between items-center p-4 cursor-pointer select-none">
                             <div class="flex items-center gap-3">
                                 <div
-                                    class="w-8 h-8 rounded-full bg-royal/20 flex items-center justify-center text-royal flex-shrink-0">
-                                    <i class="fa-solid fa-check text-xs"></i>
+                                    class="w-8 h-8 rounded-full bg-gold/20 flex items-center justify-center text-gold flex-shrink-0">
+                                    <i class="fa-solid fa-magnifying-glass-chart text-xs"></i>
                                 </div>
-                                <h4 class="text-white font-medium">1 solución operativa de IA</h4>
+                                <h4 class="text-white font-medium">Día 1-3: Inteligencia de Mercado</h4>
                             </div>
-                            <span class="text-royal transition-transform duration-300 group-open:rotate-180">
+                            <span class="text-gold transition-transform duration-300 group-open:rotate-180">
                                 <i class="fa-solid fa-chevron-down"></i>
                             </span>
                         </summary>
                         <div class="px-4 pb-4 pl-[3.5rem] text-sm text-subtle animate-sweep">
-                            Prospectación, nurturing o citas. Sistema instalado y funcionando.
+                            Identificamos los huecos de su competencia y diseñamos su ángulo de ataque para ganar desde
+                            el diseño.
                         </div>
                     </details>
 
@@ -344,17 +403,18 @@
                         <summary class="flex justify-between items-center p-4 cursor-pointer select-none">
                             <div class="flex items-center gap-3">
                                 <div
-                                    class="w-8 h-8 rounded-full bg-royal/20 flex items-center justify-center text-royal flex-shrink-0">
-                                    <i class="fa-solid fa-file-lines text-xs"></i>
+                                    class="w-8 h-8 rounded-full bg-gold/20 flex items-center justify-center text-gold flex-shrink-0">
+                                    <i class="fa-solid fa-layer-group text-xs"></i>
                                 </div>
-                                <h4 class="text-white font-medium">SOP de 1–2 páginas</h4>
+                                <h4 class="text-white font-medium">Día 4-7: Ingeniería de Autoridad</h4>
                             </div>
-                            <span class="text-royal transition-transform duration-300 group-open:rotate-180">
+                            <span class="text-gold transition-transform duration-300 group-open:rotate-180">
                                 <i class="fa-solid fa-chevron-down"></i>
                             </span>
                         </summary>
                         <div class="px-4 pb-4 pl-[3.5rem] text-sm text-subtle animate-sweep">
-                            Documentación clara paso a paso para que tu equipo sepa exactamente qué hacer.
+                            Construimos su presencia (Web/Landing) con tecnología de última generación que vuela y
+                            convence.
                         </div>
                     </details>
 
@@ -363,97 +423,53 @@
                         <summary class="flex justify-between items-center p-4 cursor-pointer select-none">
                             <div class="flex items-center gap-3">
                                 <div
-                                    class="w-8 h-8 rounded-full bg-royal/20 flex items-center justify-center text-royal flex-shrink-0">
-                                    <i class="fa-solid fa-video text-xs"></i>
+                                    class="w-8 h-8 rounded-full bg-gold/20 flex items-center justify-center text-gold flex-shrink-0">
+                                    <i class="fa-solid fa-rocket text-xs"></i>
                                 </div>
-                                <h4 class="text-white font-medium">Video explicativo (5 min)</h4>
+                                <h4 class="text-white font-medium">Día 8-10: Integración Ecosistémica</h4>
                             </div>
-                            <span class="text-royal transition-transform duration-300 group-open:rotate-180">
+                            <span class="text-gold transition-transform duration-300 group-open:rotate-180">
                                 <i class="fa-solid fa-chevron-down"></i>
                             </span>
                         </summary>
                         <div class="px-4 pb-4 pl-[3.5rem] text-sm text-subtle animate-sweep">
-                            Training grabado para onboarding futuro, eliminando la necesidad de repetir explicaciones.
-                        </div>
-                    </details>
-
-                    <details
-                        class="group bg-white/5 border border-white/5 rounded-lg open:bg-white/10 transition-colors">
-                        <summary class="flex justify-between items-center p-4 cursor-pointer select-none">
-                            <div class="flex items-center gap-3">
-                                <div
-                                    class="w-8 h-8 rounded-full bg-royal/20 flex items-center justify-center text-royal flex-shrink-0">
-                                    <i class="fa-solid fa-chart-pie text-xs"></i>
-                                </div>
-                                <h4 class="text-white font-medium">Dashboard con métricas clave</h4>
-                            </div>
-                            <span class="text-royal transition-transform duration-300 group-open:rotate-180">
-                                <i class="fa-solid fa-chevron-down"></i>
-                            </span>
-                        </summary>
-                        <div class="px-4 pb-4 pl-[3.5rem] text-sm text-subtle animate-sweep">
-                            Visualización del rendimiento en tiempo real para tomar decisiones basadas en datos.
-                        </div>
-                    </details>
-
-                    <details
-                        class="group bg-white/5 border border-white/5 rounded-lg open:bg-white/10 transition-colors">
-                        <summary class="flex justify-between items-center p-4 cursor-pointer select-none">
-                            <div class="flex items-center gap-3">
-                                <div
-                                    class="w-8 h-8 rounded-full bg-royal/20 flex items-center justify-center text-royal flex-shrink-0">
-                                    <i class="fa-solid fa-flask text-xs"></i>
-                                </div>
-                                <h4 class="text-white font-medium">Pruebas, ajustes y validación</h4>
-                            </div>
-                            <span class="text-royal transition-transform duration-300 group-open:rotate-180">
-                                <i class="fa-solid fa-chevron-down"></i>
-                            </span>
-                        </summary>
-                        <div class="px-4 pb-4 pl-[3.5rem] text-sm text-subtle animate-sweep">
-                            Estrés del sistema y ajustes finales para asegurar que funciona en el mundo real, no solo en
-                            teoría.
+                            Lo inyectamos en el ADN de Google, Mapas y Motores de IA. Entrega de mando y llaves del
+                            sistema.
                         </div>
                     </details>
                 </div>
 
                 <div
                     class="mt-8 p-4 border border-white/5 bg-white/5 rounded-lg inline-block text-sm text-subtle italic">
-                    Todo esto suele estar listo en unos 10 días. Sin humo.
+                    Velocidad de ejecución = Ventaja competitiva.
                 </div>
             </div>
-            <div class="md:w-1/2 relative pl-8 border-l border-white/10">
-                <h3 class="font-serif text-2xl mb-8 text-royal">El Roadmap</h3>
+            <div class="flex-1 relative pl-8 md:pl-12 border-l border-white/10">
+                <h3 class="font-serif text-2xl mb-8 text-gold">Cronograma de Ejecución</h3>
                 <div class="space-y-8 relative">
                     <div class="relative">
                         <span
-                            class="absolute -left-[41px] top-1 w-5 h-5 bg-charcoal border border-royal rounded-full z-10"></span>
-                        <h4 class="text-lg font-medium">Día 0: Kickoff</h4>
-                        <p class="text-sm text-subtle mt-1">Alineación de objetivos y accesos a herramientas.</p>
+                            class="absolute -left-[41px] md:-left-[57px] top-1 w-5 h-5 bg-charcoal border border-gold rounded-full z-10"></span>
+                        <h4 class="text-lg font-medium">Día 1: Estrategia</h4>
+                        <p class="text-sm text-subtle mt-1">Análisis de competencia y definición de mensaje.</p>
                     </div>
                     <div class="relative">
                         <span
-                            class="absolute -left-[41px] top-1 w-5 h-5 bg-charcoal border border-white/20 rounded-full z-10"></span>
-                        <h4 class="text-lg font-medium">Días 1–3: Diseño del blueprint</h4>
-                        <p class="text-sm text-subtle mt-1">Arquitectura técnica y aprobación del flujo.</p>
+                            class="absolute -left-[41px] md:-left-[57px] top-1 w-5 h-5 bg-charcoal border border-white/20 rounded-full z-10"></span>
+                        <h4 class="text-lg font-medium">Día 4: Arquitectura</h4>
+                        <p class="text-sm text-subtle mt-1">Desarrollo estructura y copywriting persuasivo.</p>
                     </div>
                     <div class="relative">
                         <span
-                            class="absolute -left-[41px] top-1 w-5 h-5 bg-charcoal border border-white/20 rounded-full z-10"></span>
-                        <h4 class="text-lg font-medium">Días 4–8: Implementación</h4>
-                        <p class="text-sm text-subtle mt-1">Construcción, integración y configuración de la IA.</p>
+                            class="absolute -left-[41px] md:-left-[57px] top-1 w-5 h-5 bg-charcoal border border-white/20 rounded-full z-10"></span>
+                        <h4 class="text-lg font-medium">Día 8: Ecosistema</h4>
+                        <p class="text-sm text-subtle mt-1">Conexión con Google Search, Maps y APIs de IA.</p>
                     </div>
                     <div class="relative">
                         <span
-                            class="absolute -left-[41px] top-1 w-5 h-5 bg-charcoal border border-white/20 rounded-full z-10"></span>
-                        <h4 class="text-lg font-medium">Día 9: QA + ajustes</h4>
-                        <p class="text-sm text-subtle mt-1">Pruebas de estrés y refinamiento final.</p>
-                    </div>
-                    <div class="relative">
-                        <span
-                            class="absolute -left-[41px] top-1 w-5 h-5 bg-royal border border-royal rounded-full z-10"></span>
-                        <h4 class="text-lg font-medium text-white">Día 10: Entrega final</h4>
-                        <p class="text-sm text-subtle mt-1">Handover de activos, SOPs y Dashboard de control.</p>
+                            class="absolute -left-[41px] md:-left-[57px] top-1 w-5 h-5 bg-gold border border-gold rounded-full z-10"></span>
+                        <h4 class="text-lg font-medium text-white">Día 10: Lanzamiento</h4>
+                        <p class="text-sm text-subtle mt-1">Su sistema digital está activo y recibiendo tráfico.</p>
                     </div>
                 </div>
             </div>
@@ -463,61 +479,61 @@
     <!-- PRECIOS -->
     <section id="pricing" class="py-24 px-6 relative">
         <div
-            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-royal/15 rounded-full blur-[120px] pointer-events-none -z-10">
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-royal/30 rounded-full blur-[120px] pointer-events-none -z-10">
         </div>
         <div class="max-w-7xl mx-auto relative z-10">
             <h2 class="font-serif text-4xl md:text-5xl text-center mb-16">Modelos de Inversión</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
 
                 <div class="matte-card p-8 rounded-2xl opacity-80 hover:opacity-100">
-                    <h3 class="font-serif text-2xl mb-2">Diagnóstico Express</h3>
-                    <p class="text-xs uppercase tracking-wider text-subtle mb-6">48 Horas</p>
-                    <div class="text-3xl font-light mb-6">$1,700 <span class="text-sm text-subtle">MXN</span></div>
-                    <p class="text-sm text-subtle mb-6 h-10">Para quienes buscan claridad inmediata y una hoja de ruta.
+                    <h3 class="font-serif text-2xl mb-2">Venta Rápida</h3>
+                    <p class="text-xs uppercase tracking-wider text-subtle mb-6">Landing Page</p>
+                    <div class="text-3xl font-light mb-6">$9,500 <span class="text-sm text-subtle">MXN</span></div>
+                    <p class="text-sm text-subtle mb-6 h-10">Para captar leads de inmediato (Ads).
                     </p>
                     <ul class="text-sm space-y-3 mb-8 text-subtle">
-                        <li><i class="fa-solid fa-check text-royal mr-2"></i>2 Oportunidades IA</li>
-                        <li><i class="fa-solid fa-check text-royal mr-2"></i>1 Flujo sugerido</li>
-                        <li><i class="fa-solid fa-check text-royal mr-2"></i>3 Acciones clave</li>
-                        <li><i class="fa-solid fa-check text-royal mr-2"></i>Call de entrega (20m)</li>
+                        <li><i class="fa-solid fa-check text-gold mr-2"></i>Landing High-Conversion</li>
+                        <li><i class="fa-solid fa-check text-gold mr-2"></i>Copywriting Persuasivo</li>
+                        <li><i class="fa-solid fa-check text-gold mr-2"></i>Formulario Integrado</li>
+                        <li><i class="fa-solid fa-check text-gold mr-2"></i>Setup en 72 horas</li>
                     </ul>
                     <a href="#contacto"
-                        class="block w-full text-center py-2 border border-white/20 rounded hover:bg-white/5 transition-colors text-sm">Agendar</a>
+                        class="block w-full text-center py-2 border border-white/20 rounded hover:bg-white/5 transition-colors text-sm">Aplicar</a>
                 </div>
 
-                <div class="matte-card p-8 rounded-2xl border-royal/40 relative transform md:-translate-y-4">
+                <div class="matte-card p-8 rounded-2xl border-gold/40 relative transform md:-translate-y-4">
                     <div
-                        class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-royal text-white text-[10px] uppercase font-bold tracking-widest py-1 px-3 rounded-full shadow-lg">
-                        Más Popular</div>
-                    <h3 class="font-serif text-3xl mb-2 text-white">Sprint IA</h3>
-                    <p class="text-xs uppercase tracking-wider text-royal mb-6">Programa 10 Días</p>
+                        class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gold text-white text-[10px] uppercase font-bold tracking-widest py-1 px-3 rounded-full shadow-lg">
+                        Estándar</div>
+                    <h3 class="font-serif text-3xl mb-2 text-white">Autoridad Google</h3>
+                    <p class="text-xs uppercase tracking-wider text-gold mb-6">Web + SEO Tradicional</p>
                     <div class="text-4xl font-light mb-6 text-white">$16,000 <span
                             class="text-sm text-subtle">MXN</span></div>
-                    <p class="text-sm text-offwhite mb-6 h-10">Implementación completa de una solución real y operativa.
+                    <p class="text-sm text-offwhite mb-6 h-10">Posicionamiento sólido en buscadores clásicos.
                     </p>
                     <ul class="text-sm space-y-3 mb-8 text-offwhite">
-                        <li><i class="fa-solid fa-check text-royal mr-2"></i><strong>Blueprint Técnico</strong></li>
-                        <li><i class="fa-solid fa-check text-royal mr-2"></i>Implementación completa</li>
-                        <li><i class="fa-solid fa-check text-royal mr-2"></i>SOPs y Video Training</li>
-                        <li><i class="fa-solid fa-check text-royal mr-2"></i>Dashboard de Métricas</li>
-                        <li><i class="fa-solid fa-check text-royal mr-2"></i>Soporte Post-entrega</li>
+                        <li><i class="fa-solid fa-check text-gold mr-2"></i><strong>Sitio Web Completo</strong></li>
+                        <li><i class="fa-solid fa-check text-gold mr-2"></i>SEO Técnico Básico</li>
+                        <li><i class="fa-solid fa-check text-gold mr-2"></i>Optimización de Carga</li>
+                        <li><i class="fa-solid fa-check text-gold mr-2"></i>Blog / Noticias</li>
+                        <li><i class="fa-solid fa-check text-gold mr-2"></i>Soporte Post-entrega</li>
                     </ul>
                     <a href="#contacto"
-                        class="block w-full text-center py-3 bg-white text-charcoal font-medium rounded hover:bg-royal hover:text-white transition-colors">Comenzar
+                        class="block w-full text-center py-3 bg-white text-charcoal font-medium rounded hover:bg-gold hover:text-white transition-colors">Iniciar
                         Sprint</a>
                 </div>
 
                 <div class="matte-card p-8 rounded-2xl opacity-80 hover:opacity-100">
-                    <h3 class="font-serif text-2xl mb-2">Head of AI</h3>
-                    <p class="text-xs uppercase tracking-wider text-subtle mb-6">Fractional / Mensual</p>
-                    <div class="text-3xl font-light mb-6">$12,000 <span class="text-sm text-subtle">/mes</span></div>
-                    <p class="text-sm text-subtle mb-6 h-10">Mejora continua para negocios que quieren escalar con IA.
+                    <h3 class="font-serif text-2xl mb-2">Dominio Total</h3>
+                    <p class="text-xs uppercase tracking-wider text-subtle mb-6">Web + SEO + GEO (AI)</p>
+                    <div class="text-3xl font-light mb-6">$24,000 <span class="text-sm text-subtle">MXN</span></div>
+                    <p class="text-sm text-subtle mb-6 h-10">La estrategia completa: Google hoy + IA mañana.
                     </p>
                     <ul class="text-sm space-y-3 mb-8 text-subtle">
-                        <li><i class="fa-solid fa-check text-royal mr-2"></i>2 Mejoras de sistema/mes</li>
-                        <li><i class="fa-solid fa-check text-royal mr-2"></i>Roadmap evolutivo</li>
-                        <li><i class="fa-solid fa-check text-royal mr-2"></i>Control de KPIs</li>
-                        <li><i class="fa-solid fa-check text-royal mr-2"></i>Sesión estratégica mensual</li>
+                        <li><i class="fa-solid fa-check text-gold mr-2"></i>Todo lo anterior +</li>
+                        <li><i class="fa-solid fa-check text-gold mr-2"></i><strong>Estrategia GEO (AI)</strong></li>
+                        <li><i class="fa-solid fa-check text-gold mr-2"></i>Schema Markup Avanzado</li>
+                        <li><i class="fa-solid fa-check text-gold mr-2"></i>Citaciones para ChatGPT</li>
                     </ul>
                     <a href="#contacto"
                         class="block w-full text-center py-2 border border-white/20 rounded hover:bg-white/5 transition-colors text-sm">Consultar</a>
@@ -539,19 +555,19 @@
                 </div>
 
                 <div class="text-center md:text-left">
-                    <p class="text-royal text-xs font-bold uppercase tracking-widest mb-2">Tu Partner Estratégico</p>
+                    <p class="text-gold text-xs font-bold uppercase tracking-widest mb-2">Arquitecto de Infraestructura
+                        Digital</p>
                     <h3 class="font-serif text-3xl mb-4 text-white">Lic. Emmanuel Tapia</h3>
                     <p class="text-subtle leading-relaxed mb-6 max-w-xl">
-                        "No vengo a venderte la herramienta de moda. Vengo a instalar un sistema que funcione mientras
-                        duermes. Llevo más de 10 años diseñando arquitecturas digitales para empresas que valoran su
-                        tiempo más que su dinero."
+                        "No construyo páginas web; diseño activos digitales que trabajan 24/7 para ganar mercado. Mi
+                        obsesión no es el código, sino que su teléfono suene con clientes calificados."
                     </p>
                     <div class="flex flex-wrap justify-center md:justify-start gap-4 text-sm text-offwhite/80">
                         <span class="px-3 py-1 bg-white/5 rounded-full border border-white/5">Ex-Lead Developer</span>
                         <span class="px-3 py-1 bg-white/5 rounded-full border border-white/5">Arquitecto de
                             Soluciones</span>
                         <span class="px-3 py-1 bg-white/5 rounded-full border border-white/5">Estratega de
-                            Producto</span>
+                            Mercado</span>
                     </div>
                 </div>
             </div>
@@ -563,240 +579,114 @@
     <!-- FORMULARIO MULTI-PASO (WIZARD CON SELECTS) -->
     <section id="contacto" class="py-24 px-6 relative text-center">
         <div
-            class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-royal/20 rounded-full blur-[100px] pointer-events-none animate-pulse-slow">
+            class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-royal/40 rounded-full blur-[90px] pointer-events-none animate-pulse-slow">
         </div>
 
         <div class="max-w-3xl mx-auto relative z-10">
-            <h2 class="font-serif text-4xl md:text-5xl mb-6">Aplica al Sprint de 10 Días</h2>
-            <p class="text-subtle mb-10">Completa este breve perfil para entender tu situación actual.</p>
+            <h2 class="font-serif text-4xl md:text-5xl mb-6">Diagnóstico de Dominio Digital</h2>
+            <p class="text-subtle mb-10">Solo para tomadores de decisiones que van en serio.</p>
 
             <div
                 class="bg-[#16191f]/90 p-8 md:p-12 rounded-2xl border border-white/10 backdrop-blur-md shadow-2xl text-left">
 
                 <div class="mb-8">
                     <div class="flex justify-between text-xs uppercase tracking-widest text-subtle mb-2">
-                        <span id="step-indicator">Paso 1 de 6</span>
+                        <span id="step-indicator">Paso 1 de 4</span>
                         <span id="progress-percent">0%</span>
                     </div>
                     <div class="w-full bg-white/5 h-1 rounded-full overflow-hidden">
-                        <div id="progress-bar" class="bg-royal h-full transition-all duration-500 w-[16%]"></div>
+                        <div id="progress-bar" class="bg-gold h-full transition-all duration-500 w-[25%]"></div>
                     </div>
                 </div>
 
                 <form id="wizard-form">
 
                     <div class="step-content active" data-step="1">
-                        <h3 class="text-2xl font-serif mb-6 text-white">Contexto del negocio</h3>
+                        <h3 class="text-2xl font-serif mb-6 text-white">El Desafío Actual</h3>
 
                         <div class="mb-6">
-                            <label class="block text-sm font-medium text-subtle mb-2">¿Qué tipo de negocio eres?</label>
-                            <select name="business_type" class="input-field" required
-                                onchange="toggleSelectOther('business_type', 'other-business')">
-                                <option value="" disabled selected>Selecciona una opción</option>
-                                <option value="agency">Agencia de marketing / creativa / estudio</option>
-                                <option value="b2b">Servicio B2B profesional</option>
-                                <option value="appointments">Negocio con citas (gimnasio, clínica, etc.)</option>
-                                <option value="other">Otro</option>
+                            <label class="block text-sm font-medium text-subtle mb-2">¿Cuál es el obstáculo #1 que le
+                                impide duplicar sus leads hoy?</label>
+                            <select name="obstacle" class="input-field" required>
+                                <option value="" disabled selected>Seleccione la realidad de su negocio</option>
+                                <option value="invisibility">Google nos ignora (Problema de SEO)</option>
+                                <option value="conversion">Tenemos tráfico pero nadie llama (Web que no vende)</option>
+                                <option value="trust">La competencia se ve más profesional (Falta de Autoridad)</option>
+                                <option value="tech">La IA no nos recomienda (Problema de GEO)</option>
                             </select>
-                            <div id="other-business" class="hidden mt-3">
-                                <input type="text" name="business_type_other" class="input-field"
-                                    placeholder="Descríbenos brevemente tu negocio">
-                            </div>
                         </div>
 
                         <div class="mb-6">
-                            <label class="block text-sm font-medium text-subtle mb-2">¿Cuál es tu objetivo principal con
-                                IA?</label>
-                            <select name="goal" class="input-field" required
-                                onchange="toggleSelectOther('goal', 'other-goal')">
-                                <option value="" disabled selected>Selecciona una opción</option>
-                                <option value="leads">Generar más leads / reuniones de calidad</option>
-                                <option value="automation">Reducir trabajo manual en ventas</option>
-                                <option value="structure">Tener estructura y métricas claras</option>
-                                <option value="other">Otro</option>
-                            </select>
-                            <div id="other-goal" class="hidden mt-3">
-                                <input type="text" name="goal_other" class="input-field"
-                                    placeholder="Especifique su objetivo">
-                            </div>
+                            <label class="block text-sm font-medium text-subtle mb-2">Si su competencia desapareciera
+                                mañana, ¿por qué deberían elegirlo a usted?</label>
+                            <textarea name="value_prop" rows="3" class="input-field"
+                                placeholder="¿Cuál es su ventaja real? (Calidad, Rapidez, Experiencia...)"></textarea>
                         </div>
                     </div>
 
                     <div class="step-content" data-step="2">
-                        <h3 class="text-2xl font-serif mb-6 text-white">Estado actual</h3>
+                        <h3 class="text-2xl font-serif mb-6 text-white">Estado Digital</h3>
 
                         <div class="mb-6">
-                            <label class="block text-sm font-medium text-subtle mb-4">¿Cómo generas hoy la mayoría de
-                                tus leads? (Selecciona varios)</label>
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-                                <label class="option-label"><input type="checkbox" name="source" value="referrals"><span
-                                        class="ml-3">Referidos</span></label>
-                                <label class="option-label"><input type="checkbox" name="source"
-                                        value="social_organic"><span class="ml-3">Redes orgánicas</span></label>
-                                <label class="option-label"><input type="checkbox" name="source" value="ads"><span
-                                        class="ml-3">Anuncios pagados</span></label>
-                                <label class="option-label"><input type="checkbox" name="source" value="linkedin"><span
-                                        class="ml-3">LinkedIn</span></label>
-                                <label class="option-label"><input type="checkbox" name="source" value="email"><span
-                                        class="ml-3">Email marketing</span></label>
-                                <label class="option-label"><input type="checkbox" name="source" value="other"><span
-                                        class="ml-3">Otro</span></label>
+                            <label class="block text-sm font-medium text-subtle mb-2">¿Tiene actualmente una página
+                                web?</label>
+                            <select name="has_website" class="input-field" required
+                                onchange="toggleSelectOther('has_website', 'website-url', 'yes')">
+                                <option value="" disabled selected>Seleccione...</option>
+                                <option value="yes">Sí, tenemos web</option>
+                                <option value="no">No, no tenemos</option>
+                                <option value="old">Sí, pero es muy vieja/no funciona</option>
+                            </select>
+                            <div id="website-url" class="hidden mt-3">
+                                <input type="text" name="current_website" class="input-field"
+                                    placeholder="www.suempresa.com">
                             </div>
                         </div>
 
                         <div class="mb-6">
-                            <label class="block text-sm font-medium text-subtle mb-2">¿Cuántos leads aproximados recibes
-                                al mes?</label>
-                            <select name="volume" class="input-field" required>
-                                <option value="" disabled selected>Selecciona un rango</option>
-                                <option value="<20">Menos de 20</option>
-                                <option value="20-50">Entre 20 y 50</option>
-                                <option value="50-100">Entre 50 y 100</option>
-                                <option value=">100">Más de 100</option>
+                            <label class="block text-sm font-medium text-subtle mb-2">¿Cuál es su meta de ventas para el
+                                próximo trimestre?</label>
+                            <select name="growth_goal" class="input-field">
+                                <option value="" disabled selected>Seleccione...</option>
+                                <option value="maintain">Mantener estables</option>
+                                <option value="grow_20">Crecer un 20-30%</option>
+                                <option value="double">Duplicar facturación (Agresivo)</option>
                             </select>
-                        </div>
-
-                        <div class="mb-6">
-                            <label class="block text-sm font-medium text-subtle mb-2">¿Tienes sistema para registrar
-                                leads?</label>
-                            <select name="crm" class="input-field" required
-                                onchange="toggleSelectOther('crm', 'crm-name', 'yes')">
-                                <option value="" disabled selected>Selecciona una opción</option>
-                                <option value="yes">Sí, usamos un CRM</option>
-                                <option value="sheets">No, usamos Excel/Sheets</option>
-                                <option value="manual">No, todo por WhatsApp/Correo</option>
-                                <option value="other">Otro</option>
-                            </select>
-                            <div id="crm-name" class="hidden mt-3">
-                                <input type="text" name="crm_name" class="input-field" placeholder="¿Qué CRM utilizan?">
-                            </div>
                         </div>
                     </div>
 
                     <div class="step-content" data-step="3">
-                        <h3 class="text-2xl font-serif mb-6 text-white">Detalles operativos</h3>
-
-                        <div id="group-agency" class="hidden dynamic-group">
-                            <div class="mb-6">
-                                <label class="block text-sm font-medium text-subtle mb-2">¿Dónde sientes más carga de
-                                    trabajo?</label>
-                                <select name="agency_pain" class="input-field">
-                                    <option value="" disabled selected>Selecciona una opción</option>
-                                    <option value="content">Generación de ideas/contenidos</option>
-                                    <option value="reports">Reportes y presentaciones</option>
-                                    <option value="proposals">Propuestas y pitches comerciales</option>
-                                    <option value="campaigns">Gestión y optimización de campañas</option>
-                                    <option value="other">Otro</option>
-                                </select>
-                            </div>
-                            <div class="mb-6">
-                                <label class="block text-sm font-medium text-subtle mb-2">¿Cuántas personas trabajan en
-                                    tu equipo?</label>
-                                <input type="number" name="team_size" class="input-field" placeholder="Ej. 5">
-                            </div>
-                        </div>
-
-                        <div id="group-b2b" class="hidden dynamic-group">
-                            <div class="mb-6">
-                                <label class="block text-sm font-medium text-subtle mb-2">¿Qué canal te genera más
-                                    reuniones?</label>
-                                <select name="b2b_channel" class="input-field">
-                                    <option value="" disabled selected>Selecciona una opción</option>
-                                    <option value="linkedin">LinkedIn</option>
-                                    <option value="email">Email Marketing</option>
-                                    <option value="referrals">Referidos</option>
-                                    <option value="events">Eventos / Networking</option>
-                                    <option value="other">Otro</option>
-                                </select>
-                            </div>
-                            <div class="mb-6">
-                                <label class="block text-sm font-medium text-subtle mb-2">¿Con cuántas reuniones al mes
-                                    te sentirías satisfecho?</label>
-                                <input type="text" name="b2b_meetings" class="input-field"
-                                    placeholder="Ej. 8-10 reuniones">
-                            </div>
-                        </div>
-
-                        <div id="group-appointments" class="hidden dynamic-group">
-                            <div class="mb-6">
-                                <label class="block text-sm font-medium text-subtle mb-2">¿Qué describe mejor tu
-                                    situación?</label>
-                                <select name="appt_pain" class="input-field">
-                                    <option value="" disabled selected>Selecciona una opción</option>
-                                    <option value="ghosting">Preguntan pero no agendan</option>
-                                    <option value="noshow">Agendan pero no se presentan (no-show)</option>
-                                    <option value="noclosing">Llegan pero no compran</option>
-                                    <option value="messy">Caos en WhatsApp (se pierde control)</option>
-                                    <option value="other">Otro</option>
-                                </select>
-                            </div>
-                            <div class="mb-6">
-                                <label class="block text-sm font-medium text-subtle mb-2">¿Promedio de citas a la
-                                    semana?</label>
-                                <select name="appt_vol" class="input-field">
-                                    <option value="" disabled selected>Selecciona un rango</option>
-                                    <option value="<10">Menos de 10</option>
-                                    <option value="10-30">Entre 10 y 30</option>
-                                    <option value="30-60">Entre 30 y 60</option>
-                                    <option value=">60">Más de 60</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="step-content" data-step="4">
-                        <h3 class="text-2xl font-serif mb-6 text-white">Urgencia y Presupuesto</h3>
+                        <h3 class="text-2xl font-serif mb-6 text-white">Compromiso</h3>
 
                         <div class="mb-6">
-                            <label class="block text-sm font-medium text-subtle mb-2">¿Para cuándo te gustaría tener una
-                                solución?</label>
+                            <label class="block text-sm font-medium text-subtle mb-2">¿Está buscando resultados
+                                urgentes?</label>
                             <select name="urgency" class="input-field" required>
-                                <option value="" disabled selected>Selecciona una opción</option>
-                                <option value="asap">Lo antes posible (este mes)</option>
-                                <option value="1-3m">En 1–3 meses</option>
-                                <option value="exploring">Solo estoy explorando opciones</option>
+                                <option value="asap">Sí, necesitamos esto funcionando Ayer (Sprint 10 días)</option>
+                                <option value="soon">En el próximo mes</option>
+                                <option value="info">Solo estoy investigando</option>
                             </select>
                         </div>
 
                         <div class="mb-6">
-                            <label class="block text-sm font-medium text-subtle mb-2">¿Tienes presupuesto
-                                asignado?</label>
+                            <label class="block text-sm font-medium text-subtle mb-2">¿Dispone de presupuesto para
+                                invertir en su infraestructura?</label>
                             <select name="budget" class="input-field" required>
-                                <option value="" disabled selected>Selecciona una opción</option>
-                                <option value="yes">Sí, ya tenemos presupuesto asignado</option>
-                                <option value="manageable">No, pero puedo gestionarlo si tiene sentido</option>
-                                <option value="no">No, por ahora solo quiero información</option>
+                                <option value="ready">Sí, tenemos capital listo para invertir</option>
+                                <option value="maybe">Depende de la propuesta</option>
+                                <option value="no">No tenemos presupuesto asignado</option>
                             </select>
                         </div>
-
-
                     </div>
 
-                    <div class="step-content" data-step="5">
-                        <h3 class="text-2xl font-serif mb-6 text-white">La Visión</h3>
-
-                        <div class="mb-6">
-                            <label class="block text-sm font-medium text-subtle mb-2">Si pudiéramos resolver solo una
-                                cosa con IA en tu negocio, ¿cuál sería?</label>
-                            <textarea name="vision" rows="4" class="input-field"
-                                placeholder="Ej. Que mi equipo deje de perder 2 horas al día en..."></textarea>
-                        </div>
-                        <div class="mb-6">
-                            <label class="block text-sm font-medium text-subtle mb-2">¿Algo más que debamos
-                                saber?</label>
-                            <textarea name="extra" rows="2" class="input-field"></textarea>
-                        </div>
-                    </div>
-
-                    <div class="step-content" data-step="6">
-                        <h3 class="text-2xl font-serif mb-6 text-white">Último paso</h3>
-                        <p class="text-subtle mb-6 text-sm">Déjanos tus datos para enviarte el diagnóstico preliminar.
-                        </p>
+                    <!-- Step 4 is the Contact Info step, effectively replacing old Step 6 -->
+                    <div class="step-content" data-step="4">
+                        <h3 class="text-2xl font-serif mb-6 text-white">Contacto Directo</h3>
+                        <p class="text-subtle mb-6 text-sm">Enviaremos el diagnóstico preliminar a este contacto.</p>
 
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                             <div>
-                                <label class="block text-xs uppercase tracking-wider text-subtle mb-2">Nombre
-                                    completo</label>
+                                <label class="block text-xs uppercase tracking-wider text-subtle mb-2">Su Nombre</label>
                                 <input type="text" name="name" class="input-field" required>
                             </div>
                             <div>
@@ -830,12 +720,12 @@
                         </button>
 
                         <button type="button" id="nextBtn"
-                            class="bg-white text-charcoal hover:bg-royal hover:text-white px-8 py-3 rounded-full font-medium transition-all duration-300 shadow-lg ml-auto">
+                            class="bg-white text-charcoal hover:bg-gold hover:text-white px-8 py-3 rounded-full font-medium transition-all duration-300 shadow-lg ml-auto">
                             Siguiente <i class="fa-solid fa-arrow-right ml-2"></i>
                         </button>
 
                         <button type="submit" id="submitBtn"
-                            class="bg-royal text-white hover:bg-royal/80 px-8 py-3 rounded-full font-medium transition-all duration-300 shadow-lg ml-auto hidden">
+                            class="bg-gold text-white hover:bg-gold/80 px-8 py-3 rounded-full font-medium transition-all duration-300 shadow-lg ml-auto hidden">
                             Enviar Aplicación
                         </button>
                     </div>
@@ -860,7 +750,7 @@
 
     <script>
         let currentStep = 1;
-        const totalSteps = 6;
+        const totalSteps = 4;
 
         function updateUI() {
             document.querySelectorAll('.step-content').forEach(el => el.classList.remove('active'));
@@ -903,17 +793,20 @@
             }
         }
 
-        function prepareStep3() {
-            const businessType = document.querySelector('select[name="business_type"]').value;
+        window.selectProblem = function (value) {
+            // Scroll to form
+            document.getElementById('contacto').scrollIntoView({ behavior: 'smooth' });
 
-            document.querySelectorAll('.dynamic-group').forEach(el => el.classList.add('hidden'));
+            // Select option
+            const select = document.querySelector('select[name="obstacle"]');
+            if (select) {
+                select.value = value;
 
-            if (businessType === 'agency') {
-                document.getElementById('group-agency').classList.remove('hidden');
-            } else if (businessType === 'b2b') {
-                document.getElementById('group-b2b').classList.remove('hidden');
-            } else if (businessType === 'appointments') {
-                document.getElementById('group-appointments').classList.remove('hidden');
+                // Visual feedback (flash effect)
+                select.classList.add('bg-gold/20', 'text-white');
+                setTimeout(() => {
+                    select.classList.remove('bg-gold/20', 'text-white');
+                }, 1000);
             }
         }
 
@@ -930,14 +823,6 @@
 
             if (!valid) return;
 
-            if (currentStep === 2) {
-                prepareStep3();
-                const bType = document.querySelector('select[name="business_type"]').value;
-                if (bType === 'other') {
-                    currentStep++;
-                }
-            }
-
             if (currentStep < totalSteps) {
                 currentStep++;
                 updateUI();
@@ -946,30 +831,45 @@
 
         document.getElementById('prevBtn').addEventListener('click', () => {
             if (currentStep > 1) {
-                if (currentStep === 4) {
-                    const bType = document.querySelector('select[name="business_type"]').value;
-                    if (bType === 'other') {
-                        currentStep--;
-                    }
-                }
                 currentStep--;
                 updateUI();
             }
         });
 
-        document.getElementById('wizard-form').addEventListener('submit', (e) => {
+        document.getElementById('wizard-form').addEventListener('submit', async (e) => {
             e.preventDefault();
             const btn = document.getElementById('submitBtn');
+            const originalBtnText = btn.innerHTML;
+            btn.disabled = true;
             btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-2"></i> Enviando...';
-            setTimeout(() => {
-                alert('¡Solicitud recibida! Te contactaremos pronto.');
-                location.reload();
-            }, 1500);
+
+            const formData = new FormData(e.target);
+            const data = Object.fromEntries(formData.entries());
+            data.source = "Landing Page TAP-IA";
+
+            try {
+                // Use local proxy to avoid CORS
+                const response = await fetch('/submit-webhook', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+
+                if (response.ok) {
+                    alert('¡Diagnóstico Solicitado! Revisaremos su caso y lo contactaremos en 24h.');
+                    location.reload();
+                } else {
+                    throw new Error('Error al enviar');
+                }
+            } catch (error) {
+                console.error(error);
+                alert('Hubo un problema al enviar sus datos. Por favor, intente de nuevo o contáctenos directamente.');
+                btn.innerHTML = originalBtnText;
+                btn.disabled = false;
+            }
         });
 
         updateUI();
-
-
     </script>
 </body>
 
