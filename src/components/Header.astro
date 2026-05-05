@@ -1,0 +1,99 @@
+---
+// src/components/Header.astro
+const currentPath = Astro.url.pathname;
+
+const navLinks = [
+    { name: "Inicio", path: "/" },
+    { name: "Soluciones", path: "/soluciones" },
+    { name: "Portafolio (Demos)", path: "/portafolio" },
+    { name: "Novedades IA", path: "/novedades-ia" },
+    { name: "Recursos", path: "/recursos" },
+    { name: "Sobre Tap-IA", path: "/sobre" },
+    { name: "Contacto", path: "/contacto" }
+];
+---
+
+<!-- Overlay para cerrar el menú móvil -->
+<div id="mobile-overlay" class="fixed inset-0 bg-black/60 z-40 hidden lg:hidden" aria-hidden="true"></div>
+
+<!-- Panel menú móvil -->
+<div id="mobile-menu" class="fixed inset-y-0 right-0 w-72 bg-[#0a0b0e] border-l border-white/8 z-50 transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col lg:hidden" aria-hidden="true">
+    <div class="flex items-center justify-between px-6 h-20 border-b border-white/5">
+        <a href="/">
+            <img src="/logo.png" alt="TAP-IA Logo" width="160" height="52" class="h-9 w-auto" />
+        </a>
+        <button id="mobile-close" class="text-white p-2" aria-label="Cerrar menú">
+            <i class="fa-solid fa-xmark text-xl"></i>
+        </button>
+    </div>
+    <nav class="flex flex-col gap-1 px-4 py-6 flex-grow">
+        {navLinks.map(link => (
+            <a
+                href={link.path}
+                class={`px-4 py-3 rounded-lg uppercase text-[11px] tracking-[0.15em] font-semibold transition-colors hover:bg-white/5 hover:text-white ${currentPath === link.path || (link.path !== '/' && currentPath.startsWith(link.path)) ? 'text-white bg-white/5' : 'text-subtle'}`}
+            >
+                {link.name}
+            </a>
+        ))}
+    </nav>
+    <div class="px-6 pb-8 border-t border-white/5 pt-6">
+        <a href="/contacto" class="block w-full text-center px-6 py-3 border border-white/10 rounded-full text-[11px] uppercase tracking-widest font-bold hover:bg-white/5 transition-all duration-300 text-white">
+            Diagnóstico de Visibilidad
+        </a>
+    </div>
+</div>
+
+<nav class="fixed w-full z-40 top-0 transition-all duration-300 bg-[#0a0b0e]/85 backdrop-blur-sm border-b border-white/5">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+            <a href="/">
+                <img src="/logo.png" alt="TAP-IA Logo" width="200" height="64" class="h-12 w-auto" />
+            </a>
+        </div>
+        <div class="hidden lg:flex items-center gap-8 text-sm tracking-wide text-subtle">
+            {navLinks.map(link => (
+                <a 
+                    href={link.path} 
+                    class={`hover:text-offwhite transition-colors uppercase text-[11px] tracking-[0.15em] font-semibold ${currentPath === link.path || (link.path !== '/' && currentPath.startsWith(link.path)) ? 'text-white' : ''}`}
+                >
+                    {link.name}
+                </a>
+            ))}
+        </div>
+        <div class="flex items-center gap-4">
+            <a href="/contacto" class="hidden md:inline-block px-6 py-2 border border-gold/20 rounded-full text-[11px] uppercase tracking-widest font-bold hover:border-gold/50 hover:text-gold transition-all duration-300 text-white">
+                Diagnóstico de Visibilidad
+            </a>
+            <button id="mobile-open" class="lg:hidden text-white p-2" aria-label="Abrir menú">
+                <i class="fa-solid fa-bars text-xl"></i>
+            </button>
+        </div>
+    </div>
+</nav>
+
+<script is:inline>
+    (function () {
+        var overlay = document.getElementById('mobile-overlay');
+        var menu = document.getElementById('mobile-menu');
+        var openBtn = document.getElementById('mobile-open');
+        var closeBtn = document.getElementById('mobile-close');
+
+        function openMenu() {
+            menu.classList.remove('translate-x-full');
+            menu.setAttribute('aria-hidden', 'false');
+            overlay.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMenu() {
+            menu.classList.add('translate-x-full');
+            menu.setAttribute('aria-hidden', 'true');
+            overlay.classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+
+        if (openBtn) openBtn.addEventListener('click', openMenu);
+        if (closeBtn) closeBtn.addEventListener('click', closeMenu);
+        if (overlay) overlay.addEventListener('click', closeMenu);
+    })();
+</script>

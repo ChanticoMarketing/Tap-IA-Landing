@@ -1,0 +1,32 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Políticas y Legal | TAP-IA">
+    <Header />
+
+    <section class="min-h-screen pt-36 pb-20 px-6 max-w-4xl mx-auto">
+        <h1 class="font-serif text-4xl mb-8 text-white">Políticas de Privacidad & Aviso Legal</h1>
+        
+        <div class="text-subtle space-y-6 text-sm">
+            <p><strong>Última actualización:</strong> Febrero 2026</p>
+            
+            <h2 class="text-white text-2xl font-serif mt-10 mb-4">1. Recopilación de Datos</h2>
+            <p>Tap-IA recopila única y exclusivamente la información profesional suministrada de manera explícita a través de nuestros formularios de contacto o durante el proceso de Diagnóstico para estructurar propuestas viables B2B. No utilizamos métodos de rastreo encubiertos en plataformas de terceros.</p>
+            
+            <h2 class="text-white text-2xl font-serif mt-10 mb-4">2. Uso de la Información</h2>
+            <ul class="list-disc pl-5 space-y-2">
+                <li>Pre-evaluación de infraestructura digital.</li>
+                <li>Generación de reportes de auditoría SEO-GEO.</li>
+                <li>Comunicaciones referidas al avance de proyecto o soporte (Sprints).</li>
+            </ul>
+
+            <h2 class="text-white text-2xl font-serif mt-10 mb-4">3. Confidencialidad (NDA)</h2>
+            <p>Toda la data generada, estrategias diseñadas o arquitecturas descubiertas durante el diagnóstico B2B están protegidas por confidencialidad tácita. Los datos de nuestros clientes no alimentan modelos Fundacionales públicos (OpenAI/Anthropic) en modo de entrenamiento de datos.</p>
+        </div>
+    </section>
+
+    <Footer />
+</Layout>

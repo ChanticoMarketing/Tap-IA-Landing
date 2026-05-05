@@ -1,0 +1,482 @@
+---
+interface Props {
+	title: string;
+	description?: string;
+}
+
+const { title, description = "Su empresa merece ser la respuesta." } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es" class="scroll-smooth">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="description" content={description} />
+        <meta name="robots" content="index, follow" />
+        
+        <!-- Open Graph / Facebook -->
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:image" content="https://tap-ia.tech/logo.png" />
+        
+        <!-- Twitter -->
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:title" content={title} />
+        <meta property="twitter:description" content={description} />
+        <meta property="twitter:image" content="https://tap-ia.tech/logo.png" />
+
+		<title>{title}</title>
+
+        <!-- Favicon -->
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        
+        <!-- Fuentes -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    
+        <!-- Iconos -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+	</head>
+	<body class="bg-charcoal text-offwhite font-sans antialiased selection:bg-gold selection:text-white overflow-x-hidden">
+        
+        <!-- PREMIUM CURTAIN PRELOADER -->
+        <div id="preloader" class="fixed inset-0 bg-charcoal z-[9999] flex items-center justify-center" style="background-color: var(--color-charcoal);">
+            <div class="text-center opacity-0 translate-y-4" id="preloader-content">
+                <div class="text-white tracking-[0.2em] text-4xl md:text-5xl uppercase drop-shadow-[0_0_15px_rgba(255,255,255,0.2)]" style="font-family: var(--font-soehne-bold)">Tap-IA</div>
+                <div class="h-1 w-0 bg-gold mt-4 mx-auto rounded-full" id="preloader-line"></div>
+            </div>
+        </div>
+
+        <div class="noise-overlay"></div>
+		<slot />
+
+        <script>
+            import { gsap } from "gsap";
+            import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+            gsap.registerPlugin(ScrollTrigger);
+
+            // Hacer gsap global por si componentes locales lo necesitan
+            (window as any).gsap = gsap;
+            (window as any).ScrollTrigger = ScrollTrigger;
+
+            document.addEventListener("DOMContentLoaded", () => {
+                const tl = gsap.timeline();
+
+                // Lock scroll inicial
+                document.documentElement.style.overflow = 'hidden';
+                document.body.style.overflow = 'hidden';
+
+                tl.to("#preloader-content", {
+                    opacity: 1,
+                    y: 0,
+                    duration: 1,
+                    ease: "power3.out",
+                    delay: 0.1
+                })
+                .to("#preloader-line", {
+                    width: "100%",
+                    duration: 0.8,
+                    ease: "power2.inOut"
+                }, "-=0.5")
+                .to("#preloader", {
+                    yPercent: -100,
+                    duration: 1.2,
+                    ease: "expo.inOut",
+                    delay: 0.5,
+                    onStart: () => {
+                        // Desbloquear scroll justo antes de que termine para que se sienta fluido
+                        document.documentElement.style.overflow = '';
+                        document.body.style.overflow = '';
+                    },
+                    onComplete: () => {
+                        // Disparar evento para que index.astro sepa que puede iniciar la coreografía de Hero
+                        window.dispatchEvent(new Event('preloaderComplete'));
+                    }
+                });
+            });
+        </script>
+	</body>
+</html>
+
+<style is:global>
+    @import 'tailwindcss';
+
+    @font-face {
+        font-family: "Söhne Black";
+        src: url("/fonts/Sohne-Black.otf") format("opentype");
+        font-weight: 900;
+        font-style: normal;
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: "Söhne Black";
+        src: url("/fonts/Sohne-Black-Italic.otf") format("opentype");
+        font-weight: 900;
+        font-style: italic;
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: "Söhne Bold";
+        src: url("/fonts/Sohne-Bold.otf") format("opentype");
+        font-weight: 700;
+        font-style: normal;
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: "Söhne Bold";
+        src: url("/fonts/Sohne-Bold-Italic.otf") format("opentype");
+        font-weight: 700;
+        font-style: italic;
+        font-display: swap;
+    }
+
+    @theme {
+        --color-charcoal: #0a0b0e;
+        --color-matte: #16191f;
+        --color-gold: #d4af37;
+        --color-royal: #2a5a8c;
+        --color-navy: #1a2744;
+        --color-navy-accent: #2563eb;
+        --color-offwhite: #e2e4e9;
+        --color-subtle: #9ca3af;
+        --font-soehne-black: "Söhne Black", sans-serif;
+        --font-soehne-bold: "Söhne Bold", sans-serif;
+        --font-ibm-semibold: "IBM Plex Sans", sans-serif;
+        --font-ibm-regular: "IBM Plex Sans", sans-serif;
+        --font-ibm-medium: "IBM Plex Sans", sans-serif;
+    }
+
+    /* Global Typography Reset */
+    h1 {
+        font-family: var(--font-soehne-black);
+        font-weight: 900;
+        letter-spacing: -0.01em;
+        color: var(--color-offwhite);
+        font-size: clamp(2.25rem, 5.5vw, 3.25rem);
+        line-height: 1.05;
+        text-wrap: balance;
+    }
+
+    h2 {
+        font-family: var(--font-soehne-bold);
+        font-weight: 700;
+        color: var(--color-offwhite);
+        font-size: clamp(1.75rem, 4vw, 2.25rem);
+        line-height: 1.15;
+    }
+
+    h3 {
+        font-family: var(--font-ibm-semibold);
+        font-weight: 600;
+        color: var(--color-offwhite);
+        font-size: clamp(1.5rem, 3vw, 1.85rem);
+        line-height: 1.2;
+    }
+
+    body {
+        font-family: var(--font-ibm-regular);
+        font-weight: 400;
+        color: var(--color-subtle);
+        font-size: clamp(0.95rem, 1.2vw, 1.125rem);
+        line-height: 1.6;
+    }
+
+    .ui-caption {
+        font-family: var(--font-ibm-medium);
+        font-weight: 500;
+        text-transform: uppercase;
+        color: var(--color-subtle);
+        font-size: clamp(12pt, 1.5vw, 14pt);
+        letter-spacing: 0.025em;
+    }
+
+    /* Editorial label — "IA APLICADA A MARKETING" style */
+    .editorial-label {
+        font-family: var(--font-ibm-medium);
+        font-weight: 500;
+        text-transform: uppercase;
+        color: var(--color-gold);
+        font-size: 11px;
+        letter-spacing: 0.2em;
+    }
+
+    /* Gold rule — thin decorative line separator */
+    .gold-rule {
+        height: 1px;
+        max-width: 80px;
+        background: linear-gradient(90deg, var(--color-gold), transparent);
+        border: none;
+    }
+
+    .text-gold {
+        color: var(--color-gold) !important;
+    }
+
+    .text-offwhite {
+        color: var(--color-offwhite) !important;
+    }
+
+    .text-subtle {
+        color: var(--color-subtle) !important;
+    }
+
+    /* Sombra de texto para el Hero: garantiza legibilidad sobre cualquier fondo */
+    .hero-text-shadow {
+        text-shadow:
+            0 2px 8px rgba(0, 0, 0, 0.8),
+            0 4px 24px rgba(0, 0, 0, 0.6),
+            0 8px 48px rgba(0, 0, 0, 0.4);
+    }
+    .hero-text-shadow-sm {
+        text-shadow:
+            0 1px 4px rgba(0, 0, 0, 0.9),
+            0 2px 16px rgba(0, 0, 0, 0.7);
+    }
+
+    .noise-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 50;
+        pointer-events: none;
+        opacity: 0.008;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    }
+
+    .matte-card {
+        background-color: rgba(22, 25, 31, 0.7);
+        backdrop-filter: blur(8px);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 12px;
+        transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.4s ease;
+        will-change: transform, opacity;
+    }
+
+    /* Estilos personalizados para el formulario */
+    .step-content {
+        display: none;
+        animation: fadeIn 0.5s ease-out;
+    }
+
+    .step-content.active {
+        display: block;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Checkbox Styles */
+    input[type="checkbox"] {
+        accent-color: #d4af37;
+        width: 1.2em;
+        height: 1.2em;
+        cursor: pointer;
+    }
+
+    .option-label {
+        display: flex;
+        align-items: center;
+        padding: 12px;
+        border-radius: 8px;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        background: rgba(255, 255, 255, 0.02);
+        cursor: pointer;
+        transition: all 0.2s;
+    }
+
+    .option-label:hover {
+        background: rgba(255, 255, 255, 0.05);
+        border-color: rgba(212, 175, 55, 0.3);
+    }
+
+    input:checked+span {
+        color: #d4af37;
+        font-weight: 500;
+    }
+
+    .input-field {
+        background: rgba(0, 0, 0, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: #e2e4e9;
+        padding: 12px 15px;
+        border-radius: 8px;
+        width: 100%;
+        transition: all 0.3s ease;
+    }
+
+    .input-field:focus {
+        outline: none;
+        border-color: #d4af37;
+        box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.2);
+        background: rgba(0, 0, 0, 0.4);
+    }
+
+    /* Estilo personalizado para Select */
+    select.input-field {
+        appearance: none;
+        background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23d4af37' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+        background-repeat: no-repeat;
+        background-position: right 1rem center;
+        background-size: 1em;
+        padding-right: 2.5rem;
+        cursor: pointer;
+    }
+
+    select option {
+        background-color: #16191f;
+        color: #e2e4e9;
+        padding: 10px;
+    }
+
+    @keyframes pulse-slow {
+
+        0%,
+        100% {
+            opacity: 0.4;
+            transform: scale(1);
+        }
+
+        50% {
+            opacity: 0.6;
+            transform: scale(1.05);
+        }
+    }
+
+    .animate-pulse-slow {
+        animation: pulse-slow 8s infinite;
+    }
+    
+    .animate-sweep {
+        animation: sweep 0.2s ease-in-out;
+    }
+
+    @keyframes sweep {
+        0% { opacity: 0; transform: translateY(-10px); }
+        100% { opacity: 1; transform: translateY(0); }
+    }
+
+
+    details>summary {
+        list-style: none;
+    }
+
+    details>summary::-webkit-details-marker {
+        display: none;
+    }
+
+    /* ─── Card Glow System ─── */
+    @property --card-angle {
+        syntax: '<angle>';
+        initial-value: 0deg;
+        inherits: false;
+    }
+
+    .card-glow {
+        position: relative;
+        background: rgba(22, 25, 31, 0.6);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 16px;
+        transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1),
+                    box-shadow 0.5s ease,
+                    border-color 0.5s ease;
+        overflow: hidden;
+        backdrop-filter: blur(12px);
+    }
+
+    .card-glow::before {
+        content: '';
+        position: absolute;
+        inset: -1px;
+        border-radius: inherit;
+        background: conic-gradient(
+            from var(--card-angle, 0deg),
+            transparent 60%,
+            #2563eb 78%,
+            #d4af37 88%,
+            transparent 100%
+        );
+        opacity: 0;
+        transition: opacity 0.6s ease;
+        z-index: 0;
+        mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        mask-composite: exclude;
+        -webkit-mask-composite: destination-out;
+        padding: 1px;
+    }
+
+    .card-glow:hover::before {
+        opacity: 1;
+        animation: card-border-spin 4s linear infinite;
+    }
+
+    .card-glow:hover {
+        transform: translateY(-6px);
+        box-shadow:
+            0 12px 40px rgba(15, 29, 58, 0.5),
+            0 0 80px rgba(37, 99, 235, 0.1),
+            0 0 0 1px rgba(37, 99, 235, 0.1);
+        border-color: transparent;
+    }
+
+    .card-glow > * {
+        position: relative;
+        z-index: 1;
+    }
+
+    @keyframes card-border-spin {
+        to { --card-angle: 360deg; }
+    }
+
+    /* ─── Marquee ─── */
+    @keyframes marquee {
+        0%   { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+    }
+
+    .animate-marquee {
+        animation: marquee 35s linear infinite;
+    }
+
+    .animate-marquee:hover {
+        animation-play-state: paused;
+    }
+
+    /* ─── CTA background gradient animation ─── */
+    @keyframes cta-gradient-shift {
+        0%   { background-position: 0% 50%; }
+        50%  { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+
+    .cta-animated-bg {
+        background: linear-gradient(
+            135deg,
+            #0a0b0e 0%,
+            #0f1d3a 30%,
+            #1a2744 50%,
+            #0a0b0e 70%,
+            #0a0b0e 100%
+        );
+        background-size: 300% 300%;
+        animation: cta-gradient-shift 12s ease infinite;
+    }
+</style>

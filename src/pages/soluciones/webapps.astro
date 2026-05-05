@@ -1,0 +1,35 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<Layout title="WebApps a la medida | TAP-IA">
+    <Header />
+
+    <section class="relative min-h-[60vh] pt-36 pb-10 px-6 flex items-center">
+        <div class="absolute top-20 right-0 w-[600px] h-[600px] bg-gold/15 rounded-full blur-[120px] pointer-events-none -z-10"></div>
+        
+        <div class="max-w-4xl mx-auto text-center">
+            <h1 class="font-serif text-5xl md:text-7xl mb-6 text-white">WebApps a medida <span class="text-gold italic block mt-2 text-4xl md:text-5xl font-light">para procesos únicos</span></h1>
+            <p class="text-xl text-subtle font-light">
+                Herramientas hechas a la medida de su operación interna y portal de clientes.
+            </p>
+        </div>
+    </section>
+
+    <!-- CONTENIDO -->
+    <section class="py-20 px-6 relative border-t border-white/5">
+        <div class="max-w-7xl mx-auto text-center">
+            <h2 class="font-serif text-4xl mb-8">Cuando el software estándar no alcanza.</h2>
+            <p class="text-subtle text-lg mb-10 max-w-2xl mx-auto">
+                Construimos plataformas personalizadas como CRMs internos, dashboards de analítica o portales de clientes que automatizan y ordenan su negocio.
+            </p>
+            <a href="/contacto?servicio=webapps" class="inline-block bg-white text-charcoal px-8 py-3 font-medium rounded-full hover:bg-gold hover:text-white transition-colors">
+                Hablar con un arquitecto
+            </a>
+        </div>
+    </section>
+
+    <Footer />
+</Layout>

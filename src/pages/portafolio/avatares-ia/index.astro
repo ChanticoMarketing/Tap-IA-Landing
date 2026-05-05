@@ -1,0 +1,30 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+---
+
+<Layout title="Demos Avatares IA | Portafolio TAP-IA">
+    <Header />
+
+    <section class="min-h-[40vh] pt-36 pb-12 px-6 relative border-b border-white/5">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-end gap-6">
+            <div>
+                <a href="/portafolio" class="text-subtle text-sm hover:text-white transition-colors mb-4 inline-block"><i class="fa-solid fa-arrow-left mr-2"></i>Volver a categorías</a>
+                <h1 class="font-serif text-4xl md:text-5xl text-white">Demos Avatares IA</h1>
+                <p class="text-gold mt-2">Representantes digitales con voz, personalidad y conocimiento de tu negocio.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 px-6">
+        <div class="max-w-7xl mx-auto text-center py-20">
+            <i class="fa-solid fa-robot text-6xl text-subtle/50 mb-6"></i>
+            <h2 class="font-serif text-2xl text-white mb-4">Demos Interactivas Próximamente</h2>
+            <p class="text-subtle max-w-xl mx-auto mb-8">Las demos públicas de nuestros Avatares IA están en fase de preparación. Mientras tanto, podemos mostrarte una sesión privada adaptada a tu industria y caso de uso específico.</p>
+            <a href="/contacto" class="px-8 py-3 bg-white text-charcoal font-medium rounded-full hover:bg-gold hover:text-white transition-all duration-300 shadow-lg">Ver Demo en Sesión Privada</a>
+        </div>
+    </section>
+
+    <Footer />
+</Layout>

@@ -1,0 +1,28 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Sobre TAP-IA | Arquitectura de Dominio Digital">
+    <Header />
+
+    <section class="min-h-[70vh] pt-36 pb-20 px-6 relative flex items-center">
+        <div class="absolute top-1/2 right-0 -translate-y-1/2 w-[600px] h-[600px] bg-gold/5 rounded-full blur-[80px] pointer-events-none -z-10"></div>
+        <div class="max-w-4xl mx-auto">
+            <h1 class="font-serif text-5xl md:text-7xl mb-8 text-white">
+                Nosotros construimos su <span class="text-gold italic block mt-2 text-4xl md:text-6xl font-light">Arquitectura de Dominio Digital</span>
+            </h1>
+            <p class="text-xl text-subtle font-light leading-relaxed mb-8">
+                En Tap-IA, entendemos que la IA no es solo una moda, es la infraestructura del futuro. 
+                No diseñamos "páginas bonitas"; construimos sistemas que posicionan a su empresa como la autoridad indiscutible 
+                en su sector, tanto para los buscadores clásicos (Google) como para los entornos generativos (ChatGPT, Gemini).
+            </p>
+            <p class="text-xl text-subtle font-light leading-relaxed">
+                Nuestra misión es transformar la complejidad tecnológica en claridad estratégica y resultados de negocio tangibles.
+            </p>
+        </div>
+    </section>
+
+    <Footer />
+</Layout>

@@ -1,0 +1,45 @@
+---
+// src/pages/demos/pagos-pro.astro
+import PagosProDemo from '../../components/demos/PagosProDemo.jsx';
+---
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo: PagosPro | Portafolio TAP-IA</title>
+
+    <!-- Fuentes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body class="bg-[#0F0F0E] m-0" style="overflow-x: clip;">
+    <!-- Full-Width Return Header -->
+    <div class="fixed top-0 left-0 w-full h-12 bg-stone-950 z-[100] border-b border-stone-800 flex justify-between items-center px-6 md:px-12">
+        <div class="flex items-center gap-4">
+            <img src="/logo.svg" alt="TAP-IA Logo" width="120" height="36" class="h-5 w-auto" />
+            <span class="text-stone-500 text-[10px] font-bold uppercase tracking-[0.2em] hidden md:inline-block border-l border-stone-800 pl-4 ml-2">Modo Demostración</span>
+        </div>
+        <a href="/portafolio/sitios-web" class="group flex items-center gap-3 text-stone-400 hover:text-white transition-colors text-[10px] font-bold uppercase tracking-[0.2em]">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:-translate-x-1 transition-transform"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+            Volver a TAP-IA
+        </a>
+    </div>
+
+    <!-- El componente React de PagosPro -->
+    <div class="pt-12">
+        <PagosProDemo client:only="react" />
+    </div>
+</body>
+</html>
+
+<style is:global>
+    @import 'tailwindcss';
+
+    @theme {
+        --font-serif: 'Source Serif 4', Georgia, serif;
+        --font-sans: 'Inter', system-ui, sans-serif;
+    }
+</style>

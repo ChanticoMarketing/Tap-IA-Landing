@@ -1,0 +1,35 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<Layout title="AI Marketing (Estrategia) | TAP-IA">
+    <Header />
+
+    <section class="relative min-h-[60vh] pt-36 pb-10 px-6 flex items-center">
+        <div class="absolute top-20 left-0 w-[600px] h-[600px] bg-gold/12 rounded-full blur-[120px] pointer-events-none -z-10"></div>
+        
+        <div class="max-w-4xl mx-auto text-center">
+            <h1 class="font-serif text-5xl md:text-7xl mb-6 text-white">AI Marketing <span class="text-gold italic block mt-2 text-4xl md:text-5xl font-light">con resultados medibles</span></h1>
+            <p class="text-xl text-subtle font-light">
+                Playbooks de crecimiento, analítica predictiva y funnels estructurados por datos.
+            </p>
+        </div>
+    </section>
+
+    <!-- CONTENIDO -->
+    <section class="py-20 px-6 relative border-t border-white/5">
+        <div class="max-w-7xl mx-auto text-center">
+            <h2 class="font-serif text-4xl mb-8">Estrategia guiada por datos.</h2>
+            <p class="text-subtle text-lg mb-10 max-w-2xl mx-auto">
+                No hacemos marketing tradicional. Estructuramos workflows automatizados y estrategias de adquisición utilizando la capacidad de procesamiento de la IA para decisiones precisas.
+            </p>
+            <a href="/contacto?servicio=ai-marketing" class="inline-block bg-gold text-white px-8 py-3 font-medium rounded-full hover:bg-gold/80 transition-colors shadow-lg">
+                Diseñar Estrategia
+            </a>
+        </div>
+    </section>
+
+    <Footer />
+</Layout>

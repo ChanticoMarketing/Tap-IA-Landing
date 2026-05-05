@@ -1,0 +1,122 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+---
+
+<Layout title="Demos de Sitios Web | Portafolio TAP-IA">
+    <Header />
+
+    <section class="min-h-[40vh] pt-36 pb-12 px-6 relative border-b border-white/5">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-end gap-6">
+            <div>
+                <a href="/portafolio" class="text-subtle text-sm hover:text-white transition-colors mb-4 inline-block"><i class="fa-solid fa-arrow-left mr-2"></i>Volver a categorías</a>
+                <h1 class="font-serif text-4xl md:text-5xl text-white">Demos de Sitios Web</h1>
+                <p class="text-gold mt-2">Interfaces enfocadas a la conversión (High-Performance)</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 px-6">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="sr-only">Grid de demos</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- DEMO CARD 1 (ACTUALIZADO: PagosPro SaaS) -->
+                <div class="matte-card rounded-2xl overflow-hidden group flex flex-col h-full border border-[#8BA888]/20">
+                    <div class="aspect-video bg-[#FDFBF7] border-b border-white/10 relative overflow-hidden flex items-center justify-center group-hover:border-[#8BA888]/30 transition-colors">
+                        <div class="absolute inset-0 bg-gradient-to-br from-[#FDFBF7] to-[#e8e5df]"></div>
+                        <h3 class="z-10 text-3xl font-serif text-[#151413] tracking-tighter group-hover:scale-110 transition-transform duration-700">PagosPro</h3>
+                        <div class="absolute top-4 right-4 w-8 h-8 bg-[#8BA888] rounded-full flex items-center justify-center opacity-60 group-hover:opacity-100 transition-opacity">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>
+                        </div>
+                        <span class="absolute bottom-4 left-4 text-xs font-bold uppercase tracking-wider text-[#8BA888] bg-[#151413]/80 backdrop-blur px-2 py-1 border border-[#8BA888]/20 rounded">SaaS Fintech</span>
+                    </div>
+                    
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-xl text-white font-medium mb-3 font-serif">PagosPro</h3>
+                        <div class="space-y-3 mb-6 flex-grow">
+                            <div>
+                                <span class="text-xs text-[#8BA888]/80 uppercase tracking-wider block mb-1">Problema</span>
+                                <p class="text-sm text-offwhite/80">Plataformas SaaS financieras con interfaces genéricas que no transmiten confianza ni profesionalismo.</p>
+                            </div>
+                            <div>
+                                <span class="text-xs text-[#8BA888]/80 uppercase tracking-wider block mb-1">Entregable Clave</span>
+                                <p class="text-sm text-offwhite/80">Scroll horizontal narrativo, sección de precios Zen y diseño editorial premium para SaaS de facturación.</p>
+                            </div>
+                        </div>
+                        
+                        <a href="/demos/pagos-pro" class="w-full text-center py-2 px-4 bg-[#151413] border border-[#8BA888]/20 hover:bg-[#8BA888] hover:text-white text-stone-300 rounded transition-colors text-sm font-medium tracking-wide">
+                            Explorar Ritual Zen <i class="fa-solid fa-leaf ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- DEMO CARD 2 (ACTUALIZADO: Reserva Singular) -->
+                <div class="matte-card rounded-2xl overflow-hidden group flex flex-col h-full border border-stone-800/40">
+                    <div class="aspect-video bg-stone-900 border-b border-white/10 relative overflow-hidden flex items-center justify-center group-hover:border-stone-500/50 transition-colors">
+                        <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=800&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover opacity-60 grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-105" alt="Reserva Singular Background" />
+                        <div class="absolute inset-0 bg-stone-900/40 mix-blend-multiply"></div>
+                        <h3 class="z-10 text-2xl font-serif text-stone-100 tracking-[0.2em] group-hover:scale-110 transition-transform duration-700 uppercase">Reserva Singular</h3>
+                        <span class="absolute bottom-4 left-4 text-xs font-bold uppercase tracking-wider text-stone-300 bg-stone-900/80 backdrop-blur px-2 py-1 border border-stone-700/50 rounded">Inmobiliario Premium</span>
+                    </div>
+                    
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-xl text-white font-medium mb-3 font-serif">Reserva Singular</h3>
+                        <div class="space-y-3 mb-6 flex-grow">
+                            <div>
+                                <span class="text-xs text-stone-400 uppercase tracking-wider block mb-1">Problema</span>
+                                <p class="text-sm text-offwhite/80">Desarrollos de lujo presentados en plantillas estáticas que no transmiten plusvalía ni exclusividad.</p>
+                            </div>
+                            <div>
+                                <span class="text-xs text-stone-400 uppercase tracking-wider block mb-1">Entregable Clave</span>
+                                <p class="text-sm text-offwhite/80">Smooth Scroll Inercial, Tarjetas 3D (Liquid Glass) y planimetría interactiva para un target High-End.</p>
+                            </div>
+                        </div>
+                        
+                        <a href="/demos/real-estate" class="w-full text-center py-2 px-4 bg-stone-900 border border-stone-700/50 hover:bg-stone-800 hover:text-white text-stone-300 rounded transition-colors text-sm font-medium tracking-wide">
+                            Explorar Recorrido Virtual <i class="fa-solid fa-building ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- DEMO CARD 3 (NUEVO EJEMPLO: Zapa-Elite) -->
+                <div class="matte-card rounded-2xl overflow-hidden group flex flex-col h-full border border-amber-900/40">
+                    <div class="aspect-video bg-zinc-950 border-b border-white/10 relative overflow-hidden flex items-center justify-center group-hover:border-amber-700/50 transition-colors">
+                        <img src="https://images.unsplash.com/photo-1605314841961-9bd2c303f295?q=80&w=800&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover opacity-50 grayscale group-hover:grayscale-0 transition-all duration-700 blur-[2px] group-hover:blur-0" alt="Zapa-Elite Background" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-zinc-950 to-transparent"></div>
+                        <h3 class="z-10 text-3xl font-serif text-stone-200 tracking-widest group-hover:scale-110 transition-transform duration-700">Z-E</h3>
+                        <span class="absolute bottom-4 left-4 text-xs font-bold uppercase tracking-wider text-amber-600 bg-zinc-950/80 backdrop-blur px-2 py-1 border border-amber-900/50 rounded">Lujo & E-Commerce</span>
+                    </div>
+                    
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-xl text-white font-medium mb-3 font-serif">Zapa-Elite</h3>
+                        <div class="space-y-3 mb-6 flex-grow">
+                            <div>
+                                <span class="text-xs text-amber-700/80 uppercase tracking-wider block mb-1">Problema</span>
+                                <p class="text-sm text-offwhite/80">Marcas premium usando layouts genéricos que abaratan la percepción del producto.</p>
+                            </div>
+                            <div>
+                                <span class="text-xs text-amber-700/80 uppercase tracking-wider block mb-1">Entregable Clave</span>
+                                <p class="text-sm text-offwhite/80">Micro-interacciones inmersivas (framer-motion), storytelling interactivo y navegación fluida tipo SPA.</p>
+                            </div>
+                        </div>
+                        
+                        <a href="/demos/zapa-elite" class="w-full text-center py-2 px-4 bg-zinc-900 border border-amber-900/30 hover:bg-amber-900/50 hover:text-white text-stone-300 rounded transition-colors text-sm font-medium tracking-wide">
+                            Explorar Bóveda Interactiva <i class="fa-solid fa-gem ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-16 text-center">
+                <p class="text-subtle text-sm mb-6">¿Quieres resultados similares para tu empresa?</p>
+                <a href="/contacto" class="px-8 py-3 bg-white text-charcoal font-medium rounded-full hover:bg-gold hover:text-white transition-all duration-300 shadow-lg">
+                    Agendar Diagnóstico
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <Footer />
+</Layout>

@@ -1,0 +1,208 @@
+---
+// src/components/TapIALiquidGradient.astro
+// Efecto de gradiente líquido animado para el Hero de Tap-IA.
+// Solo animación automática, sin interactividad de ratón/toque.
+// Paleta: Charcoal #0a0b0e, Matte #16191f, Navy #1a2744 + #2563eb — profundidad tecnológica
+---
+
+<div id="liquid-gradient-container" class="absolute inset-0 w-full h-full z-[-5] pointer-events-none overflow-hidden">
+    <canvas id="webGLApp"></canvas>
+</div>
+
+<style>
+    #webGLApp {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+</style>
+
+<script>
+    import * as THREE from 'three';
+
+    const initLiquidGradient = () => {
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+        const canvas = document.getElementById('webGLApp') as HTMLCanvasElement;
+        if (!canvas) return;
+
+        // Hex a RGB normalizado (0-1)
+        const hex = (r: number, g: number, b: number) => new THREE.Vector3(r / 255, g / 255, b / 255);
+
+        // Paleta Tap-IA — Negro profundo + Navy Blue tecnológico
+        const CHARCOAL    = hex(10, 11, 14);      // #0a0b0e — fondo dominante
+        const MATTE       = hex(22, 25, 31);      // #16191f
+        const NAVY_MED    = hex(30, 58, 95);      // #1e3a5f — navy visible
+        const NAVY_SOFT   = hex(20, 35, 60);      // #14233c — navy secundario
+        const NAVY_DEEP   = hex(12, 22, 42);      // #0c162a — navy profundo
+        const NAVY_ACCENT = hex(37, 99, 180);     // #2563b4 — azul acero vivo
+        const NAVY_GLOW   = hex(50, 120, 200);    // #3278c8 — glow intenso
+
+        const uniforms: Record<string, { value: any }> = {
+            uTime:       { value: 0 },
+            uResolution: { value: new THREE.Vector2(window.innerWidth, window.innerHeight) },
+            // Charcoal domina ~80-85%, halos navy son el 15-20%
+            uColor1:     { value: NAVY_MED.clone() },    // Halo navy principal
+            uColor2:     { value: NAVY_SOFT.clone() },   // Halo navy secundario
+            uColor3:     { value: NAVY_ACCENT.clone() }, // Acento azul acero
+            uColor4:     { value: MATTE.clone() },       // Sombra Matte (oscura)
+            uColor5:     { value: NAVY_DEEP.clone() },   // Navy de fondo, casi invisible
+            uColor6:     { value: NAVY_GLOW.clone() },   // Glow navy de cierre
+            uBase:       { value: CHARCOAL.clone() },
+            uSpeed:      { value: 0.18 },    // Lento — atmósfera tecnológica
+            uIntensity:  { value: 0.60 },    // Suficiente para que el navy sea visible
+            uGrain:      { value: 0.012 },   // Ruido muy sutil
+        };
+
+        const vertexShader = `
+            varying vec2 vUv;
+            void main() {
+                gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+                vUv = uv;
+            }
+        `;
+
+        const fragmentShader = `
+            precision mediump float;
+
+            uniform float uTime;
+            uniform vec2  uResolution;
+            uniform vec3  uColor1;
+            uniform vec3  uColor2;
+            uniform vec3  uColor3;
+            uniform vec3  uColor4;
+            uniform vec3  uColor5;
+            uniform vec3  uColor6;
+            uniform vec3  uBase;
+            uniform float uSpeed;
+            uniform float uIntensity;
+            uniform float uGrain;
+
+            varying vec2 vUv;
+
+            float hash(vec2 p) {
+                return fract(sin(dot(p, vec2(12.9898, 78.233))) * 43758.5453);
+            }
+
+            void main() {
+                vec2 uv = vUv;
+                float t = uTime * uSpeed;
+
+                // 6 centros que orbitan lentamente
+                vec2 c1 = vec2(0.5 + sin(t * 0.40) * 0.42, 0.5 + cos(t * 0.50) * 0.42);
+                vec2 c2 = vec2(0.5 + cos(t * 0.55) * 0.48, 0.5 + sin(t * 0.42) * 0.48);
+                vec2 c3 = vec2(0.5 + sin(t * 0.32) * 0.44, 0.5 + cos(t * 0.58) * 0.44);
+                vec2 c4 = vec2(0.5 + cos(t * 0.48) * 0.40, 0.5 + sin(t * 0.38) * 0.40);
+                vec2 c5 = vec2(0.5 + sin(t * 0.62) * 0.36, 0.5 + cos(t * 0.45) * 0.36);
+                vec2 c6 = vec2(0.5 + cos(t * 0.37) * 0.46, 0.5 + sin(t * 0.60) * 0.46);
+
+                // Radio grande y suave → manchas difusas como halos de luz lejanos
+                float r = 0.65;
+
+                float i1 = 1.0 - smoothstep(0.0, r, length(uv - c1));
+                float i2 = 1.0 - smoothstep(0.0, r, length(uv - c2));
+                float i3 = 1.0 - smoothstep(0.0, r, length(uv - c3));
+                float i4 = 1.0 - smoothstep(0.0, r, length(uv - c4));
+                float i5 = 1.0 - smoothstep(0.0, r, length(uv - c5));
+                float i6 = 1.0 - smoothstep(0.0, r, length(uv - c6));
+
+                // Modulación temporal suave
+                vec3 color = vec3(0.0);
+                color += uColor1 * i1 * (0.5 + 0.5 * sin(t * 0.9));
+                color += uColor2 * i2 * (0.5 + 0.5 * cos(t * 1.1));
+                color += uColor3 * i3 * (0.5 + 0.5 * sin(t * 0.7));
+                color += uColor4 * i4 * (0.4 + 0.4 * cos(t * 1.3));
+                color += uColor5 * i5 * (0.5 + 0.5 * sin(t * 1.0));
+                color += uColor6 * i6 * (0.4 + 0.4 * cos(t * 0.8));
+
+                // Aureola de rotación muy sutil
+                vec2 rv = uv - 0.5;
+                float a = t * 0.08;
+                rv = vec2(rv.x * cos(a) - rv.y * sin(a), rv.x * sin(a) + rv.y * cos(a));
+                float radial = 1.0 - smoothstep(0.0, 0.85, length(rv));
+                color += uColor1 * radial * 0.12;
+
+                // Aplicar intensidad global (baja)
+                color *= uIntensity;
+
+                // Mezcla calibrada: Charcoal domina pero los halos son visibles
+                // mix_f llega hasta 0.75 → en las zonas más brillantes se ve el color
+                // en las zonas oscuras el Charcoal prevalece totalmente
+                float brightness = dot(color, vec3(0.299, 0.587, 0.114));
+                float mix_f = clamp(brightness * 1.1, 0.0, 0.75);
+                color = mix(uBase, uBase + color, mix_f);
+
+                // Film grain sutil
+                float grain = hash(uv * uResolution + uTime) * 2.0 - 1.0;
+                color += grain * uGrain;
+
+                color = clamp(color, vec3(0.0), vec3(1.0));
+                gl_FragColor = vec4(color, 1.0);
+            }
+        `;
+
+        // Renderer
+        const renderer = new THREE.WebGLRenderer({
+            canvas,
+            antialias: false,
+            powerPreference: 'default',
+            alpha: false,
+        });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
+
+        const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 100);
+        camera.position.z = 50;
+
+        const scene = new THREE.Scene();
+
+        // Plano que ocupa toda la vista
+        const fov = (camera.fov * Math.PI) / 180;
+        const h = Math.abs(camera.position.z * Math.tan(fov / 2) * 2);
+        const w = h * camera.aspect;
+        const geometry = new THREE.PlaneGeometry(w, h, 1, 1);
+        const material = new THREE.ShaderMaterial({ uniforms, vertexShader, fragmentShader });
+        const mesh = new THREE.Mesh(geometry, material);
+        scene.add(mesh);
+
+        const clock = new THREE.Clock();
+
+        // Render loop con pausa automática fuera del viewport
+        const tick = () => {
+            requestAnimationFrame(tick);
+
+            if (window.scrollY > window.innerHeight * 1.5) return;
+
+            const delta = Math.min(clock.getDelta(), 0.1);
+            uniforms.uTime.value += delta;
+            renderer.render(scene, camera);
+        };
+
+        tick();
+
+        // Resize
+        const onResize = () => {
+            const width = window.innerWidth;
+            const height = window.innerHeight;
+            camera.aspect = width / height;
+            camera.updateProjectionMatrix();
+            renderer.setSize(width, height);
+            uniforms.uResolution.value.set(width, height);
+
+            const newH = Math.abs(camera.position.z * Math.tan(fov / 2) * 2);
+            const newW = newH * camera.aspect;
+            mesh.geometry.dispose();
+            mesh.geometry = new THREE.PlaneGeometry(newW, newH, 1, 1);
+        };
+
+        window.addEventListener('resize', onResize, { passive: true });
+    };
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initLiquidGradient);
+    } else {
+        initLiquidGradient();
+    }
+</script>

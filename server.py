@@ -1,3 +1,9 @@
+"""
+⚠️ DEPRECATED FALLBACK SCRIPT ⚠️
+Este script fue aislado temporalmente en favor de la nueva arquitectura n8n + Astro API SSR.
+NO SE HA ELIMINADO para cumplir con la directiva arquitectónica de mantener un respaldo en caso de emergencia fallida de webhooks.
+Modo de uso: Sigue funcional, no ha sido alterado lógicamente.
+"""
 import http.server
 import socketserver
 import urllib.request

@@ -1,9 +1,26 @@
 :root {
-    --primary-color: #1a2b4a; /* Dark Blue */
-    --accent-color: #1e3a8a; /* Lighter Blue for buttons */
-    --text-color: #ffffff;
-    --bg-color: #0a111c; /* Very dark blue/black */
-    --font-main: 'Montserrat', sans-serif;
+    --color-offwhite: #E2E4E9;
+    --color-subtle: #9CA3AF;
+    --color-gold: #D4AF37;
+    --color-royal: #3b82f6;
+    --bg-color: #0a111c;
+    --charcoal: #0f1115;
+    
+    /* Typography - New Identity 2026 */
+    --font-main: 'Plus Jakarta Sans', sans-serif;
+    --font-heading: 'Playfair Display', serif;
+    
+    /* Responsive Font Sizes using clamp() */
+    /* H1: ~31px to ~42px (approx 35% reduction from 48-64px) */
+    --fs-h1: clamp(1.95rem, 5.2vw, 2.6rem);
+    /* H2: 32px to 40px (2rem to 2.5rem) */
+    --fs-h2: clamp(2rem, 6vw, 2.5rem);
+    /* H3: 24px to 28px (1.5rem to 1.75rem) */
+    --fs-h3: clamp(1.5rem, 4vw, 1.75rem);
+    /* Body: 16px to 18px (1rem to 1.125rem) */
+    --fs-body: clamp(1rem, 2vw, 1.125rem);
+    /* UI Caption: 12px to 14px (0.75rem to 0.875rem) */
+    --fs-ui: clamp(0.75rem, 1.5vw, 0.875rem);
 }
 
 * {
@@ -15,9 +32,44 @@
 body {
     font-family: var(--font-main);
     background-color: var(--bg-color);
-    color: var(--text-color);
+    color: var(--color-subtle);
+    font-size: var(--fs-body);
     line-height: 1.6;
     overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+    color: var(--color-offwhite);
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+}
+
+h1 {
+    font-family: var(--font-heading);
+    font-size: var(--fs-h1);
+    font-weight: 400;
+}
+
+h2 {
+    font-family: var(--font-heading);
+    font-size: var(--fs-h2);
+    font-weight: 400;
+}
+
+h3 {
+    font-family: var(--font-heading);
+    font-size: var(--fs-h3);
+    font-weight: 400;
+}
+
+.ui-caption {
+    font-family: var(--font-main);
+    font-size: var(--fs-ui);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-gold);
 }
 
 .container {

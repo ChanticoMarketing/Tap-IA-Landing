@@ -1,0 +1,29 @@
+---
+// src/components/CtaWhatsApp.astro
+// Este es el CTA primario: siempre
+
+interface Props {
+    text?: string;
+    microcopy?: string;
+    href?: string;
+    classes?: string;
+}
+
+const { 
+    text = "Solicitar Diagnóstico", 
+    microcopy = "Te digo en 5 min si esto aplica a tu empresa.",
+    href = "/contacto", // Or hardcode actual wa.me link if available global
+    classes = "px-10 py-4 bg-white text-charcoal font-semibold rounded-full hover:bg-gold hover:text-white hover:scale-[1.02] transition-all duration-300 shadow-lg shadow-white/5 text-base inline-flex items-center justify-center gap-2"
+} = Astro.props;
+---
+
+<div class="flex flex-col items-center text-center">
+    <a href={href} class={classes}>
+        {text} <i class="fa-solid fa-arrow-right text-sm opacity-80"></i>
+    </a>
+    {microcopy && (
+        <p class="text-xs text-subtle mt-4 font-medium tracking-wide uppercase opacity-70">
+            {microcopy}
+        </p>
+    )}
+</div>

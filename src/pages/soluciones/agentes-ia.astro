@@ -1,0 +1,35 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<Layout title="Agentes IA de Ventas y Soporte | TAP-IA">
+    <Header />
+
+    <section class="relative min-h-[60vh] pt-36 pb-10 px-6 flex items-center">
+        <div class="absolute top-20 left-0 w-[600px] h-[600px] bg-gold/12 rounded-full blur-[120px] pointer-events-none -z-10"></div>
+        
+        <div class="max-w-4xl mx-auto text-center">
+            <h1 class="font-serif text-5xl md:text-7xl mb-6 text-white">Agentes Operativos <span class="text-gold italic block mt-2 text-4xl md:text-5xl font-light">Disponibles 24/7</span></h1>
+            <p class="text-xl text-subtle font-light">
+                Atención, soporte y pre-cualificación automatizada con inteligencia artificial entrenada con sus datos.
+            </p>
+        </div>
+    </section>
+
+    <!-- CONTENIDO -->
+    <section class="py-20 px-6 relative border-t border-white/5">
+        <div class="max-w-7xl mx-auto text-center">
+            <h2 class="font-serif text-4xl mb-8">Escalabilidad sin fricción</h2>
+            <p class="text-subtle text-lg mb-10 max-w-2xl mx-auto">
+                No pierda más leads por respuestas lentas. Integramos agentes conversacionales en su sitio web o WhatsApp, capaces de resolver dudas complejas y captar leads en automático.
+            </p>
+            <a href="/contacto?servicio=agentes-ia" class="inline-block bg-gold text-white px-8 py-3 font-medium rounded-full hover:bg-gold/80 transition-colors shadow-lg">
+                Implementar Agente
+            </a>
+        </div>
+    </section>
+
+    <Footer />
+</Layout>

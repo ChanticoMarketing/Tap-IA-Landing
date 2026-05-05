@@ -1,0 +1,34 @@
+---
+// src/components/ProblemCard.astro
+interface Props {
+    icon: string;
+    title: string;
+    quote: string;
+    bullets: string[];
+    problemSummary: string;
+    actionValue: string;
+}
+
+const { icon, title, quote, bullets, problemSummary, actionValue } = Astro.props;
+---
+
+<div class="matte-card p-8 rounded-2xl flex flex-col h-full border-t-2 border-t-gold/50">
+    <div class="mb-6 text-gold"><i class={`fa-solid ${icon} text-3xl`}></i></div>
+    <h3 class="font-serif text-2xl mb-2 text-white">{title}</h3>
+    <p class="text-sm text-red-300/80 mb-4 italic">"{quote}"</p>
+    <div class="h-[1px] bg-white/10 w-full mb-4"></div>
+    <ul class="text-subtle text-sm space-y-2 mb-6 flex-grow">
+        {bullets.map(bullet => (
+            <li class="flex gap-2">
+                <i class="fa-solid fa-circle-exclamation text-gold/50 mt-1 text-[10px]"></i> 
+                {bullet}
+            </li>
+        ))}
+    </ul>
+    <p class="text-xs text-gold font-bold uppercase tracking-wider mb-4">
+        Problema: {problemSummary}
+    </p>
+    <a href={`/contacto?problem=${actionValue}`} class="w-full inline-block text-center py-2 border border-white/10 rounded hover:bg-white/5 transition-colors text-sm text-subtle hover:text-white group">
+        Me identifico <i class="fa-solid fa-arrow-right ml-2 opacity-0 group-hover:opacity-100 transition-opacity"></i>
+    </a>
+</div>
