@@ -1,0 +1,86 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import CtaWhatsApp from '../components/CtaWhatsApp.astro';
+---
+
+<Layout title="AI Marketing | TAP-IA">
+    <Header />
+
+    <section class="relative min-h-[60vh] pt-36 pb-10 px-6 flex flex-col items-center justify-center">
+        <div class="absolute top-20 left-0 w-[600px] h-[600px] bg-[#2563eb]/10 rounded-full blur-[120px] pointer-events-none -z-10"></div>
+        
+        <div class="max-w-4xl mx-auto text-center">
+            <span class="editorial-label text-[#2563eb] mb-6 block">AI Marketing</span>
+            <h1 class="font-serif text-4xl md:text-6xl mb-6 text-white leading-tight">
+                AI Marketing: inteligencia artificial aplicada a <span class="italic font-light text-gold">estrategia, contenido, análisis y crecimiento</span>
+            </h1>
+            <p class="text-xl text-subtle font-light max-w-2xl mx-auto mb-10">
+                Llevamos tu marketing al siguiente nivel. Integración de herramientas inteligentes para optimizar cada punto del funnel y ejecutar con precisión milimétrica.
+            </p>
+            <CtaWhatsApp text="Solicitar auditoría AI Marketing" microcopy="Hablemos de tus campañas actuales." />
+        </div>
+    </section>
+
+    <!-- QUÉ ES / QUÉ NO ES -->
+    <section class="py-20 px-6 relative border-t border-white/5">
+        <div class="max-w-5xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div>
+                    <h2 class="text-3xl mb-6 text-white font-light">¿Qué es realmente AI Marketing?</h2>
+                    <p class="text-subtle mb-6">No es pedirle a ChatGPT que escriba 5 posts para redes sociales. Es usar la capacidad de procesamiento de la IA para entender mercados, perfilar usuarios, predecir comportamientos y automatizar tareas repetitivas a escala.</p>
+                    
+                    <h3 class="text-xl text-white mt-10 mb-4 font-light">Procesos que mejoramos con IA:</h3>
+                    <ul class="space-y-3 text-subtle">
+                        <li><i class="fa-solid fa-check text-[#2563eb] mr-2"></i> Análisis avanzado de campañas y atribución.</li>
+                        <li><i class="fa-solid fa-check text-[#2563eb] mr-2"></i> Estrategia y escalado de contenidos en múltiples canales.</li>
+                        <li><i class="fa-solid fa-check text-[#2563eb] mr-2"></i> Personalización dinámica en emails y web.</li>
+                    </ul>
+                </div>
+                <div class="bg-[#16191f]/50 p-8 rounded-2xl border border-white/5">
+                    <h3 class="text-xl text-white mb-6 font-light">Qué <span class="text-red-400 italic">no</span> es AI Marketing:</h3>
+                    <ul class="space-y-4 text-subtle mb-8">
+                        <li><i class="fa-solid fa-xmark text-red-400 mr-2"></i> Generar imágenes genéricas para ads.</li>
+                        <li><i class="fa-solid fa-xmark text-red-400 mr-2"></i> Redactar copys vacíos y sin contexto estratégico.</li>
+                        <li><i class="fa-solid fa-xmark text-red-400 mr-2"></i> Enviar spam masivo sin personalización real.</li>
+                    </ul>
+
+                    <div class="p-4 bg-white/5 rounded border border-white/10 mt-6">
+                        <p class="text-sm text-gold italic">"Por qué usar ChatGPT para copies no es una estrategia de AI Marketing: Porque el copy es la punta del iceberg. Sin un sistema de datos detrás, solo estás generando ruido más rápido."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- METODOLOGÍA -->
+    <section class="py-20 px-6 relative border-t border-white/5 bg-white/[0.01]">
+        <div class="max-w-4xl mx-auto text-center">
+            <span class="editorial-label block mb-3">Metodología Tap-IA</span>
+            <div class="gold-rule mx-auto mb-6"></div>
+            <h2 class="mb-12">Cómo aplicamos IA al marketing</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
+                <div class="p-8 rounded-xl border border-white/5 bg-[#0a0b0e]">
+                    <h4 class="text-white mb-4 text-lg">1. Auditoría de Datos</h4>
+                    <p class="text-subtle text-sm">Analizamos tu tracking, CRM y fuentes de datos actuales para asegurar que la IA tenga información limpia con qué trabajar.</p>
+                </div>
+                <div class="p-8 rounded-xl border border-white/5 bg-[#0a0b0e]">
+                    <h4 class="text-white mb-4 text-lg">2. Diseño de Workflows</h4>
+                    <p class="text-subtle text-sm">Construimos embudos inteligentes para lead scoring, nutrición automatizada o análisis de sentimiento de tus prospectos.</p>
+                </div>
+                <div class="p-8 rounded-xl border border-white/5 bg-[#0a0b0e]">
+                    <h4 class="text-white mb-4 text-lg">3. Integración Técnica</h4>
+                    <p class="text-subtle text-sm">Conectamos herramientas (n8n, Make, OpenAI, Hubspot) para que los datos fluyan sin intervención humana innecesaria.</p>
+                </div>
+                <div class="p-8 rounded-xl border border-white/5 bg-[#0a0b0e]">
+                    <h4 class="text-white mb-4 text-lg">4. Entregables y Control</h4>
+                    <p class="text-subtle text-sm">Te entregamos dashboards, flujos documentados y control absoluto sobre los procesos automatizados.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <Footer />
+</Layout>

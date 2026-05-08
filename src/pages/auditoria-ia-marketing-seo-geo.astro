@@ -1,0 +1,65 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import CtaWhatsApp from '../components/CtaWhatsApp.astro';
+---
+
+<Layout title="Auditoría IA, Marketing y SEO/GEO | TAP-IA">
+    <Header />
+
+    <section class="relative min-h-[60vh] pt-36 pb-10 px-6 flex flex-col items-center justify-center">
+        <div class="absolute top-20 left-0 w-[600px] h-[600px] bg-gold/10 rounded-full blur-[120px] pointer-events-none -z-10"></div>
+        
+        <div class="max-w-4xl mx-auto text-center">
+            <span class="editorial-label text-gold mb-6 block">Diagnóstico Ejecutivo</span>
+            <h1 class="font-serif text-4xl md:text-5xl mb-6 text-white leading-tight">
+                Auditoría IA, AI Marketing y SEO/GEO para detectar dónde tu empresa puede ganar <span class="italic font-light text-gold">claridad, visibilidad y eficiencia</span>
+            </h1>
+            <p class="text-xl text-subtle font-light max-w-2xl mx-auto mb-10">
+                Un escaneo profundo para detener el "hacer por hacer" y encontrar las áreas donde la IA puede generar un impacto cuantificable inmediato.
+            </p>
+            <CtaWhatsApp text="Solicitar auditoría" microcopy="Analicemos el caso." />
+        </div>
+    </section>
+
+    <section class="py-20 px-6 relative border-t border-white/5">
+        <div class="max-w-5xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div>
+                    <h2 class="text-3xl mb-6 text-white font-light">¿Para quién es esto?</h2>
+                    <p class="text-subtle mb-6">Para directores, founders y equipos de marketing que ya entienden que la IA llegó para quedarse, pero necesitan una evaluación externa, imparcial y técnica sobre cómo la están usando (o por qué aún no lo hacen de forma estructurada).</p>
+                    
+                    <h3 class="text-xl text-white mt-10 mb-4 font-light">Problemas comunes que detectamos:</h3>
+                    <ul class="space-y-3 text-subtle">
+                        <li><i class="fa-solid fa-check text-gold mr-2"></i> Uso superficial de la IA (solo para hacer textos).</li>
+                        <li><i class="fa-solid fa-check text-gold mr-2"></i> Pérdida de visibilidad frente a respuestas generativas y competidores.</li>
+                        <li><i class="fa-solid fa-check text-gold mr-2"></i> Fugas de presupuesto en procesos operativos fácilmente automatizables.</li>
+                    </ul>
+                </div>
+                <div class="bg-[#16191f]/50 p-8 rounded-2xl border border-white/5">
+                    <h3 class="text-xl text-white mb-6 font-light">Qué revisamos:</h3>
+                    <ul class="space-y-4 text-subtle mb-8">
+                        <li><strong class="text-white">Estado del marketing técnico:</strong> Tracking, funnels y uso de datos.</li>
+                        <li><strong class="text-white">Salud SEO/GEO:</strong> Preparación técnica para indexación por LLMs (ChatGPT, Gemini).</li>
+                        <li><strong class="text-white">Operativa IA:</strong> Flujos de trabajo actuales del equipo y herramientas.</li>
+                    </ul>
+
+                    <h3 class="text-xl text-white mb-6 font-light">Qué te entregamos:</h3>
+                    <ul class="space-y-3 text-subtle">
+                        <li><i class="fa-solid fa-file-pdf text-red-400 mr-2"></i> Reporte ejecutivo de hallazgos.</li>
+                        <li><i class="fa-solid fa-map text-gold mr-2"></i> Mapa de fricción (dónde pierdes dinero).</li>
+                        <li><i class="fa-solid fa-route text-blue-400 mr-2"></i> Plan de acción priorizado a 30, 60 y 90 días.</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="mt-16 text-center">
+                <p class="text-white mb-4 text-lg">Las decisiones estratégicas requieren información clara. Deja de adivinar.</p>
+                <CtaWhatsApp text="Solicitar auditoría ahora" />
+            </div>
+        </div>
+    </section>
+
+    <Footer />
+</Layout>

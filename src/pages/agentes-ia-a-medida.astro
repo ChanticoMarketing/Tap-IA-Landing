@@ -1,0 +1,88 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import CtaWhatsApp from '../components/CtaWhatsApp.astro';
+---
+
+<Layout title="Agentes IA a Medida | TAP-IA">
+    <Header />
+
+    <section class="relative min-h-[60vh] pt-36 pb-10 px-6 flex flex-col items-center justify-center">
+        <div class="absolute top-20 left-0 w-[600px] h-[600px] bg-purple-500/10 rounded-full blur-[120px] pointer-events-none -z-10"></div>
+        
+        <div class="max-w-4xl mx-auto text-center">
+            <span class="editorial-label text-purple-400 mb-6 block">Agentes IA</span>
+            <h1 class="font-serif text-4xl md:text-6xl mb-6 text-white leading-tight">
+                Agentes IA a medida para automatizar <span class="italic font-light text-gold">procesos reales, no solo responder mensajes</span>
+            </h1>
+            <p class="text-xl text-subtle font-light max-w-2xl mx-auto mb-10">
+                Diseñamos agentes inteligentes capaces de tomar decisiones, ejecutar flujos complejos y operar herramientas, integrándose a tu equipo como un empleado digital 24/7.
+            </p>
+            <CtaWhatsApp text="Evaluar mi proceso" microcopy="Analizamos si un agente IA es viable para tu operación." />
+        </div>
+    </section>
+
+    <!-- QUÉ ES / QUÉ NO ES -->
+    <section class="py-20 px-6 relative border-t border-white/5">
+        <div class="max-w-5xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div>
+                    <h2 class="text-3xl mb-6 text-white font-light">Más que un chatbot</h2>
+                    <p class="text-subtle mb-6">Un chatbot solo responde preguntas leyendo un texto. Un agente IA es un sistema con autonomía: lee, analiza, toma decisiones y ejecuta acciones en otras herramientas (envía un correo, califica un lead en CRM, agenda una reunión).</p>
+                    
+                    <h3 class="text-xl text-white mt-10 mb-4 font-light">Casos de uso reales:</h3>
+                    <ul class="space-y-3 text-subtle">
+                        <li><i class="fa-solid fa-check text-purple-400 mr-2"></i> Calificación automática y enrutamiento de leads (SDR AI).</li>
+                        <li><i class="fa-solid fa-check text-purple-400 mr-2"></i> Soporte técnico Nivel 1 integrado a tus manuales.</li>
+                        <li><i class="fa-solid fa-check text-purple-400 mr-2"></i> Extracción y estructuración de datos de documentos PDF.</li>
+                    </ul>
+                </div>
+                <div class="bg-[#16191f]/50 p-8 rounded-2xl border border-white/5">
+                    <h3 class="text-xl text-white mb-6 font-light">Diferencias clave:</h3>
+                    <ul class="space-y-4 text-subtle mb-8">
+                        <li><strong class="text-white">Chatbot Clásico:</strong> Respuestas estáticas, basado en árboles de decisión. Si lo sacas del libreto, se rompe.</li>
+                        <li><strong class="text-white">Workflow (Automatización):</strong> Acciones lineales (Si pasa A -> Haz B). Es rígido pero efectivo para tareas simples.</li>
+                        <li><strong class="text-white">Agente IA:</strong> Entiende el objetivo final y decide qué pasos técnicos dar para resolver la petición del usuario interactuando con APIs.</li>
+                    </ul>
+
+                    <h3 class="text-xl text-white mt-6 mb-4 font-light">Cuándo <span class="text-red-400 italic">no</span> conviene:</h3>
+                    <ul class="space-y-3 text-subtle">
+                        <li>Si tus procesos internos no están estandarizados.</li>
+                        <li>Si buscas abaratar soporte sin medir el riesgo reputacional.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- METODOLOGÍA -->
+    <section class="py-20 px-6 relative border-t border-white/5 bg-white/[0.01]">
+        <div class="max-w-4xl mx-auto text-center">
+            <span class="editorial-label block mb-3">Proceso Tap-IA</span>
+            <div class="gold-rule mx-auto mb-6"></div>
+            <h2 class="mb-12">Proceso de diagnóstico y desarrollo</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
+                <div class="p-8 rounded-xl border border-white/5 bg-[#0a0b0e]">
+                    <h4 class="text-white mb-4 text-lg">1. Viabilidad</h4>
+                    <p class="text-subtle text-sm">Analizamos si la tarea es lo suficientemente madura y documentada para ser delegada a un modelo predictivo.</p>
+                </div>
+                <div class="p-8 rounded-xl border border-white/5 bg-[#0a0b0e]">
+                    <h4 class="text-white mb-4 text-lg">2. Arquitectura de Datos</h4>
+                    <p class="text-subtle text-sm">Conectamos el conocimiento de tu empresa (Vector Databases, RAG) para que el agente sepa de qué habla.</p>
+                </div>
+                <div class="p-8 rounded-xl border border-white/5 bg-[#0a0b0e]">
+                    <h4 class="text-white mb-4 text-lg">3. Integración de Herramientas</h4>
+                    <p class="text-subtle text-sm">Le damos "manos" al agente, conectándolo a tus sistemas actuales mediante APIs de forma segura.</p>
+                </div>
+                <div class="p-8 rounded-xl border border-white/5 bg-[#0a0b0e]">
+                    <h4 class="text-white mb-4 text-lg">4. Pruebas y Red-Teaming</h4>
+                    <p class="text-subtle text-sm">Evaluamos al agente contra ataques, errores y alucinaciones antes de ponerlo frente a tus clientes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <Footer />
+</Layout>

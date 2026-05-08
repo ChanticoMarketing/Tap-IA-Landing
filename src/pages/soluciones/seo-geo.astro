@@ -1,0 +1,103 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import CtaWhatsApp from '../../components/CtaWhatsApp.astro';
+---
+
+<Layout title="SEO y GEO | Posicionamiento e IA | TAP-IA">
+    <Header />
+
+    <section class="relative min-h-[60vh] pt-36 pb-10 px-6 flex flex-col items-center justify-center">
+        <div class="absolute top-20 left-0 w-[600px] h-[600px] bg-[#1a2744]/30 rounded-full blur-[120px] pointer-events-none -z-10"></div>
+        
+        <div class="max-w-4xl mx-auto text-center">
+            <span class="editorial-label text-[#2563eb] mb-6 block">SEO / GEO</span>
+            <h1 class="font-serif text-4xl md:text-6xl mb-6 text-white leading-tight">
+                SEO/GEO para que tu marca sea <span class="italic font-light text-gold">encontrable en Google y citable en respuestas de IA</span>
+            </h1>
+            <p class="text-xl text-subtle font-light max-w-2xl mx-auto mb-10">
+                Diseñamos contenido, estructura y señales de autoridad para que tu marca no solo rankee en Google, sino que también pueda ser entendida, recuperada y citada por motores generativos como ChatGPT, Gemini, Claude y Perplexity.
+            </p>
+            <CtaWhatsApp text="Solicitar auditoría SEO/GEO" microcopy="Analizamos cómo te leen los buscadores y la IA hoy." />
+        </div>
+    </section>
+
+    <!-- EL PROBLEMA Y LA SOLUCIÓN -->
+    <section class="py-20 px-6 relative border-t border-white/5">
+        <div class="max-w-5xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div>
+                    <h2 class="text-3xl mb-6 text-white font-light">El problema actual de la búsqueda</h2>
+                    <p class="text-subtle mb-6">Tu marca puede rankear en la primera página de Google, y aun así ser completamente invisible para un usuario que busca a través de un motor generativo como ChatGPT o Perplexity. La búsqueda cambió; tu estrategia de visibilidad también debe hacerlo.</p>
+                    
+                    <h3 class="text-xl text-white mt-10 mb-4 font-light">¿Qué es SEO/GEO?</h3>
+                    <p class="text-subtle mb-4">Es la convergencia entre Search Engine Optimization (SEO) y Generative Engine Optimization (GEO). Adaptamos la infraestructura digital de tu empresa para ambos mundos.</p>
+                    
+                </div>
+                <div class="bg-[#16191f]/50 p-8 rounded-2xl border border-white/5">
+                    <h3 class="text-xl text-white mb-6 font-light">Diferencias clave:</h3>
+                    <ul class="space-y-4 text-subtle mb-8">
+                        <li><strong class="text-white">SEO (Tradicional):</strong> Optimiza para algoritmos basados en enlaces y palabras clave. El objetivo es conseguir clics.</li>
+                        <li><strong class="text-white">GEO (Generative):</strong> Optimiza para Modelos de Lenguaje (LLMs). El objetivo es ser comprendido, resumido y citado como fuente de autoridad.</li>
+                        <li><strong class="text-white">AEO (Answer Engine):</strong> Se enfoca directamente en responder dudas específicas para los Google AI Overviews o snippets conversacionales.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- METODOLOGÍA & ENTREGABLES -->
+    <section class="py-20 px-6 relative border-t border-white/5 bg-white/[0.01]">
+        <div class="max-w-5xl mx-auto text-center">
+            <span class="editorial-label block mb-3">Qué optimizamos</span>
+            <div class="gold-rule mx-auto mb-6"></div>
+            <h2 class="mb-12">Metodología Tap-IA para SEO/GEO</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
+                <div class="p-8 rounded-xl border border-white/5 bg-[#0a0b0e]">
+                    <h4 class="text-white mb-4 text-lg">1. Entidad y Semántica</h4>
+                    <p class="text-subtle text-sm">Implementamos datos estructurados (Schema Markup) precisos para que la IA entienda exactamente quién eres, qué vendes y quién te respalda.</p>
+                </div>
+                <div class="p-8 rounded-xl border border-white/5 bg-[#0a0b0e]">
+                    <h4 class="text-white mb-4 text-lg">2. Contenido Citable</h4>
+                    <p class="text-subtle text-sm">Convertimos tu blog corporativo en activos de información que los LLMs pueden extraer, resumir y referenciar fácilmente (Glosarios, FAQs, Frameworks).</p>
+                </div>
+                <div class="p-8 rounded-xl border border-white/5 bg-[#0a0b0e]">
+                    <h4 class="text-white mb-4 text-lg">3. Autoridad Técnica</h4>
+                    <p class="text-subtle text-sm">Aseguramos que tu sitio permita el rastreo eficiente no solo de Googlebot, sino de OAI-Searchbot, ClaudeBot y los crawlers de Perplexity.</p>
+                </div>
+            </div>
+
+            <div class="mt-16 bg-[#1a2744]/20 p-8 rounded-2xl border border-[#2563eb]/20 text-left">
+                <h3 class="text-2xl text-white mb-4 font-light">Checklist básico de salud SEO/GEO:</h3>
+                <ul class="grid grid-cols-1 md:grid-cols-2 gap-4 text-subtle text-sm">
+                    <li><i class="fa-solid fa-check text-[#2563eb] mr-2"></i> ¿Tu robots.txt permite a los bots de IA leerte?</li>
+                    <li><i class="fa-solid fa-check text-[#2563eb] mr-2"></i> ¿Tienes schema markup de Organization o Service?</li>
+                    <li><i class="fa-solid fa-check text-[#2563eb] mr-2"></i> ¿Tu contenido responde preguntas directas?</li>
+                    <li><i class="fa-solid fa-check text-[#2563eb] mr-2"></i> ¿Tienes una página de autoría fuerte?</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQs -->
+    <section class="py-20 px-6 relative border-t border-white/5">
+        <div class="max-w-3xl mx-auto">
+            <h2 class="text-3xl text-white mb-8 text-center font-light">Preguntas Frecuentes</h2>
+            
+            <div class="space-y-6">
+                <div class="bg-white/[0.02] p-6 rounded-xl border border-white/5">
+                    <h4 class="text-white mb-2 font-medium">¿Pueden garantizar que apareceré en ChatGPT?</h4>
+                    <p class="text-subtle text-sm">Nadie puede garantizarlo. Lo que sí garantizamos es construir la infraestructura y el contenido necesarios para tener la máxima probabilidad estadística de ser citado frente a tus competidores.</p>
+                </div>
+                <div class="bg-white/[0.02] p-6 rounded-xl border border-white/5">
+                    <h4 class="text-white mb-2 font-medium">¿Dejo de hacer SEO tradicional?</h4>
+                    <p class="text-subtle text-sm">No. El SEO tradicional (velocidad, indexación, backlinks) es la base. El GEO se construye sobre un sitio que técnicamente ya funciona bien para Google.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <Footer />
+</Layout>
