@@ -5,82 +5,99 @@ import Footer from '../components/Footer.astro';
 import CtaWhatsApp from '../components/CtaWhatsApp.astro';
 ---
 
-<Layout title="Consultoría de Inteligencia Artificial | TAP-IA">
+<Layout title="Consultoría en Inteligencia Artificial | Estrategia y Diagnóstico | TAP-IA">
     <Header />
 
-    <section class="relative min-h-[60vh] pt-36 pb-10 px-6 flex flex-col items-center justify-center">
-        <div class="absolute top-20 left-0 w-[600px] h-[600px] bg-gold/12 rounded-full blur-[120px] pointer-events-none -z-10"></div>
+    <section class="relative min-h-[60vh] pt-36 pb-10 px-6 flex flex-col items-center justify-center overflow-hidden">
+        <div class="absolute top-20 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-gold/5 rounded-full blur-[120px] pointer-events-none -z-10"></div>
         
-        <div class="max-w-4xl mx-auto text-center">
-            <span class="editorial-label text-gold mb-6 block">Consultoría IA</span>
+        <div class="max-w-4xl mx-auto text-center relative z-10">
+            <span class="editorial-label text-gold mb-6 block">Consultoría Estratégica</span>
             <h1 class="font-serif text-4xl md:text-6xl mb-6 text-white leading-tight">
-                Consultoría de inteligencia artificial para empresas que necesitan <span class="text-gold italic font-light">claridad, estrategia y resultados</span>
+                No necesitas más herramientas de IA. <span class="italic font-light text-white/60">Necesitas criterio de negocio.</span>
             </h1>
-            <p class="text-xl text-subtle font-light max-w-2xl mx-auto mb-10">
-                Traducimos la complejidad técnica en decisiones claras. Diagnóstico y roadmap para implementar IA con sentido de negocio.
+            <p class="text-xl text-subtle font-light max-w-2xl mx-auto mb-10 leading-relaxed">
+                Ayudamos a empresas a detectar dónde la IA es una ventaja competitiva y dónde es solo ruido. Diagnóstico, estrategia y acompañamiento técnico para una implementación con pies y cabeza.
             </p>
-            <CtaWhatsApp text="Evaluar madurez IA" microcopy="Diagnóstico sin compromiso." />
+            <CtaWhatsApp text="Solicitar diagnóstico estratégico" microcopy="Hablamos de tu negocio, no solo de tecnología." />
         </div>
     </section>
 
-    <!-- ESTRUCTURA RECOMENDADA -->
-    <section class="py-20 px-6 relative border-t border-white/5">
+    <!-- PROPUESTA: ESTRATEGIA ANTES QUE HERRAMIENTA -->
+    <section class="py-24 px-6 relative border-t border-white/5 bg-white/[0.01]">
         <div class="max-w-5xl mx-auto">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
                 <div>
-                    <h2 class="text-3xl mb-6 text-white font-light">¿Qué problema resolvemos?</h2>
-                    <p class="text-subtle mb-6">Muchas empresas quieren usar IA, compran herramientas y automatizan cosas al azar, pero no logran impacto real en su rentabilidad o eficiencia. Nosotros ponemos orden.</p>
-                    
-                    <h3 class="text-xl text-white mt-10 mb-4 font-light">Cuándo una empresa necesita consultoría IA:</h3>
-                    <ul class="space-y-3 text-subtle">
-                        <li><i class="fa-solid fa-check text-gold mr-2"></i> Cuando hay procesos repetitivos que ahogan al equipo.</li>
-                        <li><i class="fa-solid fa-check text-gold mr-2"></i> Cuando tienen datos pero no pueden tomar decisiones rápidas.</li>
-                        <li><i class="fa-solid fa-check text-gold mr-2"></i> Cuando quieren implementar agentes o automatización pero no saben por dónde empezar.</li>
-                    </ul>
+                    <h2 class="text-3xl md:text-4xl text-white font-light mb-8">El problema no es la tecnología, es el <span class="text-gold italic">roadmap</span>.</h2>
+                    <p class="text-subtle mb-6 leading-relaxed">La mayoría de las empresas están "probando" IA de forma aislada: un chatbot por aquí, un generador de imágenes por allá. El resultado suele ser frustración, falta de retorno de inversión y equipos confundidos.</p>
+                    <p class="text-subtle mb-8 leading-relaxed">Nuestra consultoría se enfoca en integrar la IA en el núcleo de tu operación y marketing para resolver problemas reales: eficiencia, escalabilidad y toma de decisiones basada en datos.</p>
                 </div>
-                <div class="bg-[#16191f]/50 p-8 rounded-2xl border border-white/5">
-                    <h3 class="text-xl text-white mb-6 font-light">Qué incluye el servicio:</h3>
-                    <ul class="space-y-4 text-subtle mb-8">
-                        <li><strong class="text-white">Auditoría operativa:</strong> Mapeo de cuellos de botella.</li>
-                        <li><strong class="text-white">Diseño de solución:</strong> Arquitectura de la herramienta o flujo ideal.</li>
-                        <li><strong class="text-white">Roadmap de implementación:</strong> Paso a paso para ejecutar sin romper la operación actual.</li>
-                    </ul>
-
-                    <h3 class="text-xl text-white mb-6 font-light">Qué <span class="text-red-400 italic">no</span> incluye:</h3>
-                    <ul class="space-y-3 text-subtle">
-                        <li><i class="fa-solid fa-xmark text-red-400 mr-2"></i> Venta de software innecesario.</li>
-                        <li><i class="fa-solid fa-xmark text-red-400 mr-2"></i> Automatizaciones "por moda" que nadie usa.</li>
-                        <li><i class="fa-solid fa-xmark text-red-400 mr-2"></i> Teoría sin aplicación práctica.</li>
+                <div class="matte-card p-10 rounded-2xl border border-gold/10">
+                    <h3 class="text-xl text-white mb-6 font-medium">Lo que resolvemos:</h3>
+                    <ul class="space-y-4 text-subtle">
+                        <li class="flex items-start gap-3">
+                            <span class="text-gold mt-1">◆</span>
+                            <span>Falta de claridad sobre qué procesos automatizar primero.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-gold mt-1">◆</span>
+                            <span>Inversión en herramientas que nadie usa en el equipo.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-gold mt-1">◆</span>
+                            <span>Miedo a la seguridad de datos y privacidad con IA.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-gold mt-1">◆</span>
+                            <span>Brecha de conocimiento técnico para supervisar implementaciones.</span>
+                        </li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- METODOLOGÍA & ENTREGABLES -->
-    <section class="py-20 px-6 relative border-t border-white/5 bg-white/[0.01]">
-        <div class="max-w-4xl mx-auto text-center">
-            <span class="editorial-label block mb-3">Metodología Tap-IA</span>
-            <div class="gold-rule mx-auto mb-6"></div>
-            <h2 class="mb-12">Cómo trabajamos y qué entregamos</h2>
-            
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 text-left">
-                <div class="p-6 rounded-xl border border-white/5 bg-[#0a0b0e]">
-                    <span class="text-gold font-serif text-3xl mb-4 block">01</span>
-                    <h4 class="text-white mb-2">Diagnóstico de Madurez</h4>
-                    <p class="text-sm text-subtle">Evaluamos qué tan lista está tu empresa a nivel datos, cultura y procesos.</p>
+    <!-- ENTREGABLES -->
+    <section class="py-24 px-6 relative border-t border-white/5">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <span class="editorial-label block mb-3">Entregables</span>
+                <div class="gold-rule mx-auto mb-6"></div>
+                <h2 class="text-white">Nuestro modelo de acompañamiento</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="p-8 rounded-2xl border border-white/5 bg-[#0a0b0e] hover:border-gold/30 transition-all group">
+                    <div class="w-12 h-12 rounded-lg bg-gold/10 border border-gold/20 flex items-center justify-center mb-6 group-hover:bg-gold/20 transition-colors">
+                        <i class="fa-solid fa-clipboard-check text-gold"></i>
+                    </div>
+                    <h4 class="text-white text-xl mb-4 font-light">1. Auditoría Operativa</h4>
+                    <p class="text-subtle text-sm leading-relaxed">Mapeamos tus flujos actuales para identificar fricciones que la IA puede eliminar hoy mismo.</p>
                 </div>
-                <div class="p-6 rounded-xl border border-white/5 bg-[#0a0b0e]">
-                    <span class="text-gold font-serif text-3xl mb-4 block">02</span>
-                    <h4 class="text-white mb-2">Diseño de Solución</h4>
-                    <p class="text-sm text-subtle">Creamos la arquitectura técnica y el caso de negocio para la implementación.</p>
+                <div class="p-8 rounded-2xl border border-white/5 bg-[#0a0b0e] hover:border-gold/30 transition-all group">
+                    <div class="w-12 h-12 rounded-lg bg-gold/10 border border-gold/20 flex items-center justify-center mb-6 group-hover:bg-gold/20 transition-colors">
+                        <i class="fa-solid fa-map-location-dot text-gold"></i>
+                    </div>
+                    <h4 class="text-white text-xl mb-4 font-light">2. Roadmap de IA</h4>
+                    <p class="text-subtle text-sm leading-relaxed">Un plan paso a paso, priorizado por impacto y facilidad de implementación, para tu equipo.</p>
                 </div>
-                <div class="p-6 rounded-xl border border-white/5 bg-[#0a0b0e]">
-                    <span class="text-gold font-serif text-3xl mb-4 block">03</span>
-                    <h4 class="text-white mb-2">Roadmap & Entregables</h4>
-                    <p class="text-sm text-subtle">Te entregamos un documento detallado, cronograma y requerimientos claros.</p>
+                <div class="p-8 rounded-2xl border border-white/5 bg-[#0a0b0e] hover:border-gold/30 transition-all group">
+                    <div class="w-12 h-12 rounded-lg bg-gold/10 border border-gold/20 flex items-center justify-center mb-6 group-hover:bg-gold/20 transition-colors">
+                        <i class="fa-solid fa-user-gear text-gold"></i>
+                    </div>
+                    <h4 class="text-white text-xl mb-4 font-light">3. Acompañamiento Técnico</h4>
+                    <p class="text-subtle text-sm leading-relaxed">No te dejamos solo con el plan. Supervisamos que la tecnología se instale y se use correctamente.</p>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- ÚLTIMO CTA -->
+    <section class="py-24 px-6 relative border-t border-white/5 bg-[#0a0b0e]">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="mb-8 text-white">Deja de adivinar y empieza a implementar con <span class="text-gold italic">estrategia</span>.</h2>
+            <p class="text-xl text-subtle mb-12">Agenda una sesión de 30 minutos para evaluar tu situación actual y definir el primer paso de tu transformación con IA.</p>
+            <CtaWhatsApp text="Agendar Sesión Estratégica" />
         </div>
     </section>
 
