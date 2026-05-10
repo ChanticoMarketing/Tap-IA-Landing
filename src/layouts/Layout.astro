@@ -1,10 +1,18 @@
 ---
+import Schema from "../components/Schema.astro";
+
+interface FAQItem {
+	question: string;
+	answer: string;
+}
+
 interface Props {
 	title: string;
 	description?: string;
+	faqs?: FAQItem[];
 }
 
-const { title, description = "Su empresa merece ser la respuesta." } = Astro.props;
+const { title, description = "Su empresa merece ser la respuesta.", faqs } = Astro.props;
 ---
 
 <!doctype html>
@@ -28,6 +36,8 @@ const { title, description = "Su empresa merece ser la respuesta." } = Astro.pro
         <meta property="twitter:image" content="https://tap-ia.tech/logo.png" />
 
 		<title>{title}</title>
+
+		<Schema faqs={faqs} />
 
         <!-- Favicon -->
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
