@@ -5,8 +5,13 @@ import Footer from '../../components/Footer.astro';
 import CtaWhatsApp from '../../components/CtaWhatsApp.astro';
 ---
 
-<Layout title="SEO y GEO | Posicionamiento e IA | TAP-IA">
+<Layout
+    title="SEO y GEO | Posicionamiento e IA | TAP-IA"
+    description="SEO y GEO: posición en Google y visibilidad en respuestas de IA. Entidad, contenido citable y señales técnicas para modelos generativos."
+>
     <Header />
+
+    <main>
 
     <section class="relative min-h-[60vh] pt-36 pb-10 px-6 flex flex-col items-center justify-center">
         <div class="absolute top-20 left-0 w-[600px] h-[600px] bg-[#1a2744]/30 rounded-full blur-[120px] pointer-events-none -z-10"></div>
@@ -98,6 +103,8 @@ import CtaWhatsApp from '../../components/CtaWhatsApp.astro';
             </div>
         </div>
     </section>
+
+    </main>
 
     <Footer />
 </Layout>
