@@ -4,8 +4,13 @@ import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 ---
 
-<Layout title="WebApps a la medida | TAP-IA">
+<Layout
+    title="WebApps a la medida | TAP-IA"
+    description="WebApps a medida para procesos únicos: cuando el software estándar no alcanza. Integraciones, flujos propios y herramientas operativas con Tap-IA."
+>
     <Header />
+
+    <main>
 
     <section class="relative min-h-[60vh] pt-36 pb-10 px-6 flex items-center">
         <div class="absolute top-20 right-0 w-[600px] h-[600px] bg-gold/15 rounded-full blur-[120px] pointer-events-none -z-10"></div>
@@ -30,6 +35,8 @@ import Footer from '../../components/Footer.astro';
             </a>
         </div>
     </section>
+
+    </main>
 
     <Footer />
 </Layout>

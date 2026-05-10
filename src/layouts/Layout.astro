@@ -1,10 +1,25 @@
 ---
+import Schema from "../components/Schema.astro";
+
+interface FAQItem {
+	question: string;
+	answer: string;
+}
+
 interface Props {
 	title: string;
 	description?: string;
+	faqs?: FAQItem[];
 }
 
-const { title, description = "Su empresa merece ser la respuesta." } = Astro.props;
+const { title, description: descriptionProp, faqs } = Astro.props;
+
+const resolvedDescription =
+	descriptionProp && String(descriptionProp).trim().length > 0
+		? String(descriptionProp).trim()
+		: `${title} · Tap-IA`;
+
+const canonicalUrl = new URL(Astro.url.pathname, Astro.url.origin).href;
 ---
 
 <!doctype html>
@@ -12,22 +27,26 @@ const { title, description = "Su empresa merece ser la respuesta." } = Astro.pro
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<meta name="description" content={description} />
+		<meta name="description" content={resolvedDescription} />
         <meta name="robots" content="index, follow" />
+
+        <link rel="canonical" href={canonicalUrl} />
         
         <!-- Open Graph / Facebook -->
         <meta property="og:type" content="website" />
         <meta property="og:title" content={title} />
-        <meta property="og:description" content={description} />
+        <meta property="og:description" content={resolvedDescription} />
         <meta property="og:image" content="https://tap-ia.tech/logo.png" />
         
         <!-- Twitter -->
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:title" content={title} />
-        <meta property="twitter:description" content={description} />
+        <meta property="twitter:description" content={resolvedDescription} />
         <meta property="twitter:image" content="https://tap-ia.tech/logo.png" />
 
 		<title>{title}</title>
+
+		<Schema faqs={faqs} />
 
         <!-- Favicon -->
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />

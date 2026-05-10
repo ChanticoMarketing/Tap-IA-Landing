@@ -1,0 +1,48 @@
+---
+/**
+ * JSON-LD estructurado (Person + FAQPage opcional).
+ * Reemplaza en sameAs los valores "[URL_LINKEDIN]" y "[URL_FACEBOOK]" por tus URLs públicas (https://...).
+ */
+export interface FAQItem {
+	question: string;
+	answer: string;
+}
+
+interface Props {
+	faqs?: FAQItem[];
+}
+
+const { faqs } = Astro.props;
+
+const origin = Astro.url.origin;
+
+const personLd = {
+	"@context": "https://schema.org",
+	"@type": "Person",
+	name: "Adrián Emmanuel Tapia Sánchez",
+	alternateName: "Tap-IA",
+	jobTitle: "Technical Strategist & Marketing Expert",
+	url: origin,
+	sameAs: ["[URL_LINKEDIN]", "[URL_FACEBOOK]"],
+};
+
+const hasFaqs = Array.isArray(faqs) && faqs.length > 0;
+
+const faqLd = hasFaqs
+	? {
+			"@context": "https://schema.org",
+			"@type": "FAQPage",
+			mainEntity: faqs!.map((item) => ({
+				"@type": "Question",
+				name: item.question,
+				acceptedAnswer: {
+					"@type": "Answer",
+					text: item.answer,
+				},
+			})),
+		}
+	: null;
+---
+
+<script is:inline type="application/ld+json" set:html={JSON.stringify(personLd)} />
+{faqLd && <script is:inline type="application/ld+json" set:html={JSON.stringify(faqLd)} />}
