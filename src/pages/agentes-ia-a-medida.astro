@@ -5,82 +5,101 @@ import Footer from '../components/Footer.astro';
 import CtaWhatsApp from '../components/CtaWhatsApp.astro';
 ---
 
-<Layout title="Agentes IA a Medida | TAP-IA">
+<Layout title="Agentes IA a Medida | Automatización Inteligente | TAP-IA">
     <Header />
 
-    <section class="relative min-h-[60vh] pt-36 pb-10 px-6 flex flex-col items-center justify-center">
-        <div class="absolute top-20 left-0 w-[600px] h-[600px] bg-purple-500/10 rounded-full blur-[120px] pointer-events-none -z-10"></div>
+    <section class="relative min-h-[60vh] pt-36 pb-10 px-6 flex flex-col items-center justify-center overflow-hidden">
+        <div class="absolute top-20 left-0 w-[600px] h-[600px] bg-gold/5 rounded-full blur-[120px] pointer-events-none -z-10"></div>
         
-        <div class="max-w-4xl mx-auto text-center">
-            <span class="editorial-label text-purple-400 mb-6 block">Agentes IA</span>
+        <div class="max-w-4xl mx-auto text-center relative z-10">
+            <span class="editorial-label text-gold mb-6 block">Automatización de Próxima Generación</span>
             <h1 class="font-serif text-4xl md:text-6xl mb-6 text-white leading-tight">
-                Agentes IA a medida para automatizar <span class="italic font-light text-gold">procesos reales, no solo responder mensajes</span>
+                No es un chatbot. <br/><span class="italic font-light text-white/60">Es un colaborador autónomo.</span>
             </h1>
-            <p class="text-xl text-subtle font-light max-w-2xl mx-auto mb-10">
-                Diseñamos agentes inteligentes capaces de tomar decisiones, ejecutar flujos complejos y operar herramientas, integrándose a tu equipo como un empleado digital 24/7.
+            <p class="text-xl text-subtle font-light max-w-2xl mx-auto mb-10 leading-relaxed">
+                Diseñamos agentes de IA que no solo responden preguntas, sino que ejecutan tareas, cualifican leads y se integran con tus herramientas actuales (CRM, WhatsApp, Email) para liberar a tu equipo de la carga operativa.
             </p>
-            <CtaWhatsApp text="Evaluar mi proceso" microcopy="Analizamos si un agente IA es viable para tu operación." />
+            <CtaWhatsApp text="Solicitar demo de Agente IA" microcopy="Ve cómo un agente puede manejar tu operación en vivo." />
         </div>
     </section>
 
-    <!-- QUÉ ES / QUÉ NO ES -->
-    <section class="py-20 px-6 relative border-t border-white/5">
+    <!-- DIFERENCIACIÓN: CHATBOT VS AGENTE -->
+    <section class="py-24 px-6 relative border-t border-white/5 bg-white/[0.01]">
         <div class="max-w-5xl mx-auto">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                <div>
-                    <h2 class="text-3xl mb-6 text-white font-light">Más que un chatbot</h2>
-                    <p class="text-subtle mb-6">Un chatbot solo responde preguntas leyendo un texto. Un agente IA es un sistema con autonomía: lee, analiza, toma decisiones y ejecuta acciones en otras herramientas (envía un correo, califica un lead en CRM, agenda una reunión).</p>
-                    
-                    <h3 class="text-xl text-white mt-10 mb-4 font-light">Casos de uso reales:</h3>
-                    <ul class="space-y-3 text-subtle">
-                        <li><i class="fa-solid fa-check text-purple-400 mr-2"></i> Calificación automática y enrutamiento de leads (SDR AI).</li>
-                        <li><i class="fa-solid fa-check text-purple-400 mr-2"></i> Soporte técnico Nivel 1 integrado a tus manuales.</li>
-                        <li><i class="fa-solid fa-check text-purple-400 mr-2"></i> Extracción y estructuración de datos de documentos PDF.</li>
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl text-white font-light">La diferencia entre <span class="line-through opacity-40">responder</span> y <span class="text-gold italic">resolver</span>.</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="p-10 rounded-2xl border border-white/5 bg-[#0a0b0e]/50">
+                    <h3 class="text-white/60 text-lg mb-6 uppercase tracking-widest font-bold">Chatbot Tradicional</h3>
+                    <ul class="space-y-4 text-subtle text-sm">
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-xmark text-red-500/50"></i>
+                            <span>Basado en reglas rígidas (IF/THEN).</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-xmark text-red-500/50"></i>
+                            <span>Se frustra si la pregunta no es exacta.</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-xmark text-red-500/50"></i>
+                            <span>Solo entrega información estática.</span>
+                        </li>
                     </ul>
                 </div>
-                <div class="bg-[#16191f]/50 p-8 rounded-2xl border border-white/5">
-                    <h3 class="text-xl text-white mb-6 font-light">Diferencias clave:</h3>
-                    <ul class="space-y-4 text-subtle mb-8">
-                        <li><strong class="text-white">Chatbot Clásico:</strong> Respuestas estáticas, basado en árboles de decisión. Si lo sacas del libreto, se rompe.</li>
-                        <li><strong class="text-white">Workflow (Automatización):</strong> Acciones lineales (Si pasa A -> Haz B). Es rígido pero efectivo para tareas simples.</li>
-                        <li><strong class="text-white">Agente IA:</strong> Entiende el objetivo final y decide qué pasos técnicos dar para resolver la petición del usuario interactuando con APIs.</li>
-                    </ul>
-
-                    <h3 class="text-xl text-white mt-6 mb-4 font-light">Cuándo <span class="text-red-400 italic">no</span> conviene:</h3>
-                    <ul class="space-y-3 text-subtle">
-                        <li>Si tus procesos internos no están estandarizados.</li>
-                        <li>Si buscas abaratar soporte sin medir el riesgo reputacional.</li>
+                <div class="p-10 rounded-2xl border border-gold/20 bg-gold/[0.02] shadow-[0_0_40px_rgba(212,175,55,0.05)]">
+                    <h3 class="text-gold text-lg mb-6 uppercase tracking-widest font-bold">Agente Tap-IA</h3>
+                    <ul class="space-y-4 text-white/90 text-sm">
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-check text-gold"></i>
+                            <span>Entiende el contexto y la intención del usuario.</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-check text-gold"></i>
+                            <span>Accede a tu base de conocimientos en tiempo real.</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-check text-gold"></i>
+                            <span>Realiza acciones: agenda citas, crea leads, envía correos.</span>
+                        </li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- METODOLOGÍA -->
-    <section class="py-20 px-6 relative border-t border-white/5 bg-white/[0.01]">
-        <div class="max-w-4xl mx-auto text-center">
-            <span class="editorial-label block mb-3">Proceso Tap-IA</span>
-            <div class="gold-rule mx-auto mb-6"></div>
-            <h2 class="mb-12">Proceso de diagnóstico y desarrollo</h2>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
-                <div class="p-8 rounded-xl border border-white/5 bg-[#0a0b0e]">
-                    <h4 class="text-white mb-4 text-lg">1. Viabilidad</h4>
-                    <p class="text-subtle text-sm">Analizamos si la tarea es lo suficientemente madura y documentada para ser delegada a un modelo predictivo.</p>
+    <!-- CASOS DE USO -->
+    <section class="py-24 px-6 relative border-t border-white/5">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <span class="editorial-label block mb-3">Aplicaciones Reales</span>
+                <div class="gold-rule mx-auto mb-6"></div>
+                <h2 class="text-white">¿Dónde poner a trabajar a tu agente?</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="matte-card p-10 rounded-2xl border border-white/5 group hover:border-gold/30 transition-all">
+                    <h4 class="text-white text-xl mb-4 font-light">Ventas & SDR</h4>
+                    <p class="text-subtle text-sm leading-relaxed mb-6">Un agente que contacta a los leads que llegan por tu web, los cualifica bajo tus criterios y solo te agenda a los que realmente pueden comprar.</p>
                 </div>
-                <div class="p-8 rounded-xl border border-white/5 bg-[#0a0b0e]">
-                    <h4 class="text-white mb-4 text-lg">2. Arquitectura de Datos</h4>
-                    <p class="text-subtle text-sm">Conectamos el conocimiento de tu empresa (Vector Databases, RAG) para que el agente sepa de qué habla.</p>
+                <div class="matte-card p-10 rounded-2xl border border-white/5 group hover:border-gold/30 transition-all">
+                    <h4 class="text-white text-xl mb-4 font-light">Soporte Técnico</h4>
+                    <p class="text-subtle text-sm leading-relaxed mb-6">Entrenado con tus manuales y procedimientos para resolver el 80% de las dudas recurrentes de tus clientes sin saturar a tu equipo humano.</p>
                 </div>
-                <div class="p-8 rounded-xl border border-white/5 bg-[#0a0b0e]">
-                    <h4 class="text-white mb-4 text-lg">3. Integración de Herramientas</h4>
-                    <p class="text-subtle text-sm">Le damos "manos" al agente, conectándolo a tus sistemas actuales mediante APIs de forma segura.</p>
-                </div>
-                <div class="p-8 rounded-xl border border-white/5 bg-[#0a0b0e]">
-                    <h4 class="text-white mb-4 text-lg">4. Pruebas y Red-Teaming</h4>
-                    <p class="text-subtle text-sm">Evaluamos al agente contra ataques, errores y alucinaciones antes de ponerlo frente a tus clientes.</p>
+                <div class="matte-card p-10 rounded-2xl border border-white/5 group hover:border-gold/30 transition-all">
+                    <h4 class="text-white text-xl mb-4 font-light">Operación Interna</h4>
+                    <p class="text-subtle text-sm leading-relaxed mb-6">Agentes que ayudan a tu equipo a navegar documentos internos, reportar incidencias o gestionar pedidos de forma conversacional.</p>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- ÚLTIMO CTA -->
+    <section class="py-24 px-6 relative border-t border-white/5 bg-[#0a0b0e]">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="mb-8 text-white font-light">Tu empresa no duerme. <span class="text-gold italic">Tu atención tampoco debería.</span></h2>
+            <p class="text-xl text-subtle mb-12">Desarrollamos e implementamos tu agente personalizado en menos de 3 semanas, integrado a tu stack actual.</p>
+            <CtaWhatsApp text="Hablar con un Especialista" />
         </div>
     </section>
 

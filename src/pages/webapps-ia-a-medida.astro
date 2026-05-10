@@ -5,76 +5,87 @@ import Footer from '../components/Footer.astro';
 import CtaWhatsApp from '../components/CtaWhatsApp.astro';
 ---
 
-<Layout title="WebApps con IA a Medida | TAP-IA">
+<Layout title="WebApps con IA | Software a Medida | TAP-IA">
     <Header />
 
-    <section class="relative min-h-[60vh] pt-36 pb-10 px-6 flex flex-col items-center justify-center">
-        <div class="absolute top-20 left-0 w-[600px] h-[600px] bg-[#10b981]/10 rounded-full blur-[120px] pointer-events-none -z-10"></div>
+    <section class="relative min-h-[60vh] pt-36 pb-10 px-6 flex flex-col items-center justify-center overflow-hidden">
+        <div class="absolute top-20 right-0 w-[600px] h-[600px] bg-gold/5 rounded-full blur-[120px] pointer-events-none -z-10"></div>
         
-        <div class="max-w-4xl mx-auto text-center">
-            <span class="editorial-label text-[#10b981] mb-6 block">WebApps con IA</span>
+        <div class="max-w-4xl mx-auto text-center relative z-10">
+            <span class="editorial-label text-gold mb-6 block">Sistemas Personalizados</span>
             <h1 class="font-serif text-4xl md:text-6xl mb-6 text-white leading-tight">
-                WebApps con IA a medida para convertir <span class="italic font-light text-gold">procesos complejos en sistemas operables</span>
+                Software con cerebro. <br/><span class="italic font-light text-white/60">Soluciones para procesos complejos.</span>
             </h1>
-            <p class="text-xl text-subtle font-light max-w-2xl mx-auto mb-10">
-                Sistemas internos, portales o aplicaciones diseñadas desde cero para solucionar fricciones de negocio usando la potencia de los LLMs.
+            <p class="text-xl text-subtle font-light max-w-2xl mx-auto mb-10 leading-relaxed">
+                Cuando el software comercial (SaaS) se queda corto, construimos aplicaciones web a medida potenciadas con IA para resolver procesos específicos de tu negocio.
             </p>
-            <CtaWhatsApp text="Diagnosticar solución" microcopy="Analicemos el caso de negocio y la viabilidad técnica." />
+            <CtaWhatsApp text="Consultar por mi proyecto" microcopy="Evaluamos la viabilidad técnica de tu idea en 48h." />
         </div>
     </section>
 
-    <!-- EL PROBLEMA Y LA SOLUCIÓN -->
-    <section class="py-20 px-6 relative border-t border-white/5">
+    <!-- QUÉ ES UNA WEBAPP CON IA -->
+    <section class="py-24 px-6 relative border-t border-white/5 bg-white/[0.01]">
         <div class="max-w-5xl mx-auto">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
                 <div>
-                    <h2 class="text-3xl mb-6 text-white font-light">Software comercial vs. Solución a medida</h2>
-                    <p class="text-subtle mb-6">El software comercial suele resolver el 80% de tus problemas, pero te obliga a adaptar tu empresa al 20% restante. Las WebApps con IA están diseñadas para encajar perfectamente en tu proceso único.</p>
-                    
-                    <h3 class="text-xl text-white mt-10 mb-4 font-light">Casos de uso clave:</h3>
-                    <ul class="space-y-3 text-subtle">
-                        <li><i class="fa-solid fa-check text-[#10b981] mr-2"></i> Herramientas internas para analizar documentación legal masiva.</li>
-                        <li><i class="fa-solid fa-check text-[#10b981] mr-2"></i> Generadores de propuestas o reportes personalizados por vendedor.</li>
-                        <li><i class="fa-solid fa-check text-[#10b981] mr-2"></i> Paneles de analítica potenciados con procesamiento de lenguaje natural.</li>
-                    </ul>
+                    <h2 class="text-3xl md:text-4xl text-white font-light mb-8">No es solo una web. <span class="text-gold italic">Es una herramienta de trabajo.</span></h2>
+                    <p class="text-subtle mb-6 leading-relaxed">Las WebApps con IA permiten procesar grandes volúmenes de información, generar reportes automáticos, predecir tendencias o crear interfaces inteligentes que guían al usuario en tareas complejas.</p>
+                    <p class="text-subtle mb-8 leading-relaxed">Desde dashboards internos hasta portales de clientes que utilizan LLMs para el análisis de datos, creamos la infraestructura que tu operación necesita para escalar.</p>
                 </div>
-                <div class="bg-[#16191f]/50 p-8 rounded-2xl border border-white/5">
-                    <h3 class="text-xl text-white mb-6 font-light">Nuestra capacidad técnica:</h3>
-                    <ul class="space-y-4 text-subtle mb-8">
-                        <li><strong class="text-white">Interfaces ágiles:</strong> Construidas en React, Next.js o Astro, pensadas en el UX del empleado/cliente.</li>
-                        <li><strong class="text-white">Motores IA:</strong> Integración de APIs como OpenAI, Claude, u open-source en servidores privados para mayor privacidad.</li>
-                        <li><strong class="text-white">Escalabilidad:</strong> Arquitectura moderna y segura lista para absorber incrementos de carga en bases de datos (SQL/NoSQL) y vectores (Pinecone/Chroma).</li>
-                    </ul>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="p-6 rounded-xl border border-white/5 bg-[#0a0b0e] flex flex-col items-center text-center">
+                        <i class="fa-solid fa-database text-gold mb-4 text-2xl"></i>
+                        <span class="text-xs text-subtle uppercase">Análisis de Datos</span>
+                    </div>
+                    <div class="p-6 rounded-xl border border-white/5 bg-[#0a0b0e] flex flex-col items-center text-center">
+                        <i class="fa-solid fa-wand-magic-sparkles text-gold mb-4 text-2xl"></i>
+                        <span class="text-xs text-subtle uppercase">Generación de Contenido</span>
+                    </div>
+                    <div class="p-6 rounded-xl border border-white/5 bg-[#0a0b0e] flex flex-col items-center text-center">
+                        <i class="fa-solid fa-chart-line text-gold mb-4 text-2xl"></i>
+                        <span class="text-xs text-subtle uppercase">Predicción B2B</span>
+                    </div>
+                    <div class="p-6 rounded-xl border border-white/5 bg-[#0a0b0e] flex flex-col items-center text-center">
+                        <i class="fa-solid fa-shield-halved text-gold mb-4 text-2xl"></i>
+                        <span class="text-xs text-subtle uppercase">Seguridad & Privacidad</span>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- METODOLOGÍA -->
-    <section class="py-20 px-6 relative border-t border-white/5 bg-white/[0.01]">
-        <div class="max-w-4xl mx-auto text-center">
-            <span class="editorial-label block mb-3">Ciclo Tap-IA</span>
-            <div class="gold-rule mx-auto mb-6"></div>
-            <h2 class="mb-12">Metodología de desarrollo y validación</h2>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
-                <div class="p-8 rounded-xl border border-white/5 bg-[#0a0b0e]">
-                    <h4 class="text-white mb-4 text-lg">1. Conceptualización</h4>
-                    <p class="text-subtle text-sm">Definimos la arquitectura del sistema, eligiendo el modelo de IA adecuado para el balance costo-precisión.</p>
+    <!-- CAPACIDADES -->
+    <section class="py-24 px-6 relative border-t border-white/5">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <span class="editorial-label block mb-3">Capacidades Técnicas</span>
+                <div class="gold-rule mx-auto mb-6"></div>
+                <h2 class="text-white">Lo que podemos construir juntos</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="p-8 rounded-2xl border border-white/5 bg-[#0a0b0e] group hover:border-gold/20 transition-all">
+                    <h4 class="text-white text-lg mb-3">Dashboards Inteligentes</h4>
+                    <p class="text-subtle text-sm">Visualización de datos que no solo muestra gráficos, sino que te explica qué significan mediante lenguaje natural.</p>
                 </div>
-                <div class="p-8 rounded-xl border border-white/5 bg-[#0a0b0e]">
-                    <h4 class="text-white mb-4 text-lg">2. Prototipo / MVP</h4>
-                    <p class="text-subtle text-sm">Construimos la versión fundamental rápidamente para probar que el caso de uso es válido sin gastar de más.</p>
+                <div class="p-8 rounded-2xl border border-white/5 bg-[#0a0b0e] group hover:border-gold/20 transition-all">
+                    <h4 class="text-white text-lg mb-3">Herramientas de Autor</h4>
+                    <p class="text-subtle text-sm">Software que ayuda a tus expertos a crear contenido técnico, legal o comercial siguiendo tus propios estándares de calidad.</p>
                 </div>
-                <div class="p-8 rounded-xl border border-white/5 bg-[#0a0b0e]">
-                    <h4 class="text-white mb-4 text-lg">3. Escalado & UI/UX</h4>
-                    <p class="text-subtle text-sm">Diseñamos una interfaz premium y fácil de usar, asegurando que la adopción no sea una barrera.</p>
-                </div>
-                <div class="p-8 rounded-xl border border-white/5 bg-[#0a0b0e]">
-                    <h4 class="text-white mb-4 text-lg">4. Despliegue y Control</h4>
-                    <p class="text-subtle text-sm">Entregamos la app lista para producción y nos aseguramos de que los costos de IA (tokens) estén controlados.</p>
+                <div class="p-8 rounded-2xl border border-white/5 bg-[#0a0b0e] group hover:border-gold/20 transition-all">
+                    <h4 class="text-white text-lg mb-3">Sistemas de Recomendación</h4>
+                    <p class="text-subtle text-sm">Motores que analizan el comportamiento de tus usuarios para ofrecerles exactamente lo que necesitan en el momento preciso.</p>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- ÚLTIMO CTA -->
+    <section class="py-24 px-6 relative border-t border-white/5 bg-[#0a0b0e]">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="mb-8 text-white font-light">Tu visión, <span class="text-gold italic">nuestra ejecución técnica.</span></h2>
+            <p class="text-xl text-subtle mb-12">Hablemos sobre ese proceso que hoy es manual o ineficiente. Lo transformamos en una ventaja competitiva con software a medida.</p>
+            <CtaWhatsApp text="Solicitar Cotización de Proyecto" />
         </div>
     </section>
 

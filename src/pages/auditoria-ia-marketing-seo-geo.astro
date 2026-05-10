@@ -5,59 +5,55 @@ import Footer from '../components/Footer.astro';
 import CtaWhatsApp from '../components/CtaWhatsApp.astro';
 ---
 
-<Layout title="Auditoría IA, Marketing y SEO/GEO | TAP-IA">
+<Layout title="Auditoría IA & SEO/GEO | Diagnóstico de Visibilidad | TAP-IA">
     <Header />
 
-    <section class="relative min-h-[60vh] pt-36 pb-10 px-6 flex flex-col items-center justify-center">
-        <div class="absolute top-20 left-0 w-[600px] h-[600px] bg-gold/10 rounded-full blur-[120px] pointer-events-none -z-10"></div>
+    <section class="relative min-h-[60vh] pt-36 pb-10 px-6 flex flex-col items-center justify-center overflow-hidden">
+        <div class="absolute top-20 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-red-500/5 rounded-full blur-[120px] pointer-events-none -z-10"></div>
         
-        <div class="max-w-4xl mx-auto text-center">
-            <span class="editorial-label text-gold mb-6 block">Diagnóstico Ejecutivo</span>
-            <h1 class="font-serif text-4xl md:text-5xl mb-6 text-white leading-tight">
-                Auditoría IA, AI Marketing y SEO/GEO para detectar dónde tu empresa puede ganar <span class="italic font-light text-gold">claridad, visibilidad y eficiencia</span>
+        <div class="max-w-4xl mx-auto text-center relative z-10">
+            <span class="editorial-label text-gold mb-6 block">Lead Magnet / Auditoría</span>
+            <h1 class="font-serif text-4xl md:text-6xl mb-6 text-white leading-tight">
+                ¿Qué tan <span class="italic font-light text-white/60">visible e inteligente</span> es tu presencia digital hoy?
             </h1>
-            <p class="text-xl text-subtle font-light max-w-2xl mx-auto mb-10">
-                Un escaneo profundo para detener el "hacer por hacer" y encontrar las áreas donde la IA puede generar un impacto cuantificable inmediato.
+            <p class="text-xl text-subtle font-light max-w-2xl mx-auto mb-10 leading-relaxed">
+                No es una auditoría automática de un bot. Es un diagnóstico profundo realizado por un estratega técnico para detectar fugas de conversión y oportunidades de IA.
             </p>
-            <CtaWhatsApp text="Solicitar auditoría" microcopy="Analicemos el caso." />
+            <CtaWhatsApp text="Solicitar Auditoría Gratuita" microcopy="Cupos limitados por semana para asegurar calidad." />
         </div>
     </section>
 
-    <section class="py-20 px-6 relative border-t border-white/5">
+    <!-- QUÉ INCLUYE LA AUDITORÍA -->
+    <section class="py-24 px-6 relative border-t border-white/5 bg-white/[0.01]">
         <div class="max-w-5xl mx-auto">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                <div>
-                    <h2 class="text-3xl mb-6 text-white font-light">¿Para quién es esto?</h2>
-                    <p class="text-subtle mb-6">Para directores, founders y equipos de marketing que ya entienden que la IA llegó para quedarse, pero necesitan una evaluación externa, imparcial y técnica sobre cómo la están usando (o por qué aún no lo hacen de forma estructurada).</p>
-                    
-                    <h3 class="text-xl text-white mt-10 mb-4 font-light">Problemas comunes que detectamos:</h3>
-                    <ul class="space-y-3 text-subtle">
-                        <li><i class="fa-solid fa-check text-gold mr-2"></i> Uso superficial de la IA (solo para hacer textos).</li>
-                        <li><i class="fa-solid fa-check text-gold mr-2"></i> Pérdida de visibilidad frente a respuestas generativas y competidores.</li>
-                        <li><i class="fa-solid fa-check text-gold mr-2"></i> Fugas de presupuesto en procesos operativos fácilmente automatizables.</li>
-                    </ul>
-                </div>
-                <div class="bg-[#16191f]/50 p-8 rounded-2xl border border-white/5">
-                    <h3 class="text-xl text-white mb-6 font-light">Qué revisamos:</h3>
-                    <ul class="space-y-4 text-subtle mb-8">
-                        <li><strong class="text-white">Estado del marketing técnico:</strong> Tracking, funnels y uso de datos.</li>
-                        <li><strong class="text-white">Salud SEO/GEO:</strong> Preparación técnica para indexación por LLMs (ChatGPT, Gemini).</li>
-                        <li><strong class="text-white">Operativa IA:</strong> Flujos de trabajo actuales del equipo y herramientas.</li>
-                    </ul>
-
-                    <h3 class="text-xl text-white mb-6 font-light">Qué te entregamos:</h3>
-                    <ul class="space-y-3 text-subtle">
-                        <li><i class="fa-solid fa-file-pdf text-red-400 mr-2"></i> Reporte ejecutivo de hallazgos.</li>
-                        <li><i class="fa-solid fa-map text-gold mr-2"></i> Mapa de fricción (dónde pierdes dinero).</li>
-                        <li><i class="fa-solid fa-route text-blue-400 mr-2"></i> Plan de acción priorizado a 30, 60 y 90 días.</li>
-                    </ul>
-                </div>
-            </div>
+            <h2 class="text-3xl text-center mb-16 text-white font-light">Un diagnóstico en <span class="text-gold">3 niveles</span></h2>
             
-            <div class="mt-16 text-center">
-                <p class="text-white mb-4 text-lg">Las decisiones estratégicas requieren información clara. Deja de adivinar.</p>
-                <CtaWhatsApp text="Solicitar auditoría ahora" />
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="matte-card p-10 rounded-2xl border border-white/5 hover:border-gold/20 transition-all">
+                    <span class="text-white/20 text-4xl font-serif italic mb-6 block">01</span>
+                    <h4 class="text-white text-xl mb-4">SEO/GEO Readiness</h4>
+                    <p class="text-subtle text-sm">¿Google te indexa bien? ¿ChatGPT te puede citar? Revisamos tus señales técnicas de autoridad y citalidad.</p>
+                </div>
+                <div class="matte-card p-10 rounded-2xl border border-white/5 hover:border-gold/20 transition-all">
+                    <span class="text-white/20 text-4xl font-serif italic mb-6 block">02</span>
+                    <h4 class="text-white text-xl mb-4">CRO & Mensaje</h4>
+                    <p class="text-subtle text-sm">¿Tu propuesta de valor es clara? Detectamos por dónde se están escapando tus leads actuales.</p>
+                </div>
+                <div class="matte-card p-10 rounded-2xl border border-white/5 hover:border-gold/20 transition-all">
+                    <span class="text-white/20 text-4xl font-serif italic mb-6 block">03</span>
+                    <h4 class="text-white text-xl mb-4">IA Opportunity</h4>
+                    <p class="text-subtle text-sm">Identificamos el proceso específico de tu operación que más se beneficiaría de un agente o automatización.</p>
+                </div>
             </div>
+        </div>
+    </section>
+
+    <!-- POR QUÉ AHORA -->
+    <section class="py-24 px-6 relative border-t border-white/5">
+        <div class="max-w-3xl mx-auto text-center">
+            <h2 class="mb-8 text-white font-light">El mercado B2B no perdona la <span class="italic text-white/60">fricción técnica</span>.</h2>
+            <p class="text-subtle mb-12">En un mundo donde la IA responde en segundos, un sitio lento, confuso o invisible es una sentencia de muerte comercial. Obtén claridad sobre tu estado actual.</p>
+            <CtaWhatsApp text="Quiero mi Diagnóstico" />
         </div>
     </section>
 
