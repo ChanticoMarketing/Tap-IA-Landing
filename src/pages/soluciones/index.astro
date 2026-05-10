@@ -20,8 +20,27 @@ import Footer from '../../components/Footer.astro';
             </div>
 
             <div class="space-y-32">
-                <!-- 1. Web -->
+                <!-- 0. Consultoría IA -->
                 <div class="flex flex-col md:flex-row gap-16 items-center border-b border-white/5 pb-32">
+                    <div class="flex-1">
+                        <h2 class="mb-6 text-white">Consultoría de Inteligencia Artificial</h2>
+                        <ul class="text-subtle space-y-5 mb-10">
+                            <li><strong class="text-offwhite">Para quién:</strong> Empresas que necesitan claridad, estrategia y resultados reales con IA.</li>
+                            <li><strong class="text-offwhite">Qué resuelve:</strong> Traducimos la complejidad técnica en decisiones claras. Diagnóstico y roadmap.</li>
+                            <li><strong class="text-offwhite">Entregables:</strong> Auditoría operativa, diseño de solución y roadmap de implementación.</li>
+                        </ul>
+                        <div class="flex flex-wrap gap-6 items-center">
+                            <a href="/consultoria-inteligencia-artificial" class="px-8 py-4 bg-white text-charcoal font-bold rounded hover:bg-gold hover:text-white transition-colors uppercase tracking-wider text-sm">Ver Consultoría</a>
+                            <a href="/contacto" class="text-gold hover:text-white transition-colors text-sm font-bold uppercase tracking-widest"><i class="fa-solid fa-calendar mr-2"></i>Agendar Diagnóstico</a>
+                        </div>
+                    </div>
+                    <div class="flex-1 matte-card p-12 rounded-2xl w-full flex items-center justify-center border-gold/20">
+                        <i class="fa-solid fa-lightbulb text-[120px] text-gold/20"></i>
+                    </div>
+                </div>
+
+                <!-- 1. Web -->
+                <div class="flex flex-col md:flex-row-reverse gap-16 items-center border-b border-white/5 pb-32">
                     <div class="flex-1">
                         <h2 class="mb-6 text-white">Sitios Web que Convierten</h2>
                         <ul class="text-subtle space-y-5 mb-10">
@@ -34,13 +53,13 @@ import Footer from '../../components/Footer.astro';
                             <a href="/portafolio/sitios-web" class="text-gold hover:text-white transition-colors text-sm font-bold uppercase tracking-widest"><i class="fa-solid fa-play mr-2"></i>Ver Demos Web</a>
                         </div>
                     </div>
-                    <div class="flex-1 matte-card p-12 rounded-2xl w-full flex items-center justify-center border-gold/20">
-                        <i class="fa-solid fa-laptop-code text-[120px] text-gold/20"></i>
+                    <div class="flex-1 matte-card p-12 rounded-2xl w-full flex items-center justify-center border-gold/10">
+                        <i class="fa-solid fa-laptop-code text-[120px] text-gold/15"></i>
                     </div>
                 </div>
 
                 <!-- 2. SEO-GEO -->
-                <div class="flex flex-col md:flex-row-reverse gap-16 items-center border-b border-white/5 pb-32">
+                <div class="flex flex-col md:flex-row gap-16 items-center border-b border-white/5 pb-32">
                     <div class="flex-1">
                         <h2 class="mb-6 text-white">SEO-GEO (Generative Engine Optimization)</h2>
                         <ul class="text-subtle space-y-5 mb-10">
@@ -59,7 +78,7 @@ import Footer from '../../components/Footer.astro';
                 </div>
 
                 <!-- 3. Agentes IA -->
-                <div class="flex flex-col md:flex-row gap-16 items-center border-b border-white/5 pb-32">
+                <div class="flex flex-col md:flex-row-reverse gap-16 items-center border-b border-white/5 pb-32">
                     <div class="flex-1">
                         <h2 class="mb-6 text-white">Agentes IA (Ventas & Soporte)</h2>
                         <ul class="text-subtle space-y-5 mb-10">
@@ -68,7 +87,7 @@ import Footer from '../../components/Footer.astro';
                             <li><strong class="text-offwhite">Entregables:</strong> Agente entrenado con la data de su empresa, implementado en su web o WhatsApp.</li>
                         </ul>
                         <div class="flex flex-wrap gap-6 items-center">
-                            <a href="/soluciones/agentes-ia" class="px-8 py-4 bg-white text-charcoal font-bold rounded hover:bg-gold hover:text-white transition-colors uppercase tracking-wider text-sm">Explorar Agentes</a>
+                            <a href="/agentes-ia-a-medida" class="px-8 py-4 bg-white text-charcoal font-bold rounded hover:bg-gold hover:text-white transition-colors uppercase tracking-wider text-sm">Explorar Agentes</a>
                             <a href="/portafolio/agentes-ia" class="text-gold hover:text-white transition-colors text-sm font-bold uppercase tracking-widest"><i class="fa-solid fa-play mr-2"></i>Ver Demos IA</a>
                         </div>
                     </div>
@@ -78,7 +97,7 @@ import Footer from '../../components/Footer.astro';
                 </div>
 
                 <!-- 4. WebApps -->
-                <div class="flex flex-col md:flex-row-reverse gap-16 items-center border-b border-white/5 pb-32">
+                <div class="flex flex-col md:flex-row gap-16 items-center border-b border-white/5 pb-32">
                     <div class="flex-1">
                         <h2 class="mb-6 text-white">WebApps a la medida</h2>
                         <ul class="text-subtle space-y-5 mb-10">
@@ -87,7 +106,7 @@ import Footer from '../../components/Footer.astro';
                             <li><strong class="text-offwhite">Entregables:</strong> Plataforma hecha a la medida (Dashboard, CRM Interno, Portal de Clientes).</li>
                         </ul>
                         <div class="flex flex-wrap gap-6 items-center">
-                            <a href="/soluciones/webapps" class="px-8 py-4 bg-white text-charcoal font-bold rounded hover:bg-gold hover:text-white transition-colors uppercase tracking-wider text-sm">Solicitar WebApp</a>
+                            <a href="/webapps-ia-a-medida" class="px-8 py-4 bg-white text-charcoal font-bold rounded hover:bg-gold hover:text-white transition-colors uppercase tracking-wider text-sm">Solicitar WebApp</a>
                             <a href="/portafolio/webapps" class="text-gold hover:text-white transition-colors text-sm font-bold uppercase tracking-widest"><i class="fa-solid fa-play mr-2"></i>Ver Demos WebApps</a>
                         </div>
                     </div>
@@ -97,7 +116,7 @@ import Footer from '../../components/Footer.astro';
                 </div>
 
                 <!-- 5. AI Marketing -->
-                <div class="flex flex-col md:flex-row gap-16 items-center border-b border-white/5 pb-32">
+                <div class="flex flex-col md:flex-row-reverse gap-16 items-center border-b border-white/5 pb-32">
                     <div class="flex-1">
                         <h2 class="mb-6 text-white">AI Marketing (Estrategia)</h2>
                         <ul class="text-subtle space-y-5 mb-10">
@@ -106,7 +125,7 @@ import Footer from '../../components/Footer.astro';
                             <li><strong class="text-offwhite">Entregables:</strong> Playbooks, workflows automatizados y funnels de ventas.</li>
                         </ul>
                         <div class="flex flex-wrap gap-6 items-center">
-                            <a href="/soluciones/ai-marketing" class="px-8 py-4 bg-white text-charcoal font-bold rounded hover:bg-gold hover:text-white transition-colors uppercase tracking-wider text-sm">Planes de Marketing</a>
+                            <a href="/ai-marketing" class="px-8 py-4 bg-white text-charcoal font-bold rounded hover:bg-gold hover:text-white transition-colors uppercase tracking-wider text-sm">Planes de Marketing</a>
                             <a href="/portafolio/ai-marketing" class="text-gold hover:text-white transition-colors text-sm font-bold uppercase tracking-widest"><i class="fa-solid fa-play mr-2"></i>Ver Casos</a>
                         </div>
                     </div>
