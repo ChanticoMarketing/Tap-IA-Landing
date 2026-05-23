@@ -4,10 +4,21 @@ import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import CtaWhatsApp from '../../components/CtaWhatsApp.astro';
+import SchemaArticle from '../../components/SchemaArticle.astro';
 ---
 
 <Layout title="Google lanza actualización masiva GEO | Novedades Tap-IA">
     <Header />
+    <SchemaArticle
+        headline="Google lanza actualización masiva en su algoritmo de IA generativa"
+        description="Análisis de cómo Gemini y las respuestas generativas cambian la visibilidad en búsquedas B2B."
+        url="/novedades-ia/noticia-mock"
+        datePublished="2026-03-02"
+        dateModified="2026-03-02"
+        author="TAP-IA"
+        articleSection="Modelos"
+        type="NewsArticle"
+    />
 
     <section class="min-h-[50vh] pt-36 pb-16 px-6 relative border-b border-white/5">
         <div class="absolute top-20 right-1/4 w-[400px] h-[400px] bg-gold/5 rounded-full blur-[80px] pointer-events-none -z-10"></div>
@@ -22,6 +33,7 @@ import CtaWhatsApp from '../../components/CtaWhatsApp.astro';
             </div>
 
             <h1 class="font-serif text-4xl md:text-5xl lg:text-6xl text-white mb-8 leading-tight">Google lanza actualización masiva en su algoritmo de IA generativa</h1>
+            <p class="text-sm text-subtle mb-8">Por TAP-IA · 2 mar 2026 · Análisis GEO</p>
             
             <!-- Resumen (H2 exigido) -->
             <div class="bg-white/5 border border-white/10 p-6 md:p-8 rounded-2xl mb-12">
@@ -58,7 +70,7 @@ import CtaWhatsApp from '../../components/CtaWhatsApp.astro';
 
             <h2 class="font-serif text-3xl mb-6 text-white">Fuente Original</h2>
             <p class="mb-12">
-                Puedes leer el paper técnico publicado (en inglés) desde el blog oficial de desarrollo en: <a href="#" class="text-gold hover:underline">Blog de Ingeniería de Búsqueda</a>
+                Puedes leer el paper técnico publicado (en inglés) desde el blog oficial de desarrollo en: <a href="https://blog.google/technology/ai/" target="_blank" rel="noopener noreferrer" class="text-gold hover:underline">Blog de Ingeniería de Búsqueda</a>
             </p>
 
             <!-- ENGLISH VERSION REQUIRED -->

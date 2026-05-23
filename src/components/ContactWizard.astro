@@ -1,0 +1,670 @@
+---
+interface Props {
+  wizardId?: string;
+  plan?: string;
+  problem?: string;
+  servicio?: string;
+  demo?: string;
+  showMobileWa?: boolean;
+  showDesktopWaLink?: boolean;
+}
+
+const {
+  wizardId = 'contact',
+  plan = '',
+  problem = '',
+  servicio = '',
+  demo = '',
+  showMobileWa = false,
+  showDesktopWaLink = false,
+} = Astro.props;
+
+const waText = encodeURIComponent('Hola Tap-IA, quisiera evaluar mi caso de negocio.');
+const waHref = `https://wa.me/5213324239103?text=${waText}`;
+const wid = wizardId;
+---
+
+<div class="contact-wizard" data-contact-wizard={wid} id={`contact-wizard-${wid}`}>
+  {showMobileWa && (
+    <div class="md:hidden flex flex-col items-center gap-3 mb-8">
+      <a
+        href={waHref}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="w-full max-w-sm inline-flex items-center justify-center gap-3 px-8 py-4 bg-green-600 hover:bg-green-500 text-white font-bold rounded-full shadow-[0_0_20px_rgba(34,197,94,0.25)] text-sm uppercase tracking-wider transition-colors"
+      >
+        <i class="fa-brands fa-whatsapp text-xl" aria-hidden="true"></i>
+        WhatsApp rápido
+      </a>
+      <p class="text-subtle text-xs text-center">¿Prefieres más contexto? Completa el formulario abajo.</p>
+    </div>
+  )}
+
+  <div class="matte-card rounded-2xl border border-white/10 p-6 md:p-10 shadow-2xl">
+    <div class="mb-6 md:mb-8" aria-label="Progreso del formulario">
+      <div class="flex justify-between ui-caption mb-3">
+        <span data-wizard-step-indicator>Paso 1 de 4</span>
+        <span data-wizard-progress-percent class="text-gold">0%</span>
+      </div>
+      <div
+        class="w-full bg-white/5 h-1.5 rounded-full overflow-hidden"
+        role="progressbar"
+        aria-valuemin="0"
+        aria-valuemax="100"
+        aria-valuenow="0"
+        data-wizard-progress-track
+      >
+        <div data-wizard-progress-bar class="bg-gold h-full transition-all duration-500 w-0"></div>
+      </div>
+    </div>
+
+    <div
+      data-wizard-form-status
+      class="hidden mb-6 p-4 rounded-lg border text-sm"
+      role="status"
+      aria-live="polite"
+    >
+    </div>
+
+    <form data-wizard-form novalidate>
+      <input
+        type="text"
+        name="bot_field"
+        class="honeypot-field"
+        tabindex="-1"
+        autocomplete="off"
+        aria-hidden="true"
+      />
+
+      <input type="hidden" name="source_page" data-attr="source_page" value="" />
+      <input type="hidden" name="utm_source" data-attr="utm_source" value="" />
+      <input type="hidden" name="utm_medium" data-attr="utm_medium" value="" />
+      <input type="hidden" name="utm_campaign" data-attr="utm_campaign" value="" />
+      <input type="hidden" name="plan" data-attr="plan" value={plan} />
+      <input type="hidden" name="servicio" data-attr="servicio" value={servicio} />
+      <input type="hidden" name="problem" data-attr="problem" value={problem} />
+      <input type="hidden" name="demo" data-attr="demo" value={demo} />
+      <input type="hidden" name="referrer" data-attr="referrer" value="" />
+
+      <div class="step-content active" data-step="1">
+        <h3 class="mb-6 text-white font-playfair text-xl md:text-2xl" data-wizard-step-title="1" tabindex="-1">1. Situación Actual</h3>
+
+        <div class="mb-6">
+          <label class="block ui-caption mb-2 text-gold font-jakarta" for={`${wid}-field-obstacle`}>
+            ¿Cuál es el mayor obstáculo digital para tu negocio hoy?
+          </label>
+          <select name="obstacle" id={`${wid}-field-obstacle`} class="input-field font-jakarta" required>
+            <option value="" disabled selected>Elige la opción que mejor describa tu caso</option>
+            <option value="invisibility">No aparecemos en Google (Falta de visitas / SEO)</option>
+            <option value="conversion">Tenemos visitas en la web, pero nadie nos contacta o compra</option>
+            <option value="trust">Nuestra web se ve vieja y la competencia luce más profesional</option>
+            <option value="tech">La IA (ChatGPT, Gemini) no recomienda nuestro negocio (GEO)</option>
+          </select>
+        </div>
+
+        <div class="mb-6">
+          <label class="block ui-caption mb-2 font-jakarta" for={`${wid}-field-value_prop`}>
+            ¿Qué hace que tus clientes te elijan a ti y no a otros? <span class="normal-case text-subtle font-jakarta">(opcional)</span>
+          </label>
+          <textarea
+            name="value_prop"
+            id={`${wid}-field-value_prop`}
+            rows="3"
+            maxlength="280"
+            class="input-field font-jakarta text-sm"
+            placeholder="Ej. Nuestro servicio rápido, 15 años de experiencia, soporte inmediato, etc."></textarea>
+        </div>
+      </div>
+
+      <div class="step-content" data-step="2">
+        <h3 class="mb-6 text-white font-playfair text-xl md:text-2xl" data-wizard-step-title="2" tabindex="-1">2. Presencia Digital</h3>
+
+        <div class="mb-6">
+          <label class="block ui-caption mb-2 text-gold font-jakarta" for={`${wid}-field-has_website`}>
+            ¿Tu negocio tiene una página web activa?
+          </label>
+          <select name="has_website" id={`${wid}-field-has_website`} class="input-field font-jakarta" required>
+            <option value="" disabled selected>Selecciona una opción...</option>
+            <option value="yes">Sí, tenemos una web activa</option>
+            <option value="no">No, todavía no tenemos página web</option>
+            <option value="old">Sí, pero es muy vieja, no funciona o no vende</option>
+          </select>
+          <div id={`${wid}-website-url`} class="hidden mt-4">
+            <label class="block ui-caption mb-2 font-jakarta" for={`${wid}-field-current_website`}>Dirección (URL) de tu web actual</label>
+            <input
+              type="url"
+              name="current_website"
+              id={`${wid}-field-current_website`}
+              class="input-field font-jakarta text-sm"
+              placeholder="https://www.tuempresa.com"
+            />
+          </div>
+        </div>
+
+        <div class="mb-6" data-wizard-services-group>
+          <span class="block ui-caption mb-2 text-gold font-jakarta" id={`${wid}-services-label`}>
+            ¿Qué te gustaría construir o mejorar primero? <span class="text-gold">*</span>
+          </span>
+          <p class="text-subtle text-xs mb-3 font-jakarta">Puedes seleccionar varias opciones.</p>
+          <div
+            class="grid grid-cols-1 md:grid-cols-2 gap-4 font-jakarta text-sm"
+            role="group"
+            aria-labelledby={`${wid}-services-label`}
+          >
+            <label class="option-label">
+              <input type="checkbox" name="services" value="web" class="mr-3" />
+              <span>Página web o Landing page premium</span>
+            </label>
+            <label class="option-label">
+              <input type="checkbox" name="services" value="seo_geo" class="mr-3" />
+              <span>Posicionamiento en Google y motores de IA</span>
+            </label>
+            <label class="option-label">
+              <input type="checkbox" name="services" value="agents" class="mr-3" />
+              <span>Automatizaciones o agentes de IA</span>
+            </label>
+            <label class="option-label">
+              <input type="checkbox" name="services" value="webapps" class="mr-3" />
+              <span>Plataforma o software web a medida</span>
+            </label>
+            <label class="option-label">
+              <input type="checkbox" name="services" value="marketing" class="mr-3" />
+              <span>Campañas de marketing asistidas por IA</span>
+            </label>
+            <label class="option-label">
+              <input type="checkbox" name="services" value="avatars" class="mr-3" />
+              <span>Avatares IA o videos automatizados</span>
+            </label>
+          </div>
+          <p data-wizard-services-error class="field-error hidden" role="alert"></p>
+        </div>
+      </div>
+
+      <div class="step-content" data-step="3">
+        <h3 class="mb-6 text-white font-playfair text-xl md:text-2xl" data-wizard-step-title="3" tabindex="-1">3. Tiempos y Presupuesto</h3>
+
+        <div class="mb-6">
+          <label class="block ui-caption mb-2 text-gold font-jakarta" for={`${wid}-field-urgency`}>¿Cuándo te gustaría iniciar este proyecto?</label>
+          <select name="urgency" id={`${wid}-field-urgency`} class="input-field font-jakarta" required>
+            <option value="" disabled selected>Selecciona una opción...</option>
+            <option value="asap">Lo antes posible (en menos de 2 semanas)</option>
+            <option value="soon">El próximo mes (ventana planificada)</option>
+            <option value="info">Solo estoy explorando opciones por ahora</option>
+          </select>
+        </div>
+
+        <div class="mb-6 font-jakarta">
+          <label class="block ui-caption mb-2 text-gold" for={`${wid}-field-budget`}>
+            ¿Cuál es la escala actual de tu operación comercial?
+          </label>
+          <select name="budget" id={`${wid}-field-budget`} class="input-field" required>
+            <option value="" disabled selected>Selecciona la escala de tu empresa...</option>
+            <option value="captacion">Profesional independiente o Validando negocio</option>
+            <option value="sistema">Equipo pequeño o mediano (de 2 a 15 personas)</option>
+            <option value="arquitectura">Empresa consolidada (más de 15 personas / corporativo)</option>
+            <option value="evaluar">Prefiero definirlo en la sesión de diagnóstico</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="step-content" data-step="4">
+        <h3 class="mb-6 text-white font-playfair text-xl md:text-2xl" data-wizard-step-title="4" tabindex="-1">4. ¿A dónde enviamos tu diagnóstico?</h3>
+        <p class="text-subtle mb-6 text-sm font-jakarta">
+          Ingresa tus datos para enviarte los resultados del test y el plan de acción sugerido para tu negocio.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mb-6 font-jakarta">
+          <div>
+            <label class="block ui-caption mb-2 text-gold" for={`${wid}-field-name`}>Tu nombre</label>
+            <input
+              type="text"
+              name="name"
+              id={`${wid}-field-name`}
+              class="input-field font-jakarta text-sm"
+              required
+              autocomplete="name"
+              placeholder="Ej. Carlos Mendoza"
+            />
+          </div>
+          <div>
+            <label class="block ui-caption mb-2 text-gold" for={`${wid}-field-email`}>Tu correo de trabajo</label>
+            <input
+              type="email"
+              name="email"
+              id={`${wid}-field-email`}
+              class="input-field font-jakarta text-sm"
+              required
+              autocomplete="email"
+              placeholder="carlos@empresa.com"
+            />
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mb-6 font-jakarta">
+          <div>
+            <label class="block ui-caption mb-2" for={`${wid}-field-role`}>Tu puesto o cargo</label>
+            <input
+              type="text"
+              name="role"
+              id={`${wid}-field-role`}
+              class="input-field font-jakarta text-sm"
+              autocomplete="organization-title"
+              placeholder="Ej. Director, Gerente, Fundador"
+            />
+          </div>
+          <div>
+            <label class="block ui-caption mb-2 text-gold" for={`${wid}-field-company`}>Nombre de tu empresa</label>
+            <input
+              type="text"
+              name="company"
+              id={`${wid}-field-company`}
+              class="input-field font-jakarta text-sm"
+              required
+              autocomplete="organization"
+              placeholder="Ej. Mi Negocio S.A."
+            />
+          </div>
+        </div>
+
+        <div class="mb-6 font-jakarta">
+          <label class="block ui-caption mb-2" for={`${wid}-field-phone`}>
+            Número de WhatsApp <span class="normal-case text-subtle font-jakarta">(opcional para agilizar contacto)</span>
+          </label>
+          <input
+            type="tel"
+            name="phone"
+            id={`${wid}-field-phone`}
+            class="input-field font-jakarta text-sm"
+            autocomplete="tel"
+            placeholder="Ej. +52 33 1234 5678"
+          />
+        </div>
+
+        <div class="mb-6 font-jakarta">
+          <label class="block ui-caption mb-2" for={`${wid}-field-tool`}>
+            ¿Usan Notion o Taskade en tu equipo? <span class="normal-case text-subtle font-jakarta">(opcional)</span>
+          </label>
+          <select name="tool" id={`${wid}-field-tool`} class="input-field font-jakarta">
+            <option value="none">No usamos ninguno</option>
+            <option value="taskade">Sí, usamos Taskade</option>
+            <option value="notion">Sí, usamos Notion</option>
+          </select>
+        </div>
+
+        <div class="mb-4">
+          <label class="option-label items-start gap-3">
+            <input
+              type="checkbox"
+              name="consent"
+              id={`${wid}-field-consent`}
+              value="1"
+              class="mt-1 shrink-0"
+              required
+            />
+            <span class="text-sm text-subtle normal-case tracking-normal">
+              Acepto el <a href="/legal#privacidad" class="text-gold hover:underline" target="_blank"
+                >tratamiento de mis datos</a
+              > según el aviso de privacidad de Tap-IA.
+            </span>
+          </label>
+        </div>
+      </div>
+
+      <div class="flex justify-between items-center mt-8 pt-6 border-t border-white/10">
+        <button
+          type="button"
+          data-wizard-prev
+          class="ui-caption text-subtle hover:text-white px-4 py-2 transition-colors hidden min-h-[44px]"
+        >
+          <i class="fa-solid fa-arrow-left mr-2" aria-hidden="true"></i> Atrás
+        </button>
+
+        <button
+          type="button"
+          data-wizard-next
+          class="bg-white text-charcoal hover:bg-gold hover:text-white px-8 py-3 rounded-full font-bold transition-all duration-300 shadow-lg ml-auto uppercase tracking-wider text-sm min-h-[44px]"
+        >
+          Siguiente <i class="fa-solid fa-arrow-right ml-2" aria-hidden="true"></i>
+        </button>
+
+        <button
+          type="button"
+          data-wizard-submit
+          class="bg-gold text-charcoal hover:bg-white hover:text-charcoal px-8 py-3 rounded-full font-bold transition-all duration-300 shadow-lg ml-auto hidden items-center gap-2 uppercase tracking-wider text-sm min-h-[44px]"
+        >
+          <i class="fa-solid fa-paper-plane text-xl" aria-hidden="true"></i>
+          Enviar solicitud de diagnóstico
+        </button>
+      </div>
+    </form>
+  </div>
+
+  {showDesktopWaLink && (
+    <p class="hidden md:block text-center mt-8">
+      <a
+        href={waHref}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-subtle hover:text-gold text-sm transition-colors inline-flex items-center gap-2"
+      >
+        <i class="fa-brands fa-whatsapp text-green-500" aria-hidden="true"></i>
+        ¿Prefieres WhatsApp? Escríbenos directamente
+      </a>
+    </p>
+  )}
+</div>
+
+<script is:inline>
+  (function initContactWizards() {
+    const PLAN_SERVICES = {
+      venta_rapida: ['web'],
+      autoridad_google: ['web', 'seo_geo'],
+      dominio_total: ['web', 'seo_geo'],
+      impulso_captacion: ['web'],
+      sistema_web_inteligente: ['web', 'seo_geo'],
+      arquitectura_ia_comercial: ['web', 'marketing', 'agents'],
+    };
+
+    const SERVICIO_MAP = {
+      'agentes-ia': 'agents',
+      'ai-marketing': 'marketing',
+      webapps: 'webapps',
+      'avatares-ia': 'avatars',
+      'seo-geo': 'seo_geo',
+      web: 'web',
+    };
+
+    const setFieldError = (field, hasError) => {
+      if (!field) return;
+      if (hasError) {
+        field.classList.add('input-field--error');
+        field.setAttribute('aria-invalid', 'true');
+      } else {
+        field.classList.remove('input-field--error');
+        field.removeAttribute('aria-invalid');
+      }
+    };
+
+    document.querySelectorAll('[data-contact-wizard]').forEach((root) => {
+      const wizardId = root.dataset.contactWizard;
+      let currentStep = 1;
+      const totalSteps = 4;
+
+      const qs = (sel) => root.querySelector(sel);
+
+      const showFormStatus = (message, type) => {
+        const el = qs('[data-wizard-form-status]');
+        if (!el) return;
+        el.textContent = message;
+        el.classList.remove(
+          'hidden',
+          'border-red-500/50',
+          'bg-red-500/10',
+          'text-red-300',
+          'border-gold/50',
+          'bg-gold/10',
+          'text-gold'
+        );
+        if (type === 'error') {
+          el.classList.add('border-red-500/50', 'bg-red-500/10', 'text-red-300');
+        } else {
+          el.classList.add('border-gold/50', 'bg-gold/10', 'text-gold');
+        }
+      };
+
+      const hideFormStatus = () => {
+        const el = qs('[data-wizard-form-status]');
+        if (el) el.classList.add('hidden');
+      };
+
+      const focusStepTitle = () => {
+        const title = qs(`[data-wizard-step-title="${currentStep}"]`);
+        if (title) {
+          title.setAttribute('tabindex', '-1');
+          title.focus();
+        }
+      };
+
+      const updateUI = (shouldFocus = false) => {
+        root.querySelectorAll('.step-content').forEach((el) => el.classList.remove('active'));
+        qs(`.step-content[data-step="${currentStep}"]`)?.classList.add('active');
+
+        const prevBtn = qs('[data-wizard-prev]');
+        const nextBtn = qs('[data-wizard-next]');
+        const submitBtn = qs('[data-wizard-submit]');
+
+        if (currentStep === 1) {
+          prevBtn?.classList.add('hidden');
+        } else {
+          prevBtn?.classList.remove('hidden');
+        }
+
+        if (currentStep === totalSteps) {
+          nextBtn?.classList.add('hidden');
+          submitBtn?.classList.remove('hidden');
+          submitBtn?.classList.add('flex');
+        } else {
+          nextBtn?.classList.remove('hidden');
+          submitBtn?.classList.add('hidden');
+          submitBtn?.classList.remove('flex');
+        }
+
+        const progress = Math.round(((currentStep - 1) / (totalSteps - 1)) * 100);
+        const bar = qs('[data-wizard-progress-bar]');
+        const percent = qs('[data-wizard-progress-percent]');
+        const indicator = qs('[data-wizard-step-indicator]');
+        const track = qs('[data-wizard-progress-track]');
+
+        if (bar) bar.style.width = `${progress}%`;
+        if (percent) percent.textContent = `${progress}%`;
+        if (indicator) indicator.textContent = `Paso ${currentStep} de ${totalSteps}`;
+        if (track) track.setAttribute('aria-valuenow', String(progress));
+
+        if (shouldFocus) focusStepTitle();
+      };
+
+      const toggleWebsiteUrl = () => {
+        const select = qs('select[name="has_website"]');
+        const otherDiv = document.getElementById(`${wizardId}-website-url`);
+        const input = otherDiv?.querySelector('input');
+
+        if (select?.value === 'yes') {
+          otherDiv?.classList.remove('hidden');
+          input?.setAttribute('required', '');
+        } else {
+          otherDiv?.classList.add('hidden');
+          if (input) {
+            input.removeAttribute('required');
+            input.value = '';
+            setFieldError(input, false);
+          }
+        }
+      };
+
+      qs('select[name="has_website"]')?.addEventListener('change', toggleWebsiteUrl);
+
+      const validateServices = () => {
+        const checked = root.querySelectorAll('input[name="services"]:checked');
+        const errEl = qs('[data-wizard-services-error]');
+        const group = qs('[data-wizard-services-group]');
+        const valid = checked.length > 0;
+
+        if (errEl) {
+          if (!valid) {
+            errEl.textContent = 'Seleccione al menos un servicio.';
+            errEl.classList.remove('hidden');
+          } else {
+            errEl.classList.add('hidden');
+          }
+        }
+        group?.classList.toggle('services-group--error', !valid);
+        return valid;
+      };
+
+      const validateStep = (step) => {
+        hideFormStatus();
+        const stepContent = qs(`.step-content[data-step="${step}"]`);
+        if (!stepContent) return false;
+
+        let isValid = true;
+        const fields = stepContent.querySelectorAll('input, select, textarea');
+
+        fields.forEach((field) => {
+          if (field.type === 'checkbox' && field.name === 'services') return;
+          if (field.type === 'hidden' || field.classList.contains('honeypot-field')) return;
+
+          const isRequired =
+            field.hasAttribute('required') ||
+            (field.name === 'current_website' && qs('select[name="has_website"]')?.value === 'yes');
+
+          if (!isRequired) {
+            setFieldError(field, false);
+            return;
+          }
+
+          const fieldValid = field.checkValidity() && field.value !== '';
+          setFieldError(field, !fieldValid);
+          if (!fieldValid) isValid = false;
+        });
+
+        if (step === 2 && !validateServices()) isValid = false;
+
+        return isValid;
+      };
+
+      qs('[data-wizard-next]')?.addEventListener('click', () => {
+        if (validateStep(currentStep) && currentStep < totalSteps) {
+          currentStep++;
+          updateUI(true);
+        } else if (!validateStep(currentStep)) {
+          showFormStatus('Revise los campos marcados antes de continuar.', 'error');
+        }
+      });
+
+      qs('[data-wizard-prev]')?.addEventListener('click', () => {
+        if (currentStep > 1) {
+          currentStep--;
+          hideFormStatus();
+          updateUI(true);
+        }
+      });
+
+      qs('[data-wizard-submit]')?.addEventListener('click', async () => {
+        if (!validateStep(currentStep)) {
+          showFormStatus('Revise los campos marcados antes de enviar.', 'error');
+          return;
+        }
+
+        const form = qs('[data-wizard-form]');
+        const formData = new FormData(form);
+        const selectedServices = formData.getAll('services');
+
+        const data = {
+          name: formData.get('name'),
+          email: formData.get('email'),
+          company: formData.get('company'),
+          role: formData.get('role') || 'No especificado',
+          phone: formData.get('phone') || '',
+          obstacle: formData.get('obstacle'),
+          value_prop: formData.get('value_prop') || '',
+          has_website: formData.get('has_website'),
+          current_website: formData.get('current_website') || '',
+          services: selectedServices,
+          urgency: formData.get('urgency'),
+          budget: formData.get('budget'),
+          tool: formData.get('tool') || 'none',
+          consent: formData.get('consent') === '1',
+          bot_field: formData.get('bot_field') || '',
+          source_page: formData.get('source_page') || '',
+          utm_source: formData.get('utm_source') || '',
+          utm_medium: formData.get('utm_medium') || '',
+          utm_campaign: formData.get('utm_campaign') || '',
+          plan: formData.get('plan') || '',
+          servicio: formData.get('servicio') || '',
+          problem: formData.get('problem') || '',
+          demo: formData.get('demo') || '',
+          referrer: formData.get('referrer') || '',
+        };
+
+        const submitBtn = qs('[data-wizard-submit]');
+        const originalHtml = submitBtn.innerHTML;
+        submitBtn.innerHTML =
+          '<i class="fa-solid fa-spinner fa-spin text-xl" aria-hidden="true"></i> Enviando...';
+        submitBtn.disabled = true;
+        hideFormStatus();
+
+        try {
+          const response = await fetch('/api/submit', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data),
+          });
+
+          const result = await response.json();
+
+          if (response.ok) {
+            sessionStorage.setItem('tap_contact_name', String(data.name || ''));
+            submitBtn.innerHTML =
+              '<i class="fa-solid fa-check text-xl" aria-hidden="true"></i> Recibido';
+            setTimeout(() => {
+              window.location.href = '/contacto/gracias';
+            }, 600);
+          } else {
+            throw new Error(result.error || 'Error en el envío');
+          }
+        } catch (err) {
+          console.error(err);
+          showFormStatus(
+            'Hubo un problema al enviar. Intente de nuevo o escríbenos por WhatsApp.',
+            'error'
+          );
+          submitBtn.innerHTML = originalHtml;
+          submitBtn.disabled = false;
+        }
+      });
+
+      const urlParams = new URLSearchParams(window.location.search);
+      const getAttr = (key) => qs(`[data-attr="${key}"]`)?.value || '';
+
+      const problemParam = urlParams.get('problem') || getAttr('problem');
+      if (problemParam) {
+        const select = qs('select[name="obstacle"]');
+        const opt = select?.querySelector(`option[value="${problemParam}"]`);
+        if (select && opt) select.value = problemParam;
+      }
+
+      const planParam = urlParams.get('plan') || getAttr('plan');
+      if (planParam && PLAN_SERVICES[planParam]) {
+        PLAN_SERVICES[planParam].forEach((val) => {
+          const cb = root.querySelector(`input[name="services"][value="${val}"]`);
+          if (cb) cb.checked = true;
+        });
+      }
+
+      const servicioParam = urlParams.get('servicio') || getAttr('servicio');
+      const serviceVal = SERVICIO_MAP[servicioParam];
+      if (serviceVal) {
+        const cb = root.querySelector(`input[name="services"][value="${serviceVal}"]`);
+        if (cb) cb.checked = true;
+      }
+
+      if (urlParams.get('demo') === 'agent-waitlist' || getAttr('demo') === 'agent-waitlist') {
+        const cb = root.querySelector('input[name="services"][value="agents"]');
+        if (cb) cb.checked = true;
+      }
+
+      const sourceEl = qs('[data-attr="source_page"]');
+      if (sourceEl) sourceEl.value = window.location.pathname + window.location.search;
+      const refEl = qs('[data-attr="referrer"]');
+      if (refEl) refEl.value = document.referrer || '';
+
+      ['utm_source', 'utm_medium', 'utm_campaign'].forEach((key) => {
+        const val = urlParams.get(key);
+        const el = qs(`[data-attr="${key}"]`);
+        if (el && val) el.value = val;
+      });
+
+      updateUI();
+    });
+  })();
+</script>

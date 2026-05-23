@@ -1,0 +1,275 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+const megaprompts = [
+    {
+        id: "pas-copywriter",
+        title: "1. Redactor de Copys B2B (Framework PAS)",
+        category: "Copywriting & Conversión",
+        description: "Generador estructurado de textos de alta conversión bajo el framework Problema-Agitación-Solución. Calibrado para evitar la superficialidad y las muletillas artificiales recurrentes de ChatGPT.",
+        instructions: "Reemplaza los corchetes [ ] con los detalles de tu producto antes de enviarlo.",
+        promptText: `Actúa como un Redactor Publicitario B2B Senior con más de 15 años de experiencia en tecnología y software de alto valor. Tu objetivo es redactar un copy persuasivo y directo utilizando el framework PAS (Problema, Agitación, Solución) enfocado en [describir perfil del tomador de decisiones B2B, ej: Directores de TI de Logística].
+
+Información de entrada:
+- Producto/Servicio: [Nombre del producto, ej: LogisTrack IA]
+- Qué hace: [Propuesta de valor clave, ej: Reduce en un 35% los tiempos de espera de flotas usando algoritmos de despacho dinámicos]
+- Gran problema actual de la industria: [Describir dolor, ej: Pérdida constante de transportistas por rutas ineficientes y retrasos en bodegas]
+
+Directrices de Escritura Cruciales (Reglas de Oro):
+1. PROHIBIDO usar palabras cliché corporativas, aburridas o exageradas. Evita a toda costa: "revolucionario", "sin duda", "en el competitivo entorno de hoy", "te imaginas", "líder indiscutible", "en conclusión", o "el futuro ya está aquí".
+2. Mantén un tono elegante, analítico, seguro y muy sobrio (estilo lujo silencioso/B2B de alto margen).
+3. Usa frases cortas, dinámicas y directas. Empieza con un gancho basado en datos o en una verdad incómoda de la industria.
+4. En la fase de 'Agitación', no uses frases trilladas; en su lugar, describe las consecuencias operativas y financieras exactas de no resolver el problema (estrés del equipo, clientes molestos, pérdidas en el ledger trimestral).
+5. En la 'Solución', presenta la oferta de forma pragmática, sin promesas milagrosas.
+
+Estructura de la respuesta:
+- **Problema (P):** 2 o 3 líneas describiendo el dolor central cotidiano.
+- **Agitación (A):** 3 o 4 líneas escalando el impacto financiero o el costo de inacción.
+- **Solución (S):** 3 o 4 líneas introduciendo el producto y un Call to Action (CTA) claro, orientado al valor, no a la venta agresiva (ej. 'Evaluar caso de negocio en 15 minutos').`
+    },
+    {
+        id: "objections-handler",
+        title: "2. Simulador y Manejador de Objeciones",
+        category: "Ventas & Operaciones B2B",
+        description: "Simula el perfil de un tomador de decisiones escéptico (CFO, Director de Compras) para listar sus objeciones más crudas y generar respuestas de manejo altamente convincentes basadas en datos.",
+        instructions: "Configura el sector de tu cliente y los costos estimados antes de ejecutar.",
+        promptText: `Asume el rol de un [Director de Finanzas/CFO o Director de Operaciones] sumamente estricto y escéptico del sector de [describir sector, ej: Manufactura Industrial]. Acabas de recibir una propuesta comercial de [Nombre de tu solución, ej: Mantenimiento Predictivo TAP-IA] que promete [beneficio principal, ej: reducir paros de línea en un 25% con un costo de implementación de $15,000 USD].
+
+Tu perfil psicológico:
+- Odias perder el tiempo.
+- Desconfías profundamente de los términos de moda como "Inteligencia Artificial" o "Automatización Avanzada".
+- Tu prioridad número uno es el Retorno de Inversión (ROI) directo y evitar riesgos de seguridad o fricción de implementación que detengan el flujo diario de trabajo.
+
+Fase 1: Simulación de Objeciones
+Como este ejecutivo escéptico, escribe las 5 objeciones más crudas y reales que le harías a este proveedor durante la reunión de cierre. Deben enfocarse en:
+1. ROI a corto plazo frente al costo de implementación.
+2. Fricción del equipo humano (resistencia al cambio y curva de aprendizaje).
+3. Seguridad de datos e integración con sistemas heredados (legacy systems).
+4. El riesgo de que 'la IA se equivoque o falle'.
+5. Por qué no hacer esto in-house o seguir igual.
+
+Fase 2: Playbook de Respuesta
+A continuación, cambia de rol y actúa como el Consultor de Cierre de TAP-IA. Genera una respuesta maestra y estructurada para cada una de las 5 objeciones planteadas en la Fase 1.
+Cada respuesta debe:
+- Validar la objeción del CFO con empatía corporativa.
+- Desarmar la objeción con un argumento lógico fundamentado en métricas, reducción de riesgos o metodologías paso a paso.
+- Terminar con una pregunta de control para mover la conversación hacia adelante.`
+    },
+    {
+        id: "buyer-persona-analyst",
+        title: "3. Analista Profundo de Buyer Persona B2B",
+        category: "Estrategia Digital",
+        description: "Mapea las dinámicas psicológicas, profesionales y operativas de tu arquetipo de cliente ideal en corporativos B2B, revelando insights accionables de venta.",
+        instructions: "Introduce tu propuesta de valor y el cargo que deseas auditar.",
+        promptText: `Actúa como un Diseñador Estratégico y Psicólogo de Negocios B2B. Tu objetivo es realizar un perfilamiento psicográfico y operativo ultra-profundo de nuestro Buyer Persona ideal.
+
+Punto de partida:
+- Cargo objetivo: [Ej: Director de Recursos Humanos de Retail Multinacional]
+- Propuesta de valor que le ofrecemos: [Ej: Reducción del 40% de rotación operativa mediante onboarding gamificado e IA predictiva]
+
+Desglosa el perfil analizando detalladamente los siguientes bloques:
+
+1. **Dolores de Cabeza a las 3:00 AM (The Dark Side):** ¿Cuáles son sus temores profesionales más profundos? (Perder el empleo, no cumplir las metas trimestrales, ser criticado por el CEO).
+2. **Métricas que lo Evalúan (KPIs):** ¿Cómo miden su éxito en la empresa? ¿Qué métricas le garantizan su bono anual?
+3. **El Muro del Silencio (Fricciones Corporativas):** ¿Qué burocracia interna o silos organizacionales enfrenta diariamente para aprobar un nuevo software o servicio?
+4. **Palabras y Conceptos Prohibidos:** ¿Qué términos o discursos de venta ya le provocan rechazo inmediato en los correos de LinkedIn?
+5. **Gancho de Conversación Irresistible:** Escribe 3 líneas de apertura personalizadas que este perfil abriría y respondería de inmediato en su bandeja de entrada porque abordan un insight real de su día a día.`
+    },
+    {
+        id: "newsletter-designer",
+        title: "4. Diseñador de Secuencia de Nutrición (Email)",
+        category: "Contenidos & Automatización",
+        description: "Crea una secuencia automatizada de 4 correos electrónicos orientados a aportar valor real B2B, evitando los correos autopromocionales que dañan las tasas de apertura.",
+        instructions: "Detalla tu lead magnet o recurso gratuito y los dolores de tu audiencia.",
+        promptText: `Actúa como un Especialista en Email Marketing y Automation B2B. Diseña una secuencia automatizada de 4 correos de nutrición (nurturing workflow) para prospectos calificados que acaban de descargar nuestro recurso gratuito: [ej: Checklist de Auditoría SEO-GEO].
+
+El objetivo no es vender agresivamente en el primer correo, sino educar al prospecto, construir autoridad de marca y llevarlo de forma natural a agendar una llamada de diagnóstico.
+
+Estructura de la Secuencia de 4 Correos:
+
+- **Correo 1: Entrega e Insight Inmediato (Día 0)**
+  - Asunto: Corto, directo y sin mayúsculas exageradas (ej: "aquí tienes la auditoría seo-geo + un detalle").
+  - Contenido: Entrega directa del enlace. Añade un "insight sorpresa" que no estaba en el archivo descargado para dar valor inmediato.
+- **Correo 2: El Costo de la Inacción (Día 2)**
+  - Asunto: Basado en una pérdida o riesgo latente.
+  - Contenido: Relata una historia corta o caso de estudio anónimo sobre una marca que perdió un 40% de tráfico por ignorar esta tendencia de IA. Explica el por qué técnico de forma comprensible.
+- **Correo 3: La Solución Práctica (Día 4)**
+  - Asunto: Educativo y táctico.
+  - Contenido: Explica una metodología paso a paso (3 pasos sencillos) para empezar a corregir el problema hoy mismo por su cuenta.
+- **Correo 4: La Invitación al Diagnóstico Sin Riesgo (Día 7)**
+  - Asunto: Personal y directo.
+  - Contenido: Ofrece un diagnóstico personalizado gratuito de 15 minutos donde analizaremos su caso específico. Enfatiza que es un espacio de consultoría técnica pura, cero discursos de venta agresivos.
+
+Para cada correo proporciona:
+1. Línea de Asunto (2 variantes de alta apertura).
+2. Texto del cuerpo estructurado en párrafos cortos de máximo 2 oraciones para alta legibilidad móvil.
+3. El call to action específico.`
+    },
+    {
+        id: "geo-optimizer",
+        title: "5. Optimizador de Contenido para Motores de IA (GEO)",
+        category: "SEO & Indexación Generativa",
+        description: "Optimiza la estructura y la semántica de cualquier texto o artículo para elevar exponencialmente las probabilidades de ser citado por buscadores de IA como Gemini o Perplexity.",
+        instructions: "Inserta tu artículo de blog o copy web y tu marca objetivo.",
+        promptText: `Actúa como un Consultor de GEO (Generative Engine Optimization) de nivel mundial. Tu tarea es analizar y optimizar el artículo web/copy que te proporcionaré para asegurar que sea altamente citable y estructurado para algoritmos de IA como Google Gemini, Perplexity, OpenAI Search y Copilot.
+
+Texto a optimizar:
+[Inserta aquí tu artículo de blog, página de servicio o copy web]
+
+Marca y producto a posicionar:
+[Nombre de tu marca, ej: TAP-IA]
+
+Aplica las siguientes optimizaciones semánticas y de formato de forma quirúrgica:
+
+1. **Estructura de Respuestas Directas (Information Gain):** Redacta definiciones concisas de máximo 150 palabras utilizando estructuras semánticas limpias (Sujeto + Verbo + Predicado directo) para facilitar que la IA las extraiga como fragmentos destacados o referencias directas.
+2. **Citabilidad y Datos Duros:** Reescribe las secciones que contengan explicaciones genéricas agregando estadísticas simuladas basadas en lógica de industria o pídele al usuario que introduzca estadísticas reales. Vincula estas métricas directamente a la marca.
+3. **Estructura Jerárquica de Preguntas Frecuentes (Q&A):** Identifica las 3 preguntas clave del usuario en el texto y redáctalas usando encabezados (H2/H3) en formato de pregunta exacta (ej. "¿Cómo reduce TAP-IA los costos operativos?"), seguidas de una respuesta directa en el párrafo inmediato.
+4. **Simplificación de Lenguaje:** Elimina metáforas complejas, modismos regionales y adjetivos subjetivos innecesarios que confunden a los parsers semánticos de los modelos de lenguaje.
+
+Entrega el artículo optimizado completo, señalando entre corchetes [] qué optimización GEO aplicaste en cada sección para entender la lógica técnica.`
+    }
+];
+---
+
+<Layout title="Biblioteca de Megaprompts Canónicos B2B | TAP-IA" description="Colección de 5 megaprompts avanzados para Claude y ChatGPT. Diseñados para potenciar el copywriting B2B, el análisis de clientes y el posicionamiento GEO sin sonar robótico.">
+    <Header />
+
+    <main class="pt-32 pb-24 px-4 sm:px-6 lg:px-8 bg-charcoal relative min-h-screen">
+        <!-- Fondos decorativos tenues -->
+        <div class="absolute top-24 right-1/4 w-[450px] h-[450px] bg-gold/5 rounded-full blur-[100px] pointer-events-none -z-10 animate-pulse-slow"></div>
+        <div class="absolute bottom-10 left-1/4 w-[450px] h-[450px] bg-royal/5 rounded-full blur-[100px] pointer-events-none -z-10 animate-pulse-slow"></div>
+
+        <div class="max-w-5xl mx-auto">
+            <!-- Header Editorial -->
+            <div class="text-center mb-16">
+                <span class="editorial-label block mb-3">Tácticas & Ejecución con IA</span>
+                <h1 class="font-serif text-4xl sm:text-5xl md:text-6xl text-offwhite mb-6 leading-tight">
+                    Biblioteca de Megaprompts<br />B2B Canónicos
+                </h1>
+                <p class="text-subtle text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+                    Set de 5 megaprompts avanzados para Claude, ChatGPT y Gemini. Formulados con asignación profunda de rol, frameworks de ventas reales y directivas para eliminar la prosa plástica y robótica.
+                </p>
+                <div class="gold-rule mx-auto mt-6"></div>
+            </div>
+
+            <!-- Listado de Prompts -->
+            <div class="space-y-12">
+                {megaprompts.map((prompt) => (
+                    <div id={prompt.id} class="matte-card p-6 sm:p-8 hover:border-gold/20 transition-all duration-300 relative group">
+                        
+                        <!-- Categoría y Título -->
+                        <div class="flex flex-wrap items-center justify-between gap-4 mb-4 border-b border-white/5 pb-4">
+                            <div>
+                                <span class="text-[10px] uppercase tracking-wider text-gold font-bold bg-gold/5 px-2.5 py-1 rounded-full border border-gold/10">
+                                    {prompt.category}
+                                </span>
+                                <h3 class="text-xl sm:text-2xl text-offwhite font-serif mt-2 font-bold">{prompt.title}</h3>
+                            </div>
+                            
+                            <!-- Botón de Copiado Rápido Superior -->
+                            <button 
+                                type="button" 
+                                class="btn-copiar text-xs font-bold text-charcoal bg-gold border border-gold px-4 py-2 rounded-lg hover:bg-white hover:border-white hover:text-charcoal transition-all duration-200 cursor-pointer flex items-center gap-2"
+                                data-prompt-id={prompt.id}
+                                aria-label={`Copiar texto del prompt: ${prompt.title}`}
+                            >
+                                <i class="fa-regular fa-copy" aria-hidden="true"></i>
+                                <span>Copiar Megaprompt</span>
+                            </button>
+                        </div>
+
+                        <!-- Descripción e Instrucciones -->
+                        <div class="space-y-4 mb-6">
+                            <p class="text-sm text-subtle leading-relaxed">
+                                {prompt.description}
+                            </p>
+                            <div class="bg-charcoal/40 border border-white/5 p-4 rounded-lg flex items-start gap-3">
+                                <i class="fa-solid fa-circle-info text-gold mt-0.5 text-sm" aria-hidden="true"></i>
+                                <div class="text-xs text-subtle/90">
+                                    <strong class="text-white">Instrucciones de uso:</strong> {prompt.instructions}
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Code Preview Area -->
+                        <div class="relative">
+                            <div class="absolute right-4 top-4 z-10 text-[10px] uppercase font-mono tracking-widest text-white/30 bg-charcoal/80 px-2 py-0.5 rounded border border-white/5 pointer-events-none">
+                                Prompt Text
+                            </div>
+                            <!-- Contenedor de Código Ocultable/Scrollable -->
+                            <pre class="bg-charcoal/80 border border-white/5 rounded-xl p-5 overflow-x-auto text-xs font-mono text-offwhite/90 leading-relaxed max-h-[300px] whitespace-pre-wrap select-all focus:outline-none focus:ring-1 focus:ring-gold/30" id={`text-${prompt.id}`} tabindex="0">{prompt.promptText}</pre>
+                        </div>
+                    </div>
+                ))}
+            </div>
+
+            <!-- Caja de CTA al final -->
+            <div class="matte-card p-8 mt-16 text-center border border-gold/10 relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-gold/5 rounded-full blur-2xl pointer-events-none"></div>
+                <h3 class="text-2xl text-offwhite font-serif mb-4">¿Necesitas prompts a medida o flujos automatizados con IA?</h3>
+                <p class="text-sm text-subtle max-w-xl mx-auto mb-6">
+                    Diseñamos infraestructuras de contenido con n8n, asistentes entrenados con tu conocimiento de marca y frameworks SEO/GEO personalizados para dominar los buscadores generativos.
+                </p>
+                <a href="/contacto" class="inline-block px-8 py-3 bg-gold text-charcoal rounded-xl text-sm font-bold border border-gold hover:bg-white hover:border-white transition-colors">
+                    Conversar con un Especialista
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <Footer />
+</Layout>
+
+<script>
+    // Lógica interactiva para copiar al portapapeles con feedback visual
+    document.addEventListener('DOMContentLoaded', () => {
+        const botonesCopiar = document.querySelectorAll('.btn-copiar');
+
+        botonesCopiar.forEach(boton => {
+            boton.addEventListener('click', async (e) => {
+                const target = e.currentTarget as HTMLButtonElement;
+                const promptId = target.getAttribute('data-prompt-id');
+                if (!promptId) return;
+
+                const textElement = document.getElementById(`text-${promptId}`);
+                if (!textElement) return;
+
+                const textToCopy = textElement.textContent || "";
+
+                try {
+                    // Usar Clipboard API
+                    await navigator.clipboard.writeText(textToCopy);
+
+                    // Cambiar temporalmente el estado visual del botón
+                    const spanElement = target.querySelector('span');
+                    const iconElement = target.querySelector('i');
+
+                    if (spanElement && iconElement) {
+                        const originalText = spanElement.textContent;
+                        
+                        // Modificar clases e ícono
+                        spanElement.textContent = "¡Copiado!";
+                        target.classList.remove('bg-gold', 'border-gold', 'text-charcoal');
+                        target.classList.add('bg-green-600/20', 'border-green-500/40', 'text-green-400');
+                        iconElement.classList.remove('fa-regular', 'fa-copy');
+                        iconElement.classList.add('fa-solid', 'fa-check');
+
+                        // Revertir estado después de 2 segundos
+                        setTimeout(() => {
+                            spanElement.textContent = originalText;
+                            target.classList.remove('bg-green-600/20', 'border-green-500/40', 'text-green-400');
+                            target.classList.add('bg-gold', 'border-gold', 'text-charcoal');
+                            iconElement.classList.remove('fa-solid', 'fa-check');
+                            iconElement.classList.add('fa-regular', 'fa-copy');
+                        }, 2000);
+                    }
+                } catch (err) {
+                    console.error("Error al copiar texto: ", err);
+                    alert("No se pudo copiar el prompt de forma automática. Por favor selecciónalo manualmente del bloque.");
+                }
+            });
+        });
+    });
+</script>

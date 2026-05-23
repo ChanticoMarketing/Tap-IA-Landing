@@ -4,27 +4,38 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 ---
 
-<Layout title="Políticas y Legal | TAP-IA">
+<Layout 
+    title="Políticas y Legal | TAP-IA"
+    description="Aviso de privacidad, términos, cookies y uso responsable de IA de TAP-IA. Derechos ARCO y tratamiento de datos B2B."
+>
     <Header />
 
     <section class="min-h-screen pt-36 pb-20 px-6 max-w-4xl mx-auto">
         <h1 class="font-serif text-4xl mb-8 text-white">Políticas de Privacidad & Aviso Legal</h1>
         
         <div class="text-subtle space-y-6 text-sm">
-            <p><strong>Última actualización:</strong> Febrero 2026</p>
+            <p><strong>Última actualización:</strong> Mayo 2026</p>
             
-            <h2 class="text-white text-2xl font-serif mt-10 mb-4">1. Recopilación de Datos</h2>
-            <p>Tap-IA recopila única y exclusivamente la información profesional suministrada de manera explícita a través de nuestros formularios de contacto o durante el proceso de Diagnóstico para estructurar propuestas viables B2B. No utilizamos métodos de rastreo encubiertos en plataformas de terceros.</p>
+            <h2 id="privacidad" class="text-white text-2xl font-serif mt-10 mb-4">1. Aviso de Privacidad y Tratamiento de Datos</h2>
+            <p>En cumplimiento a la Ley Federal de Protección de Datos Personales en Posesión de los Particulares (LFPDPPP), el responsable del tratamiento de sus datos personales es <strong>Emmanuel Tapia Sánchez</strong>, quien opera la marca comercial <strong>TAP-IA</strong>, con correo de contacto <a href="mailto:emmanuel@tap-ia.tech" class="text-gold hover:underline">emmanuel@tap-ia.tech</a>.</p>
+            <p><strong>Datos que recopilamos:</strong> Únicamente la información profesional suministrada de manera explícita a través de nuestro formulario de contacto: nombre, correo electrónico empresarial, rol, teléfono (opcional) y detalles sobre los retos operativos o de marketing de su negocio.</p>
+            <p><strong>Finalidad:</strong> Responder a solicitudes, realizar diagnósticos comerciales y mejorar nuestra propuesta de servicios B2B. No vendemos ni alquilamos su información a terceros.</p>
+            <p><strong>Transferencias:</strong> Sus datos pueden ser procesados mediante herramientas de automatización y proveedores de alojamiento web que actúan por nuestra cuenta, bajo estrictos estándares de confidencialidad.</p>
+            <p><strong>Conservación:</strong> Mantendremos sus datos mientras dure la relación comercial o un máximo de 24 meses para leads inactivos.</p>
+            <p><strong>Derechos ARCO y Revocación:</strong> Usted tiene derecho a Conocer, Rectificar, Cancelar u Oponerse al tratamiento de sus datos. Puede ejercer estos derechos o revocar su consentimiento enviando un correo a <a href="mailto:emmanuel@tap-ia.tech" class="text-gold hover:underline">emmanuel@tap-ia.tech</a>.</p>
+            <p><strong>Cambios:</strong> Las actualizaciones a este aviso se publicarán en esta misma página.</p>
             
-            <h2 class="text-white text-2xl font-serif mt-10 mb-4">2. Uso de la Información</h2>
-            <ul class="list-disc pl-5 space-y-2">
-                <li>Pre-evaluación de infraestructura digital.</li>
-                <li>Generación de reportes de auditoría SEO-GEO.</li>
-                <li>Comunicaciones referidas al avance de proyecto o soporte (Sprints).</li>
-            </ul>
+            <h2 id="terminos" class="text-white text-2xl font-serif mt-10 mb-4">2. Términos de Servicio</h2>
+            <p>La información, recursos y herramientas de diagnóstico presentados en este sitio web tienen naturaleza informativa y no constituyen una obligación de contratación. Todo el contenido es propiedad intelectual de TAP-IA.</p>
+            <p>No nos hacemos responsables por inexactitudes en la información derivada de terceros (como noticias sobre IA). El uso de este sitio se rige por las leyes vigentes en México.</p>
 
-            <h2 class="text-white text-2xl font-serif mt-10 mb-4">3. Confidencialidad (NDA)</h2>
-            <p>Toda la data generada, estrategias diseñadas o arquitecturas descubiertas durante el diagnóstico B2B están protegidas por confidencialidad tácita. Los datos de nuestros clientes no alimentan modelos Fundacionales públicos (OpenAI/Anthropic) en modo de entrenamiento de datos.</p>
+            <h2 id="cookies" class="text-white text-2xl font-serif mt-10 mb-4">3. Política de Cookies</h2>
+            <p>Actualmente, este sitio web utiliza <strong>únicamente cookies estrictamente necesarias</strong> (técnicas o de sesión) esenciales para la correcta navegación y funcionamiento de la plataforma (Astro/Node).</p>
+            <p><strong>No utilizamos cookies analíticas</strong> ni compartimos o recopilamos información de seguimiento o comportamiento para publicidad de terceros en este sitio web.</p>
+
+            <h2 id="uso-ia" class="text-white text-2xl font-serif mt-10 mb-4">4. Uso Responsable de IA y Confidencialidad</h2>
+            <p>Toda la data generada, estrategias diseñadas o arquitecturas descubiertas durante el diagnóstico B2B están protegidas por confidencialidad tácita. Los datos de nuestros clientes y prospectos <strong>nunca</strong> se utilizan para alimentar o entrenar Modelos Fundacionales públicos (como los de OpenAI o Anthropic) sin un acuerdo explícito previo.</p>
+            <p>El uso de herramientas de Inteligencia Artificial para la ejecución de proyectos y entregables finales estará siempre sujeto a los términos del contrato comercial o NDA firmado entre las partes.</p>
         </div>
     </section>
 

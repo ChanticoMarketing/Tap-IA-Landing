@@ -3,10 +3,21 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import CtaWhatsApp from '../components/CtaWhatsApp.astro';
+import SchemaService from '../components/SchemaService.astro';
 ---
 
-<Layout title="Auditoría IA & SEO/GEO | Diagnóstico de Visibilidad | TAP-IA">
+<Layout 
+    title="Auditoría IA & SEO/GEO | Diagnóstico de Visibilidad | TAP-IA"
+    description="Auditoría integral de Inteligencia Artificial aplicada a negocio, marketing digital avanzado y estrategias de visibilidad SEO/GEO."
+>
+
     <Header />
+    <SchemaService 
+        name="Auditoría IA, Marketing y SEO/GEO"
+        description="Auditoría integral de Inteligencia Artificial aplicada a negocio, marketing digital avanzado y estrategias de visibilidad SEO/GEO."
+        url="/auditoria-ia-marketing-seo-geo"
+        serviceType="AI, Marketing and SEO/GEO Audit"
+    />
 
     <section class="relative min-h-[60vh] pt-36 pb-10 px-6 flex flex-col items-center justify-center overflow-hidden">
         <div class="absolute top-20 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-red-500/5 rounded-full blur-[120px] pointer-events-none -z-10"></div>

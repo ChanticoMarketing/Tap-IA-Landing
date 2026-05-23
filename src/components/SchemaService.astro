@@ -1,0 +1,40 @@
+---
+// src/components/SchemaService.astro
+// Componente parametrizable que genera JSON-LD de tipo Service.
+// Inyectar en cada landing page BOFU con props específicos.
+import { SITE_URL } from '../lib/seo';
+
+interface Props {
+  name: string;
+  description: string;
+  url: string;
+  serviceType?: string;
+}
+
+const { name, description, url, serviceType } = Astro.props;
+const serviceUrl = new URL(url, SITE_URL).href;
+---
+
+<script type="application/ld+json" is:inline set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "@id": `${serviceUrl}#service`,
+  "name": name,
+  "description": description,
+  "url": serviceUrl,
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": serviceUrl
+  },
+  "provider": {
+    "@type": "Organization",
+    "@id": "https://tap-ia.tech/#organization",
+    "name": "TAP-IA",
+    "url": "https://tap-ia.tech"
+  },
+  "areaServed": {
+    "@type": "Country",
+    "name": "México"
+  },
+  "serviceType": serviceType || name
+})} />

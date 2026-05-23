@@ -1,0 +1,160 @@
+---
+// src/pages/novedades-ia/agentes-ia-marketing-2026-openclaw-manus-era-agentica.astro
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import CtaWhatsApp from '../../components/CtaWhatsApp.astro';
+import SchemaArticle from '../../components/SchemaArticle.astro';
+import { SITE_URL } from '../../lib/seo';
+
+// Metadatos (Backend-only usage of "Intelligence Hub" if needed, but for SEO we use the user's keywords)
+const metadata = {
+  title: "Agentes de IA en Marketing 2026: OpenClaw, Manus y la Era de la Ejecución Autónoma",
+  description: "Los agentes de IA en marketing definen la productividad en 2026 porque han pasado del lenguaje a la acción. Analizamos OpenClaw, Manus, GenSpark y MiniMax Agent.",
+  slug: "/novedades-ia/agentes-ia-marketing-2026-openclaw-manus-era-agentica",
+  datePublished: "2026-05-11",
+  dateModified: "2026-05-11",
+  heroImage: `${SITE_URL}/images/blog/hero-era-agentes.png`,
+  author: "Tap-IA",
+  intelligenceSource: "Tap-IA Intelligence Hub" // Backend usage
+};
+---
+
+<Layout title={metadata.title} description={metadata.description} ogImage={metadata.heroImage}>
+    <Header />
+    <SchemaArticle
+        headline={metadata.title}
+        description={metadata.description}
+        datePublished={metadata.datePublished}
+        dateModified={metadata.dateModified}
+        author={metadata.author}
+        image={metadata.heroImage}
+        url={`${SITE_URL}${metadata.slug}`}
+    />
+
+    <section class="min-h-[50vh] pt-36 pb-16 px-6 relative border-b border-white/5">
+        <div class="absolute top-20 right-1/4 w-[400px] h-[400px] bg-forest/10 rounded-full blur-[80px] pointer-events-none -z-10"></div>
+        
+        <div class="max-w-4xl mx-auto">
+            <a href="/novedades-ia" class="text-subtle text-sm hover:text-white transition-colors mb-6 inline-block">
+                <i class="fa-solid fa-arrow-left mr-2"></i>Volver a Novedades
+            </a>
+            
+            <div class="flex gap-3 mb-6 text-xs font-semibold uppercase tracking-wider">
+                <span class="text-forest">IA Agéntica · Marketing Digital</span>
+                <span class="text-subtle/50">•</span>
+                <span class="text-subtle">11 Mayo 2026</span>
+            </div>
+
+            <h1 class="font-serif text-4xl md:text-5xl lg:text-6xl text-white mb-8 leading-tight">Agentes de IA en Marketing 2026: OpenClaw, Manus y la Era de la Ejecución Autónoma</h1>
+            
+            <img 
+                src="/images/blog/hero-era-agentes.png" 
+                alt="La Era de los Agentes de IA en Marketing" 
+                class="w-full h-auto rounded-3xl border border-white/10 shadow-2xl mb-12"
+            />
+
+            <!-- Resumen Ejecutivo -->
+            <div class="bg-white/5 border border-white/10 p-6 md:p-8 rounded-2xl mb-12">
+                <h2 class="text-xl font-serif text-forest mb-3 flex items-center gap-2">
+                    <i class="fa-solid fa-bolt"></i> Resumen Ejecutivo (ES)
+                </h2>
+                <p class="text-offwhite/90 leading-relaxed text-sm md:text-base">
+                    Los agentes de IA en marketing definen la productividad en 2026 porque han pasado del lenguaje a la acción. Analizamos OpenClaw, Manus, GenSpark y MiniMax Agent: qué son, cómo se usan en marketing y qué diferencia a un agente autónomo de un chatbot.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <article class="py-16 px-6 max-w-3xl mx-auto text-offwhite/90">
+        
+        <div class="prose prose-invert prose-forest max-w-none">
+            <blockquote>
+                <strong>Los agentes de IA en marketing definen la productividad en 2026 porque ya no generan contenido — ejecutan estrategias completas.</strong> Herramientas como OpenClaw, Manus, GenSpark y MiniMax Agent son la primera generación real de sistemas que actúan, no sólo responden. Esta es la guía definitiva para entender qué son, en qué se diferencian y cómo aplicarlos en tu agencia o equipo de marketing.
+            </blockquote>
+
+            <hr class="border-white/5 my-12" />
+
+            <h2 class="font-serif text-3xl mb-6 text-white">El cambio de paradigma que nadie explica bien</h2>
+            <p class="mb-6 leading-relaxed">
+                Desde 2022 el discurso dominante en marketing digital fue "usa IA para generar más contenido más rápido". En 2026, esa narrativa ya quedó obsoleta. El salto cualitativo no está en la generación de texto — está en la <strong>ejecución autónoma de tareas complejas</strong>.
+            </p>
+            <p class="mb-6 leading-relaxed">
+                Un agente de IA no es un chatbot más inteligente. Es un sistema que <strong>percibe su entorno, planifica una secuencia de acciones y las ejecuta usando herramientas reales</strong> — navegadores, APIs, CRMs, plataformas de anuncios, correo electrónico — hasta completar un objetivo sin intervención humana en cada paso. La diferencia entre ChatGPT y un agente de IA es la misma que existe entre un consultor que te da consejos y un colaborador que ejecuta el proyecto.
+            </p>
+
+            <h2 class="font-serif text-3xl mb-6 text-white">Qué define técnicamente a un agente de IA</h2>
+            <p class="mb-6 leading-relaxed">Para que un sistema sea considerado un <strong>agente de IA</strong> en el sentido estricto del término, necesita operar en cuatro capas simultáneamente:</p>
+            <ul class="list-disc pl-6 mb-8 space-y-2">
+                <li><strong>Percepción:</strong> el agente recibe inputs del entorno — un prompt, una URL, datos de un CRM, el estado de una campaña — y los interpreta como contexto.</li>
+                <li><strong>Planificación:</strong> descompone el objetivo en sub-tareas con dependencias, selecciona qué herramientas usar en cada paso y en qué orden ejecutarlas.</li>
+                <li><strong>Ejecución con herramientas:</strong> actúa en el mundo real usando integraciones — control de navegador, llamadas a APIs, generación de código, envío de mensajes, manipulación de archivos.</li>
+                <li><strong>Memoria y adaptación:</strong> almacena resultados intermedios, mantiene contexto entre sesiones y ajusta el plan si algo falla o cambia.</li>
+            </ul>
+
+            <h2 class="font-serif text-3xl mb-6 text-white">La diferencia real entre chatbots y agentes de IA</h2>
+            <div class="overflow-x-auto mb-12">
+                <table class="w-full border-collapse border border-white/10 text-sm">
+                    <thead>
+                        <tr class="bg-white/5">
+                            <th class="border border-white/10 p-3 text-left">Dimensión</th>
+                            <th class="border border-white/10 p-3 text-left">Chatbot tradicional</th>
+                            <th class="border border-white/10 p-3 text-left">Agente de IA</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="border border-white/10 p-3 font-semibold">Orientación</td>
+                            <td class="border border-white/10 p-3 text-subtle">Responde preguntas</td>
+                            <td class="border border-white/10 p-3">Completa objetivos</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-white/10 p-3 font-semibold">Uso de herramientas</td>
+                            <td class="border border-white/10 p-3 text-subtle">Ninguno o muy limitado</td>
+                            <td class="border border-white/10 p-3">Navegador, APIs, CRM, código</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-white/10 p-3 font-semibold">Planificación</td>
+                            <td class="border border-white/10 p-3 text-subtle">No planifica</td>
+                            <td class="border border-white/10 p-3">Descompone en sub-pasos</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2 class="font-serif text-3xl mb-6 text-white">OpenClaw: el agente open-source que redefine el control</h2>
+            <p class="mb-6 leading-relaxed">
+                <strong>OpenClaw</strong> es un agente de IA autónomo de código abierto, diseñado bajo la premisa de ser "el asistente de IA que realmente hace cosas". Su ventaja estructural radica en el control absoluto de la infraestructura agéntica, operando a través de canales de mensajería como WhatsApp, Telegram y Slack.
+            </p>
+
+            <h2 class="font-serif text-3xl mb-6 text-white">El ecosistema agéntico: Manus, GenSpark y MiniMax</h2>
+            <p class="mb-6 leading-relaxed">
+                <strong>Manus</strong>, recientemente adquirido por Meta, se integra en las plataformas de anuncios para optimizar creatividades. <strong>GenSpark</strong> ofrece una entrada no-code accesible con más de 80 herramientas integradas, mientras que <strong>MiniMax Agent</strong> destaca en la orquestación multi-agente para investigaciones profundas.
+            </p>
+
+            <div class="bg-charcoal border border-forest/20 p-8 rounded-xl my-12">
+                <h3 class="font-serif text-2xl mb-4 text-white">El marketer de 2026</h3>
+                <p class="italic text-lg">
+                    "Los mejores marketers de 2026 no ejecutan campañas. Diseñan los agentes que las ejecutan por ellos — y tienen el criterio para saber cuándo corregirlos."
+                </p>
+                <p class="text-right font-serif text-forest mt-4">— Tap-IA</p>
+            </div>
+
+            <hr class="border-white/10 my-16">
+            
+            <h2 class="font-serif text-3xl mb-6 text-subtle text-center">English Version Summary (EN)</h2>
+            <div class="bg-white/5 p-6 border border-white/5 rounded-xl">
+                <p class="mb-4 text-sm text-subtle">
+                    <strong>Summary:</strong> The industry is shifting from conversational AI (LLMs) to Action-oriented AI (LAMs). Autonomous agents like Open Claw and Manus are now capable of executing end-to-end workflows within enterprise software ecosystems.
+                </p>
+            </div>
+        </div>
+
+        <div class="mt-20 pt-16 border-t border-white/10 text-center">
+            <p class="text-xs text-subtle uppercase tracking-widest mb-4">Publicado por Tap-IA · Mayo 2026 · Jalisco, México</p>
+            <CtaWhatsApp text="Consultar estrategia agéntica" />
+        </div>
+    </article>
+
+    <Footer />
+</Layout>

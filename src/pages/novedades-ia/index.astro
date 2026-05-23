@@ -2,10 +2,22 @@
 import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
+import SchemaItemList from '../../components/SchemaItemList.astro';
 ---
 
-<Layout title="Novedades IA | TAP-IA">
+<Layout
+    title="Novedades IA | TAP-IA"
+    description="Noticias y análisis de IA filtrados por impacto real en marketing, visibilidad y automatización."
+>
     <Header />
+    <SchemaItemList
+        name="Novedades IA TAP-IA"
+        description="Feed editorial con las novedades de IA más relevantes para marketing, visibilidad y automatización."
+        items={[
+            { name: 'Claude Mythos y Project Glasswing: qué cambia en ciberseguridad, IA y marketing (2026)', url: '/novedades-ia/claude-mythos-proyecto-glasswing-2026' },
+            { name: 'Agentes de IA en Marketing 2026: OpenClaw, Manus y la Era de la Ejecución Autónoma', url: '/novedades-ia/agentes-ia-marketing-2026-openclaw-manus-era-agentica' },
+        ]}
+    />
 
     <section class="pt-36 pb-12 px-6 relative border-b border-white/5 bg-charcoal">
         <div class="absolute top-20 left-1/4 w-[500px] h-[500px] bg-gold/15 rounded-full blur-[120px] pointer-events-none -z-10"></div>
@@ -14,12 +26,10 @@ import Footer from '../../components/Footer.astro';
                 <span class="text-gold text-xs font-bold uppercase tracking-widest mb-3 inline-block">Weekly Update</span>
                 <h1 class="font-serif text-4xl md:text-6xl text-white mb-4">Novedades IA</h1>
                 <p class="text-subtle text-lg max-w-2xl">Noticias de Inteligencia Artificial filtradas exclusivamente por su impacto real en marketing y negocios.</p>
+                <p class="text-subtle/60 text-sm mt-3 max-w-2xl">Archivo en crecimiento — búsqueda por categorías próximamente.</p>
             </div>
-            <div class="hidden md:flex gap-3">
-                <div class="relative">
-                    <input type="text" placeholder="Buscar noticia o herramienta..." class="bg-white/5 border border-white/10 text-white rounded-full py-2 pl-4 pr-10 focus:outline-none focus:border-gold/50 w-64 text-sm">
-                    <i class="fa-solid fa-magnifying-glass absolute right-4 top-1/2 -translate-y-1/2 text-subtle text-xs"></i>
-                </div>
+            <div class="hidden md:flex md:items-end md:pb-1" aria-hidden="true">
+                <p class="text-subtle/50 text-sm text-right max-w-xs">2 análisis publicados</p>
             </div>
         </div>
     </section>
@@ -28,12 +38,12 @@ import Footer from '../../components/Footer.astro';
     <section class="py-6 px-6 border-b border-white/5 bg-white/[0.01]">
         <div class="max-w-7xl mx-auto">
             <h2 class="sr-only">Categorías</h2>
-            <div class="flex flex-wrap gap-3 text-sm">
-                <a href="#" class="px-4 py-2 bg-gold text-charcoal font-medium rounded-full">Top Semanal</a>
-                <a href="#" class="px-4 py-2 border border-white/10 text-subtle hover:text-white rounded-full transition-colors">Modelos</a>
-                <a href="#" class="px-4 py-2 border border-white/10 text-subtle hover:text-white rounded-full transition-colors">Herramientas</a>
-                <a href="#" class="px-4 py-2 border border-white/10 text-subtle hover:text-white rounded-full transition-colors">Agentes</a>
-                <a href="#" class="px-4 py-2 border border-white/10 text-subtle hover:text-white rounded-full transition-colors">IA en Marketing</a>
+            <div class="flex flex-wrap gap-3 text-sm" role="list" aria-label="Categorías editoriales">
+                <span role="listitem" class="px-4 py-2 bg-gold text-charcoal font-medium rounded-full">Top semanal</span>
+                <span role="listitem" class="px-4 py-2 border border-white/10 text-subtle/50 rounded-full text-sm cursor-not-allowed" aria-disabled="true" title="Próximamente">Modelos</span>
+                <span role="listitem" class="px-4 py-2 border border-white/10 text-subtle/50 rounded-full text-sm cursor-not-allowed" aria-disabled="true" title="Próximamente">Herramientas</span>
+                <span role="listitem" class="px-4 py-2 border border-white/10 text-subtle/50 rounded-full text-sm cursor-not-allowed" aria-disabled="true" title="Próximamente">Agentes</span>
+                <span role="listitem" class="px-4 py-2 border border-white/10 text-subtle/50 rounded-full text-sm cursor-not-allowed" aria-disabled="true" title="Próximamente">IA en Marketing</span>
             </div>
         </div>
     </section>
@@ -44,73 +54,50 @@ import Footer from '../../components/Footer.astro';
             <h2 class="font-serif text-3xl mb-10 text-white"><i class="fa-solid fa-fire text-gold mr-3"></i>Lo más relevante de la semana</h2>
 
             <div class="space-y-6">
-                <!-- FEATURED POST -->
-                <article class="matte-card p-8 rounded-2xl group border-l-4 border-l-gold block relative overflow-hidden transition-all duration-300 hover:shadow-[0_0_30px_rgba(212,175,55,0.1)]">
+                <article id="claude-mythos" class="matte-card p-8 rounded-2xl group border-l-4 border-l-gold block relative overflow-hidden transition-all duration-300 hover:shadow-[0_0_30px_rgba(212,175,55,0.12)]">
                     <div class="flex flex-col md:flex-row gap-8">
                         <div class="flex-grow">
                             <div class="flex gap-3 mb-4 text-xs font-semibold uppercase tracking-wider">
                                 <span class="text-gold">Modelos</span>
                                 <span class="text-subtle/50">•</span>
-                                <span class="text-subtle">Hoy</span>
+                                <span class="text-subtle">17 Mayo 2026</span>
                             </div>
                             <h3 class="text-2xl text-white font-serif mb-3 group-hover:text-gold transition-colors">
-                                <a href="/novedades-ia/noticia-mock">Google lanza actualización masiva en su algoritmo de IA generativa</a>
+                                <a href="/novedades-ia/claude-mythos-proyecto-glasswing-2026">Claude Mythos y Project Glasswing: qué cambia en ciberseguridad, IA y marketing (2026)</a>
                             </h3>
-                            <p class="text-subtle mb-6 line-clamp-2">Una nueva actualización mayor promete cambiar por completo cómo Google interpreta las búsquedas B2B. ¿Qué significa esto para tu blog de empresa?</p>
+                            <p class="text-subtle mb-6 line-clamp-2">Anthropic retiene su modelo frontier más potente para defensa. Análisis para marketing, negocio y visibilidad GEO.</p>
+                            <div class="flex flex-wrap items-center justify-between mt-auto">
+                                <div class="flex items-center gap-2 text-xs text-subtle">
+                                    <i class="fa-solid fa-cube"></i> Fuente: <strong>Anthropic</strong>
+                                </div>
+                                <a href="/novedades-ia/claude-mythos-proyecto-glasswing-2026" class="text-white text-sm font-medium flex items-center gap-1 group-hover:gap-2 transition-all">Leer Análisis <i class="fa-solid fa-arrow-right text-gold"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article id="agentes-autonomos" class="matte-card p-8 rounded-2xl group border-l-4 border-l-forest block relative overflow-hidden transition-all duration-300 hover:shadow-[0_0_30px_rgba(30,61,47,0.15)]">
+                    <div class="flex flex-col md:flex-row gap-8">
+                        <div class="flex-grow">
+                            <div class="flex gap-3 mb-4 text-xs font-semibold uppercase tracking-wider">
+                                <span class="text-forest">Agentes IA</span>
+                                <span class="text-subtle/50">•</span>
+                                <span class="text-subtle">11 Mayo 2026</span>
+                            </div>
+                            <h3 class="text-2xl text-white font-serif mb-3 group-hover:text-forest transition-colors">
+                                <a href="/novedades-ia/agentes-ia-marketing-2026-openclaw-manus-era-agentica">Agentes de IA en Marketing 2026: OpenClaw, Manus y la Era de la Ejecución Autónoma</a>
+                            </h3>
+                            <p class="text-subtle mb-6 line-clamp-2">Los agentes de IA en marketing definen la productividad en 2026 porque han pasado del lenguaje a la acción. Descubre cómo OpenClaw y Manus están redefiniendo la productividad empresarial.</p>
                             
                             <div class="flex flex-wrap items-center justify-between mt-auto">
                                 <div class="flex items-center gap-2 text-xs text-subtle">
-                                    <i class="fa-solid fa-cube"></i> Fuente: <strong>Google/DeepMind</strong>
+                                    <i class="fa-solid fa-cube"></i> Fuente: <strong>Tap-IA</strong>
                                 </div>
-                                <a href="/novedades-ia/noticia-mock" class="text-white text-sm font-medium flex items-center gap-1 group-hover:gap-2 transition-all">Leer Análisis <i class="fa-solid fa-arrow-right text-gold"></i></a>
+                                <a href="/novedades-ia/agentes-ia-marketing-2026-openclaw-manus-era-agentica" class="text-white text-sm font-medium flex items-center gap-1 group-hover:gap-2 transition-all">Leer Análisis <i class="fa-solid fa-arrow-right text-forest"></i></a>
                             </div>
                         </div>
                     </div>
                 </article>
-
-                <!-- POST 2 -->
-                <article class="matte-card p-6 md:p-8 rounded-2xl group transition-all duration-300 hover:border-white/20">
-                    <div class="flex flex-col md:flex-row gap-6">
-                        <div class="w-full md:w-32 flex-shrink-0 text-sm font-medium text-subtle/80 md:pt-1">
-                            Mar 2, 2026
-                        </div>
-                        <div class="flex-grow">
-                            <span class="text-gold text-xs font-semibold uppercase tracking-wider block mb-2">Herramientas</span>
-                            <h3 class="text-xl text-white font-medium mb-2 group-hover:text-gold transition-colors">
-                                <a href="/novedades-ia/noticia-mock">Nueva función de agentes en HubSpot (Beta cerrada)</a>
-                            </h3>
-                            <p class="text-sm text-subtle mb-4">Guía rápida de cómo prepararse para activar la atención 24/7 y la precalificación de leads calientes nativa en el CRM.</p>
-                            <div class="text-xs text-subtle/60 uppercase">
-                                <i class="fa-solid fa-cube mr-1"></i> Fuente: HubSpot
-                            </div>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- POST 3 -->
-                <article class="matte-card p-6 md:p-8 rounded-2xl group transition-all duration-300 hover:border-white/20">
-                    <div class="flex flex-col md:flex-row gap-6">
-                        <div class="w-full md:w-32 flex-shrink-0 text-sm font-medium text-subtle/80 md:pt-1">
-                            Feb 28, 2026
-                        </div>
-                        <div class="flex-grow">
-                            <span class="text-emerald-500 text-xs font-semibold uppercase tracking-wider block mb-2">IA en Marketing</span>
-                            <h3 class="text-xl text-white font-medium mb-2 group-hover:text-emerald-500 transition-colors">
-                                <a href="/novedades-ia/noticia-mock">ChatGPT Search superando el 15% de adopción en escritorio B2B</a>
-                            </h3>
-                            <p class="text-sm text-subtle mb-4">La estrategia SEO clásica ya no es suficiente. Por qué las empresas en 2026 deben apostar a GEO en un entorno altamente competitivo.</p>
-                            <div class="text-xs text-subtle/60 uppercase">
-                                <i class="fa-solid fa-cube mr-1"></i> Fuente: OpenAI
-                            </div>
-                        </div>
-                    </div>
-                </article>
-                
-                <div class="text-center pt-8">
-                    <button class="px-6 py-2 border border-white/10 text-subtle hover:text-white hover:bg-white/5 rounded-full text-sm font-medium transition-colors">
-                        Cargar más actualizaciones
-                    </button>
-                </div>
             </div>
         </div>
     </section>

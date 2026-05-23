@@ -1,0 +1,13 @@
+---
+description: Antes de crear o editar contenido del sitio, consultar la estrategia SEO/GEO Tap-IA
+globs: src/pages/**,src/lib/seo.ts,src/components/Schema*.astro,src/components/CtaWhatsApp.astro
+alwaysApply: false
+---
+
+# Contenido del sitio Tap-IA
+
+Antes de crear, reescribir o ampliar **copy, metadatos, encabezados, FAQs, artículos, schema o CTAs** en este proyecto:
+
+**Consulta siempre** `docs/estrategia-seo-geo-tap-ia.md` y alinea tu trabajo con ese documento.
+
+No dupliques ni resumas la estrategia aquí: la fuente de verdad es ese archivo.

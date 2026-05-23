@@ -1,0 +1,62 @@
+---
+import { SITE_URL } from '../lib/seo';
+
+interface Props {
+  headline: string;
+  description: string;
+  url: string;
+  datePublished: string;
+  dateModified?: string;
+  author?: string;
+  image?: string;
+  articleSection?: string;
+  type?: 'Article' | 'NewsArticle' | 'BlogPosting';
+}
+
+const {
+  headline,
+  description,
+  url,
+  datePublished,
+  dateModified,
+  author = 'TAP-IA',
+  image = `${SITE_URL}/logo.png`,
+  articleSection = 'Novedades IA',
+  type = 'NewsArticle',
+} = Astro.props;
+
+const articleUrl = new URL(url, SITE_URL).href;
+---
+
+<script type="application/ld+json" is:inline set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": type,
+  "@id": `${articleUrl}#article`,
+  "headline": headline,
+  "description": description,
+  "url": articleUrl,
+  "image": [image],
+  "datePublished": datePublished,
+  "dateModified": dateModified ?? datePublished,
+  "author": {
+    "@type": "Organization",
+    "@id": "https://tap-ia.tech/#organization",
+    "name": author,
+  },
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://tap-ia.tech/#organization",
+    "name": "TAP-IA",
+    "logo": {
+      "@type": "ImageObject",
+      "url": `${SITE_URL}/logo.png`
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": articleUrl
+  },
+  "articleSection": articleSection,
+  "isAccessibleForFree": true
+})} />
+

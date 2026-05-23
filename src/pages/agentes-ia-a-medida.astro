@@ -3,10 +3,20 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import CtaWhatsApp from '../components/CtaWhatsApp.astro';
+import SchemaService from '../components/SchemaService.astro';
 ---
 
-<Layout title="Agentes IA a Medida | Automatización Inteligente | TAP-IA">
+<Layout 
+    title="Agentes IA a Medida | Automatización Inteligente | TAP-IA"
+    description="Desarrollo de agentes IA a medida para automatizar procesos reales: calificación de leads, soporte técnico y extracción de datos."
+>
     <Header />
+    <SchemaService 
+        name="Agentes IA a Medida"
+        description="Desarrollo de agentes IA a medida para automatizar procesos reales: calificación de leads, soporte técnico y extracción de datos."
+        url="/agentes-ia-a-medida"
+        serviceType="AI Agent Development"
+    />
 
     <section class="relative min-h-[60vh] pt-36 pb-10 px-6 flex flex-col items-center justify-center overflow-hidden">
         <div class="absolute top-20 left-0 w-[600px] h-[600px] bg-gold/5 rounded-full blur-[120px] pointer-events-none -z-10"></div>
@@ -16,9 +26,9 @@ import CtaWhatsApp from '../components/CtaWhatsApp.astro';
             <h1 class="font-serif text-4xl md:text-6xl mb-6 text-white leading-tight">
                 No es un chatbot. <br/><span class="italic font-light text-white/60">Es un colaborador autónomo.</span>
             </h1>
-            <p class="text-xl text-subtle font-light max-w-2xl mx-auto mb-10 leading-relaxed">
+            <h2 class="text-xl text-subtle font-light max-w-2xl mx-auto mb-10 leading-relaxed">
                 Diseñamos agentes de IA que no solo responden preguntas, sino que ejecutan tareas, cualifican leads y se integran con tus herramientas actuales (CRM, WhatsApp, Email) para liberar a tu equipo de la carga operativa.
-            </p>
+            </h2>
             <CtaWhatsApp text="Solicitar demo de Agente IA" microcopy="Ve cómo un agente puede manejar tu operación en vivo." />
         </div>
     </section>
@@ -27,11 +37,11 @@ import CtaWhatsApp from '../components/CtaWhatsApp.astro';
     <section class="py-24 px-6 relative border-t border-white/5 bg-white/[0.01]">
         <div class="max-w-5xl mx-auto">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl text-white font-light">La diferencia entre <span class="line-through opacity-40">responder</span> y <span class="text-gold italic">resolver</span>.</h2>
+                <h3 class="text-3xl md:text-4xl text-white font-light">La diferencia entre <span class="line-through opacity-40">responder</span> y <span class="text-gold italic">resolver</span>.</h3>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div class="p-10 rounded-2xl border border-white/5 bg-[#0a0b0e]/50">
-                    <h3 class="text-white/60 text-lg mb-6 uppercase tracking-widest font-bold">Chatbot Tradicional</h3>
+                    <h4 class="text-white/60 text-lg mb-6 uppercase tracking-widest font-bold">Chatbot Tradicional</h4>
                     <ul class="space-y-4 text-subtle text-sm">
                         <li class="flex items-center gap-3">
                             <i class="fa-solid fa-xmark text-red-500/50"></i>
@@ -48,7 +58,7 @@ import CtaWhatsApp from '../components/CtaWhatsApp.astro';
                     </ul>
                 </div>
                 <div class="p-10 rounded-2xl border border-gold/20 bg-gold/[0.02] shadow-[0_0_40px_rgba(212,175,55,0.05)]">
-                    <h3 class="text-gold text-lg mb-6 uppercase tracking-widest font-bold">Agente Tap-IA</h3>
+                    <h4 class="text-gold text-lg mb-6 uppercase tracking-widest font-bold">Agente Tap-IA</h4>
                     <ul class="space-y-4 text-white/90 text-sm">
                         <li class="flex items-center gap-3">
                             <i class="fa-solid fa-check text-gold"></i>
@@ -74,7 +84,7 @@ import CtaWhatsApp from '../components/CtaWhatsApp.astro';
             <div class="text-center mb-16">
                 <span class="editorial-label block mb-3">Aplicaciones Reales</span>
                 <div class="gold-rule mx-auto mb-6"></div>
-                <h2 class="text-white">¿Dónde poner a trabajar a tu agente?</h2>
+                <h3 class="text-white">¿Dónde poner a trabajar a tu agente?</h3>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -97,11 +107,36 @@ import CtaWhatsApp from '../components/CtaWhatsApp.astro';
     <!-- ÚLTIMO CTA -->
     <section class="py-24 px-6 relative border-t border-white/5 bg-[#0a0b0e]">
         <div class="max-w-4xl mx-auto text-center">
-            <h2 class="mb-8 text-white font-light">Tu empresa no duerme. <span class="text-gold italic">Tu atención tampoco debería.</span></h2>
+            <h3 class="mb-8 text-white font-light">Tu empresa no duerme. <span class="text-gold italic">Tu atención tampoco debería.</span></h3>
             <p class="text-xl text-subtle mb-12">Desarrollamos e implementamos tu agente personalizado en menos de 3 semanas, integrado a tu stack actual.</p>
             <CtaWhatsApp text="Hablar con un Especialista" />
         </div>
     </section>
 
+    <!-- Schema FAQPage para Answer Engine Optimization -->
+    <script type="application/ld+json" is:inline set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "¿Cuál es la diferencia entre un chatbot tradicional y un Agente de IA?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Un chatbot tradicional funciona bajo reglas estrictas ('Si dicen X, responde Y'). Un Agente IA entiende la intención del usuario, puede tomar decisiones autónomas basadas en una base de conocimiento (RAG) y ejecutar acciones complejas conectándose a otras APIs o herramientas externas."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Pueden integrar el agente IA con mi CRM actual (HubSpot, Salesforce, etc)?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Absolutamente. Desarrollamos la arquitectura para que el Agente IA pueda consultar, actualizar y gestionar datos directamente en tu CRM, herramientas de ticketing o ERP a través de webhooks y APIs, operando de forma bidireccional."
+          }
+        }
+      ]
+    })} />
+
     <Footer />
 </Layout>
+

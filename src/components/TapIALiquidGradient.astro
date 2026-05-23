@@ -5,11 +5,25 @@
 // Paleta: Charcoal #0a0b0e, Matte #16191f, Navy #1a2744 + #2563eb — profundidad tecnológica
 ---
 
-<div id="liquid-gradient-container" class="absolute inset-0 w-full h-full z-[-5] pointer-events-none overflow-hidden">
+<div id="liquid-gradient-container">
     <canvas id="webGLApp"></canvas>
 </div>
 
 <style>
+    #liquid-gradient-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: -5;
+        pointer-events: none;
+        overflow: hidden;
+        /* Promoción a capa de hardware (GPU) y contención de pintura */
+        transform: translate3d(0, 0, 0);
+        will-change: transform;
+        contain: strict;
+    }
     #webGLApp {
         position: absolute;
         top: 0;
@@ -23,38 +37,39 @@
     import * as THREE from 'three';
 
     const initLiquidGradient = () => {
-        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        try {
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-        const canvas = document.getElementById('webGLApp') as HTMLCanvasElement;
-        if (!canvas) return;
+            const canvas = document.getElementById('webGLApp') as HTMLCanvasElement;
+            if (!canvas) return;
 
-        // Hex a RGB normalizado (0-1)
-        const hex = (r: number, g: number, b: number) => new THREE.Vector3(r / 255, g / 255, b / 255);
+            // Hex a RGB normalizado (0-1)
+            const hex = (r: number, g: number, b: number) => new THREE.Vector3(r / 255, g / 255, b / 255);
 
-        // Paleta Tap-IA — Negro profundo + Navy Blue tecnológico
-        const CHARCOAL    = hex(10, 11, 14);      // #0a0b0e — fondo dominante
-        const MATTE       = hex(22, 25, 31);      // #16191f
-        const NAVY_MED    = hex(30, 58, 95);      // #1e3a5f — navy visible
-        const NAVY_SOFT   = hex(20, 35, 60);      // #14233c — navy secundario
-        const NAVY_DEEP   = hex(12, 22, 42);      // #0c162a — navy profundo
-        const NAVY_ACCENT = hex(37, 99, 180);     // #2563b4 — azul acero vivo
-        const NAVY_GLOW   = hex(50, 120, 200);    // #3278c8 — glow intenso
+            // Paleta Tap-IA — Rebalanceada para combinar Oro Premium y Azul Tecnológico B2B
+            const CHARCOAL    = hex(10, 11, 14);      // #0a0b0e — fondo dominante de la marca
+            const GOLD_DEEP   = hex(120, 95, 25);     // Oro profundo para profundidad cálida
+            const GOLD_SOFT   = hex(212, 175, 55);    // #d4af37 — oro de marca (alta sofisticación)
+            const SLATE_BLUE  = hex(30, 58, 105);     // #1e3a69 — azul pizarra para transición y volumen
+            const NAVY_DEEP   = hex(26, 39, 68);      // #1a2744 — azul marino premium para autoridad B2B
+            const TECH_BLUE   = hex(37, 99, 235);     // #2563eb — azul tecnológico vibrante
+            const BLUE_GLOW   = hex(15, 40, 95);      // Brillo azul profundo de cierre
 
-        const uniforms: Record<string, { value: any }> = {
-            uTime:       { value: 0 },
-            uResolution: { value: new THREE.Vector2(window.innerWidth, window.innerHeight) },
-            // Charcoal domina ~80-85%, halos navy son el 15-20%
-            uColor1:     { value: NAVY_MED.clone() },    // Halo navy principal
-            uColor2:     { value: NAVY_SOFT.clone() },   // Halo navy secundario
-            uColor3:     { value: NAVY_ACCENT.clone() }, // Acento azul acero
-            uColor4:     { value: MATTE.clone() },       // Sombra Matte (oscura)
-            uColor5:     { value: NAVY_DEEP.clone() },   // Navy de fondo, casi invisible
-            uColor6:     { value: NAVY_GLOW.clone() },   // Glow navy de cierre
-            uBase:       { value: CHARCOAL.clone() },
-            uSpeed:      { value: 0.18 },    // Lento — atmósfera tecnológica
-            uIntensity:  { value: 0.60 },    // Suficiente para que el navy sea visible
-            uGrain:      { value: 0.012 },   // Ruido muy sutil
-        };
+            const uniforms: Record<string, { value: any }> = {
+                uTime:       { value: 0 },
+                uResolution: { value: new THREE.Vector2(window.innerWidth, window.innerHeight) },
+                // Mezcla balanceada a favor de azules/pizarra para profundidad visual premium
+                uColor1:     { value: GOLD_DEEP.clone() },   // Halo oro principal (acento)
+                uColor2:     { value: TECH_BLUE.clone() },   // Halo azul tecnológico vibrante
+                uColor3:     { value: SLATE_BLUE.clone() },  // Azul pizarra de transición y volumen
+                uColor4:     { value: NAVY_DEEP.clone() },   // Azul B2B de alta autoridad
+                uColor5:     { value: GOLD_SOFT.clone() },   // Oro firma (acento puntual)
+                uColor6:     { value: BLUE_GLOW.clone() },   // Glow azul profundo de cierre
+                uBase:       { value: CHARCOAL.clone() },
+                uSpeed:      { value: 0.15 },    // Calibrado a 0.15 para una fluidez premium majestuosa
+                uIntensity:  { value: 0.48 },    // Reducido de 0.65 para evitar saturación y mantener contraste WCAG
+                uGrain:      { value: 0.012 },   // Ruido sutil para textura
+            };
 
         const vertexShader = `
             varying vec2 vUv;
@@ -90,49 +105,66 @@
                 vec2 uv = vUv;
                 float t = uTime * uSpeed;
 
-                // 6 centros que orbitan lentamente
-                vec2 c1 = vec2(0.5 + sin(t * 0.40) * 0.42, 0.5 + cos(t * 0.50) * 0.42);
-                vec2 c2 = vec2(0.5 + cos(t * 0.55) * 0.48, 0.5 + sin(t * 0.42) * 0.48);
-                vec2 c3 = vec2(0.5 + sin(t * 0.32) * 0.44, 0.5 + cos(t * 0.58) * 0.44);
-                vec2 c4 = vec2(0.5 + cos(t * 0.48) * 0.40, 0.5 + sin(t * 0.38) * 0.40);
-                vec2 c5 = vec2(0.5 + sin(t * 0.62) * 0.36, 0.5 + cos(t * 0.45) * 0.36);
-                vec2 c6 = vec2(0.5 + cos(t * 0.37) * 0.46, 0.5 + sin(t * 0.60) * 0.46);
+                // 6 centros con curvas de Lissajous complejas (frecuencias diferenciales y coprimas para evitar el movimiento mecánico circular)
+                vec2 c1 = vec2(0.20 + sin(t * 0.45) * 0.12, 0.80 + cos(t * 0.32) * 0.12); // Top-Left Lissajous
+                vec2 c2 = vec2(0.80 + cos(t * 0.38) * 0.12, 0.80 + sin(t * 0.50) * 0.12); // Top-Right Lissajous
+                vec2 c3 = vec2(0.18 + sin(t * 0.28 + 1.57) * 0.10, 0.48 + cos(t * 0.42) * 0.10); // Mid-Left Lissajous
+                vec2 c4 = vec2(0.82 + cos(t * 0.46 + 3.14) * 0.10, 0.48 + sin(t * 0.34) * 0.10); // Mid-Right Lissajous
+                vec2 c5 = vec2(0.35 + sin(t * 0.52 + 4.71) * 0.11, 0.22 + cos(t * 0.36) * 0.11); // Bottom-Left-Center Lissajous
+                vec2 c6 = vec2(0.65 + cos(t * 0.30 + 2.00) * 0.11, 0.22 + sin(t * 0.48) * 0.11); // Bottom-Right-Center Lissajous
 
-                // Radio grande y suave → manchas difusas como halos de luz lejanos
-                float r = 0.65;
+                // Radios calibrados individualmente (azul domina el espacio volumétrico, oro es acento puntual)
+                float r1 = 0.55; // Oro principal (acento focal concentrado)
+                float r2 = 0.95; // Tech blue (amplio para teñir el fondo y dar vitalidad tech)
+                float r3 = 0.85; // Slate blue de transición (amplio y suave)
+                float r4 = 1.15; // Navy deep (muy amplio para establecer la atmósfera base B2B)
+                float r5 = 0.45; // Oro firma (acento sutil muy puntual)
+                float r6 = 0.90; // Blue glow (soporte amplio y profundo)
 
-                float i1 = 1.0 - smoothstep(0.0, r, length(uv - c1));
-                float i2 = 1.0 - smoothstep(0.0, r, length(uv - c2));
-                float i3 = 1.0 - smoothstep(0.0, r, length(uv - c3));
-                float i4 = 1.0 - smoothstep(0.0, r, length(uv - c4));
-                float i5 = 1.0 - smoothstep(0.0, r, length(uv - c5));
-                float i6 = 1.0 - smoothstep(0.0, r, length(uv - c6));
+                float i1 = 1.0 - smoothstep(0.0, r1, length(uv - c1));
+                float i2 = 1.0 - smoothstep(0.0, r2, length(uv - c2));
+                float i3 = 1.0 - smoothstep(0.0, r3, length(uv - c3));
+                float i4 = 1.0 - smoothstep(0.0, r4, length(uv - c4));
+                float i5 = 1.0 - smoothstep(0.0, r5, length(uv - c5));
+                float i6 = 1.0 - smoothstep(0.0, r6, length(uv - c6));
 
-                // Modulación temporal suave
-                vec3 color = vec3(0.0);
-                color += uColor1 * i1 * (0.5 + 0.5 * sin(t * 0.9));
-                color += uColor2 * i2 * (0.5 + 0.5 * cos(t * 1.1));
-                color += uColor3 * i3 * (0.5 + 0.5 * sin(t * 0.7));
-                color += uColor4 * i4 * (0.4 + 0.4 * cos(t * 1.3));
-                color += uColor5 * i5 * (0.5 + 0.5 * sin(t * 1.0));
-                color += uColor6 * i6 * (0.4 + 0.4 * cos(t * 0.8));
+                // Modulación temporal de pesos balanceada para priorizar el ambiente azul (sesgo matemático 3.46x)
+                float w1 = i1 * (0.35 + 0.35 * sin(t * 0.9)); // GOLD_DEEP (acento concentrado)
+                float w2 = i2 * (0.65 + 0.65 * cos(t * 1.1)); // TECH_BLUE (soporte principal vibrante)
+                float w3 = i3 * (0.50 + 0.50 * sin(t * 0.7)); // SLATE_BLUE (transición suave)
+                float w4 = i4 * (0.65 + 0.65 * cos(t * 1.3)); // NAVY_DEEP (base volumétrica)
+                float w5 = i5 * (0.28 + 0.28 * sin(t * 1.0)); // GOLD_SOFT (destello firma sutil)
+                float w6 = i6 * (0.52 + 0.52 * cos(t * 0.8)); // BLUE_GLOW (soporte profundo)
 
-                // Aureola de rotación muy sutil
-                vec2 rv = uv - 0.5;
-                float a = t * 0.08;
+                // Mezcla de colores normalizada para evitar sobre-saturación cuando se traslapan
+                float totalWeight = w1 + w2 + w3 + w4 + w5 + w6 + 0.001;
+                vec3 blendedGlow = (uColor1 * w1 + uColor2 * w2 + uColor3 * w3 + uColor4 * w4 + uColor5 * w5 + uColor6 * w6) / totalWeight;
+
+                // Intensidad máxima local para el factor de mezcla (evita blowouts)
+                float maxIntensity = max(max(max(w1, w2), max(w3, w4)), max(w5, w6));
+
+                // Aureola central completamente dinámica: deriva del centro con frecuencias coprimas, rotación elíptica asimétrica y respiración de escala
+                vec2 radialCenter = vec2(
+                    0.50 + sin(t * 0.22) * 0.06,
+                    0.50 + cos(t * 0.16) * 0.06
+                );
+                vec2 rv = uv - radialCenter;
+                float a = t * 0.12;
                 rv = vec2(rv.x * cos(a) - rv.y * sin(a), rv.x * sin(a) + rv.y * cos(a));
-                float radial = 1.0 - smoothstep(0.0, 0.85, length(rv));
-                color += uColor1 * radial * 0.12;
+                
+                // Ruptura de simetría (anisotropía): deformación elíptica para que la rotación sea visible y respire orgánicamente
+                float breathingRatio = 1.25 + sin(t * 0.40) * 0.15;
+                rv.x *= breathingRatio;
+                
+                float radialScale = 0.85 + sin(t * 0.30) * 0.08;
+                float radial = 1.0 - smoothstep(0.0, radialScale, length(rv));
 
-                // Aplicar intensidad global (baja)
-                color *= uIntensity;
+                // Mezcla calibrada: Charcoal domina pero los halos son visibles sin quemarse
+                float mix_f = clamp(maxIntensity * uIntensity, 0.0, 0.50);
+                vec3 color = mix(uBase, blendedGlow, mix_f);
 
-                // Mezcla calibrada: Charcoal domina pero los halos son visibles
-                // mix_f llega hasta 0.75 → en las zonas más brillantes se ve el color
-                // en las zonas oscuras el Charcoal prevalece totalmente
-                float brightness = dot(color, vec3(0.299, 0.587, 0.114));
-                float mix_f = clamp(brightness * 1.1, 0.0, 0.75);
-                color = mix(uBase, uBase + color, mix_f);
+                // Añadimos el toque de aureola radial de forma sutil usando azul tecnológico para contrastar el fondo
+                color += uColor2 * radial * 0.035;
 
                 // Film grain sutil
                 float grain = hash(uv * uResolution + uTime) * 2.0 - 1.0;
@@ -151,7 +183,8 @@
             alpha: false,
         });
         renderer.setSize(window.innerWidth, window.innerHeight);
-        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
+        // Lock pixel ratio a 1.0 para un rendimiento de fill-rate excepcional a 60fps (visualmente imperceptible en gradientes difuminados)
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.0));
 
         const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 100);
         camera.position.z = 50;
@@ -198,6 +231,9 @@
         };
 
         window.addEventListener('resize', onResize, { passive: true });
+        } catch (e) {
+            console.warn("WebGL Gradient failed to initialize:", e);
+        }
     };
 
     if (document.readyState === 'loading') {

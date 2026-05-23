@@ -3,10 +3,17 @@ import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import CtaWhatsApp from '../../components/CtaWhatsApp.astro';
+import SchemaService from '../../components/SchemaService.astro';
 ---
 
 <Layout title="Sitios Web | TAP-IA">
     <Header />
+    <SchemaService 
+        name="Sitios Web"
+        description="Sitios web de alto rendimiento para captar, explicar y convertir mejor."
+        url="/soluciones/web"
+        serviceType="Website Design and Conversion"
+    />
 
     <section class="relative min-h-[60vh] pt-36 pb-10 px-6 flex items-center">
         <div class="absolute top-20 right-0 w-[600px] h-[600px] bg-gold/15 rounded-full blur-[120px] pointer-events-none -z-10"></div>
@@ -162,6 +169,37 @@ import CtaWhatsApp from '../../components/CtaWhatsApp.astro';
             </div>
         </div>
     </section>
+
+    <script type="application/ld+json" is:inline set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "¿Cuánto tiempo toma la entrega del sitio?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "La 'Venta Rápida' está lista en un Sprint de 7 a 10 días tras recibir la información en el brief de arranque. Los proyectos 'Autoridad Google' (Multipágina) toman entre 2 y 3 semanas."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Incluyen el dominio y el hosting?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Por política de seguridad patrimonial, el dominio y hosting debe estar a nombre de la empresa. Nosotros guiamos la compra y configuración paso a paso."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Hacen cambios y correcciones?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sí, incluimos 2 rondas de revisiones antes de pasar el sitio a producción."
+          }
+        }
+      ]
+    })} />
 
     <Footer />
 </Layout>

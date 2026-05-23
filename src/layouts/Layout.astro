@@ -1,10 +1,30 @@
 ---
+import SchemaOrganization from '../components/SchemaOrganization.astro';
+import { getSeoDefaults, SITE_URL } from '../lib/seo';
+
 interface Props {
 	title: string;
 	description?: string;
+	ogImage?: string;
+	keywords?: string;
+	canonical?: string;
+	noIndex?: boolean;
 }
 
-const { title, description = "Su empresa merece ser la respuesta." } = Astro.props;
+const {
+	title,
+	description,
+	ogImage = `${SITE_URL}/logo.png`,
+	keywords,
+	canonical,
+	noIndex
+} = Astro.props;
+
+const seoDefaults = getSeoDefaults(Astro.url.pathname);
+const canonicalURL = new URL(canonical ?? seoDefaults.canonical, SITE_URL).href;
+const resolvedDescription = description ?? seoDefaults.description;
+const effectiveNoIndex = noIndex ?? seoDefaults.noIndex;
+const robotsContent = effectiveNoIndex ? 'noindex, follow' : 'index, follow';
 ---
 
 <!doctype html>
@@ -12,20 +32,26 @@ const { title, description = "Su empresa merece ser la respuesta." } = Astro.pro
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<meta name="description" content={description} />
-        <meta name="robots" content="index, follow" />
-        
-        <!-- Open Graph / Facebook -->
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content={title} />
-        <meta property="og:description" content={description} />
-        <meta property="og:image" content="https://tap-ia.tech/logo.png" />
-        
-        <!-- Twitter -->
-        <meta property="twitter:card" content="summary_large_image" />
-        <meta property="twitter:title" content={title} />
-        <meta property="twitter:description" content={description} />
-        <meta property="twitter:image" content="https://tap-ia.tech/logo.png" />
+		<meta name="description" content={resolvedDescription} />
+		<meta name="robots" content={robotsContent} />
+		{keywords && <meta name="keywords" content={keywords} />}
+		<link rel="canonical" href={canonicalURL} />
+		<link rel="sitemap" href="/sitemap.xml" />
+
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={canonicalURL} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={resolvedDescription} />
+		<meta property="og:image" content={ogImage} />
+		<meta property="og:locale" content="es_MX" />
+		<meta property="og:site_name" content="TAP-IA" />
+
+		<!-- Twitter -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={resolvedDescription} />
+		<meta name="twitter:image" content={ogImage} />
 
 		<title>{title}</title>
 
@@ -35,7 +61,7 @@ const { title, description = "Su empresa merece ser la respuesta." } = Astro.pro
         <!-- Fuentes -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
     
         <!-- Iconos -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -46,58 +72,207 @@ const { title, description = "Su empresa merece ser la respuesta." } = Astro.pro
         <!-- PREMIUM CURTAIN PRELOADER -->
         <div id="preloader" class="fixed inset-0 bg-charcoal z-[9999] flex items-center justify-center" style="background-color: var(--color-charcoal);">
             <div class="text-center opacity-0 translate-y-4" id="preloader-content">
-                <div class="text-white tracking-[0.2em] text-4xl md:text-5xl uppercase drop-shadow-[0_0_15px_rgba(255,255,255,0.2)]" style="font-family: var(--font-soehne-bold)">Tap-IA</div>
+                <div class="text-white tracking-[0.2em] text-4xl md:text-5xl uppercase drop-shadow-[0_0_15px_rgba(255,255,255,0.2)]" style="font-family: var(--font-playfair)">Tap-IA</div>
                 <div class="h-1 w-0 bg-gold mt-4 mx-auto rounded-full" id="preloader-line"></div>
             </div>
         </div>
 
-        <div class="noise-overlay"></div>
+		<!-- Free-Floating Atmospheric Orbs -->
+		<div class="fixed inset-0 z-[-2] pointer-events-none overflow-hidden" aria-hidden="true">
+			<div class="floating-orb floating-orb--gold absolute w-[28vw] h-[28vw] min-w-[180px] min-h-[180px] rounded-full blur-[100px] md:blur-[140px] opacity-0" style="top: 0; left: 0; will-change: transform, opacity;"></div>
+			<div class="floating-orb floating-orb--gold absolute w-[22vw] h-[22vw] min-w-[140px] min-h-[140px] rounded-full blur-[90px] md:blur-[120px] opacity-0" style="top: 0; left: 0; will-change: transform, opacity;"></div>
+			<div class="floating-orb floating-orb--blue absolute w-[32vw] h-[32vw] min-w-[220px] min-h-[220px] rounded-full blur-[110px] md:blur-[150px] opacity-0" style="top: 0; left: 0; will-change: transform, opacity;"></div>
+			<div class="floating-orb floating-orb--blue absolute w-[24vw] h-[24vw] min-w-[160px] min-h-[160px] rounded-full blur-[95px] md:blur-[130px] opacity-0" style="top: 0; left: 0; will-change: transform, opacity;"></div>
+		</div>
+
+		<SchemaOrganization />
+		<div class="noise-overlay z-[-1]"></div>
 		<slot />
 
         <script>
             import { gsap } from "gsap";
             import { ScrollTrigger } from "gsap/ScrollTrigger";
+            import { TextPlugin } from "gsap/TextPlugin";
 
-            gsap.registerPlugin(ScrollTrigger);
+            gsap.registerPlugin(ScrollTrigger, TextPlugin);
 
             // Hacer gsap global por si componentes locales lo necesitan
             (window as any).gsap = gsap;
             (window as any).ScrollTrigger = ScrollTrigger;
+            (window as any).TextPlugin = TextPlugin;
 
             document.addEventListener("DOMContentLoaded", () => {
-                const tl = gsap.timeline();
+                const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                const isMobileViewport = window.matchMedia('(max-width: 767px)').matches;
 
-                // Lock scroll inicial
-                document.documentElement.style.overflow = 'hidden';
-                document.body.style.overflow = 'hidden';
+                function finishPreloader() {
+                    document.documentElement.style.overflow = '';
+                    document.body.style.overflow = '';
+                    window.dispatchEvent(new Event('preloaderComplete'));
+                }
 
-                tl.to("#preloader-content", {
-                    opacity: 1,
-                    y: 0,
-                    duration: 1,
-                    ease: "power3.out",
-                    delay: 0.1
-                })
-                .to("#preloader-line", {
-                    width: "100%",
-                    duration: 0.8,
-                    ease: "power2.inOut"
-                }, "-=0.5")
-                .to("#preloader", {
-                    yPercent: -100,
-                    duration: 1.2,
-                    ease: "expo.inOut",
-                    delay: 0.5,
-                    onStart: () => {
-                        // Desbloquear scroll justo antes de que termine para que se sienta fluido
-                        document.documentElement.style.overflow = '';
-                        document.body.style.overflow = '';
-                    },
-                    onComplete: () => {
-                        // Disparar evento para que index.astro sepa que puede iniciar la coreografía de Hero
-                        window.dispatchEvent(new Event('preloaderComplete'));
+                const preloaderEl = document.getElementById('preloader');
+
+                if (prefersReducedMotion || isMobileViewport) {
+                    if (preloaderEl) {
+                        preloaderEl.style.display = 'none';
                     }
-                });
+                    finishPreloader();
+                } else {
+                    document.documentElement.style.overflow = 'hidden';
+                    document.body.style.overflow = 'hidden';
+
+                    const tl = gsap.timeline();
+
+                    tl.to("#preloader-content", {
+                        opacity: 1,
+                        y: 0,
+                        duration: 1,
+                        ease: "power3.out",
+                        delay: 0.1
+                    })
+                    .to("#preloader-line", {
+                        width: "100%",
+                        duration: 0.8,
+                        ease: "power2.inOut"
+                    }, "-=0.5")
+                    .to("#preloader", {
+                        yPercent: -100,
+                        duration: 1.2,
+                        ease: "expo.inOut",
+                        delay: 0.5,
+                        onStart: () => {
+                            document.documentElement.style.overflow = '';
+                            document.body.style.overflow = '';
+                        },
+                        onComplete: finishPreloader
+                    });
+                }
+
+                // --- FREE-FLOATING ORBS CHOREOGRAPHY (desktop + puntero fino) ---
+                const orbs = gsap.utils.toArray<HTMLElement>('.floating-orb');
+                const goldOrbs = orbs.filter((o) => o.classList.contains('floating-orb--gold'));
+                const blueOrbs = orbs.filter((o) => o.classList.contains('floating-orb--blue'));
+                const canRunOrbAmbient =
+                    orbs.length > 0 &&
+                    !prefersReducedMotion &&
+                    !isMobileViewport &&
+                    window.matchMedia('(min-width: 768px)').matches;
+
+                if (canRunOrbAmbient) {
+                    const GOLD_PEAK = 0.65;
+                    const BLUE_PEAK = 0.48;
+                    const GLOW_HALF = 4.5; // segundos por subida/bajada (curva continua, sin cortes)
+
+                    let orbsAmbientActive = false;
+                    let ambientStarted = false;
+                    const driftTimers: gsap.core.Tween[] = [];
+
+                    // Los orbes ahora pueden moverse por toda la pantalla de forma dinámica
+                    function getOrbBounds(orb: HTMLElement) {
+                        const maxX = Math.max(0, window.innerWidth - orb.offsetWidth);
+                        const maxY = Math.max(0, window.innerHeight - orb.offsetHeight);
+                        return {
+                            xMin: 0,
+                            xMax: maxX,
+                            yMin: 0,
+                            yMax: maxY
+                        };
+                    }
+
+                    // Deriva suave (quickTo evita saltos entre tweens encadenados)
+                    function startOrbDrift(orb: HTMLElement) {
+                        const { xMin, xMax, yMin, yMax } = getOrbBounds(orb);
+                        const xTo = gsap.quickTo(orb, 'x', { duration: 14, ease: 'sine.inOut' });
+                        const yTo = gsap.quickTo(orb, 'y', { duration: 14, ease: 'sine.inOut' });
+
+                        const wander = () => {
+                            if (!orbsAmbientActive) return;
+                            xTo(gsap.utils.random(xMin, xMax));
+                            yTo(gsap.utils.random(yMin, yMax));
+                            const t = gsap.delayedCall(gsap.utils.random(12, 20), wander);
+                            driftTimers.push(t);
+                        };
+
+                        xTo(gsap.utils.random(xMin, xMax));
+                        yTo(gsap.utils.random(yMin, yMax));
+                        wander();
+                    }
+
+                    // Respiración de opacidad continua (sin .set(0) que producía tirones)
+                    function startOrbGlow(orb: HTMLElement, peak: number, phaseDelay: number) {
+                        gsap.fromTo(
+                            orb,
+                            { opacity: 0 },
+                            {
+                                opacity: peak,
+                                duration: GLOW_HALF,
+                                ease: 'sine.inOut',
+                                yoyo: true,
+                                repeat: -1,
+                                delay: phaseDelay
+                            }
+                        );
+                    }
+
+                    function startOrbAmbient() {
+                        if (ambientStarted) return;
+                        ambientStarted = true;
+                        orbsAmbientActive = true;
+
+                        goldOrbs.forEach((orb, i) => {
+                            const { xMin, xMax, yMin, yMax } = getOrbBounds(orb);
+                            gsap.set(orb, {
+                                x: gsap.utils.random(xMin, xMax),
+                                y: gsap.utils.random(yMin, yMax),
+                                opacity: 0,
+                                force3D: true
+                            });
+                            startOrbDrift(orb);
+                            startOrbGlow(orb, GOLD_PEAK, i * 1.8);
+                        });
+
+                        // Azul en contrafase: cuando el oro sube, el azul baja (no compiten en pantalla)
+                        blueOrbs.forEach((orb, i) => {
+                            const { xMin, xMax, yMin, yMax } = getOrbBounds(orb);
+                            gsap.set(orb, {
+                                x: gsap.utils.random(xMin, xMax),
+                                y: gsap.utils.random(yMin, yMax),
+                                opacity: 0,
+                                force3D: true
+                            });
+                            startOrbDrift(orb);
+                            startOrbGlow(orb, BLUE_PEAK, GLOW_HALF + i * 1.8);
+                        });
+                    }
+
+                    function stopOrbAmbient() {
+                        orbsAmbientActive = false;
+                        ambientStarted = false;
+                        driftTimers.forEach((t) => t.kill());
+                        driftTimers.length = 0;
+                        orbs.forEach((orb) => {
+                            gsap.killTweensOf(orb);
+                            gsap.set(orb, { opacity: 0 });
+                        });
+                    }
+
+                    window.addEventListener('resize', () => {
+                        if (!orbsAmbientActive) return;
+                        orbs.forEach((orb) => {
+                            const { xMin, xMax, yMin, yMax } = getOrbBounds(orb);
+                            const x = gsap.getProperty(orb, 'x') as number;
+                            const y = gsap.getProperty(orb, 'y') as number;
+                            gsap.set(orb, {
+                                x: gsap.utils.clamp(xMin, xMax, x),
+                                y: gsap.utils.clamp(yMin, yMax, y)
+                            });
+                        });
+                    });
+
+                    // Start immediately
+                    startOrbAmbient();
+                }
             });
         </script>
 	</body>
@@ -105,38 +280,6 @@ const { title, description = "Su empresa merece ser la respuesta." } = Astro.pro
 
 <style is:global>
     @import 'tailwindcss';
-
-    @font-face {
-        font-family: "Söhne Black";
-        src: url("/fonts/Sohne-Black.otf") format("opentype");
-        font-weight: 900;
-        font-style: normal;
-        font-display: swap;
-    }
-
-    @font-face {
-        font-family: "Söhne Black";
-        src: url("/fonts/Sohne-Black-Italic.otf") format("opentype");
-        font-weight: 900;
-        font-style: italic;
-        font-display: swap;
-    }
-
-    @font-face {
-        font-family: "Söhne Bold";
-        src: url("/fonts/Sohne-Bold.otf") format("opentype");
-        font-weight: 700;
-        font-style: normal;
-        font-display: swap;
-    }
-
-    @font-face {
-        font-family: "Söhne Bold";
-        src: url("/fonts/Sohne-Bold-Italic.otf") format("opentype");
-        font-weight: 700;
-        font-style: italic;
-        font-display: swap;
-    }
 
     @theme {
         --color-charcoal: #0a0b0e;
@@ -147,42 +290,41 @@ const { title, description = "Su empresa merece ser la respuesta." } = Astro.pro
         --color-navy-accent: #2563eb;
         --color-offwhite: #e2e4e9;
         --color-subtle: #9ca3af;
-        --font-soehne-black: "Söhne Black", sans-serif;
-        --font-soehne-bold: "Söhne Bold", sans-serif;
-        --font-ibm-semibold: "IBM Plex Sans", sans-serif;
-        --font-ibm-regular: "IBM Plex Sans", sans-serif;
-        --font-ibm-medium: "IBM Plex Sans", sans-serif;
+        --font-playfair: 'Playfair Display', serif;
+        --font-jakarta: 'Plus Jakarta Sans', sans-serif;
     }
 
     /* Global Typography Reset */
     h1 {
-        font-family: var(--font-soehne-black);
-        font-weight: 900;
-        letter-spacing: -0.01em;
+        font-family: var(--font-playfair);
+        font-weight: 700;
+        letter-spacing: -0.02em;
         color: var(--color-offwhite);
-        font-size: clamp(2.25rem, 5.5vw, 3.25rem);
+        font-size: clamp(2.5rem, 6vw, 4.5rem);
         line-height: 1.05;
         text-wrap: balance;
     }
 
     h2 {
-        font-family: var(--font-soehne-bold);
-        font-weight: 700;
+        font-family: var(--font-playfair);
+        font-weight: 600;
+        letter-spacing: -0.01em;
         color: var(--color-offwhite);
-        font-size: clamp(1.75rem, 4vw, 2.25rem);
-        line-height: 1.15;
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        line-height: 1.1;
+        text-wrap: balance;
     }
 
     h3 {
-        font-family: var(--font-ibm-semibold);
-        font-weight: 600;
+        font-family: var(--font-playfair);
+        font-weight: 500;
         color: var(--color-offwhite);
         font-size: clamp(1.5rem, 3vw, 1.85rem);
         line-height: 1.2;
     }
 
     body {
-        font-family: var(--font-ibm-regular);
+        font-family: var(--font-jakarta);
         font-weight: 400;
         color: var(--color-subtle);
         font-size: clamp(0.95rem, 1.2vw, 1.125rem);
@@ -190,22 +332,22 @@ const { title, description = "Su empresa merece ser la respuesta." } = Astro.pro
     }
 
     .ui-caption {
-        font-family: var(--font-ibm-medium);
+        font-family: var(--font-jakarta);
         font-weight: 500;
         text-transform: uppercase;
         color: var(--color-subtle);
         font-size: clamp(12pt, 1.5vw, 14pt);
-        letter-spacing: 0.025em;
+        letter-spacing: 0.05em;
     }
 
     /* Editorial label — "IA APLICADA A MARKETING" style */
     .editorial-label {
-        font-family: var(--font-ibm-medium);
-        font-weight: 500;
+        font-family: var(--font-jakarta);
+        font-weight: 700;
         text-transform: uppercase;
         color: var(--color-gold);
-        font-size: 11px;
-        letter-spacing: 0.2em;
+        font-size: 13px;
+        letter-spacing: 0.25em;
     }
 
     /* Gold rule — thin decorative line separator */
@@ -241,6 +383,21 @@ const { title, description = "Su empresa merece ser la respuesta." } = Astro.pro
             0 2px 16px rgba(0, 0, 0, 0.7);
     }
 
+    /* Destellos atmosféricos: un color puro por orbe; GPU-friendly */
+    .floating-orb {
+        transform: translate3d(0, 0, 0);
+        backface-visibility: hidden;
+        contain: layout style paint;
+    }
+
+    .floating-orb--gold {
+        background-color: #d4af37;
+    }
+
+    .floating-orb--blue {
+        background-color: #3b82f6;
+    }
+
     .noise-overlay {
         position: fixed;
         top: 0;
@@ -249,16 +406,17 @@ const { title, description = "Su empresa merece ser la respuesta." } = Astro.pro
         height: 100%;
         z-index: 50;
         pointer-events: none;
-        opacity: 0.008;
+        opacity: 0.025;
         background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
     }
 
     .matte-card {
-        background-color: rgba(22, 25, 31, 0.7);
-        backdrop-filter: blur(8px);
-        border: 1px solid rgba(255, 255, 255, 0.05);
+        background: linear-gradient(180deg, rgba(22, 25, 31, 0.4) 0%, rgba(10, 11, 14, 0.8) 100%);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.05), 0 4px 20px rgba(0, 0, 0, 0.3);
         border-radius: 12px;
-        transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.4s ease;
+        transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.4s ease, border-color 0.4s ease;
         will-change: transform, opacity;
     }
 
@@ -295,7 +453,7 @@ const { title, description = "Su empresa merece ser la respuesta." } = Astro.pro
     .option-label {
         display: flex;
         align-items: center;
-        padding: 12px;
+        padding: 10px 12px;
         border-radius: 8px;
         border: 1px solid rgba(255, 255, 255, 0.05);
         background: rgba(255, 255, 255, 0.02);
@@ -304,8 +462,18 @@ const { title, description = "Su empresa merece ser la respuesta." } = Astro.pro
     }
 
     .option-label:hover {
-        background: rgba(255, 255, 255, 0.05);
-        border-color: rgba(212, 175, 55, 0.3);
+        background: rgba(212, 175, 55, 0.08); /* Tono dorado premium en hover */
+        border-color: rgba(212, 175, 55, 0.45); /* Borde dorado destacado */
+        color: #ffffff; /* Texto blanco puro */
+    }
+
+    .option-label:hover span {
+        color: #ffffff; /* Forzar legibilidad de las letras */
+    }
+
+    .option-label:has(input:checked) {
+        border-color: rgba(212, 175, 55, 0.6);
+        background: rgba(212, 175, 55, 0.1);
     }
 
     input:checked+span {
@@ -313,11 +481,43 @@ const { title, description = "Su empresa merece ser la respuesta." } = Astro.pro
         font-weight: 500;
     }
 
+    .input-field--error {
+        border-color: rgba(155, 77, 77, 0.8) !important;
+        box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5), 0 0 0 2px rgba(155, 77, 77, 0.15) !important;
+    }
+
+    .field-error {
+        color: #c97a7a;
+        font-size: 0.75rem;
+        margin-top: 0.5rem;
+    }
+
+    .services-group--error .option-label {
+        border-color: rgba(155, 77, 77, 0.4);
+    }
+
+    .honeypot-field {
+        position: absolute;
+        left: -9999px;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .step-content.active {
+            animation: none;
+        }
+    }
+
     .input-field {
-        background: rgba(0, 0, 0, 0.2);
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(10, 11, 14, 0.6);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.6);
         color: #e2e4e9;
-        padding: 12px 15px;
+        padding: 10px 14px;
         border-radius: 8px;
         width: 100%;
         transition: all 0.3s ease;
@@ -325,9 +525,9 @@ const { title, description = "Su empresa merece ser la respuesta." } = Astro.pro
 
     .input-field:focus {
         outline: none;
-        border-color: #d4af37;
-        box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.2);
-        background: rgba(0, 0, 0, 0.4);
+        border-color: rgba(212, 175, 55, 0.5);
+        box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5), 0 0 0 2px rgba(212, 175, 55, 0.1);
+        background: rgba(10, 11, 14, 0.9);
     }
 
     /* Estilo personalizado para Select */
@@ -339,11 +539,12 @@ const { title, description = "Su empresa merece ser la respuesta." } = Astro.pro
         background-size: 1em;
         padding-right: 2.5rem;
         cursor: pointer;
+        color-scheme: dark; /* Fuerza al navegador a usar dropdowns oscuros de alto contraste */
     }
 
     select option {
         background-color: #16191f;
-        color: #e2e4e9;
+        color: #ffffff; /* Blanco puro para evitar letra gris sobre fondo de selección nativo */
         padding: 10px;
     }
 
@@ -384,66 +585,47 @@ const { title, description = "Su empresa merece ser la respuesta." } = Astro.pro
     }
 
     /* ─── Card Glow System ─── */
-    @property --card-angle {
-        syntax: '<angle>';
-        initial-value: 0deg;
-        inherits: false;
-    }
-
     .card-glow {
         position: relative;
-        background: rgba(22, 25, 31, 0.6);
-        border: 1px solid rgba(255, 255, 255, 0.06);
-        border-radius: 16px;
-        transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1),
-                    box-shadow 0.5s ease,
-                    border-color 0.5s ease;
+        background: linear-gradient(180deg, rgba(22, 25, 31, 0.3) 0%, rgba(10, 11, 14, 0.7) 100%);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        box-shadow: 
+            inset 0 1px 1px rgba(255, 255, 255, 0.03), 
+            0 10px 40px rgba(0, 0, 0, 0.4);
+        border-radius: 20px;
+        transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         overflow: hidden;
         backdrop-filter: blur(12px);
     }
 
-    .card-glow::before {
+    .card-glow:hover {
+        transform: translateY(-5px);
+        background: linear-gradient(180deg, rgba(22, 25, 31, 0.4) 0%, rgba(10, 11, 14, 0.8) 100%);
+        border-color: rgba(212, 175, 55, 0.3);
+        box-shadow: 
+            0 20px 80px rgba(0, 0, 0, 0.6),
+            0 0 40px rgba(212, 175, 55, 0.05),
+            inset 0 1px 1px rgba(212, 175, 55, 0.2);
+    }
+
+    .card-glow::after {
         content: '';
         position: absolute;
-        inset: -1px;
-        border-radius: inherit;
-        background: conic-gradient(
-            from var(--card-angle, 0deg),
-            transparent 60%,
-            #2563eb 78%,
-            #d4af37 88%,
-            transparent 100%
-        );
+        inset: 0;
+        background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(212, 175, 55, 0.08), transparent 80%);
         opacity: 0;
-        transition: opacity 0.6s ease;
+        transition: opacity 0.5s ease;
+        pointer-events: none;
         z-index: 0;
-        mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-        mask-composite: exclude;
-        -webkit-mask-composite: destination-out;
-        padding: 1px;
     }
 
-    .card-glow:hover::before {
+    .card-glow:hover::after {
         opacity: 1;
-        animation: card-border-spin 4s linear infinite;
-    }
-
-    .card-glow:hover {
-        transform: translateY(-6px);
-        box-shadow:
-            0 12px 40px rgba(15, 29, 58, 0.5),
-            0 0 80px rgba(37, 99, 235, 0.1),
-            0 0 0 1px rgba(37, 99, 235, 0.1);
-        border-color: transparent;
     }
 
     .card-glow > * {
         position: relative;
         z-index: 1;
-    }
-
-    @keyframes card-border-spin {
-        to { --card-angle: 360deg; }
     }
 
     /* ─── Marquee ─── */
@@ -460,6 +642,12 @@ const { title, description = "Su empresa merece ser la respuesta." } = Astro.pro
         animation-play-state: paused;
     }
 
+    @media (prefers-reduced-motion: reduce) {
+        .animate-marquee {
+            animation: none;
+        }
+    }
+
     /* ─── CTA background gradient animation ─── */
     @keyframes cta-gradient-shift {
         0%   { background-position: 0% 50%; }
@@ -471,8 +659,8 @@ const { title, description = "Su empresa merece ser la respuesta." } = Astro.pro
         background: linear-gradient(
             135deg,
             #0a0b0e 0%,
-            #0f1d3a 30%,
-            #1a2744 50%,
+            #14120a 30%,
+            #1a160a 50%,
             #0a0b0e 70%,
             #0a0b0e 100%
         );

@@ -2,10 +2,24 @@
 import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
+import SchemaItemList from '../../components/SchemaItemList.astro';
 ---
 
-<Layout title="Recursos TAP-IA | Plantillas y Guías">
+<Layout 
+    title="Recursos de Inteligencia Artificial para Empresas | TAP-IA"
+    description="Accede a nuestra biblioteca de recursos prácticos de IA B2B: plantillas de auditoría SEO/GEO, playbooks de megaprompts y calculadoras de ROI financiero."
+>
     <Header />
+    <SchemaItemList
+        name="Recursos TAP-IA"
+        description="Plantillas, playbooks y guías para implementar IA con criterio en equipos de marketing y negocio."
+        items={[
+            { name: 'Auditoría SEO-GEO (Checklist)', url: '/recursos#auditoria-seo-geo' },
+            { name: 'El Framework de Ventas Zero-JS', url: '/recursos#zero-js' },
+            { name: 'Calculadora de ROI: Agentes IA', url: '/recursos/calculadora-roi-ia' },
+            { name: 'Megaprompts Canónicos B2B', url: '/recursos/megaprompts-b2b-marketing' },
+        ]}
+    />
 
     <section class="min-h-[40vh] pt-36 pb-12 px-6 relative border-b border-white/5 bg-charcoal">
         <div class="absolute top-20 right-1/4 w-[400px] h-[400px] bg-gold/5 rounded-full blur-[80px] pointer-events-none -z-10"></div>
@@ -20,7 +34,7 @@ import Footer from '../../components/Footer.astro';
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- RECURSO 1 -->
-                <div class="matte-card rounded-2xl overflow-hidden flex flex-col h-full border border-white/5 hover:border-gold/30 transition-colors">
+                <div id="auditoria-seo-geo" class="matte-card rounded-2xl overflow-hidden flex flex-col h-full border border-white/5 hover:border-gold/30 transition-colors">
                     <div class="bg-matte h-48 border-b border-white/10 flex items-center justify-center relative overflow-hidden">
                         <i class="fa-solid fa-file-invoice text-6xl text-white/5"></i>
                         <div class="absolute bottom-4 left-4 bg-charcoal/80 backdrop-blur px-3 py-1 rounded text-xs font-bold uppercase tracking-wider text-gold">Plantilla</div>
@@ -30,14 +44,14 @@ import Footer from '../../components/Footer.astro';
                         <h3 class="text-xl text-white font-serif mb-3">Auditoría SEO-GEO (Checklist)</h3>
                         <p class="text-sm text-subtle mb-8 flex-grow">25 puntos críticos que tu sitio debe cumplir para no desaparecer de Google AI.</p>
                         
-                        <button disabled class="w-full text-center py-3 bg-white/5 text-subtle rounded text-sm font-medium border border-white/10 cursor-not-allowed opacity-60">
-                            Próximamente
-                        </button>
+                        <a href="/contacto" class="w-full text-center py-3 bg-gold text-charcoal rounded text-sm font-bold border border-gold hover:bg-white hover:border-white transition-colors">
+                            Solicitar Acceso
+                        </a>
                     </div>
                 </div>
 
                 <!-- RECURSO 2 -->
-                <div class="matte-card rounded-2xl overflow-hidden flex flex-col h-full border border-white/5 hover:border-gold/30 transition-colors">
+                <div id="zero-js" class="matte-card rounded-2xl overflow-hidden flex flex-col h-full border border-white/5 hover:border-gold/30 transition-colors">
                     <div class="bg-matte h-48 border-b border-white/10 flex items-center justify-center relative overflow-hidden">
                         <i class="fa-solid fa-book-open text-6xl text-white/5"></i>
                         <div class="absolute bottom-4 left-4 bg-charcoal/80 backdrop-blur px-3 py-1 rounded text-xs font-bold uppercase tracking-wider text-gold">Playbook</div>
@@ -47,9 +61,43 @@ import Footer from '../../components/Footer.astro';
                         <h3 class="text-xl text-white font-serif mb-3">El Framework de Ventas Zero-JS</h3>
                         <p class="text-sm text-subtle mb-8 flex-grow">Por qué Astro está reemplazando a Wordpress en sitios B2B de alto margen operativo.</p>
                         
-                        <button disabled class="w-full text-center py-3 bg-white/5 text-subtle rounded text-sm font-medium border border-white/10 cursor-not-allowed opacity-60">
-                            Próximamente
-                        </button>
+                        <a href="/contacto" class="w-full text-center py-3 bg-gold text-charcoal rounded text-sm font-bold border border-gold hover:bg-white hover:border-white transition-colors">
+                            Solicitar Acceso
+                        </a>
+                    </div>
+                </div>
+
+                <!-- RECURSO 3 -->
+                <div id="calculadora-roi-ia" class="matte-card rounded-2xl overflow-hidden flex flex-col h-full border border-white/5 hover:border-gold/30 transition-colors">
+                    <div class="bg-matte h-48 border-b border-white/10 flex items-center justify-center relative overflow-hidden">
+                        <i class="fa-solid fa-calculator text-6xl text-white/5"></i>
+                        <div class="absolute bottom-4 left-4 bg-charcoal/80 backdrop-blur px-3 py-1 rounded text-xs font-bold uppercase tracking-wider text-gold">Herramienta</div>
+                    </div>
+                    
+                    <div class="p-8 flex flex-col flex-grow">
+                        <h3 class="text-xl text-white font-serif mb-3">Calculadora de ROI: Agentes IA</h3>
+                        <p class="text-sm text-subtle mb-8 flex-grow">Compara de forma matemática el costo y rendimiento de tu operación de ventas frente a un Agente IA 24/7.</p>
+                        
+                        <a href="/recursos/calculadora-roi-ia" class="w-full text-center py-3 bg-gold text-charcoal rounded text-sm font-bold border border-gold hover:bg-white hover:border-white transition-colors">
+                            Acceder a la Calculadora
+                        </a>
+                    </div>
+                </div>
+
+                <!-- RECURSO 4 -->
+                <div id="megaprompts-b2b-marketing" class="matte-card rounded-2xl overflow-hidden flex flex-col h-full border border-white/5 hover:border-gold/30 transition-colors">
+                    <div class="bg-matte h-48 border-b border-white/10 flex items-center justify-center relative overflow-hidden">
+                        <i class="fa-solid fa-wand-magic-sparkles text-6xl text-white/5"></i>
+                        <div class="absolute bottom-4 left-4 bg-charcoal/80 backdrop-blur px-3 py-1 rounded text-xs font-bold uppercase tracking-wider text-gold">Biblioteca</div>
+                    </div>
+                    
+                    <div class="p-8 flex flex-col flex-grow">
+                        <h3 class="text-xl text-white font-serif mb-3">Megaprompts Canónicos B2B</h3>
+                        <p class="text-sm text-subtle mb-8 flex-grow">Set de 5 megaprompts avanzados de copywriting, objeciones y SEO/GEO optimizados para Claude y ChatGPT.</p>
+                        
+                        <a href="/recursos/megaprompts-b2b-marketing" class="w-full text-center py-3 bg-gold text-charcoal rounded text-sm font-bold border border-gold hover:bg-white hover:border-white transition-colors">
+                            Ver Megaprompts
+                        </a>
                     </div>
                 </div>
 

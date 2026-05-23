@@ -2,328 +2,90 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import ContactWizard from '../components/ContactWizard.astro';
+
+const url = Astro.url;
+const plan = url.searchParams.get('plan') ?? '';
+const problem = url.searchParams.get('problem') ?? '';
+const servicio = url.searchParams.get('servicio') ?? '';
+const demo = url.searchParams.get('demo') ?? '';
+
+const PLAN_LABELS: Record<string, string> = {
+  venta_rapida: 'Paquete Venta Rápida',
+  autoridad_google: 'Paquete Autoridad Google',
+  dominio_total: 'Paquete Dominio Total',
+};
+
+const SERVICIO_LABELS: Record<string, string> = {
+  'agentes-ia': 'Agentes IA',
+  'ai-marketing': 'AI Marketing',
+  webapps: 'WebApps con IA',
+  'avatares-ia': 'Avatares IA',
+  'seo-geo': 'SEO/GEO',
+  web: 'Diseño Web',
+};
+
+let pageTitle = 'Solicitar diagnóstico de encaje';
+let pageSubtitle =
+  'En 3–4 minutos nos cuentas tu caso. Respondemos en 1 día hábil con el siguiente paso claro.';
+
+if (plan && PLAN_LABELS[plan]) {
+  pageTitle = `Quiero avanzar con ${PLAN_LABELS[plan]}`;
+  pageSubtitle =
+    'Revisamos si el paquete encaja con tu situación antes de comprometer producción.';
+} else if (problem) {
+  pageTitle = 'Reconozco este reto en mi negocio';
+  pageSubtitle = 'Partimos de tu obstáculo; el resto del formulario adapta la propuesta.';
+} else if (servicio && SERVICIO_LABELS[servicio]) {
+  pageTitle = `Consulta sobre ${SERVICIO_LABELS[servicio]}`;
+  pageSubtitle = 'Cuéntanos tu contexto y priorizamos una respuesta alineada a ese servicio.';
+} else if (demo === 'agent-waitlist') {
+  pageTitle = 'Lista de espera — Agentes IA';
+  pageSubtitle = 'Te avisamos del lanzamiento y evaluamos tu caso con prioridad.';
+}
+
+const waText = encodeURIComponent('Hola Tap-IA, quisiera evaluar mi caso de negocio.');
+const waHref = `https://wa.me/5213324239103?text=${waText}`;
 ---
 
-<Layout title="Contacto B2B | TAP-IA">
-    <Header />
+<Layout
+  title="Contacto B2B | TAP-IA"
+  description="Solicita un diagnóstico de encaje con TAP-IA. Evaluamos tu caso de IA, marketing y visibilidad digital sin compromiso."
+>
+  <Header />
 
-    <section class="min-h-screen py-32 px-6 relative flex flex-col justify-center">
-        <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-gold/15 rounded-full blur-[90px] pointer-events-none animate-pulse-slow"></div>
+  <section class="min-h-screen py-24 md:py-32 px-6 relative flex flex-col justify-center">
+    <div
+      class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-gold/15 rounded-full blur-[90px] pointer-events-none animate-pulse-slow"
+    ></div>
 
-        <div class="max-w-3xl mx-auto w-full relative z-10">
-            <h1 class="mb-8 text-center text-white">Escríbeme por WhatsApp</h1>
-            <p class="text-subtle mb-12 text-center text-lg hidden md:block">Respuestas rápidas para decisiones rápidas.</p>
+    <div class="max-w-3xl mx-auto w-full relative z-10">
+      <h1 class="mb-4 text-center text-white">{pageTitle}</h1>
+      <p class="text-subtle mb-8 text-center text-base md:text-lg max-w-xl mx-auto">
+        {pageSubtitle}
+      </p>
 
-            <!-- Botón WhatsApp Directo MÓVIL (Como lo pidió el CMO) -->
-            <div class="md:hidden flex justify-center mb-12">
-                <a href="https://wa.me/5213324239103?text=Hola,%20quisiera%20evaluar%20mi%20caso" target="_blank" class="px-10 py-5 bg-green-500 text-white font-bold rounded-full shadow-[0_0_20px_rgba(34,197,94,0.3)] text-lg flex items-center gap-3 uppercase tracking-wider">
-                    <i class="fa-brands fa-whatsapp text-2xl"></i> Hablar por WhatsApp
-                </a>
-            </div>
+      <ContactWizard
+        wizardId="contact"
+        plan={plan}
+        problem={problem}
+        servicio={servicio}
+        demo={demo}
+        showMobileWa={true}
+        showDesktopWaLink={true}
+      />
+    </div>
+  </section>
 
-            <div class="bg-[#16191f]/90 p-8 md:p-14 rounded-2xl border border-white/10 backdrop-blur-md shadow-2xl">
-                
-                <!-- PROGRESS BAR -->
-                <div class="mb-12 hidden md:block">
-                    <div class="flex justify-between ui-caption mb-3">
-                        <span id="step-indicator">Paso 1 de 4</span>
-                        <span id="progress-percent">0%</span>
-                    </div>
-                    <div class="w-full bg-white/5 h-1.5 rounded-full overflow-hidden">
-                        <div id="progress-bar" class="bg-gold h-full transition-all duration-500 w-[25%]"></div>
-                    </div>
-                </div>
+  <a
+    href={waHref}
+    target="_blank"
+    rel="noopener noreferrer"
+    class="hidden md:flex fixed bottom-8 right-8 bg-green-600 text-white p-4 rounded-full shadow-[0_0_20px_rgba(34,197,94,0.25)] hover:scale-110 transition-transform z-50 items-center justify-center"
+    aria-label="Contactar por WhatsApp"
+  >
+    <i class="fa-brands fa-whatsapp text-3xl" aria-hidden="true"></i>
+  </a>
 
-                <form id="wizard-form">
-
-                    <!-- STEP 1 -->
-                    <div class="step-content active" data-step="1">
-                        <h3 class="mb-8 text-white">El Desafío Actual</h3>
-                        
-                        <div class="mb-8">
-                            <label class="block ui-caption mb-3">¿Cuál es el obstáculo #1 que le impide duplicar sus leads hoy?</label>
-                            <select name="obstacle" class="input-field" required>
-                                <option value="" disabled selected>Seleccione la realidad de su negocio</option>
-                                <option value="invisibility">Google nos ignora (Problema de SEO)</option>
-                                <option value="conversion">Tenemos tráfico pero nadie llama (Web que no vende)</option>
-                                <option value="trust">La competencia se ve más profesional (Falta de Autoridad)</option>
-                                <option value="tech">La IA no nos recomienda (Problema de GEO)</option>
-                            </select>
-                        </div>
-
-                        <div class="mb-8">
-                            <label class="block ui-caption mb-3">Si su competencia desapareciera mañana, ¿por qué deberían elegirlo a usted?</label>
-                            <textarea name="value_prop" rows="3" class="input-field" placeholder="¿Cuál es su ventaja real? (Calidad, Rapidez, Experiencia...)"></textarea>
-                        </div>
-                    </div>
-
-                    <!-- STEP 2 -->
-                    <div class="step-content" data-step="2">
-                        <h3 class="mb-8 text-white">Estado Digital</h3>
-                        
-                        <div class="mb-8">
-                            <label class="block ui-caption mb-3">¿Tiene actualmente una página web?</label>
-                            <select name="has_website" class="input-field" required onchange="toggleSelectOther('has_website', 'website-url', 'yes')">
-                                <option value="" disabled selected>Seleccione...</option>
-                                <option value="yes">Sí, tenemos web</option>
-                                <option value="no">No, no tenemos</option>
-                                <option value="old">Sí, pero es muy vieja/no funciona</option>
-                            </select>
-                            <div id="website-url" class="hidden mt-4">
-                                <input type="text" name="current_website" class="input-field" placeholder="www.suempresa.com">
-                            </div>
-                        </div>
-
-                        <div class="mb-8">
-                            <label class="block ui-caption mb-3">¿Qué servicio necesita?</label>
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-2">
-                                <label class="option-label"><input type="checkbox" name="services" value="web" class="mr-3"><span>Diseño Web</span></label>
-                                <label class="option-label"><input type="checkbox" name="services" value="seo_geo" class="mr-3"><span>SEO-GEO</span></label>
-                                <label class="option-label"><input type="checkbox" name="services" value="agents" class="mr-3"><span>Agentes IA</span></label>
-                                <label class="option-label"><input type="checkbox" name="services" value="webapps" class="mr-3"><span>WebApps</span></label>
-                                <label class="option-label"><input type="checkbox" name="services" value="marketing" class="mr-3"><span>AI Marketing</span></label>
-                                <label class="option-label"><input type="checkbox" name="services" value="avatars" class="mr-3"><span>Avatares IA</span></label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- STEP 3 -->
-                    <div class="step-content" data-step="3">
-                        <h3 class="mb-8 text-white">Compromiso</h3>
-                        
-                        <div class="mb-8">
-                            <label class="block ui-caption mb-3">¿Está buscando resultados urgentes?</label>
-                            <select name="urgency" class="input-field" required>
-                                <option value="asap">Sí, necesitamos esto funcionando Ayer (Sprint 10 días)</option>
-                                <option value="soon">En el próximo mes</option>
-                                <option value="info">Solo estoy investigando</option>
-                            </select>
-                        </div>
-
-                        <div class="mb-8">
-                            <label class="block ui-caption mb-3">¿Dispone de presupuesto para invertir en su infraestructura?</label>
-                            <select name="budget" class="input-field" required>
-                                <option value="ready">Sí, tenemos capital listo para invertir (+$15,000 MXN)</option>
-                                <option value="maybe">Depende de la propuesta (~$10,000 MXN)</option>
-                                <option value="no">No tenemos presupuesto asignado</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <!-- STEP 4 -->
-                    <div class="step-content" data-step="4">
-                        <h3 class="mb-8 text-white">Contacto Directo</h3>
-                        <p class="text-subtle mb-8 text-sm">Enviaremos el diagnóstico preliminar a este contacto o enviaremos un WhatsApp.</p>
-                        
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-                            <div>
-                                <label class="block ui-caption mb-3">Su Nombre</label>
-                                <input type="text" name="name" class="input-field" required>
-                            </div>
-                            <div>
-                                <label class="block ui-caption mb-3">Correo de trabajo</label>
-                                <input type="email" name="email" class="input-field" required>
-                            </div>
-                        </div>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-                            <div>
-                                <label class="block ui-caption mb-3">Rol / Puesto</label>
-                                <input type="text" name="role" class="input-field">
-                            </div>
-                            <div>
-                                <label class="block ui-caption mb-3">Empresa / Industria</label>
-                                <input type="text" name="company" class="input-field" required>
-                            </div>
-                        </div>
-                        <div class="mb-10">
-                            <label class="block ui-caption mb-3">Herramienta interna preferida (Opcional)</label>
-                            <select name="tool" class="input-field">
-                                <option value="none">Ninguna</option>
-                                <option value="taskade">Taskade</option>
-                                <option value="notion">Notion</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="flex justify-between items-center mt-10 pt-8 border-t border-white/10">
-                        <button type="button" id="prevBtn" class="ui-caption text-subtle hover:text-white px-4 py-2 transition-colors hidden">
-                            <i class="fa-solid fa-arrow-left mr-2"></i> Atrás
-                        </button>
-                        
-                        <button type="button" id="nextBtn" class="bg-white text-charcoal hover:bg-gold hover:text-white px-10 py-4 rounded-full font-bold transition-all duration-300 shadow-lg ml-auto uppercase tracking-wider text-sm">
-                            Siguiente <i class="fa-solid fa-arrow-right ml-2"></i>
-                        </button>
-
-                        <button type="button" id="submitBtn" class="bg-gold text-charcoal hover:bg-white hover:text-charcoal px-10 py-4 rounded-full font-bold transition-all duration-300 shadow-lg ml-auto hidden flex items-center gap-2 uppercase tracking-wider text-sm">
-                            <i class="fa-solid fa-paper-plane text-xl"></i> Enviar Diagnóstico
-                        </button>
-                    </div>
-
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- Botón Flotante General para Desktop -->
-    <a href="https://wa.me/5213324239103" target="_blank" class="hidden md:flex fixed bottom-8 right-8 bg-green-500 text-white p-4 rounded-full shadow-[0_0_20px_rgba(34,197,94,0.3)] hover:scale-110 transition-transform z-50 items-center justify-center">
-        <i class="fa-brands fa-whatsapp text-3xl"></i>
-    </a>
-
-    <Footer />
+  <Footer />
 </Layout>
-
-<script is:inline>
-    // Se ejecuta del lado del cliente para manejar el wizard
-    document.addEventListener("DOMContentLoaded", () => {
-        let currentStep = 1;
-        const totalSteps = 4;
-        
-        const updateUI = () => {
-            document.querySelectorAll('.step-content').forEach(el => el.classList.remove('active'));
-            document.querySelector(`.step-content[data-step="${currentStep}"]`)?.classList.add('active');
-            
-            const prevBtn = document.getElementById('prevBtn');
-            const nextBtn = document.getElementById('nextBtn');
-            const submitBtn = document.getElementById('submitBtn');
-            
-            if (currentStep === 1) {
-                prevBtn?.classList.add('hidden');
-            } else {
-                prevBtn?.classList.remove('hidden');
-            }
-            
-            if (currentStep === totalSteps) {
-                nextBtn?.classList.add('hidden');
-                submitBtn?.classList.remove('hidden');
-            } else {
-                nextBtn?.classList.remove('hidden');
-                submitBtn?.classList.add('hidden');
-            }
-            
-            const progress = ((currentStep - 1) / (totalSteps - 1)) * 100;
-            const bar = document.getElementById('progress-bar');
-            const percent = document.getElementById('progress-percent');
-            const indicator = document.getElementById('step-indicator');
-            
-            if(bar) bar.style.width = `${Math.max(5, progress)}%`;
-            if(percent) percent.innerText = `${Math.round(progress)}%`;
-            if(indicator) indicator.innerText = `Paso ${currentStep} de ${totalSteps}`;
-        };
-
-        window.toggleSelectOther = (selectName, otherId, triggerValue = 'other') => {
-            const select = document.querySelector(`select[name="${selectName}"]`);
-            const otherDiv = document.getElementById(otherId);
-            
-            if (select && select.value === triggerValue) {
-                otherDiv?.classList.remove('hidden');
-                const input = otherDiv?.querySelector('input');
-                if (input) input.focus();
-            } else {
-                otherDiv?.classList.add('hidden');
-            }
-        };
-
-        // Validador básico antes de avanzar
-        const validateStep = (step) => {
-            const stepContent = document.querySelector(`.step-content[data-step="${step}"]`);
-            if(!stepContent) return false;
-            const requiredFields = stepContent.querySelectorAll('[required]');
-            let isValid = true;
-            requiredFields.forEach(field => {
-                if(!field.value) {
-                    field.classList.add('border-red-500');
-                    isValid = false;
-                } else {
-                    field.classList.remove('border-red-500');
-                }
-            });
-            return isValid;
-        };
-
-        document.getElementById('nextBtn')?.addEventListener('click', () => {
-            if (validateStep(currentStep)) {
-                if (currentStep < totalSteps) {
-                    currentStep++;
-                    updateUI();
-                }
-            }
-        });
-
-        document.getElementById('prevBtn')?.addEventListener('click', () => {
-            if (currentStep > 1) {
-                currentStep--;
-                updateUI();
-            }
-        });
-
-        // Enviar datos al endpoint n8n (reemplaza flujo WhatsApp)
-        document.getElementById('submitBtn')?.addEventListener('click', async () => {
-            if(!validateStep(currentStep)) return;
-            
-            const form = document.getElementById('wizard-form');
-            const formData = new FormData(form);
-            
-            // Recolectar múltiples checkboxes
-            const selectedServices = Array.from(formData.getAll('services'));
-            
-            const data = {
-                name: formData.get('name'),
-                email: formData.get('email'),
-                company: formData.get('company'),
-                role: formData.get('role') || 'No especificado',
-                obstacle: formData.get('obstacle'),
-                value_prop: formData.get('value_prop') || '',
-                has_website: formData.get('has_website'),
-                current_website: formData.get('current_website') || '',
-                services: selectedServices,
-                urgency: formData.get('urgency'),
-                budget: formData.get('budget'),
-                tool: formData.get('tool')
-            };
-
-            const submitBtn = document.getElementById('submitBtn');
-            const originalText = submitBtn.innerHTML;
-            submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin text-xl"></i> Enviando...';
-            submitBtn.disabled = true;
-
-            try {
-                const response = await fetch('/api/submit', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(data)
-                });
-                
-                const result = await response.json();
-                
-                if (response.ok) {
-                    submitBtn.innerHTML = '<i class="fa-solid fa-check text-xl"></i> Recibido';
-                    submitBtn.classList.replace('bg-gold', 'bg-green-500');
-                    setTimeout(() => {
-                        alert(result.message || 'Información recibida. Nos contactaremos pronto.');
-                        window.location.href = '/'; // Redirigir al home como gracia
-                    }, 1000);
-                } else {
-                    throw new Error(result.error || 'Error en el envío');
-                }
-            } catch (err) {
-                console.error(err);
-                alert('Hubo un problema al enviar. Por favor intente nuevamente.');
-                submitBtn.innerHTML = originalText;
-                submitBtn.disabled = false;
-            }
-        });
-
-        // Auto-select dropdown from query params ?problem=xyz
-        const urlParams = new URLSearchParams(window.location.search);
-        const problemParam = urlParams.get('problem');
-        if(problemParam) {
-            const select = document.querySelector('select[name="obstacle"]');
-            if(select) select.value = problemParam;
-        }
-        
-        const planParam = urlParams.get('plan');
-        if(planParam) {
-            // we could pre-check a service if plan logic gets expanded
-        }
-    });
-</script>

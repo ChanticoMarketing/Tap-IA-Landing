@@ -3,10 +3,20 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import CtaWhatsApp from '../components/CtaWhatsApp.astro';
+import SchemaService from '../components/SchemaService.astro';
 ---
 
-<Layout title="AI Marketing | Estrategia de Crecimiento con IA | TAP-IA">
+<Layout 
+    title="AI Marketing | Estrategia de Crecimiento con IA | TAP-IA"
+    description="AI Marketing: inteligencia artificial aplicada a estrategia, contenido, análisis de campañas y crecimiento B2B."
+>
     <Header />
+    <SchemaService 
+        name="AI Marketing"
+        description="AI Marketing: inteligencia artificial aplicada a estrategia, contenido, análisis de campañas y crecimiento B2B."
+        url="/ai-marketing"
+        serviceType="AI Marketing Strategy"
+    />
 
     <section class="relative min-h-[60vh] pt-36 pb-10 px-6 flex flex-col items-center justify-center overflow-hidden">
         <div class="absolute top-20 right-0 w-[600px] h-[600px] bg-gold/5 rounded-full blur-[120px] pointer-events-none -z-10"></div>
@@ -16,9 +26,9 @@ import CtaWhatsApp from '../components/CtaWhatsApp.astro';
             <h1 class="font-serif text-4xl md:text-6xl mb-6 text-white leading-tight">
                 AI Marketing: Escala tu impacto <br/><span class="italic font-light text-white/60">sin escalar tu carga operativa.</span>
             </h1>
-            <p class="text-xl text-subtle font-light max-w-2xl mx-auto mb-10 leading-relaxed">
+            <h2 class="text-xl text-subtle font-light max-w-2xl mx-auto mb-10 leading-relaxed">
                 Integramos inteligencia artificial en tu funnel de ventas para automatizar la captación, cualificación y nutrición de leads. No es magia, es arquitectura de datos aplicada al marketing.
-            </p>
+            </h2>
             <CtaWhatsApp text="Solicitar Plan de AI Marketing" microcopy="Descubre cómo la IA puede optimizar tu presupuesto hoy." />
         </div>
     </section>
@@ -57,7 +67,7 @@ import CtaWhatsApp from '../components/CtaWhatsApp.astro';
                     </div>
                 </div>
                 <div class="order-1 md:order-2">
-                    <h2 class="text-3xl md:text-4xl text-white font-light mb-8">El fin del marketing genérico.</h2>
+                    <h3 class="text-3xl md:text-4xl text-white font-light mb-8">El fin del marketing genérico.</h3>
                     <p class="text-subtle mb-6 leading-relaxed">El marketing tradicional se basa en promedios. El AI Marketing se basa en individuos. Al utilizar LLMs y modelos de análisis de datos, podemos entregar el mensaje correcto a la persona correcta en el momento exacto.</p>
                     <p class="text-subtle mb-8 leading-relaxed">No solo te ayudamos a usar herramientas; te ayudamos a construir un ecosistema de marketing que aprende y se optimiza solo.</p>
                     <div class="flex flex-wrap gap-4">
@@ -73,7 +83,7 @@ import CtaWhatsApp from '../components/CtaWhatsApp.astro';
     <!-- METODOLOGÍA -->
     <section class="py-24 px-6 relative border-t border-white/5 bg-white/[0.01]">
         <div class="max-w-5xl mx-auto text-center">
-            <h2 class="mb-16">Nuestros Playbooks de Marketing</h2>
+            <h3 class="text-3xl text-white mb-16">Nuestros Playbooks de Marketing</h3>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
                 <div class="matte-card p-10 rounded-2xl border border-white/5 hover:border-gold/20 transition-colors">
                     <h4 class="text-gold font-serif italic text-xl mb-4">Captación de Alto Impacto</h4>
@@ -100,11 +110,36 @@ import CtaWhatsApp from '../components/CtaWhatsApp.astro';
     <!-- ÚLTIMO CTA -->
     <section class="py-24 px-6 relative border-t border-white/5 bg-[#0a0b0e]">
         <div class="max-w-4xl mx-auto text-center">
-            <h2 class="mb-8 text-white font-light">Transforma tu marketing de <span class="italic text-white/60">reactivo</span> a <span class="text-gold italic">predictivo</span>.</h2>
+            <h3 class="mb-8 text-white font-light text-3xl">Transforma tu marketing de <span class="italic text-white/60">reactivo</span> a <span class="text-gold italic">predictivo</span>.</h3>
             <p class="text-xl text-subtle mb-12">¿Listo para dejar de adivinar qué funciona? Implementamos el primer sprint de AI Marketing en 15 días.</p>
             <CtaWhatsApp text="Solicitar Auditoría de Funnel" />
         </div>
     </section>
 
+    <!-- Schema FAQPage para Answer Engine Optimization -->
+    <script type="application/ld+json" is:inline set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "¿Qué es el AI Marketing?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "El AI Marketing (Marketing con Inteligencia Artificial) es el uso de modelos de lenguaje (LLMs), machine learning y automatización para optimizar la toma de decisiones, escalar la creación de contenido, personalizar la experiencia del usuario y analizar grandes volúmenes de datos de campañas en tiempo real."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿La inteligencia artificial reemplazará a mi equipo de marketing?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. La IA actúa como un exoesqueleto que potencia a tu equipo, eliminando las tareas repetitivas (como el reporte manual o el formateo de bases de datos) para que los especialistas humanos puedan enfocarse 100% en la estrategia creativa, la conexión con la audiencia y la dirección del negocio."
+          }
+        }
+      ]
+    })} />
+
     <Footer />
 </Layout>
+

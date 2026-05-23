@@ -3,10 +3,20 @@ import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import CtaWhatsApp from '../../components/CtaWhatsApp.astro';
+import SchemaService from '../../components/SchemaService.astro';
 ---
 
-<Layout title="SEO y GEO | Posicionamiento e IA | TAP-IA">
+<Layout 
+    title="SEO y GEO | Posicionamiento e IA | TAP-IA"
+    description="Servicio de SEO y GEO (Generative Engine Optimization) para que tu marca sea encontrable en Google y citable en ChatGPT, Gemini y Perplexity."
+>
     <Header />
+    <SchemaService 
+        name="SEO y GEO - Posicionamiento e IA"
+        description="Servicio de SEO y GEO (Generative Engine Optimization) para que tu marca sea encontrable en Google y citable en ChatGPT, Gemini y Perplexity."
+        url="/soluciones/seo-geo"
+        serviceType="Search Engine Optimization, Generative Engine Optimization"
+    />
 
     <section class="relative min-h-[60vh] pt-36 pb-10 px-6 flex flex-col items-center justify-center">
         <div class="absolute top-20 left-0 w-[600px] h-[600px] bg-[#1a2744]/30 rounded-full blur-[120px] pointer-events-none -z-10"></div>
@@ -92,12 +102,72 @@ import CtaWhatsApp from '../../components/CtaWhatsApp.astro';
                     <p class="text-subtle text-sm">Nadie puede garantizarlo. Lo que sí garantizamos es construir la infraestructura y el contenido necesarios para tener la máxima probabilidad estadística de ser citado frente a tus competidores.</p>
                 </div>
                 <div class="bg-white/[0.02] p-6 rounded-xl border border-white/5">
+                    <h4 class="text-white mb-2 font-medium">¿Qué es GEO (Generative Engine Optimization)?</h4>
+                    <p class="text-subtle text-sm">GEO es la disciplina de optimizar contenido y estructura web para que los motores generativos de IA (ChatGPT, Gemini, Perplexity) puedan comprender, resumir y citar tu marca como fuente de autoridad en sus respuestas.</p>
+                </div>
+                <div class="bg-white/[0.02] p-6 rounded-xl border border-white/5">
+                    <h4 class="text-white mb-2 font-medium">¿Cuál es la diferencia entre SEO y GEO?</h4>
+                    <p class="text-subtle text-sm">SEO optimiza para algoritmos basados en enlaces y palabras clave, buscando clics. GEO optimiza para Modelos de Lenguaje (LLMs), buscando que tu contenido sea comprendido, resumido y citado como fuente de autoridad.</p>
+                </div>
+                <div class="bg-white/[0.02] p-6 rounded-xl border border-white/5">
                     <h4 class="text-white mb-2 font-medium">¿Dejo de hacer SEO tradicional?</h4>
                     <p class="text-subtle text-sm">No. El SEO tradicional (velocidad, indexación, backlinks) es la base. El GEO se construye sobre un sitio que técnicamente ya funciona bien para Google.</p>
+                </div>
+                <div class="bg-white/[0.02] p-6 rounded-xl border border-white/5">
+                    <h4 class="text-white mb-2 font-medium">¿Qué es AEO (Answer Engine Optimization)?</h4>
+                    <p class="text-subtle text-sm">AEO se enfoca directamente en responder preguntas específicas para aparecer en Google AI Overviews, snippets conversacionales y respuestas directas de motores generativos como Perplexity.</p>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Schema FAQPage para Answer Engine Optimization -->
+    <script type="application/ld+json" is:inline set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "¿Pueden garantizar que apareceré en ChatGPT?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Nadie puede garantizarlo. Lo que sí garantizamos es construir la infraestructura y el contenido necesarios para tener la máxima probabilidad estadística de ser citado frente a tus competidores."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Qué es GEO (Generative Engine Optimization)?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "GEO es la disciplina de optimizar contenido y estructura web para que los motores generativos de IA (ChatGPT, Gemini, Perplexity) puedan comprender, resumir y citar tu marca como fuente de autoridad en sus respuestas."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cuál es la diferencia entre SEO y GEO?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "SEO optimiza para algoritmos basados en enlaces y palabras clave, buscando clics. GEO optimiza para Modelos de Lenguaje (LLMs), buscando que tu contenido sea comprendido, resumido y citado como fuente de autoridad."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Dejo de hacer SEO tradicional?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. El SEO tradicional (velocidad, indexación, backlinks) es la base. El GEO se construye sobre un sitio que técnicamente ya funciona bien para Google."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Qué es AEO (Answer Engine Optimization)?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "AEO se enfoca directamente en responder preguntas específicas para aparecer en Google AI Overviews, snippets conversacionales y respuestas directas de motores generativos como Perplexity."
+          }
+        }
+      ]
+    })} />
 
     <Footer />
 </Layout>

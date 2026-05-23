@@ -1,0 +1,98 @@
+---
+// src/components/SchemaOrganization.astro
+// JSON-LD Schema Markup para la entidad TAP-IA.
+// GEO Impact: "knowsAbout" refuerza la probabilidad de ser citado
+// como experto en estos temas por LLMs (ChatGPT, Gemini, Perplexity).
+---
+
+<script type="application/ld+json" is:inline set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://tap-ia.tech/#organization",
+  "name": "TAP-IA",
+  "alternateName": "Tap IA",
+  "url": "https://tap-ia.tech",
+  "logo": "https://tap-ia.tech/logo.png",
+  "image": "https://tap-ia.tech/logo.png",
+  "description": "Consultoría e implementación de inteligencia artificial aplicada a negocio y marketing. Servicios de SEO/GEO, agentes IA, AI Marketing, WebApps con IA y automatización de procesos.",
+  "foundingDate": "2025",
+  "areaServed": {
+    "@type": "Country",
+    "name": "México"
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+52-33-2423-9103",
+    "contactType": "sales",
+    "availableLanguage": ["es", "en"]
+  },
+  "sameAs": [
+    "https://linkedin.com/company/tap-ia"
+  ],
+  "knowsAbout": [
+    "Inteligencia Artificial",
+    "Consultoría IA",
+    "SEO",
+    "GEO",
+    "Generative Engine Optimization",
+    "Answer Engine Optimization",
+    "AI Marketing",
+    "Agentes IA",
+    "Automatización de procesos",
+    "WebApps con IA",
+    "Marketing B2B",
+    "Schema Markup",
+    "Datos Estructurados"
+  ],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Servicios TAP-IA",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "@id": "https://tap-ia.tech/consultoria-inteligencia-artificial#service",
+          "name": "Consultoría de Inteligencia Artificial",
+          "url": "https://tap-ia.tech/consultoria-inteligencia-artificial"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "@id": "https://tap-ia.tech/soluciones/seo-geo#service",
+          "name": "SEO y GEO (Generative Engine Optimization)",
+          "url": "https://tap-ia.tech/soluciones/seo-geo"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "@id": "https://tap-ia.tech/ai-marketing#service",
+          "name": "AI Marketing",
+          "url": "https://tap-ia.tech/ai-marketing"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "@id": "https://tap-ia.tech/agentes-ia-a-medida#service",
+          "name": "Agentes IA a Medida",
+          "url": "https://tap-ia.tech/agentes-ia-a-medida"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "@id": "https://tap-ia.tech/webapps-ia-a-medida#service",
+          "name": "WebApps con IA",
+          "url": "https://tap-ia.tech/webapps-ia-a-medida"
+        }
+      }
+    ]
+  }
+})} />

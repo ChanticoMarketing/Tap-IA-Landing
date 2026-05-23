@@ -3,7 +3,7 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "dev": "astro dev",
+    "dev": "astro dev --open",
     "start": "astro dev",
     "build": "astro check && astro build",
     "preview": "astro preview",
@@ -13,6 +13,7 @@
     "@astrojs/check": "^0.9.4",
     "@astrojs/node": "^9.5.5",
     "@astrojs/react": "^4.4.2",
+    "@astrojs/sitemap": "^3.7.2",
     "@tailwindcss/vite": "^4.2.1",
     "astro": "^5.1.1",
     "framer-motion": "^12.35.0",

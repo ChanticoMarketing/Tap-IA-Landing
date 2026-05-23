@@ -1,0 +1,416 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<Layout title="Calculadora de ROI para Agentes de Venta IA | TAP-IA" description="Calcula el retorno de inversión y el ahorro operativo al automatizar el primer contacto y la calificación de leads B2B con agentes de IA autónomos.">
+    <Header />
+
+    <main class="pt-32 pb-24 px-4 sm:px-6 lg:px-8 bg-charcoal relative min-h-screen">
+        <!-- Fondo difuminado atmosférico -->
+        <div class="absolute top-40 left-1/4 w-[500px] h-[500px] bg-gold/5 rounded-full blur-[100px] pointer-events-none -z-10 animate-pulse-slow"></div>
+        <div class="absolute bottom-20 right-1/4 w-[400px] h-[400px] bg-royal/5 rounded-full blur-[100px] pointer-events-none -z-10 animate-pulse-slow"></div>
+
+        <div class="max-w-7xl mx-auto">
+            <!-- Encabezado Editorial -->
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="editorial-label block mb-3">Analítica Financiera & Negocio</span>
+                <h1 class="font-serif text-4xl sm:text-5xl md:text-6xl text-offwhite mb-6 leading-tight">
+                    Calculadora de ROI:<br />Agentes de Ventas IA
+                </h1>
+                <p class="text-subtle text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+                    Compara de forma matemática el costo y rendimiento de tu operación de seguimiento actual frente a un Agente IA Autónomo 24/7 optimizado para calificar leads en segundos.
+                </p>
+                <div class="gold-rule mx-auto mt-6"></div>
+            </div>
+
+            <!-- Contenedor de Consola de Dos Columnas -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                
+                <!-- COLUMNA IZQUIERDA: INPUTS (5 Columnas) -->
+                <div class="lg:col-span-6 bg-matte/40 border border-white/5 rounded-2xl p-6 sm:p-8 backdrop-blur-md">
+                    <h2 class="text-xl sm:text-2xl text-offwhite font-serif mb-6 border-b border-white/5 pb-4">
+                        Parámetros Operativos
+                    </h2>
+                    
+                    <div class="space-y-8">
+                        <!-- Input 1: Tráfico Web -->
+                        <div class="space-y-2">
+                            <div class="flex justify-between items-center text-sm font-semibold tracking-wide">
+                                <label for="range-trafico" class="text-offwhite">Tráfico Web Mensual</label>
+                                <span class="text-gold font-mono" id="val-trafico">10,000</span>
+                            </div>
+                            <input 
+                                type="range" 
+                                id="range-trafico" 
+                                min="1000" 
+                                max="100000" 
+                                step="1000" 
+                                value="10000" 
+                                class="w-full range-slider"
+                                aria-label="Tráfico Web Mensual"
+                            />
+                            <div class="flex justify-between text-[10px] text-white/40 font-mono">
+                                <span>1,000</span>
+                                <span>50,000</span>
+                                <span>100,000</span>
+                            </div>
+                        </div>
+
+                        <!-- Input 2: Conversión Actual -->
+                        <div class="space-y-2">
+                            <div class="flex justify-between items-center text-sm font-semibold tracking-wide">
+                                <label for="range-conversion" class="text-offwhite">Tasa de Conversión Actual (Formulario)</label>
+                                <span class="text-gold font-mono" id="val-conversion">1.5%</span>
+                            </div>
+                            <input 
+                                type="range" 
+                                id="range-conversion" 
+                                min="0.1" 
+                                max="10.0" 
+                                step="0.1" 
+                                value="1.5" 
+                                class="w-full range-slider"
+                                aria-label="Tasa de Conversión Actual"
+                            />
+                            <div class="flex justify-between text-[10px] text-white/40 font-mono">
+                                <span>0.1%</span>
+                                <span>5.0%</span>
+                                <span>10.0%</span>
+                            </div>
+                        </div>
+
+                        <!-- Input 3: Calificación Actual -->
+                        <div class="space-y-2">
+                            <div class="flex justify-between items-center text-sm font-semibold tracking-wide">
+                                <label for="range-calificacion" class="text-offwhite">Tasa de Calificación Actual</label>
+                                <span class="text-gold font-mono" id="val-calificacion">30%</span>
+                            </div>
+                            <input 
+                                type="range" 
+                                id="range-calificacion" 
+                                min="10" 
+                                max="90" 
+                                step="5" 
+                                value="30" 
+                                class="w-full range-slider"
+                                aria-label="Tasa de Calificación Actual"
+                            />
+                            <div class="flex justify-between text-[10px] text-white/40 font-mono">
+                                <span>10%</span>
+                                <span>50%</span>
+                                <span>90%</span>
+                            </div>
+                        </div>
+
+                        <!-- Input 4: Costo Operativo Actual -->
+                        <div class="space-y-2">
+                            <div class="flex justify-between items-center text-sm font-semibold tracking-wide">
+                                <label for="range-costo" class="text-offwhite">Costo de Seguimiento Actual (Mensual)</label>
+                                <span class="text-gold font-mono" id="val-costo">$4,000 USD</span>
+                            </div>
+                            <input 
+                                type="range" 
+                                id="range-costo" 
+                                min="500" 
+                                max="20000" 
+                                step="250" 
+                                value="4000" 
+                                class="w-full range-slider"
+                                aria-label="Costo de Seguimiento Actual"
+                            />
+                            <div class="flex justify-between text-[10px] text-white/40 font-mono">
+                                <span>$500</span>
+                                <span>$10,000</span>
+                                <span>$20,000</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Nota técnica sobre constantes del modelo -->
+                    <div class="mt-8 pt-6 border-t border-white/5 text-xs text-subtle/80 space-y-2">
+                        <p class="font-bold text-white/80">💡 Premisas del Modelo de IA de TAP-IA:</p>
+                        <ul class="list-disc pl-4 space-y-1">
+                            <li><strong>Conversión IA:</strong> Aumenta un <span class="text-gold font-semibold">+40%</span> la tasa de conversión por tiempo de respuesta inmediato 24/7 (SLA &lt; 5s).</li>
+                            <li><strong>Calificación IA:</strong> Incrementa al <span class="text-gold font-semibold">50%</span> constante debido a pre-calificación interactiva en el funnel.</li>
+                            <li><strong>Inversión IA:</strong> Tarifa de mantenimiento mensual fija de <span class="text-gold font-semibold">$500 USD</span> + Reducción de 70% en tiempo de SDR asignado a la operación.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- COLUMNA DERECHA: RESULTADOS (7 Columnas) -->
+                <div class="lg:col-span-6 space-y-8">
+                    <!-- Tarjeta Principal de ROI (Gold card-glow) -->
+                    <div class="card-glow p-8 flex flex-col justify-between min-h-[300px]">
+                        <div>
+                            <span class="text-[10px] uppercase tracking-widest text-gold/80 font-bold block mb-1">Impacto Financiero Proyectado</span>
+                            <h3 class="text-offwhite text-sm tracking-wide uppercase font-semibold mb-6">Ahorro Neto Anual Proyectado</h3>
+                            
+                            <div class="mb-4">
+                                <span class="text-5xl sm:text-6xl font-serif text-white tracking-tight" id="res-ahorro-anual">$29,400</span>
+                                <span class="text-lg text-gold font-mono ml-1 font-bold">USD</span>
+                            </div>
+                            
+                            <p class="text-subtle text-sm leading-relaxed mb-6" id="res-interpretacion">
+                                Al implementar el Agente de IA, no solo automatizas el 70% de las tareas operativas de contacto rápido, sino que proyectas un retorno significativo de inversión.
+                            </p>
+                        </div>
+                        
+                        <div class="grid grid-cols-2 gap-4 pt-6 border-t border-white/10">
+                            <div>
+                                <span class="text-xs text-subtle/90 block">Incremento en Leads Calificados</span>
+                                <span class="text-2xl sm:text-3xl text-gold font-serif font-bold block" id="res-leads-incremento">+133%</span>
+                            </div>
+                            <div>
+                                <span class="text-xs text-subtle/90 block">ROI Anual Proyectado</span>
+                                <span class="text-2xl sm:text-3xl text-white font-serif font-bold block" id="res-roi-anual">490%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Comparación Desglosada (Matte Card) -->
+                    <div class="bg-matte/40 border border-white/5 rounded-2xl p-6 sm:p-8 backdrop-blur-md space-y-6">
+                        <h3 class="text-lg text-offwhite font-serif border-b border-white/5 pb-3">Comparativo Desglosado</h3>
+                        
+                        <div class="space-y-4">
+                            <!-- Fila 1: Leads Calificados -->
+                            <div class="flex justify-between items-center">
+                                <div>
+                                    <span class="text-sm font-semibold text-offwhite block">Leads Calificados / Mes</span>
+                                    <span class="text-xs text-subtle/90">Tráfico calificado listo para ventas</span>
+                                </div>
+                                <div class="text-right">
+                                    <span class="text-xs text-subtle/80 block">Actual: <strong class="font-mono text-white/90" id="res-leads-act">45</strong></span>
+                                    <span class="text-sm text-gold font-semibold block">Con IA: <strong class="font-mono" id="res-leads-ia">105</strong></span>
+                                </div>
+                            </div>
+
+                            <div class="h-[1px] bg-white/5"></div>
+
+                            <!-- Fila 2: Costo Operativo Mensual -->
+                            <div class="flex justify-between items-center">
+                                <div>
+                                    <span class="text-sm font-semibold text-offwhite block">Costo de Seguimiento Mensual</span>
+                                    <span class="text-xs text-subtle/90">Operación + Licencias</span>
+                                </div>
+                                <div class="text-right">
+                                    <span class="text-xs text-subtle/80 block">Actual: <strong class="font-mono text-white/90" id="res-costo-act">$4,000</strong></span>
+                                    <span class="text-sm text-gold font-semibold block">Con IA: <strong class="font-mono" id="res-costo-ia">$1,700</strong></span>
+                                </div>
+                            </div>
+
+                            <div class="h-[1px] bg-white/5"></div>
+
+                            <!-- Fila 3: Costo de Adquisición Relativo -->
+                            <div class="flex justify-between items-center">
+                                <div>
+                                    <span class="text-sm font-semibold text-offwhite block">Eficiencia por Lead Calificado</span>
+                                    <span class="text-xs text-subtle/90">Costo operativo por lead calificado</span>
+                                </div>
+                                <div class="text-right">
+                                    <span class="text-xs text-subtle/80 block">Actual: <strong class="font-mono text-white/90" id="res-cpl-act">$88.89</strong></span>
+                                    <span class="text-sm text-gold font-semibold block">Con IA: <strong class="font-mono" id="res-cpl-ia">$16.19</strong></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Botón CTA para agendar diagnóstico -->
+                        <div class="pt-4">
+                            <a href="/contacto" class="block w-full text-center py-3 bg-gold text-charcoal rounded-xl text-sm font-bold border border-gold hover:bg-white hover:border-white transition-colors">
+                                Agendar Diagnóstico de Implementación
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <Footer />
+</Layout>
+
+<style>
+    /* Estilización del slider deslizante premium */
+    .range-slider {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 100%;
+        height: 6px;
+        border-radius: 9999px;
+        background: rgba(255, 255, 255, 0.1);
+        outline: none;
+        transition: background 0.3s;
+    }
+
+    .range-slider:hover {
+        background: rgba(255, 255, 255, 0.15);
+    }
+
+    .range-slider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        background: var(--color-gold);
+        cursor: pointer;
+        border: 2px solid var(--color-charcoal);
+        box-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
+        transition: transform 0.1s ease, background-color 0.2s;
+    }
+
+    .range-slider::-webkit-slider-thumb:hover {
+        transform: scale(1.25);
+        background: #f1c40f;
+    }
+
+    .range-slider::-moz-range-thumb {
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        background: var(--color-gold);
+        cursor: pointer;
+        border: 2px solid var(--color-charcoal);
+        box-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
+        transition: transform 0.1s ease, background-color 0.2s;
+    }
+
+    .range-slider::-moz-range-thumb:hover {
+        transform: scale(1.25);
+        background: #f1c40f;
+    }
+</style>
+
+<script>
+    // Lógica interactiva con Vanilla JS de alto rendimiento
+    document.addEventListener('DOMContentLoaded', () => {
+        // Elementos de Entrada (Sliders)
+        const rangeTrafico = document.getElementById('range-trafico') as HTMLInputElement;
+        const rangeConversion = document.getElementById('range-conversion') as HTMLInputElement;
+        const rangeCalificacion = document.getElementById('range-calificacion') as HTMLInputElement;
+        const rangeCosto = document.getElementById('range-costo') as HTMLInputElement;
+
+        // Indicadores Numéricos
+        const valTrafico = document.getElementById('val-trafico');
+        const valConversion = document.getElementById('val-conversion');
+        const valCalificacion = document.getElementById('val-calificacion');
+        const valCosto = document.getElementById('val-costo');
+
+        // Elementos de Salida
+        const resAhorroAnual = document.getElementById('res-ahorro-anual');
+        const resLeadsIncremento = document.getElementById('res-leads-incremento');
+        const resRoiAnual = document.getElementById('res-roi-anual');
+        const resInterpretacion = document.getElementById('res-interpretacion');
+
+        const resLeadsAct = document.getElementById('res-leads-act');
+        const resLeadsIa = document.getElementById('res-leads-ia');
+        const resCostoAct = document.getElementById('res-costo-act');
+        const resCostoIa = document.getElementById('res-costo-ia');
+        const resCplAct = document.getElementById('res-cpl-act');
+        const resCplIa = document.getElementById('res-cpl-ia');
+
+        // Formateadores
+        const fmtNumber = new Intl.NumberFormat('es-MX', { maximumFractionDigits: 0 });
+        const fmtDecimals = new Intl.NumberFormat('es-MX', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+        const fmtCurrency = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 });
+        const fmtCPL = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+        function calcularROI() {
+            if (!rangeTrafico || !rangeConversion || !rangeCalificacion || !rangeCosto) return;
+
+            // Valores de los inputs
+            const trafico = parseFloat(rangeTrafico.value);
+            const conversionActual = parseFloat(rangeConversion.value);
+            const calificacionActual = parseFloat(rangeCalificacion.value);
+            const costoActual = parseFloat(rangeCosto.value);
+
+            // Actualizar indicadores visuales
+            if (valTrafico) valTrafico.textContent = fmtNumber.format(trafico);
+            if (valConversion) valConversion.textContent = `${fmtDecimals.format(conversionActual)}%`;
+            if (valCalificacion) valCalificacion.textContent = `${calificacionActual}%`;
+            if (valCosto) valCosto.textContent = `${fmtCurrency.format(costoActual)} USD`;
+
+            // Constantes de IA de TAP-IA
+            const conversionIA = Math.min(10.0, conversionActual * 1.40); // +40% incremento
+            const calificacionIA = 50.0; // Incremento constante de calificación por nutrición fluida
+            const licenciaIA = 500.0; // Licencia mensual fija del agente
+
+            // Math - Leads Actuales
+            const leadsActuales = trafico * (conversionActual / 100);
+            const leadsCalificadosActuales = leadsActuales * (calificacionActual / 100);
+
+            // Math - Leads IA
+            const leadsIA = trafico * (conversionIA / 100);
+            const leadsCalificadosIA = leadsIA * (calificacionIA / 100);
+
+            // Incremento leads %
+            let leadsIncremento = 0;
+            if (leadsCalificadosActuales > 0) {
+                leadsIncremento = ((leadsCalificadosIA - leadsCalificadosActuales) / leadsCalificadosActuales) * 100;
+            }
+
+            // Math - Costo Operativo
+            // 70% ahorro de tiempo del SDR / ejecutivo tradicional
+            const costoSDRIA = costoActual * 0.30; 
+            const costoTotalIA = costoSDRIA + licenciaIA;
+
+            // Ahorros
+            const ahorroMensual = costoActual - costoTotalIA;
+            const ahorroAnual = ahorroMensual * 12;
+
+            // Inversión Anual
+            const inversionAnual = licenciaIA * 12;
+
+            // ROI
+            let roiAnual = 0;
+            if (inversionAnual > 0) {
+                roiAnual = (ahorroAnual / inversionAnual) * 100;
+            }
+
+            // CPLs
+            const cplActual = leadsCalificadosActuales > 0 ? (costoActual / leadsCalificadosActuales) : 0;
+            const cplIA = leadsCalificadosIA > 0 ? (costoTotalIA / leadsCalificadosIA) : 0;
+
+            // Actualizar Outputs en el DOM
+            if (resAhorroAnual) {
+                resAhorroAnual.textContent = ahorroAnual >= 0 ? fmtCurrency.format(ahorroAnual) : `-${fmtCurrency.format(Math.abs(ahorroAnual))}`;
+            }
+            if (resLeadsIncremento) {
+                resLeadsIncremento.textContent = `+${fmtNumber.format(leadsIncremento)}%`;
+            }
+            if (resRoiAnual) {
+                resRoiAnual.textContent = ahorroAnual >= 0 ? `${fmtNumber.format(roiAnual)}%` : 'N/A';
+            }
+
+            if (resLeadsAct) resLeadsAct.textContent = fmtDecimals.format(leadsCalificadosActuales);
+            if (resLeadsIa) resLeadsIa.textContent = fmtDecimals.format(leadsCalificadosIA);
+            
+            if (resCostoAct) resCostoAct.textContent = `${fmtCurrency.format(costoActual)}`;
+            if (resCostoIa) resCostoIa.textContent = `${fmtCurrency.format(costoTotalIA)}`;
+            
+            if (resCplAct) resCplAct.textContent = cplActual > 0 ? fmtCPL.format(cplActual) : '$0.00';
+            if (resCplIa) resCplIa.textContent = cplIA > 0 ? fmtCPL.format(cplIA) : '$0.00';
+
+            // Interpretación dinámica según ahorro
+            if (resInterpretacion) {
+                if (ahorroAnual > 0) {
+                    resInterpretacion.textContent = `Al automatizar con el Agente de IA de TAP-IA, liberas el 70% del tiempo de tus SDRs humanos y capturas un +40% de leads calificados por la inmediatez de respuesta. Tu ahorro neto proyectado es de ${fmtCurrency.format(ahorroAnual)} USD al año.`;
+                } else {
+                    resInterpretacion.textContent = `El volumen operativo o de costo actual es bajo para rentabilizar el costo de licencia del Agente IA en términos puramente de personal. Sin embargo, el beneficio cualitativo clave es la cobertura 24/7 y la inmediatez de contacto en menos de 5 segundos.`;
+                }
+            }
+        }
+
+        // Registrar Event Listeners
+        [rangeTrafico, rangeConversion, rangeCalificacion, rangeCosto].forEach(input => {
+            if (input) {
+                input.addEventListener('input', calcularROI);
+            }
+        });
+
+        // Ejecutar primer cálculo al cargar
+        calcularROI();
+    });
+</script>

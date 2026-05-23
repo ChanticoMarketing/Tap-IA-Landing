@@ -1,0 +1,32 @@
+---
+import { SITE_URL } from '../lib/seo';
+
+interface Item {
+  name: string;
+  url: string;
+  description?: string;
+}
+
+interface Props {
+  name: string;
+  description: string;
+  items: Item[];
+}
+
+const { name, description, items } = Astro.props;
+---
+
+<script type="application/ld+json" is:inline set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": name,
+  "description": description,
+  "itemListElement": items.map((item: Item, index: number) => ({
+    "@type": "ListItem",
+    "position": index + 1,
+    "name": item.name,
+    "url": new URL(item.url, SITE_URL).href,
+    "description": item.description,
+  }))
+})} />
+

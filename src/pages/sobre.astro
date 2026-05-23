@@ -4,7 +4,10 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 ---
 
-<Layout title="Sobre TAP-IA | Arquitectura de Dominio Digital">
+<Layout 
+    title="Sobre TAP-IA | Arquitectura de Dominio Digital"
+    description="Descubre TAP-IA: consultores en Inteligencia Artificial y arquitectos de estrategias digitales B2B."
+>
     <Header />
 
     <section class="min-h-[70vh] pt-36 pb-20 px-6 relative flex items-center">
@@ -23,6 +26,16 @@ import Footer from '../components/Footer.astro';
             </p>
         </div>
     </section>
+
+    <!-- Schema AboutPage para E-E-A-T -->
+    <script type="application/ld+json" is:inline set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "AboutPage",
+      "mainEntity": {
+        "@type": "Organization",
+        "name": "TAP-IA"
+      }
+    })} />
 
     <Footer />
 </Layout>

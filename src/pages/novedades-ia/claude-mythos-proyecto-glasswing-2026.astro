@@ -1,0 +1,394 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import CtaWhatsApp from '../../components/CtaWhatsApp.astro';
+import SchemaArticle from '../../components/SchemaArticle.astro';
+import { SITE_URL } from '../../lib/seo';
+
+const metadata = {
+  title: 'Claude Mythos y Project Glasswing: qué cambia en ciberseguridad, IA y marketing (2026)',
+  description:
+    'Análisis de Claude Mythos Preview y Project Glasswing de Anthropic: benchmarks, acceso restringido e implicaciones para empresas, SEO/GEO y contenido citable por IA.',
+  slug: '/novedades-ia/claude-mythos-proyecto-glasswing-2026',
+  datePublished: '2026-05-17',
+  dateModified: '2026-05-17',
+  heroImage: `${SITE_URL}/images/blog/hero-claude-mythos-glasswing.png`,
+};
+
+const faqItems = [
+  {
+    question: '¿Puedo usar Claude Mythos hoy en la app Claude?',
+    answer:
+      'No de forma general. El acceso está limitado al ecosistema Project Glasswing y previews controlados en proveedores cloud asociados.',
+  },
+  {
+    question: '¿Cuándo saldrá al público?',
+    answer:
+      'Anthropic no ha dado fecha. El foco actual es defensa, salvaguardas y eficiencia de despliegue.',
+  },
+  {
+    question: '¿Mythos reemplaza a Opus 4.6?',
+    answer:
+      'No en productos públicos. Opus sigue siendo el tope disponible para usuarios y desarrolladores; Mythos es una línea superior retenida.',
+  },
+  {
+    question: '¿Debo cambiar mi estrategia de contenido por este anuncio?',
+    answer:
+      'Sí en énfasis, no en pánico: prioriza definiciones claras, tablas, fuentes primarias y páginas que respondan preguntas de alta intención sobre IA y ciberseguridad.',
+  },
+  {
+    question: '¿Cómo se relaciona con SEO/GEO?',
+    answer:
+      'Los sistemas de respuesta generativa necesitan entidades bien definidas y pasajes extractables. Un artículo estructurado aumenta la probabilidad de ser recuperado y citado cuando alguien pregunta por Mythos en español con ángulo de negocio.',
+  },
+];
+---
+
+<Layout title={metadata.title} description={metadata.description}>
+  <Header />
+  <SchemaArticle
+    headline={metadata.title}
+    description={metadata.description}
+    url={metadata.slug}
+    datePublished={metadata.datePublished}
+    dateModified={metadata.dateModified}
+    author="TAP-IA"
+    image={metadata.heroImage}
+    articleSection="Modelos"
+    type="NewsArticle"
+  />
+
+  <script
+    type="application/ld+json"
+    is:inline
+    set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: faqItems.map((item) => ({
+        '@type': 'Question',
+        name: item.question,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: item.answer,
+        },
+      })),
+    })}
+  />
+
+  <section class="min-h-[50vh] pt-36 pb-16 px-6 relative border-b border-white/5">
+    <div class="absolute top-20 right-1/4 w-[400px] h-[400px] bg-gold/5 rounded-full blur-[80px] pointer-events-none -z-10"></div>
+
+    <div class="max-w-4xl mx-auto">
+      <a
+        href="/novedades-ia"
+        class="text-subtle text-sm hover:text-white transition-colors mb-6 inline-block"
+      >
+        <i class="fa-solid fa-arrow-left mr-2"></i>Volver a Novedades
+      </a>
+
+      <div class="flex flex-wrap gap-3 mb-6 text-xs font-semibold uppercase tracking-wider">
+        <span class="text-gold">Modelos</span>
+        <span class="text-subtle/50">•</span>
+        <span class="text-gold">Ciberseguridad IA</span>
+        <span class="text-subtle/50">•</span>
+        <span class="text-subtle">17 Mayo 2026</span>
+      </div>
+
+      <h1 class="font-serif text-4xl md:text-5xl lg:text-6xl text-white mb-4 leading-tight">
+        Claude Mythos y Project Glasswing: qué cambia en ciberseguridad, IA y marketing (2026)
+      </h1>
+      <p class="text-sm text-subtle mb-8">Por TAP-IA · 17 mayo 2026 · Análisis Modelos / GEO</p>
+
+      <div class="bg-white/5 border border-white/10 p-6 md:p-8 rounded-2xl mb-8">
+        <h2 class="text-xl font-serif text-gold mb-3 flex items-center gap-2">
+          <i class="fa-solid fa-bolt"></i> Resumen Ejecutivo (ES)
+        </h2>
+        <p class="text-offwhite/90 leading-relaxed text-sm md:text-base">
+          El 7 de abril de 2026, Anthropic anunció <strong>Project Glasswing</strong> y <strong
+            >Claude Mythos Preview</strong
+          >: un salto en código, razonamiento y ciberseguridad que la empresa no libera al público por
+          riesgo de capacidad. Para marketing y negocio B2B, la señal es clara: la IA frontier ya
+          encuentra fallos reales en software crítico — y tu contenido debe ser definible, estructurado
+          y citable en motores generativos.
+        </p>
+      </div>
+
+      <img
+        src="/images/blog/hero-claude-mythos-glasswing.png"
+        alt="Domo sonar de cristal dorado sobre panel negro: metáfora visual de escaneo defensivo Project Glasswing"
+        class="w-full h-auto rounded-3xl border border-white/10 shadow-2xl"
+        width="1600"
+        height="900"
+        loading="eager"
+        decoding="async"
+      />
+    </div>
+  </section>
+
+  <article class="py-16 px-6 max-w-3xl mx-auto text-offwhite/90">
+    <div class="prose prose-invert prose-gold max-w-none">
+      <blockquote class="border-l-gold">
+        <strong>Definición rápida:</strong> Claude Mythos Preview es el modelo frontier más potente que
+        Anthropic ha entrenado. No está disponible al público: se despliega de forma controlada dentro
+        de <strong>Project Glasswing</strong>, una iniciativa defensiva con 12 socios de lanzamiento y
+        más de 40 organizaciones adicionales.
+      </blockquote>
+
+      <hr class="border-white/5 my-12" />
+
+      <h2 class="font-serif text-3xl mb-6 text-white">Cronología: de filtración accidental a anuncio oficial</h2>
+      <div class="overflow-x-auto mb-12">
+        <table class="w-full border-collapse border border-white/10 text-sm">
+          <thead>
+            <tr class="bg-white/5">
+              <th scope="col" class="border border-white/10 p-3 text-left">Fecha</th>
+              <th scope="col" class="border border-white/10 p-3 text-left">Hito</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="border border-white/10 p-3">Finales marzo 2026</td>
+              <td class="border border-white/10 p-3"
+                >Filtración por misconfiguración de CMS; borradores y referencias a Mythos expuestos</td
+              >
+            </tr>
+            <tr>
+              <td class="border border-white/10 p-3">7 abril 2026</td>
+              <td class="border border-white/10 p-3"
+                >Anuncio oficial de Project Glasswing y Claude Mythos Preview</td
+              >
+            </tr>
+            <tr>
+              <td class="border border-white/10 p-3">Abril 2026</td>
+              <td class="border border-white/10 p-3"
+                >System card (~240 páginas), posts del Frontier Red Team y acceso controlado en cloud</td
+              >
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="mb-8 text-sm text-subtle">
+        Fuente primaria: <a
+          href="https://www.anthropic.com/glasswing"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-gold hover:underline">Project Glasswing — Anthropic</a
+        >
+      </p>
+
+      <h2 class="font-serif text-3xl mb-6 text-white">Qué es Claude Mythos Preview</h2>
+      <p class="mb-6 leading-relaxed">
+        Claude Mythos Preview es un modelo <strong>generalista frontier no publicado</strong> por encima
+        del stack Haiku → Sonnet → Opus. Internamente se habla del tier <strong>“Capybara”</strong> — la
+        primera familia por encima de Opus.
+      </p>
+      <ul class="list-disc pl-6 mb-8 space-y-2">
+        <li
+          ><strong>Ciberseguridad:</strong> miles de vulnerabilidades de día cero; CyberGym ~83% frente a
+          ~67% de Opus 4.6 (Anthropic).</li
+        >
+        <li><strong>Código:</strong> SWE-bench Verified ~94% vs ~81% en Opus 4.6.</li>
+        <li><strong>Matemáticas:</strong> desempeño cercano a la perfección en USAMO 2026.</li>
+        <li
+          ><strong>Agenticidad:</strong> operación autónoma prolongada en terminales y cadenas de
+          explotación.</li
+        >
+      </ul>
+
+      <h2 class="font-serif text-3xl mb-6 text-white">Project Glasswing: estructura y objetivo</h2>
+      <p class="mb-6 leading-relaxed">
+        Coalición para asegurar software crítico. Socios de lanzamiento: AWS, Anthropic, Apple,
+        Broadcom, Cisco, CrowdStrike, Google, JPMorganChase, Linux Foundation, Microsoft, NVIDIA y Palo
+        Alto Networks. Compromisos: hasta <strong>100M USD</strong> en créditos de uso y <strong
+          >4M USD</strong
+        > en donaciones a seguridad open source.
+      </p>
+
+      <h2 class="font-serif text-3xl mb-6 text-white">Hallazgos que marcaron el debate</h2>
+      <ul class="list-disc pl-6 mb-8 space-y-2">
+        <li>Vulnerabilidad de <strong>27 años en OpenBSD</strong> (crash remoto).</li>
+        <li>Bug de <strong>16 años en FFmpeg</strong> no detectado por tests automáticos.</li>
+        <li>Cadena de escalada en el <strong>kernel Linux</strong>.</li>
+      </ul>
+
+      <h2 class="font-serif text-3xl mb-6 text-white">Mythos vs Opus 4.6</h2>
+      <div class="overflow-x-auto mb-8">
+        <table class="w-full border-collapse border border-white/10 text-sm">
+          <thead>
+            <tr class="bg-white/5">
+              <th scope="col" class="border border-white/10 p-3 text-left">Dimensión</th>
+              <th scope="col" class="border border-white/10 p-3 text-left">Opus 4.6</th>
+              <th scope="col" class="border border-white/10 p-3 text-left">Mythos Preview</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="border border-white/10 p-3 font-semibold">Disponibilidad</td>
+              <td class="border border-white/10 p-3">API y productos Claude</td>
+              <td class="border border-white/10 p-3">Acceso restringido (Glasswing)</td>
+            </tr>
+            <tr>
+              <td class="border border-white/10 p-3 font-semibold">SWE-bench Verified</td>
+              <td class="border border-white/10 p-3">~81%</td>
+              <td class="border border-white/10 p-3">~94%</td>
+            </tr>
+            <tr>
+              <td class="border border-white/10 p-3 font-semibold">USAMO 2026</td>
+              <td class="border border-white/10 p-3">~42%</td>
+              <td class="border border-white/10 p-3">~98%</td>
+            </tr>
+            <tr>
+              <td class="border border-white/10 p-3 font-semibold">Ciberseguridad</td>
+              <td class="border border-white/10 p-3">Competente</td>
+              <td class="border border-white/10 p-3">Zero-days autónomos</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <figure class="mb-12">
+        <img
+          src="/images/blog/infografia-mythos-vs-opus-benchmarks.png"
+          alt="Dos manómetros analógicos dorados: aguja baja frente a aguja al máximo, comparación visual Mythos vs Opus"
+          class="w-full h-auto rounded-2xl border border-white/10"
+          width="1600"
+          height="1200"
+          loading="lazy"
+          decoding="async"
+        />
+        <figcaption class="text-xs text-subtle mt-3 text-center">
+          Lectura visual: capacidad frontier retenida (derecha) frente al tope público actual (izquierda).
+          Cifras exactas en tabla.
+        </figcaption>
+      </figure>
+
+      <h2 class="font-serif text-3xl mb-6 text-white">Por qué Anthropic no lo libera (todavía)</h2>
+      <ol class="list-decimal pl-6 mb-8 space-y-2">
+        <li><strong>Weaponización</strong> a escala en redes con postura débil.</li>
+        <li><strong>Incidentes en entrenamiento</strong> (sandbox escape, evaluaciones, razonamiento invisible).</li>
+        <li><strong>Coste de inferencia</strong> muy alto.</li>
+        <li><strong>Posicionamiento</strong> como activo defensivo con socios y reguladores.</li>
+      </ol>
+
+      <h2 class="font-serif text-3xl mb-6 text-white border-l-4 border-l-gold pl-4">
+        Implicaciones para empresas y marketing
+      </h2>
+      <p class="mb-6 leading-relaxed">
+        <strong>Seguridad y marca:</strong> comunica postura defensiva explícita. <strong
+          >SEO/GEO:</strong
+        > define conceptos al inicio, usa tablas y cita fuentes primarias. <strong>AI Marketing:</strong
+        > separa asistentes conversacionales de sistemas que actúan con human-in-the-loop.
+      </p>
+
+      <div class="bg-charcoal border border-gold/20 p-8 rounded-xl my-12">
+        <p class="italic text-lg text-offwhite/95">
+          “Mythos no es una amenaza a tu blog; es la señal de que la superficie de ataque acelerada por
+          IA ya es real. La oportunidad está en traducir el cambio en decisiones de negocio y
+          visibilidad con rigor.”
+        </p>
+        <p class="text-right font-serif text-gold mt-4">— Tap-IA</p>
+      </div>
+
+      <h2 class="font-serif text-3xl mb-6 text-white">Qué NO decir</h2>
+      <div class="matte-card border border-gold/20 p-6 rounded-xl mb-12">
+        <ul class="list-disc pl-6 space-y-2 text-sm md:text-base">
+          <li>“Mythos ya está en Claude para todos” — <strong>falso</strong> en mayo 2026.</li>
+          <li>“Tu empresa necesita Mythos para hacer SEO” — confunde capas.</li>
+          <li>Cifras ~10T parámetros como hecho oficial — son estimaciones de terceros.</li>
+        </ul>
+      </div>
+
+      <h2 class="font-serif text-3xl mb-6 text-white">Recomendaciones accionables</h2>
+      <div class="overflow-x-auto mb-12">
+        <table class="w-full border-collapse border border-white/10 text-sm">
+          <thead>
+            <tr class="bg-white/5">
+              <th scope="col" class="border border-white/10 p-3 text-left">Prioridad</th>
+              <th scope="col" class="border border-white/10 p-3 text-left">Acción</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="border border-white/10 p-3 font-semibold text-gold">P1</td>
+              <td class="border border-white/10 p-3">Auditar postura de seguridad (APIs, CI/CD, dependencias)</td>
+            </tr>
+            <tr>
+              <td class="border border-white/10 p-3 font-semibold text-gold">P1</td>
+              <td class="border border-white/10 p-3">Política de uso de IA interna</td>
+            </tr>
+            <tr>
+              <td class="border border-white/10 p-3 font-semibold">P2</td>
+              <td class="border border-white/10 p-3">Cluster contenido IA + ciberseguridad + negocio</td>
+            </tr>
+            <tr>
+              <td class="border border-white/10 p-3 font-semibold">P2</td>
+              <td class="border border-white/10 p-3">Medir citabilidad en ChatGPT, Perplexity, Gemini</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <section id="faq" aria-labelledby="faq-heading" class="mb-12">
+        <h2 id="faq-heading" class="font-serif text-3xl mb-6 text-white">Preguntas frecuentes</h2>
+        {
+          faqItems.map((item) => (
+            <div class="mb-8">
+              <h3 class="text-xl font-serif text-white mb-2">{item.question}</h3>
+              <p class="leading-relaxed text-offwhite/90">{item.answer}</p>
+            </div>
+          ))
+        }
+      </section>
+
+      <p class="mb-6 leading-relaxed">
+        <a href="/novedades-ia/agentes-ia-marketing-2026-openclaw-manus-era-agentica" class="text-gold hover:underline"
+          >Leer también: Agentes de IA en Marketing 2026 (OpenClaw, Manus)</a
+        >
+      </p>
+
+      <hr class="border-white/10 my-16" />
+      <h2 class="font-serif text-3xl mb-6 text-subtle">English Version Summary (EN)</h2>
+      <p class="text-subtle text-sm italic mb-4">For international stakeholders monitoring our intelligence feeds.</p>
+      <div class="bg-white/5 p-6 border border-white/5 rounded-xl mb-8">
+        <p class="text-sm text-subtle leading-relaxed">
+          <strong>Claude Mythos Preview</strong> is Anthropic's unreleased frontier model, deployed through
+          <strong>Project Glasswing</strong> for defensive cybersecurity with major tech and financial
+          partners. It leads on vulnerability discovery and software engineering benchmarks but is withheld
+          from public release due to capability risk and cost. For B2B brands, invest in trust, security
+          posture, and citable structured content rather than consumer access to the model.
+        </p>
+      </div>
+
+      <h2 class="font-serif text-3xl mb-4 text-white">Fuentes</h2>
+      <ul class="list-disc pl-6 text-sm text-subtle space-y-2 mb-8">
+        <li>
+          <a href="https://www.anthropic.com/glasswing" target="_blank" rel="noopener noreferrer" class="text-gold hover:underline"
+            >Anthropic — Project Glasswing</a
+          >
+        </li>
+        <li>
+          <a href="https://red.anthropic.com/" target="_blank" rel="noopener noreferrer" class="text-gold hover:underline"
+            >Anthropic Frontier Red Team</a
+          >
+        </li>
+        <li>
+          <a href="/auditoria-ia-marketing-seo-geo" class="text-gold hover:underline"
+            >Tap-IA — Auditoría IA, marketing y SEO/GEO</a
+          >
+        </li>
+      </ul>
+    </div>
+
+    <div class="mt-20 pt-16 border-t border-white/10 text-center">
+      <p class="text-xs text-subtle uppercase tracking-widest mb-4">Publicado por Tap-IA · Mayo 2026 · Jalisco, México</p>
+      <p class="text-sm text-subtle mb-6 max-w-lg mx-auto">
+        ¿Quieres saber cómo este tipo de avances afecta tu estrategia de IA o visibilidad?
+        <a href="/auditoria-ia-marketing-seo-geo" class="text-gold hover:underline">Solicita una auditoría</a> o escríbenos.
+      </p>
+      <CtaWhatsApp text="Consultar impacto en mi estrategia IA" />
+    </div>
+  </article>
+
+  <Footer />
+</Layout>

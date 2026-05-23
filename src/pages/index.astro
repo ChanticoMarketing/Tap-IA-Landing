@@ -3,45 +3,80 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import CtaWhatsApp from '../components/CtaWhatsApp.astro';
-import TapIALiquidGradient from '../components/TapIALiquidGradient.astro';
+import ContactWizard from '../components/ContactWizard.astro';
+import PremiumSectionHeader from '../components/PremiumSectionHeader.astro';
+
+const url = Astro.url;
+const plan = url.searchParams.get('plan') ?? '';
+const problem = url.searchParams.get('problem') ?? '';
+const servicio = url.searchParams.get('servicio') ?? '';
+const demo = url.searchParams.get('demo') ?? '';
 ---
 
-<Layout title="TAP-IA | IA aplicada a negocio y marketing">
+<Layout 
+    title="TAP-IA | IA aplicada a negocio y marketing"
+    description="Consultoría e implementación de IA para marketing B2B. SEO/GEO, agentes IA, automatización y estrategia digital con criterio."
+>
     <Header />
 
     <!-- HERO SECTION -->
-    <section class="relative min-h-[85vh] md:min-h-screen flex flex-col items-center justify-center pt-24 pb-12 md:pt-32 md:pb-20 px-6 overflow-hidden">
-        <!-- Interactive WebGL Liquid Gradient Background -->
-        <TapIALiquidGradient />
+    <section class="hero-container relative min-h-0 md:min-h-[85vh] lg:min-h-[100svh] flex flex-col justify-center pt-28 pb-10 md:pt-32 md:pb-12 px-4 sm:px-6 overflow-hidden">
 
-        <div class="max-w-4xl mx-auto w-full text-center relative z-10 flex flex-col items-center">
-            <!-- Scrim vertical para proteger la legibilidad del texto sobre el fondo animado -->
-            <div class="absolute inset-0 w-full h-full bg-gradient-to-b from-[#0a0b0e]/50 via-[#0a0b0e]/20 to-transparent pointer-events-none -z-10 rounded-3xl blur-[10px]"></div>
+        <div class="max-w-7xl mx-auto w-full relative z-10 flex flex-col lg:flex-row items-center justify-between text-left gap-12 lg:gap-8">
+            
+            <!-- Columna Izquierda: Texto -->
+            <div class="w-full lg:w-[55%] flex flex-col items-start relative">
+                <!-- Scrim horizontal reforzado para proteger la legibilidad del texto -->
+                <div class="absolute inset-0 w-full md:w-[150%] md:left-[-25%] h-full bg-gradient-to-r from-[#0a0b0e] via-[#0a0b0e]/70 to-transparent pointer-events-none -z-10 rounded-3xl blur-[40px]"></div>
 
-            <span class="hero-item inline-flex items-center gap-2 py-1 px-3 rounded-full border border-gold/20 bg-gold/[0.04] editorial-label text-gold mb-6 backdrop-blur-sm">
-                <span class="w-1.5 h-1.5 rounded-full bg-gold animate-pulse"></span>
-                IA Aplicada a Negocio y Marketing
-            </span>
-            <h1 class="hero-item mb-6">
-                IA aplicada a negocio y marketing para convertir <br class="hidden md:block">
-                <span class="text-white/80 italic font-light">complejidad técnica en decisiones claras</span>
-            </h1>
-            <p class="hero-item text-subtle max-w-2xl mx-auto mb-10 text-base md:text-[1.1rem]">
-                Ayudamos a empresas, líderes y equipos de marketing a aplicar inteligencia artificial con criterio para mejorar estrategia, operación, visibilidad y toma de decisiones.
-            </p>
-            <div class="hero-item relative z-50">
-                <CtaWhatsApp text="Solicitar diagnóstico" microcopy="En 5 minutos definimos si necesitas estrategia o implementación." />
+                <span class="hero-item editorial-label block mb-8">
+                    IA Aplicada a Marketing
+                </span>
+                <h1
+                    class="hero-item mb-5 max-w-4xl hero-text-shadow relative text-4xl md:text-5xl lg:text-[3.5rem] leading-[1.05]"
+                    id="hero-title"
+                    aria-label="La IA no hace marketing por ti. Te obliga a hacerlo mejor."
+                >
+                    <span id="typewriter-base"></span><span id="cursor-base" class="inline-block w-[3px] md:w-[4px] h-[0.9em] bg-gold ml-1 align-middle opacity-0" aria-hidden="true"></span> <br class="hidden md:block">
+                    <span id="typewriter-accent" class="text-white/80"></span><span id="cursor-accent" class="inline-block w-[3px] md:w-[4px] h-[0.9em] bg-gold ml-1 align-middle opacity-0" aria-hidden="true"></span>
+                </h1>
+                <div class="hero-item gold-rule mb-5"></div>
+                <p class="hero-item text-subtle max-w-xl mb-6 text-xl font-light">
+                    No es velocidad sin criterio.<br>
+                    Es claridad para decidir, ejecutar y mejorar.
+                </p>
+                <div class="hero-item hero-cta-priority relative z-50">
+                    <CtaWhatsApp align="start" text="Solicitar diagnóstico" microcopy="En 5 minutos definimos si necesitas estrategia o implementación." href="#diagnostico" />
+                </div>
             </div>
+
+            <!-- Columna Derecha: PNG con transparencia real -->
+            <div class="w-full lg:w-[45%] flex justify-center lg:justify-end items-center perspective-[1200px]">
+                <div class="hero-item relative w-full max-w-[520px] tilt-3d-element transition-all duration-700 isolate">
+                    <img
+                        src="/Hero-Section-image-removebg-preview-removebg-preview.png"
+                        alt="Hero Section Image"
+                        class="relative z-10 block w-full h-auto max-h-[50vh] md:max-h-[60vh] lg:max-h-[65vh] xl:max-h-[520px] object-contain drop-shadow-[0_0_50px_rgba(212,175,55,0.22)] animate-[float_6s_ease-in-out_infinite] [clip-path:inset(2px)]"
+                        width="800"
+                        height="800"
+                        sizes="(max-width: 768px) 90vw, 520px"
+                        fetchpriority="high"
+                        loading="eager"
+                        decoding="async"
+                    />
+                </div>
+            </div>
+
         </div>
     </section>
 
     <!-- TRUST STRIP -->
-    <section class="trust-section border-y border-white/5 bg-white/[0.02] py-6 overflow-hidden">
+    <section class="trust-section py-10 overflow-hidden relative z-10 w-full">
         <p class="editorial-label text-center mb-5">Tecnología integrada a tu operación</p>
-        <div class="relative overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
+        <div class="relative overflow-hidden w-full [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
             <div class="flex gap-10 animate-marquee whitespace-nowrap w-max items-center">
                 <!-- Set 1 -->
-                <img class="trust-item h-6 w-auto opacity-55 hover:opacity-90 transition-opacity" src="https://cdn.simpleicons.org/openai/9ca3af" alt="OpenAI" loading="lazy" />
+                <img class="trust-item h-6 w-auto opacity-55 hover:opacity-90 transition-opacity" src="/images/logos/openai-monoblossom.webp" alt="OpenAI" loading="lazy" />
                 <span class="trust-item text-subtle/30 text-xs">◆</span>
                 <img class="trust-item h-6 w-auto opacity-55 hover:opacity-90 transition-opacity" src="https://cdn.simpleicons.org/anthropic/9ca3af" alt="Anthropic" loading="lazy" />
                 <span class="trust-item text-subtle/30 text-xs">◆</span>
@@ -57,8 +92,45 @@ import TapIALiquidGradient from '../components/TapIALiquidGradient.astro';
                 <span class="trust-item text-subtle/30 text-xs">◆</span>
                 <img class="trust-item h-6 w-auto opacity-55 hover:opacity-90 transition-opacity" src="https://cdn.simpleicons.org/perplexity/9ca3af" alt="Perplexity" loading="lazy" />
                 <span class="trust-item text-subtle/30 text-xs">◆</span>
-                <!-- Set 2 — duplicado para loop continuo -->
-                <img class="trust-item h-6 w-auto opacity-55 hover:opacity-90 transition-opacity" src="https://cdn.simpleicons.org/openai/9ca3af" alt="OpenAI" loading="lazy" />
+                
+                <!-- Set 2 -->
+                <img class="trust-item h-6 w-auto opacity-55 hover:opacity-90 transition-opacity" src="/images/logos/openai-monoblossom.webp" alt="OpenAI" loading="lazy" />
+                <span class="trust-item text-subtle/30 text-xs">◆</span>
+                <img class="trust-item h-6 w-auto opacity-55 hover:opacity-90 transition-opacity" src="https://cdn.simpleicons.org/anthropic/9ca3af" alt="Anthropic" loading="lazy" />
+                <span class="trust-item text-subtle/30 text-xs">◆</span>
+                <img class="trust-item h-6 w-auto opacity-55 hover:opacity-90 transition-opacity" src="https://cdn.simpleicons.org/hubspot/9ca3af" alt="HubSpot" loading="lazy" />
+                <span class="trust-item text-subtle/30 text-xs">◆</span>
+                <img class="trust-item h-6 w-auto opacity-55 hover:opacity-90 transition-opacity" src="https://cdn.simpleicons.org/make/9ca3af" alt="Make" loading="lazy" />
+                <span class="trust-item text-subtle/30 text-xs">◆</span>
+                <img class="trust-item h-6 w-auto opacity-55 hover:opacity-90 transition-opacity" src="https://cdn.simpleicons.org/zapier/9ca3af" alt="Zapier" loading="lazy" />
+                <span class="trust-item text-subtle/30 text-xs">◆</span>
+                <img class="trust-item h-6 w-auto opacity-55 hover:opacity-90 transition-opacity" src="https://cdn.simpleicons.org/n8n/9ca3af" alt="n8n" loading="lazy" />
+                <span class="trust-item text-subtle/30 text-xs">◆</span>
+                <img class="trust-item h-6 w-auto opacity-55 hover:opacity-90 transition-opacity" src="https://cdn.simpleicons.org/googlegemini/9ca3af" alt="Google Gemini" loading="lazy" />
+                <span class="trust-item text-subtle/30 text-xs">◆</span>
+                <img class="trust-item h-6 w-auto opacity-55 hover:opacity-90 transition-opacity" src="https://cdn.simpleicons.org/perplexity/9ca3af" alt="Perplexity" loading="lazy" />
+                <span class="trust-item text-subtle/30 text-xs">◆</span>
+
+                <!-- Set 3 -->
+                <img class="trust-item h-6 w-auto opacity-55 hover:opacity-90 transition-opacity" src="/images/logos/openai-monoblossom.webp" alt="OpenAI" loading="lazy" />
+                <span class="trust-item text-subtle/30 text-xs">◆</span>
+                <img class="trust-item h-6 w-auto opacity-55 hover:opacity-90 transition-opacity" src="https://cdn.simpleicons.org/anthropic/9ca3af" alt="Anthropic" loading="lazy" />
+                <span class="trust-item text-subtle/30 text-xs">◆</span>
+                <img class="trust-item h-6 w-auto opacity-55 hover:opacity-90 transition-opacity" src="https://cdn.simpleicons.org/hubspot/9ca3af" alt="HubSpot" loading="lazy" />
+                <span class="trust-item text-subtle/30 text-xs">◆</span>
+                <img class="trust-item h-6 w-auto opacity-55 hover:opacity-90 transition-opacity" src="https://cdn.simpleicons.org/make/9ca3af" alt="Make" loading="lazy" />
+                <span class="trust-item text-subtle/30 text-xs">◆</span>
+                <img class="trust-item h-6 w-auto opacity-55 hover:opacity-90 transition-opacity" src="https://cdn.simpleicons.org/zapier/9ca3af" alt="Zapier" loading="lazy" />
+                <span class="trust-item text-subtle/30 text-xs">◆</span>
+                <img class="trust-item h-6 w-auto opacity-55 hover:opacity-90 transition-opacity" src="https://cdn.simpleicons.org/n8n/9ca3af" alt="n8n" loading="lazy" />
+                <span class="trust-item text-subtle/30 text-xs">◆</span>
+                <img class="trust-item h-6 w-auto opacity-55 hover:opacity-90 transition-opacity" src="https://cdn.simpleicons.org/googlegemini/9ca3af" alt="Google Gemini" loading="lazy" />
+                <span class="trust-item text-subtle/30 text-xs">◆</span>
+                <img class="trust-item h-6 w-auto opacity-55 hover:opacity-90 transition-opacity" src="https://cdn.simpleicons.org/perplexity/9ca3af" alt="Perplexity" loading="lazy" />
+                <span class="trust-item text-subtle/30 text-xs">◆</span>
+
+                <!-- Set 4 -->
+                <img class="trust-item h-6 w-auto opacity-55 hover:opacity-90 transition-opacity" src="/images/logos/openai-monoblossom.webp" alt="OpenAI" loading="lazy" />
                 <span class="trust-item text-subtle/30 text-xs">◆</span>
                 <img class="trust-item h-6 w-auto opacity-55 hover:opacity-90 transition-opacity" src="https://cdn.simpleicons.org/anthropic/9ca3af" alt="Anthropic" loading="lazy" />
                 <span class="trust-item text-subtle/30 text-xs">◆</span>
@@ -79,395 +151,467 @@ import TapIALiquidGradient from '../components/TapIALiquidGradient.astro';
     </section>
 
     <!-- ACCESOS RÁPIDOS — Diseño Editorial Premium -->
-    <section class="quick-access-section py-24 px-6 relative border-b border-white/5 bg-[#0a0b0e]">
-        <!-- Fondo base con textura y glows sutiles -->
-        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-[#16191f]/30 pointer-events-none"></div>
-        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[#2563eb]/6 rounded-full blur-[100px] -z-10 pointer-events-none"></div>
+    <section class="quick-access-section pt-16 pb-8 md:pt-24 md:pb-12 px-6 relative z-10">
+        <!-- Fondos eliminados para integrar con la atmósfera global -->
 
         <div class="max-w-7xl mx-auto relative z-10">
-            <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-8">
-                <div class="max-w-2xl">
-                    <span class="editorial-label block mb-3">Soluciones Estratégicas</span>
-                    <div class="gold-rule mb-6"></div>
-                    <h2 class="text-4xl md:text-5xl font-light leading-tight">¿Qué necesitas <br/><span class="italic text-white/60">destrabar hoy?</span></h2>
-                </div>
-                <p class="text-subtle text-base md:text-lg max-w-md font-light">
-                    No vendemos herramientas aisladas. Implementamos sistemas concretos de negocio para que operes con criterio, automatices la fricción y aumentes tus márgenes.
-                </p>
-            </div>
+            <PremiumSectionHeader 
+                label="Soluciones Estratégicas" 
+                title="¿Qué necesitas <br/><span class='italic text-white/60'>destrabar hoy?</span>" 
+                subtitle="No vendemos herramientas aisladas. Implementamos sistemas concretos de negocio para que operes con criterio, automatices la fricción y aumentes tus márgenes."
+                centered={false}
+            />
             
-            <!-- Grid Editorial: 2 Columnas principales, pero asimétrico en alturas -->
-            <div class="grid grid-cols-1 md:grid-cols-12 gap-5 md:gap-6">
+            <!-- Efecto Wow: Kinetic Flex Accordion -->
+            <div class="accordion-container w-full h-auto md:h-[75vh] md:min-h-[500px] flex flex-col md:flex-row gap-3 md:gap-2 mt-12 overflow-hidden rounded-[2rem] md:rounded-[3rem] border border-white/5 bg-[#0a0b0e]/20 p-2">
+                
                 <!-- Tarjeta 1: Consultoría IA -->
-                <a href="/consultoria-inteligencia-artificial" class="card-glow group col-span-1 md:col-span-7 relative p-8 md:p-12 flex flex-col justify-between">
-                    <div class="absolute -right-20 -top-20 w-80 h-80 bg-[#2563eb]/8 rounded-full blur-[100px] group-hover:bg-[#2563eb]/15 transition-all duration-1000 pointer-events-none"></div>
-                    
-                    <div class="flex justify-between items-start mb-24 md:mb-32">
-                        <span class="text-white/10 font-serif text-6xl md:text-7xl italic group-hover:text-gold/30 transition-colors duration-700 select-none">01</span>
-                        <div class="w-12 h-12 md:w-14 md:h-14 rounded-full border border-white/10 flex items-center justify-center bg-white/5 group-hover:bg-gold group-hover:border-gold transition-all duration-500 shadow-lg">
-                            <i class="fa-solid fa-arrow-right text-white text-sm md:text-base transform -rotate-45 group-hover:rotate-0 transition-transform duration-500"></i>
-                        </div>
+                <a href="/consultoria-inteligencia-artificial" class="accordion-item group relative rounded-[1.5rem] md:rounded-[2.5rem] overflow-hidden border border-white/5 bg-gradient-to-b from-[#161922] to-[#0a0b0e] hover:border-gold/30">
+                    <div class="absolute inset-0 bg-noise opacity-[0.03]"></div>
+                    <div class="absolute -right-40 -top-40 w-96 h-96 bg-gold/10 rounded-full blur-[120px] pointer-events-none accordion-glow opacity-0 transition-opacity duration-700"></div>
+                    <div class="absolute right-0 bottom-0 opacity-20 accordion-3d mix-blend-lighten pointer-events-none w-[200px] h-full md:w-1/2" style="mask-image: linear-gradient(to left, black 50%, transparent 100%); -webkit-mask-image: linear-gradient(to left, black 50%, transparent 100%);">
+                        <img src="/images/tactile_compass_asset_1778874318798.png" alt="" class="w-full h-full object-cover object-left" loading="lazy" decoding="async" />
                     </div>
                     
-                    <div class="relative z-10">
-                        <h3 class="text-3xl md:text-4xl text-white mb-3 md:mb-4 font-light tracking-tight">Consultoría <span class="italic text-gold">IA</span></h3>
-                        <p class="text-subtle text-base md:text-lg max-w-md font-light leading-relaxed">Diagnóstico y roadmap para empresas que necesitan claridad, estrategia y resultados reales con IA.</p>
+                    <div class="flex h-full w-full p-6 md:p-10 flex-col justify-between relative z-10">
+                        <div class="flex items-center justify-between">
+                            <span class="text-gold font-serif text-3xl md:text-5xl italic opacity-50 select-none">01 /</span>
+                            <div class="accordion-icon w-10 h-10 rounded-full border border-gold/30 flex items-center justify-center bg-gold/5 text-gold shadow-lg md:opacity-0 transition-all duration-500 md:translate-x-4 max-md:opacity-100 max-md:translate-x-0">
+                                <i class="fa-solid fa-arrow-right transform -rotate-45 group-hover:rotate-0 transition-transform duration-500"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-auto accordion-content-wrapper flex flex-col items-start w-full relative z-10">
+                            <h3 class="accordion-title text-2xl md:text-4xl text-white font-light tracking-tight origin-bottom-left transition-all duration-700 text-wrap md:whitespace-nowrap mb-2 md:mb-0 group-hover:md:mb-4">Consultoría <span class="italic text-gold">IA</span></h3>
+                            <div class="accordion-details opacity-0 max-h-0 overflow-hidden transition-all duration-700 translate-y-4">
+                                <p class="text-subtle text-sm md:text-base font-light leading-relaxed line-clamp-2 md:line-clamp-none">Diagnóstico y roadmap para empresas que necesitan claridad, estrategia y resultados reales con IA. No más humo, solo impacto operativo.</p>
+                            </div>
+                        </div>
                     </div>
                 </a>
 
                 <!-- Tarjeta 2: SEO-GEO -->
-                <a href="/soluciones/seo-geo" class="card-glow group col-span-1 md:col-span-5 relative p-8 md:p-12 flex flex-col justify-between">
-                    <div class="absolute -left-20 -bottom-20 w-72 h-72 bg-[#1a2744]/15 rounded-full blur-[80px] group-hover:bg-[#2563eb]/12 transition-all duration-1000 pointer-events-none"></div>
-                    
-                    <div class="flex justify-between items-start mb-24 md:mb-32">
-                        <span class="text-white/10 font-serif text-6xl md:text-7xl italic group-hover:text-gold/30 transition-colors duration-700 select-none">02</span>
-                        <div class="w-12 h-12 md:w-14 md:h-14 rounded-full border border-white/10 flex items-center justify-center bg-white/5 group-hover:bg-white group-hover:border-white transition-all duration-500 shadow-lg">
-                            <i class="fa-solid fa-arrow-right text-white group-hover:text-[#0a0b0e] text-sm md:text-base transform -rotate-45 group-hover:rotate-0 transition-transform duration-500"></i>
-                        </div>
+                <a href="/soluciones/seo-geo" class="accordion-item group relative rounded-[1.5rem] md:rounded-[2.5rem] overflow-hidden border border-white/5 bg-gradient-to-b from-[#1a1d24] to-[#0c0e12] hover:border-royal/30">
+                    <div class="absolute inset-0 bg-noise opacity-[0.03]"></div>
+                    <div class="absolute -left-40 -bottom-40 w-96 h-96 bg-royal/10 rounded-full blur-[120px] pointer-events-none accordion-glow opacity-0 transition-opacity duration-700"></div>
+                    <div class="absolute right-0 bottom-0 opacity-20 accordion-3d mix-blend-lighten pointer-events-none w-[200px] h-full md:w-1/2" style="mask-image: linear-gradient(to left, black 50%, transparent 100%); -webkit-mask-image: linear-gradient(to left, black 50%, transparent 100%);">
+                        <img src="/images/tactile_magnifier_asset_1778874333562.png" alt="" class="w-full h-full object-cover object-left" loading="lazy" decoding="async" />
                     </div>
-                    
-                    <div class="relative z-10">
-                        <h3 class="text-3xl md:text-4xl text-white mb-3 md:mb-4 font-light tracking-tight">SEO-GEO</h3>
-                        <p class="text-subtle text-base md:text-lg font-light leading-relaxed">Visibilidad dominante en Google y en los nuevos entornos generativos de IA.</p>
+
+                    <div class="flex h-full w-full p-6 md:p-10 flex-col justify-between relative z-10">
+                        <div class="flex items-center justify-between">
+                            <span class="text-royal font-serif text-3xl md:text-5xl italic opacity-50 select-none">02 /</span>
+                            <div class="accordion-icon w-10 h-10 rounded-full border border-royal/30 flex items-center justify-center bg-royal/5 text-royal shadow-lg md:opacity-0 transition-all duration-500 md:translate-x-4 max-md:opacity-100 max-md:translate-x-0">
+                                <i class="fa-solid fa-arrow-right transform -rotate-45 group-hover:rotate-0 transition-transform duration-500"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-auto accordion-content-wrapper flex flex-col items-start w-full relative z-10">
+                            <h3 class="accordion-title text-2xl md:text-4xl text-white font-light tracking-tight origin-bottom-left transition-all duration-700 text-wrap md:whitespace-nowrap mb-2 md:mb-0 group-hover:md:mb-4">SEO-GEO</h3>
+                            <div class="accordion-details opacity-0 max-h-0 overflow-hidden transition-all duration-700 translate-y-4">
+                                <p class="text-subtle text-sm md:text-base font-light leading-relaxed line-clamp-2 md:line-clamp-none">Visibilidad dominante en Google y en los nuevos entornos generativos de IA.</p>
+                            </div>
+                        </div>
                     </div>
                 </a>
 
                 <!-- Tarjeta 3: Agentes IA -->
-                <a href="/agentes-ia-a-medida" class="card-glow group col-span-1 md:col-span-4 relative p-8 flex flex-col justify-between">
-                    <div class="flex justify-between items-start mb-16">
-                        <span class="text-white/10 font-serif text-5xl italic group-hover:text-white/30 transition-colors duration-700 select-none">03</span>
-                        <i class="fa-solid fa-arrow-right text-white/30 text-base transform -rotate-45 group-hover:rotate-0 group-hover:text-white transition-all duration-500"></i>
+                <a href="/agentes-ia-a-medida" class="accordion-item group relative rounded-[1.5rem] md:rounded-[2.5rem] overflow-hidden border border-white/5 bg-gradient-to-b from-[#1b1820] to-[#0d0c11] hover:border-white/30">
+                    <div class="absolute inset-0 bg-noise opacity-[0.03]"></div>
+                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-white/5 rounded-full blur-[120px] pointer-events-none accordion-glow opacity-0 transition-opacity duration-700"></div>
+                    <div class="absolute right-0 bottom-0 opacity-20 accordion-3d mix-blend-lighten pointer-events-none w-[200px] h-full md:w-1/2" style="mask-image: linear-gradient(to left, black 50%, transparent 100%); -webkit-mask-image: linear-gradient(to left, black 50%, transparent 100%);">
+                        <img src="/images/tactile_gears_asset_1778874347609.png" alt="" class="w-full h-full object-cover object-left" loading="lazy" decoding="async" />
                     </div>
-                    <div class="relative z-10">
-                        <h3 class="text-2xl text-white mb-2 font-light">Agentes <span class="italic">IA</span> a medida</h3>
-                        <p class="text-subtle text-sm md:text-base font-light">Automatización de procesos reales, no solo responder mensajes.</p>
+
+                    <div class="flex h-full w-full p-6 md:p-10 flex-col justify-between relative z-10">
+                        <div class="flex items-center justify-between">
+                            <span class="text-white/40 font-serif text-3xl md:text-5xl italic select-none">03 /</span>
+                            <div class="accordion-icon w-10 h-10 rounded-full border border-white/20 flex items-center justify-center bg-white/5 text-white/60 shadow-lg md:opacity-0 transition-all duration-500 md:translate-x-4 max-md:opacity-100 max-md:translate-x-0">
+                                <i class="fa-solid fa-arrow-right transform -rotate-45 group-hover:rotate-0 transition-transform duration-500"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-auto accordion-content-wrapper flex flex-col items-start w-full relative z-10">
+                            <h3 class="accordion-title text-2xl md:text-4xl text-white font-light tracking-tight origin-bottom-left transition-all duration-700 text-wrap md:whitespace-nowrap mb-2 md:mb-0 group-hover:md:mb-4">Agentes <span class="italic text-white/60">IA</span> a medida</h3>
+                            <div class="accordion-details opacity-0 max-h-0 overflow-hidden transition-all duration-700 translate-y-4">
+                                <p class="text-subtle text-sm md:text-base font-light leading-relaxed line-clamp-2 md:line-clamp-none">Automatización de procesos reales, no solo responder mensajes. Asistentes que operan y ejecutan tareas complejas.</p>
+                            </div>
+                        </div>
                     </div>
                 </a>
 
                 <!-- Tarjeta 4: WebApps -->
-                <a href="/webapps-ia-a-medida" class="card-glow group col-span-1 md:col-span-4 relative p-8 flex flex-col justify-between">
-                    <div class="flex justify-between items-start mb-16">
-                        <span class="text-white/10 font-serif text-5xl italic group-hover:text-white/30 transition-colors duration-700 select-none">04</span>
-                        <i class="fa-solid fa-arrow-right text-white/30 text-base transform -rotate-45 group-hover:rotate-0 group-hover:text-white transition-all duration-500"></i>
+                <a href="/webapps-ia-a-medida" class="accordion-item group relative rounded-[1.5rem] md:rounded-[2.5rem] overflow-hidden border border-white/5 bg-gradient-to-b from-[#13151a] to-[#090a0d] hover:border-gray-400/30">
+                    <div class="absolute inset-0 bg-noise opacity-[0.03]"></div>
+                    <div class="absolute -right-20 bottom-0 w-96 h-96 bg-gray-500/10 rounded-full blur-[120px] pointer-events-none accordion-glow opacity-0 transition-opacity duration-700"></div>
+                    <div class="absolute right-0 bottom-0 opacity-20 accordion-3d mix-blend-lighten pointer-events-none w-[200px] h-full md:w-1/2" style="mask-image: linear-gradient(to left, black 50%, transparent 100%); -webkit-mask-image: linear-gradient(to left, black 50%, transparent 100%);">
+                        <img src="/images/tactile_switches_asset_1778874359436.png" alt="" class="w-full h-full object-cover object-left" loading="lazy" decoding="async" />
                     </div>
-                    <div class="relative z-10">
-                        <h3 class="text-2xl text-white mb-2 font-light">WebApps con IA</h3>
-                        <p class="text-subtle text-sm md:text-base font-light">Convertir procesos complejos en sistemas operables a medida.</p>
+
+                    <div class="flex h-full w-full p-6 md:p-10 flex-col justify-between relative z-10">
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-400 font-serif text-3xl md:text-5xl italic opacity-50 select-none">04 /</span>
+                            <div class="accordion-icon w-10 h-10 rounded-full border border-gray-400/30 flex items-center justify-center bg-gray-400/5 text-gray-400 shadow-lg md:opacity-0 transition-all duration-500 md:translate-x-4 max-md:opacity-100 max-md:translate-x-0">
+                                <i class="fa-solid fa-arrow-right transform -rotate-45 group-hover:rotate-0 transition-transform duration-500"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-auto accordion-content-wrapper flex flex-col items-start w-full relative z-10">
+                            <h3 class="accordion-title text-2xl md:text-4xl text-white font-light tracking-tight origin-bottom-left transition-all duration-700 text-wrap md:whitespace-nowrap mb-2 md:mb-0 group-hover:md:mb-4">WebApps con IA</h3>
+                            <div class="accordion-details opacity-0 max-h-0 overflow-hidden transition-all duration-700 translate-y-4">
+                                <p class="text-subtle text-sm md:text-base font-light leading-relaxed line-clamp-2 md:line-clamp-none">Sistemas operables a medida para convertir procesos complejos en flujos de trabajo eficientes impulsados por IA.</p>
+                            </div>
+                        </div>
                     </div>
                 </a>
 
                 <!-- Tarjeta 5: AI Marketing -->
-                <a href="/ai-marketing" class="card-glow group col-span-1 md:col-span-4 relative p-8 flex flex-col justify-between">
-                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-40 h-40 bg-[#2563eb]/6 rounded-full blur-[60px] group-hover:bg-[#2563eb]/14 transition-all duration-1000 pointer-events-none"></div>
-                    <div class="flex justify-between items-start mb-16 relative z-10">
-                        <span class="text-white/10 font-serif text-5xl italic group-hover:text-gold/30 transition-colors duration-700 select-none">05</span>
-                        <i class="fa-solid fa-arrow-right text-white/30 text-base transform -rotate-45 group-hover:rotate-0 group-hover:text-gold transition-all duration-500"></i>
+                <a href="/ai-marketing" class="accordion-item group relative rounded-[1.5rem] md:rounded-[2.5rem] overflow-hidden border border-white/5 bg-gradient-to-b from-[#1a160a] to-[#0d0a04] hover:border-gold/30">
+                    <div class="absolute inset-0 bg-noise opacity-[0.03]"></div>
+                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gold/15 rounded-full blur-[150px] pointer-events-none accordion-glow opacity-0 transition-opacity duration-700"></div>
+                    <div class="absolute right-0 bottom-0 opacity-20 accordion-3d mix-blend-lighten pointer-events-none w-[200px] h-full md:w-1/2" style="mask-image: linear-gradient(to left, black 50%, transparent 100%); -webkit-mask-image: linear-gradient(to left, black 50%, transparent 100%);">
+                        <img src="/images/tactile_dial_asset_1778874373212.png" alt="" class="w-full h-full object-cover object-left" loading="lazy" decoding="async" />
                     </div>
-                    <div class="relative z-10">
-                        <h3 class="text-2xl text-white mb-2 font-light">AI <span class="italic">Marketing</span></h3>
-                        <p class="text-subtle text-sm md:text-base font-light">IA aplicada a estrategia, contenido, análisis y crecimiento.</p>
+
+                    <div class="flex h-full w-full p-6 md:p-10 flex-col justify-between relative z-10">
+                        <div class="flex items-center justify-between">
+                            <span class="text-gold font-serif text-3xl md:text-5xl italic opacity-80 select-none">05 /</span>
+                            <div class="accordion-icon w-10 h-10 rounded-full border border-gold/40 flex items-center justify-center bg-gold/10 text-gold shadow-lg md:opacity-0 transition-all duration-500 md:translate-x-4 max-md:opacity-100 max-md:translate-x-0">
+                                <i class="fa-solid fa-arrow-right transform -rotate-45 group-hover:rotate-0 transition-transform duration-500"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-auto accordion-content-wrapper flex flex-col items-start w-full relative z-10">
+                            <h3 class="accordion-title text-2xl md:text-4xl text-white font-light tracking-tight origin-bottom-left transition-all duration-700 text-wrap md:whitespace-nowrap mb-2 md:mb-0 group-hover:md:mb-4">AI <span class="italic text-gold">Marketing</span></h3>
+                            <div class="accordion-details opacity-0 max-h-0 overflow-hidden transition-all duration-700 translate-y-4">
+                                <p class="text-subtle text-sm md:text-base font-light leading-relaxed line-clamp-2 md:line-clamp-none">IA aplicada a estrategia, contenido, análisis y crecimiento para escalar tu adquisición B2B exponencialmente.</p>
+                            </div>
+                        </div>
                     </div>
                 </a>
+
             </div>
         </div>
     </section>
 
     <!-- ZONA CONTINUA: PROPUESTA Y PORTAFOLIO -->
-    <div class="border-t border-white/5 bg-white/[0.01] relative overflow-hidden">
+    <div class="relative overflow-hidden z-10">
 
         <!-- PROPUESTA DE VALOR CENTRAL -->
-        <section class="pt-24 pb-16 px-6 relative">
-            <div class="absolute -bottom-40 -left-20 w-[400px] h-[400px] bg-[#1a2744]/15 rounded-full blur-[80px] -z-10 pointer-events-none"></div>
-        <div class="max-w-4xl mx-auto relative z-10">
-            
-            <h2 class="mb-8 text-white relative z-10">
-                La mayoría ya usa IA. <br>
-                <span class="text-gold italic">Muy pocos la están usando con criterio de marketing.</span>
-            </h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start relative z-10">
-                <div class="text-subtle space-y-6">
-                    <p>Hoy muchas empresas ya tienen ChatGPT, automatizaciones sueltas o herramientas aisladas.</p>
-                    <p>El problema no es acceso. El problema es que siguen sin una estructura clara para convertir todo eso en:</p>
-                    <ul class="space-y-3 text-white/90">
-                        <li class="flex items-center gap-3">
-                            <span class="text-gold text-xs">&#10022;</span>
-                            <span>mejor contenido</span>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <span class="text-gold text-xs">&#10022;</span>
-                            <span>mejor operación</span>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <span class="text-gold text-xs">&#10022;</span>
-                            <span>mejor visibilidad</span>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <span class="text-gold text-xs">&#10022;</span>
-                            <span>mejor toma de decisiones</span>
-                        </li>
-                    </ul>
+        <section id="value-prop" class="pt-10 pb-20 md:pt-16 md:pb-24 px-6 relative overflow-hidden">
+
+            <div class="max-w-4xl mx-auto relative z-10">
+                <h2 class="mb-12 text-white relative z-10 min-h-[120px] md:min-h-[100px]">
+                    <span id="decode-text-base" class="block tracking-tight mb-2">La mayoría ya usa IA.</span>
+                    <span id="decode-text-accent" class="block text-gold italic">Muy pocos la están usando con criterio de marketing.</span>
+                </h2>
+                
+                <div id="value-prop-content" class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start relative z-10 opacity-0 blur-lg translate-y-12">
+                    <div class="text-subtle space-y-6">
+                        <p class="vp-text decode-target">Hoy muchas empresas ya tienen ChatGPT, automatizaciones sueltas o herramientas aisladas.</p>
+                        <p class="vp-text decode-target">El problema no es acceso. El problema es que siguen sin una estructura clara para convertir todo eso en:</p>
+                        <ul class="space-y-3 text-white/90">
+                            <li class="vp-list-item flex items-center gap-3">
+                                <span class="text-gold text-xs">&#10022;</span>
+                                <span class="decode-target">mejor contenido</span>
+                            </li>
+                            <li class="vp-list-item flex items-center gap-3">
+                                <span class="text-gold text-xs">&#10022;</span>
+                                <span class="decode-target">mejor operación</span>
+                            </li>
+                            <li class="vp-list-item flex items-center gap-3">
+                                <span class="text-gold text-xs">&#10022;</span>
+                                <span class="decode-target">mejor visibilidad</span>
+                            </li>
+                            <li class="vp-list-item flex items-center gap-3">
+                                <span class="text-gold text-xs">&#10022;</span>
+                                <span class="decode-target">mejor toma de decisiones</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="vp-card relative z-10 rounded-2xl border border-white/10 bg-[#16191f]/80 backdrop-blur-xl p-3 md:p-4 shadow-[0_24px_48px_rgba(0,0,0,0.45)]">
+                        <figure class="vp-visual relative m-0 aspect-square w-full overflow-hidden rounded-xl bg-[#0a0b0e]">
+                            <img
+                                src="/tap-ia-filtro-criterio-ia-marketing.png"
+                                alt="Ilustración Tap-IA: filtro que transforma complejidad dispersa en implementación clara y accionable para marketing con criterio."
+                                width="1254"
+                                height="1254"
+                                loading="lazy"
+                                decoding="async"
+                                class="vp-visual-img block h-full w-full object-contain object-center"
+                            />
+                        </figure>
+                    </div>
                 </div>
-                <div class="bg-[#16191f]/80 backdrop-blur-xl p-8 md:p-10 rounded-2xl border border-white/10 shadow-2xl relative z-10">
-                    <p class="text-lg text-white mb-6">Tap-IA entra justo ahí:</p>
-                    <p class="text-subtle mb-6">Para traducir la complejidad en una implementación clara, útil y accionable.</p>
-                    <p class="text-xl font-medium text-gold">Esa es la diferencia entre <span class="line-through opacity-50">usar IA</span> y tener ventaja con IA.</p>
-                </div>
+            </div>
+        </section>
+
+    <!-- PORTAFOLIO — Oculto temporalmente -->
+    <!-- 
+    <section class="portfolio-section pb-32 pt-16 px-6 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="mb-16 lg:mb-24">
+                <PremiumSectionHeader 
+                    label="Portafolio" 
+                    title="Trabajo con criterio" 
+                    subtitle="Demos que muestran proceso, criterio, entregables y calidad técnica aplicada.<br/><span class='text-sm opacity-80 mt-2 block'>Tu audiencia B2B no quiere discurso inflado. Quiere ver cómo piensas, cómo estructuras y cómo aterrizas la IA a un contexto real. Por eso aquí no vas a encontrar “miren qué futurista”. Vas a encontrar demos que muestran cómo se convierte una idea en sistema y un sistema en ventaja.</span>"
+                    centered={false}
+                />
+            </div>
+
+            <div class="portfolio-split lg:grid lg:grid-cols-[1fr_minmax(280px,42%)] lg:gap-12 xl:gap-16 items-start">
+                <ul class="portfolio-list flex flex-col gap-6 md:gap-8 border-t border-white/10 pt-8" id="portfolio-list" role="list">
+                    <li class="portfolio-item group border-b border-white/10 pb-8" role="listitem">
+                        <a href="/portafolio/sitios-web" class="portfolio-link flex flex-col md:flex-row md:items-center md:justify-between w-full gap-4 rounded-lg outline-none focus-visible:ring-2 focus-visible:ring-gold/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0b0e]">
+                            <div class="flex items-center gap-4 md:gap-6 min-w-0">
+                                <span class="text-white/20 font-serif text-xl md:text-2xl italic group-hover:text-gold/50 transition-colors duration-300 shrink-0" aria-hidden="true">01</span>
+                                <h3 class="portfolio-title text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter text-white/50 uppercase group-hover:text-gold transition-colors duration-300">Sitios Web</h3>
+                            </div>
+                            <div class="md:text-right md:max-w-[220px] shrink-0">
+                                <span class="text-sm font-medium text-white/60 tracking-widest uppercase mb-1 block">Interfaz & Conversión</span>
+                                <span class="text-xs text-subtle leading-relaxed">Infraestructura digital pensada para captar, explicar y convertir.</span>
+                            </div>
+                            <div class="portfolio-mobile-preview lg:hidden mt-2 rounded-xl overflow-hidden border border-white/10 aspect-[16/10]">
+                                <img src="/images/portfolio_sitios_web.webp" alt="Demo Sitios Web" class="w-full h-full object-cover" width="640" height="400" loading="lazy" decoding="async" />
+                            </div>
+                        </a>
+                    </li>
+                    <li class="portfolio-item group border-b border-white/10 pb-8" role="listitem">
+                        <a href="/portafolio/seo-geo" class="portfolio-link flex flex-col md:flex-row md:items-center md:justify-between w-full gap-4 rounded-lg outline-none focus-visible:ring-2 focus-visible:ring-gold/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0b0e]">
+                            <div class="flex items-center gap-4 md:gap-6 min-w-0">
+                                <span class="text-white/20 font-serif text-xl md:text-2xl italic group-hover:text-gold/50 transition-colors duration-300 shrink-0" aria-hidden="true">02</span>
+                                <h3 class="portfolio-title text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter text-white/50 uppercase group-hover:text-gold transition-colors duration-300">SEO-GEO</h3>
+                            </div>
+                            <div class="md:text-right md:max-w-[220px] shrink-0">
+                                <span class="text-sm font-medium text-white/60 tracking-widest uppercase mb-1 block">Arquitectura de visibilidad</span>
+                                <span class="text-xs text-subtle leading-relaxed">Visibilidad para buscadores clásicos y entornos generativos.</span>
+                            </div>
+                            <div class="portfolio-mobile-preview lg:hidden mt-2 rounded-xl overflow-hidden border border-white/10 aspect-[16/10]">
+                                <img src="/images/portfolio_seo_geo.webp" alt="Demo SEO-GEO" class="w-full h-full object-cover" width="640" height="400" loading="lazy" decoding="async" />
+                            </div>
+                        </a>
+                    </li>
+                    <li class="portfolio-item group border-b border-white/10 pb-8" role="listitem">
+                        <a href="/portafolio/agentes-ia" class="portfolio-link flex flex-col md:flex-row md:items-center md:justify-between w-full gap-4 rounded-lg outline-none focus-visible:ring-2 focus-visible:ring-gold/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0b0e]">
+                            <div class="flex items-center gap-4 md:gap-6 min-w-0">
+                                <span class="text-white/20 font-serif text-xl md:text-2xl italic group-hover:text-gold/50 transition-colors duration-300 shrink-0" aria-hidden="true">03</span>
+                                <h3 class="portfolio-title text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter text-white/50 uppercase group-hover:text-gold transition-colors duration-300">Agentes IA</h3>
+                            </div>
+                            <div class="md:text-right md:max-w-[220px] shrink-0">
+                                <span class="text-sm font-medium text-white/60 tracking-widest uppercase mb-1 block">Asistentes Operativos</span>
+                                <span class="text-xs text-subtle leading-relaxed">Asistentes listos para integrarse a procesos comerciales.</span>
+                            </div>
+                            <div class="portfolio-mobile-preview lg:hidden mt-2 rounded-xl overflow-hidden border border-white/10 aspect-[16/10]">
+                                <img src="/images/portfolio_agentes_ia.webp" alt="Demo Agentes IA" class="w-full h-full object-cover" width="640" height="400" loading="lazy" decoding="async" />
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+                <aside class="portfolio-preview hidden lg:block sticky top-32 self-start" aria-label="Vista previa de demos" aria-live="polite">
+                    <div class="portfolio-preview-frame relative aspect-[4/5] w-full rounded-2xl overflow-hidden border border-white/10 bg-[#12141a]">
+                        <img src="/images/portfolio_sitios_web.webp" alt="" class="portfolio-preview-img portfolio-preview-img--default absolute inset-0 w-full h-full object-cover" data-preview="sitios" width="480" height="600" loading="lazy" decoding="async" />
+                        <img src="/images/portfolio_seo_geo.webp" alt="" class="portfolio-preview-img absolute inset-0 w-full h-full object-cover" data-preview="seo" width="480" height="600" loading="lazy" decoding="async" />
+                        <img src="/images/portfolio_agentes_ia.webp" alt="" class="portfolio-preview-img absolute inset-0 w-full h-full object-cover" data-preview="agentes" width="480" height="600" loading="lazy" decoding="async" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#0a0b0e]/80 via-transparent to-transparent pointer-events-none" aria-hidden="true"></div>
+                    </div>
+                </aside>
+            </div>
+            <div class="mt-16 text-center lg:text-left">
+                <a href="/portafolio" class="inline-flex text-gold hover:text-white transition-colors text-sm font-medium items-center gap-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold">
+                    Ver el archivo completo <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                </a>
             </div>
         </div>
     </section>
-
-    <!-- PORTAFOLIO — Cinematic Showcase Panels -->
-    <section class="portfolio-section pb-24 pt-8 px-6 relative">
-        <div class="max-w-7xl mx-auto">
-            <div class="flex flex-col md:flex-row justify-between items-end mb-16">
-                <div>
-                    <span class="editorial-label block mb-3">Portafolio</span>
-                    <div class="gold-rule mb-6"></div>
-                    <h2 class="mb-4 text-white">Trabajo con criterio</h2>
-                    <p class="text-subtle max-w-xl">Demos que muestran proceso, criterio, entregables y calidad técnica aplicada.</p>
-                    <p class="text-sm text-subtle/80 mt-4 max-w-lg">Tu audiencia B2B no quiere discurso inflado. Quiere ver cómo piensas, cómo estructuras y cómo aterrizas la IA a un contexto real. Por eso aquí no vas a encontrar “miren qué futurista”. Vas a encontrar demos que muestran cómo se convierte una idea en sistema y un sistema en ventaja.</p>
-                </div>
-                <a href="/portafolio" class="hidden md:flex text-gold hover:text-white transition-colors text-sm font-medium items-center gap-2 border-b border-gold/30 hover:border-white pb-1 mt-6 md:mt-0">
-                    Ver archivo completo <i class="fa-solid fa-arrow-right"></i>
-                </a>
-            </div>
-            
-            <div class="flex flex-col gap-5">
-                <!-- Panel 1: Sitios Web -->
-                <a href="/portafolio/sitios-web" class="portfolio-panel group relative flex flex-col md:flex-row items-center rounded-2xl overflow-hidden border border-white/[0.06] hover:border-gold/30 transition-all duration-500 bg-gradient-to-r from-[#1a1d24] to-[#12141a]">
-                    <div class="flex-[3] p-8 md:p-12 relative z-10">
-                        <span class="ui-caption text-gold/60 mb-3 block"><i class="fa-solid fa-laptop-code mr-2"></i>Interfaz & Conversión</span>
-                        <h3 class="text-white/90 group-hover:text-white transition-colors mb-3">Sitios Web</h3>
-                        <p class="text-sm text-subtle max-w-md">Infraestructura digital pensada para captar, explicar y convertir.</p>
-                        <span class="inline-flex items-center gap-2 mt-6 text-sm text-gold opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
-                            Ver demos <i class="fa-solid fa-arrow-right"></i>
-                        </span>
-                    </div>
-                    <div class="flex-[2] flex items-center justify-center p-8 md:p-12 relative overflow-hidden">
-                        <div class="portfolio-orb absolute inset-0 bg-gradient-to-br from-gold/15 to-gold/5 opacity-60 group-hover:opacity-100 transition-all duration-700 blur-3xl rounded-full scale-50 group-hover:scale-100 mix-blend-screen"></div>
-                        <img src="/images/holograma_datos_premium.webp" alt="Data Core" class="relative z-10 w-48 h-48 md:w-64 md:h-64 object-cover mix-blend-screen opacity-50 group-hover:opacity-100 transition-all duration-700 scale-95 group-hover:scale-105" loading="lazy" />
-                    </div>
-                </a>
-
-                <!-- Panel 2: SEO-GEO -->
-                <a href="/portafolio/seo-geo" class="portfolio-panel group relative flex flex-col md:flex-row items-center rounded-2xl overflow-hidden border border-white/[0.06] hover:border-[#2563eb]/30 transition-all duration-500 bg-gradient-to-r from-[#191c24] to-[#11131c]">
-                    <div class="flex-[3] p-8 md:p-12 relative z-10">
-                        <span class="ui-caption text-gold/60 mb-3 block"><i class="fa-solid fa-magnifying-glass-chart mr-2"></i>Arquitectura de visibilidad</span>
-                        <h3 class="text-white/90 group-hover:text-white transition-colors mb-3">SEO-GEO</h3>
-                        <p class="text-sm text-subtle max-w-md">Arquitectura de visibilidad para buscadores clásicos y entornos generativos.</p>
-                        <span class="inline-flex items-center gap-2 mt-6 text-sm text-gold opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
-                            Ver demos <i class="fa-solid fa-arrow-right"></i>
-                        </span>
-                    </div>
-                    <div class="flex-[2] flex items-center justify-center p-8 md:p-12 relative overflow-hidden min-h-[180px]">
-                        <!-- Patrón de puntos animado -->
-                        <div class="absolute inset-0 opacity-20 group-hover:opacity-40 transition-opacity duration-700"
-                             style="background-image: radial-gradient(circle, #2563eb 1px, transparent 1px); background-size: 20px 20px;">
-                        </div>
-                        <!-- Glow navy al hover -->
-                        <div class="absolute inset-0 bg-gradient-to-br from-[#2563eb]/0 to-[#1a2744]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-xl"></div>
-                        <!-- Icono central -->
-                        <div class="relative z-10 w-16 h-16 rounded-2xl border border-[#2563eb]/20 bg-[#1a2744]/40 flex items-center justify-center group-hover:border-[#2563eb]/60 group-hover:bg-[#1a2744]/80 transition-all duration-500">
-                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.7">
-                                <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
-                            </svg>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- Panel 3: Agentes IA -->
-                <a href="/portafolio/agentes-ia" class="portfolio-panel group relative flex flex-col md:flex-row items-center rounded-2xl overflow-hidden border border-white/[0.06] hover:border-[#2563eb]/30 transition-all duration-500 bg-gradient-to-r from-[#1b1820] to-[#13111a]">
-                    <div class="flex-[3] p-8 md:p-12 relative z-10">
-                        <span class="ui-caption text-gold/60 mb-3 block"><i class="fa-solid fa-robot mr-2"></i>Asistentes Operativos</span>
-                        <h3 class="text-white/90 group-hover:text-white transition-colors mb-3">Agentes IA</h3>
-                        <p class="text-sm text-subtle max-w-md">Asistentes listos para integrarse a procesos comerciales y operativos.</p>
-                        <span class="inline-flex items-center gap-2 mt-6 text-sm text-gold opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
-                            Ver demos <i class="fa-solid fa-arrow-right"></i>
-                        </span>
-                    </div>
-                    <div class="flex-[2] flex items-center justify-center p-8 md:p-12 relative overflow-hidden min-h-[180px]">
-                        <!-- Red de nodos animada con SVG -->
-                        <svg class="absolute inset-0 w-full h-full opacity-15 group-hover:opacity-35 transition-opacity duration-700" viewBox="0 0 200 150" fill="none" aria-hidden="true">
-                            <circle cx="40" cy="40" r="3" fill="#2563eb"/>
-                            <circle cx="100" cy="75" r="4" fill="#2563eb"/>
-                            <circle cx="160" cy="40" r="3" fill="#2563eb"/>
-                            <circle cx="70" cy="110" r="3" fill="#2563eb"/>
-                            <circle cx="140" cy="110" r="3" fill="#2563eb"/>
-                            <line x1="40" y1="40" x2="100" y2="75" stroke="#2563eb" stroke-width="0.8" opacity="0.6"/>
-                            <line x1="100" y1="75" x2="160" y2="40" stroke="#2563eb" stroke-width="0.8" opacity="0.6"/>
-                            <line x1="100" y1="75" x2="70" y2="110" stroke="#2563eb" stroke-width="0.8" opacity="0.6"/>
-                            <line x1="100" y1="75" x2="140" y2="110" stroke="#2563eb" stroke-width="0.8" opacity="0.6"/>
-                            <line x1="40" y1="40" x2="70" y2="110" stroke="#2563eb" stroke-width="0.4" opacity="0.3"/>
-                            <line x1="160" y1="40" x2="140" y2="110" stroke="#2563eb" stroke-width="0.4" opacity="0.3"/>
-                        </svg>
-                        <!-- Glow navy al hover -->
-                        <div class="absolute inset-0 bg-gradient-to-br from-[#2563eb]/0 to-[#1a2744]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-xl"></div>
-                        <!-- Icono central -->
-                        <div class="relative z-10 w-16 h-16 rounded-2xl border border-[#2563eb]/20 bg-[#1a2744]/40 flex items-center justify-center group-hover:border-[#2563eb]/60 group-hover:bg-[#1a2744]/80 transition-all duration-500">
-                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.7">
-                                <path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/>
-                                <path d="M2 14h2M20 14h2M15 13v2M9 13v2"/>
-                            </svg>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            
-            <a href="/portafolio" class="md:hidden inline-flex text-gold hover:text-white transition-colors text-sm font-medium items-center gap-2 mt-8">
-                Ver el archivo completo <i class="fa-solid fa-arrow-right"></i>
-            </a>
-        </div>
-    </section>
+    -->
     </div> <!-- END ZONA CONTINUA -->
 
     <!-- PRECIOS -->
-    <section id="pricing" class="pricing-section py-24 px-6 relative border-t border-white/5">
-        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[#2563eb]/6 rounded-full blur-[100px] pointer-events-none -z-10"></div>
+    <section id="pricing" class="pricing-section py-24 px-6 relative z-10">
+
         <div class="max-w-7xl mx-auto relative z-10">
-            <div class="text-center mb-3">
-                <span class="editorial-label">Infraestructura Digital</span>
-            </div>
-            <div class="gold-rule mx-auto mb-6"></div>
-            <h2 class="text-center mb-4">Infraestructura digital para crecer con IA</h2>
-            <p class="text-center text-subtle max-w-2xl mx-auto mb-16">Si tu marketing va a usar IA en serio, necesita una base que no estorbe: sitio, visibilidad y estructura lista para convertir.</p>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
-                <div class="pricing-card card-glow p-8 opacity-80 hover:opacity-100">
-                    <h3 class="mb-2">Venta Rápida</h3>
-                    <p class="ui-caption mb-6">Landing Page</p>
-                    <div class="text-3xl font-light mb-6">$9,500 <span class="text-sm text-subtle">MXN</span></div>
-                    <p class="text-sm text-subtle mb-6 h-10">Para cuando necesitas mover tráfico a una página que sí explique, sí capture y sí haga su trabajo.</p>
-                    <ul class="text-sm space-y-3 mb-8 text-subtle">
-                        <li><i class="fa-solid fa-check text-gold mr-2"></i>Landing High-Conversion</li>
-                        <li><i class="fa-solid fa-check text-gold mr-2"></i>Copywriting Persuasivo</li>
-                        <li><i class="fa-solid fa-check text-gold mr-2"></i>Formulario Integrado</li>
-                        <li><i class="fa-solid fa-check text-gold mr-2"></i>Setup en 72 horas</li>
-                    </ul>
-                    <a href="/contacto" class="block w-full text-center py-2 border border-white/20 rounded hover:bg-white/5 transition-colors text-sm">Aplicar</a>
+            <PremiumSectionHeader 
+                label="Infraestructura Digital" 
+                title="Infraestructura digital para crecer con IA" 
+                subtitle="Si tu marketing va a usar IA en serio, necesita una base que no estorbe: sitio, visibilidad y estructura lista para convertir."
+                centered={true}
+            />
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
+                <!-- Tarjeta 1: Impulso de Captación -->
+                <div class="pricing-card card-glow p-8 opacity-80 hover:opacity-100 flex flex-col justify-between h-full min-h-[450px]">
+                    <div>
+                        <h3 class="mb-2">Impulso de Captación</h3>
+                        <p class="ui-caption mb-6">LANDING + ACTIVACIÓN IA</p>
+                        <div class="text-3xl font-light mb-6">$8,900 <span class="text-sm text-subtle">MXN</span></div>
+                        <p class="text-sm text-subtle mb-6 min-h-[48px]">Valida tu oferta y captura prospectos con una página premium y tu primera optimización con IA.</p>
+                        <ul class="text-sm space-y-3 mb-8 text-subtle">
+                            <li><i class="fa-solid fa-check text-gold mr-2" aria-hidden="true"></i>Landing de Alta Conversión</li>
+                            <li><i class="fa-solid fa-check text-gold mr-2" aria-hidden="true"></i>Auditoría Express de Captación</li>
+                            <li><i class="fa-solid fa-check text-gold mr-2" aria-hidden="true"></i>Copywriting Persuasivo y Directo</li>
+                            <li><i class="fa-solid fa-check text-gold mr-2" aria-hidden="true"></i>Integración de WhatsApp o Formulario</li>
+                            <li><i class="fa-solid fa-check text-gold mr-2" aria-hidden="true"></i>Sesión Práctica de Activación IA</li>
+                        </ul>
+                    </div>
+                    <a href="?plan=impulso_captacion#diagnostico" class="block w-full text-center min-h-[48px] py-3 border border-white/20 rounded hover:bg-white/5 transition-colors text-sm flex items-center justify-center mt-auto">Activar Captación</a>
                 </div>
 
-                <div class="pricing-card card-glow p-8 relative transform md:-translate-y-6 shadow-[0_0_60px_rgba(37,99,235,0.15)]" style="border-color: rgba(37,99,235,0.3)">
-                    <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gold text-white ui-caption py-1.5 px-4 rounded-full shadow-lg">Estándar</div>
-                    <h3 class="mb-2 text-white">Autoridad Google</h3>
-                    <p class="ui-caption text-gold mb-8">Web + SEO Tradicional</p>
-                    <div class="text-4xl font-light mb-8 text-white">$16,000 <span class="text-sm text-subtle">MXN</span></div>
-                    <p class="text-sm text-offwhite mb-6 h-10">Para dejar de depender solo de pauta o referencias y empezar a construir autoridad orgánica de verdad.</p>
-                    <ul class="text-sm space-y-3 mb-8 text-offwhite">
-                        <li><i class="fa-solid fa-check text-gold mr-2"></i><strong>Sitio Web Completo</strong></li>
-                        <li><i class="fa-solid fa-check text-gold mr-2"></i>SEO Técnico Básico</li>
-                        <li><i class="fa-solid fa-check text-gold mr-2"></i>Optimización de Carga</li>
-                        <li><i class="fa-solid fa-check text-gold mr-2"></i>Blog / Noticias</li>
-                        <li><i class="fa-solid fa-check text-gold mr-2"></i>Soporte Post-entrega</li>
-                    </ul>
-                    <a href="/contacto" class="block w-full text-center py-3 bg-white text-charcoal font-medium rounded hover:bg-gold hover:text-white transition-colors">Iniciar Sprint</a>
+                <!-- Tarjeta 2: Sistema Web Inteligente -->
+                <div class="pricing-card card-glow p-8 relative transform md:-translate-y-6 shadow-[0_0_60px_rgba(212,175,55,0.12)] flex flex-col justify-between h-full min-h-[474px]" style="border-color: rgba(212,175,55,0.3)">
+                    <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gold text-white ui-caption py-1.5 px-4 rounded-full shadow-lg">Más Popular</div>
+                    <div>
+                        <h3 class="mb-2 text-white">Sistema Web Inteligente</h3>
+                        <p class="ui-caption text-gold mb-8">WEB + SEO/GEO + ROADMAP IA</p>
+                        <div class="text-4xl font-light mb-8 text-white">$15,900 <span class="text-sm text-subtle">MXN</span></div>
+                        <p class="text-sm text-offwhite mb-6 min-h-[48px]">El estándar para empresas que exigen una web corporativa, visibilidad orgánica y estrategia de IA.</p>
+                        <ul class="text-sm space-y-3 mb-8 text-offwhite">
+                            <li><i class="fa-solid fa-check text-gold mr-2" aria-hidden="true"></i>Web Corporativa Multi-sección</li>
+                            <li><i class="fa-solid fa-check text-gold mr-2" aria-hidden="true"></i>Auditoría SEO/GEO y AI Marketing</li>
+                            <li><i class="fa-solid fa-check text-gold mr-2" aria-hidden="true"></i>Optimización SEO/GEO Inicial</li>
+                            <li><i class="fa-solid fa-check text-gold mr-2" aria-hidden="true"></i>Copywriting de Conversión Premium</li>
+                            <li><i class="fa-solid fa-check text-gold mr-2" aria-hidden="true"></i>Roadmap de Implementación IA</li>
+                            <li><i class="fa-solid fa-check text-gold mr-2" aria-hidden="true"></i>Sesión Estratégica de Entrega</li>
+                        </ul>
+                    </div>
+                    <a href="?plan=sistema_web_inteligente#diagnostico" class="block w-full text-center min-h-[48px] py-3 bg-white text-charcoal font-medium rounded hover:bg-gold hover:text-white transition-colors flex items-center justify-center mt-auto">Construir mi Sistema</a>
                 </div>
 
-                <div class="pricing-card card-glow p-8 opacity-80 hover:opacity-100">
-                    <h3 class="mb-2">Dominio Total</h3>
-                    <p class="ui-caption mb-6">Web + SEO + GEO (AI)</p>
-                    <div class="text-3xl font-light mb-6">$24,000 <span class="text-sm text-subtle">MXN</span></div>
-                    <p class="text-sm text-subtle mb-6 h-10">La ruta para marcas que no quieren verse modernas; quieren ser encontradas, entendidas y elegidas.</p>
-                    <ul class="text-sm space-y-3 mb-8 text-subtle">
-                        <li><i class="fa-solid fa-check text-gold mr-2"></i>Todo lo anterior +</li>
-                        <li><i class="fa-solid fa-check text-gold mr-2"></i><strong>Estrategia GEO (AI)</strong></li>
-                        <li><i class="fa-solid fa-check text-gold mr-2"></i>Schema Markup Avanzado</li>
-                        <li><i class="fa-solid fa-check text-gold mr-2"></i>Citaciones para ChatGPT</li>
-                    </ul>
-                    <a href="/contacto" class="block w-full text-center py-2 border border-white/20 rounded hover:bg-white/5 transition-colors text-sm">Consultar</a>
+                <!-- Tarjeta 3: Arquitectura IA Comercial -->
+                <div class="pricing-card card-glow p-8 opacity-80 hover:opacity-100 flex flex-col justify-between h-full min-h-[450px]">
+                    <div>
+                        <h3 class="mb-2">Arquitectura IA Comercial</h3>
+                        <p class="ui-caption mb-6">WEB + MARKETING IA + AGENTE</p>
+                        <div class="text-3xl font-light mb-6">Desde $34,900 <span class="text-sm text-subtle">MXN</span></div>
+                        <p class="text-sm text-subtle mb-6 min-h-[48px]">Infraestructura digital definitiva: web premium, marketing automatizado y un agente IA a tu medida.</p>
+                        <ul class="text-sm space-y-3 mb-8 text-subtle">
+                            <li><i class="fa-solid fa-check text-gold mr-2" aria-hidden="true"></i>Ecosistema Web Inteligente Completo</li>
+                            <li><i class="fa-solid fa-check text-gold mr-2" aria-hidden="true"></i>Flujos Automatizados AI Marketing</li>
+                            <li><i class="fa-solid fa-check text-gold mr-2" aria-hidden="true"></i>Consultoría de Procesos e IA</li>
+                            <li><i class="fa-solid fa-check text-gold mr-2" aria-hidden="true"></i>Agente IA Comercial Personalizado</li>
+                            <li><i class="fa-solid fa-check text-gold mr-2" aria-hidden="true"></i>Soporte Técnico y Ajustes</li>
+                            <li><i class="fa-solid fa-check text-gold mr-2" aria-hidden="true"></i>Roadmap de Escalamiento a 90 días</li>
+                        </ul>
+                    </div>
+                    <a href="?plan=arquitectura_ia_comercial#diagnostico" class="block w-full text-center min-h-[48px] py-3 border border-white/20 rounded hover:bg-white/5 transition-colors text-sm flex items-center justify-center mt-auto">Solicitar Propuesta</a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- METODOLOGÍA (Cómo trabajamos) -->
-    <section class="methodology-section py-20 px-6 border-y border-white/5 bg-white/[0.01]">
+    <section class="methodology-section py-20 px-6 relative z-10">
         <div class="max-w-4xl mx-auto text-center">
-            <span class="editorial-label block mb-3">Cómo Trabajamos</span>
-            <div class="gold-rule mx-auto mb-6"></div>
-            <h2 class="mb-4">Proceso claro, sin sorpresas</h2>
-            <p class="text-subtle mb-12">Procesos estandarizados. Tiempos claros. Cero sorpresas.</p>
+            <PremiumSectionHeader 
+                label="Cómo Trabajamos" 
+                title="Proceso claro, sin sorpresas" 
+                subtitle="Procesos estandarizados. Tiempos claros. Cero sorpresas."
+                centered={true}
+            />
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6" id="methodology-container">
+            <ol class="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16 mt-16 text-left" id="methodology-container">
                 <!-- Paso 1 -->
-                <div class="methodology-step group relative p-8 rounded-2xl bg-[#16191f]/50 border border-white/5 hover:border-[#2563eb]/30 hover:bg-[#16191f]/80 transition-all duration-500 text-left">
-                    <div class="absolute left-0 top-0 bottom-0 w-[3px] rounded-l-2xl bg-gradient-to-b from-[#2563eb]/60 to-transparent"></div>
-                    <div class="flex items-start justify-between mb-6">
-                        <span class="editorial-label text-[#2563eb]/60">01</span>
-                        <div class="w-10 h-10 rounded-xl bg-[#1a2744]/60 border border-[#2563eb]/20 flex items-center justify-center group-hover:border-[#2563eb]/50 transition-colors duration-500">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.8">
+                <li class="methodology-step group relative py-10 px-4 md:px-6 flex flex-col items-start transition-all duration-500 ease-out select-none will-change-transform">
+                    <!-- Ambient Radial Glow -->
+                    <div class="absolute inset-0 -z-10 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 ease-out pointer-events-none bg-[radial-gradient(circle_at_50%_40%,rgba(212,175,55,0.04)_0%,transparent_70%)]" aria-hidden="true"></div>
+                    
+                    <!-- Header Step: Number & Icon & Separator Line -->
+                    <div class="w-full flex items-center justify-between pb-4 mb-6 border-b border-white/5 group-hover:border-gold/20 transition-colors duration-500 ease-out">
+                        <!-- Número en Serif Premium -->
+                        <span class="font-playfair text-6xl font-light text-subtle/30 group-hover:text-gold group-hover:[text-shadow:0_0_15px_rgba(212,175,55,0.25)] transition-all duration-500 ease-out select-none">01</span>
+                        
+                        <!-- Ícono Suspendido Reactivo -->
+                        <div class="text-gold/50 group-hover:text-gold group-hover:scale-110 group-hover:-translate-y-1 transition-all duration-500 ease-out" aria-hidden="true">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6">
                                 <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35M11 8v6M8 11h6"/>
                             </svg>
                         </div>
                     </div>
-                    <h4 class="text-white font-semibold text-xl mb-3 group-hover:text-[#e2e4e9] transition-colors">Diagnóstico</h4>
-                    <p class="text-sm text-subtle leading-relaxed">Detectamos cuellos de botella y oportunidades reales de IA en tu operación actual.</p>
-                </div>
-                <!-- Paso 2 -->
-                <div class="methodology-step group relative p-8 rounded-2xl bg-[#16191f]/50 border border-[#2563eb]/20 hover:border-[#2563eb]/50 hover:bg-[#16191f]/80 transition-all duration-500 text-left shadow-[0_0_30px_rgba(37,99,235,0.06)]">
-                    <div class="absolute left-0 top-0 bottom-0 w-[3px] rounded-l-2xl bg-gradient-to-b from-[#2563eb] to-[#2563eb]/20"></div>
-                    <div class="flex items-start justify-between mb-6">
-                        <span class="editorial-label text-[#2563eb]/80">02</span>
-                        <div class="w-10 h-10 rounded-xl bg-[#1a2744]/80 border border-[#2563eb]/40 flex items-center justify-center group-hover:border-[#2563eb]/80 transition-colors duration-500">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+
+                    <!-- Contenido Editorial -->
+                    <h4 class="font-playfair text-2xl font-light text-offwhite/90 group-hover:text-offwhite group-hover:translate-x-1 transition-all duration-500 ease-out mb-4">Diagnóstico</h4>
+                    <p class="font-jakarta text-sm text-subtle/70 group-hover:text-subtle transition-all duration-500 ease-out leading-relaxed max-w-[280px]">Detectamos cuellos de botella y oportunidades reales de IA en tu operación actual.</p>
+                </li>
+                <!-- Paso 2 (Sprint Base - Destacado Implícitamente) -->
+                <li class="methodology-step group relative py-10 px-4 md:px-6 flex flex-col items-start transition-all duration-500 ease-out select-none will-change-transform">
+                    <!-- Ambient Radial Glow (Más intenso para el Paso 2) -->
+                    <div class="absolute inset-0 -z-10 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 ease-out pointer-events-none bg-[radial-gradient(circle_at_50%_40%,rgba(212,175,55,0.06)_0%,transparent_70%)]" aria-hidden="true"></div>
+                    
+                    <!-- Header Step: Number & Icon & Separator Line (Dorado permanente para destaque) -->
+                    <div class="w-full flex items-center justify-between pb-4 mb-6 border-b border-gold/20 group-hover:border-gold/45 transition-colors duration-500 ease-out">
+                        <!-- Número en Serif Premium (Opacidad base de 40% para destaque) -->
+                        <span class="font-playfair text-6xl font-light text-gold/40 group-hover:text-gold group-hover:[text-shadow:0_0_15px_rgba(212,175,55,0.3)] transition-all duration-500 ease-out select-none">02</span>
+                        
+                        <!-- Ícono Suspendido Reactivo -->
+                        <div class="text-gold group-hover:scale-110 group-hover:-translate-y-1 transition-all duration-500 ease-out" aria-hidden="true">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6">
                                 <path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/>
                             </svg>
                         </div>
                     </div>
-                    <h4 class="text-white font-semibold text-xl mb-3">Sprint Base</h4>
-                    <p class="text-sm text-subtle leading-relaxed">Definimos el frente correcto y bajamos la solución a un entregable concreto y medible.</p>
-                </div>
+
+                    <!-- Contenido Editorial -->
+                    <h4 class="font-playfair text-2xl font-light text-offwhite group-hover:text-offwhite group-hover:translate-x-1 transition-all duration-500 ease-out mb-4">Sprint Base</h4>
+                    <p class="font-jakarta text-sm text-subtle/70 group-hover:text-subtle transition-all duration-500 ease-out leading-relaxed max-w-[280px]">Definimos el frente correcto y bajamos la solución a un entregable concreto y medible.</p>
+                </li>
                 <!-- Paso 3 -->
-                <div class="methodology-step group relative p-8 rounded-2xl bg-[#16191f]/50 border border-white/5 hover:border-[#2563eb]/30 hover:bg-[#16191f]/80 transition-all duration-500 text-left">
-                    <div class="absolute left-0 top-0 bottom-0 w-[3px] rounded-l-2xl bg-gradient-to-b from-[#2563eb]/60 to-transparent"></div>
-                    <div class="flex items-start justify-between mb-6">
-                        <span class="editorial-label text-[#2563eb]/60">03</span>
-                        <div class="w-10 h-10 rounded-xl bg-[#1a2744]/60 border border-[#2563eb]/20 flex items-center justify-center group-hover:border-[#2563eb]/50 transition-colors duration-500">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.8">
+                <li class="methodology-step group relative py-10 px-4 md:px-6 flex flex-col items-start transition-all duration-500 ease-out select-none will-change-transform">
+                    <!-- Ambient Radial Glow -->
+                    <div class="absolute inset-0 -z-10 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 ease-out pointer-events-none bg-[radial-gradient(circle_at_50%_40%,rgba(212,175,55,0.04)_0%,transparent_70%)]" aria-hidden="true"></div>
+                    
+                    <!-- Header Step: Number & Icon & Separator Line -->
+                    <div class="w-full flex items-center justify-between pb-4 mb-6 border-b border-white/5 group-hover:border-gold/20 transition-colors duration-500 ease-out">
+                        <!-- Número en Serif Premium -->
+                        <span class="font-playfair text-6xl font-light text-subtle/30 group-hover:text-gold group-hover:[text-shadow:0_0_15px_rgba(212,175,55,0.25)] transition-all duration-500 ease-out select-none">03</span>
+                        
+                        <!-- Ícono Suspendido Reactivo -->
+                        <div class="text-gold/50 group-hover:text-gold group-hover:scale-110 group-hover:-translate-y-1 transition-all duration-500 ease-out" aria-hidden="true">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6">
                                 <path d="M20 6 9 17l-5-5"/>
                             </svg>
                         </div>
-                </div>
-                    <h4 class="text-white font-semibold text-xl mb-3 group-hover:text-[#e2e4e9] transition-colors">Entrega</h4>
-                    <p class="text-sm text-subtle leading-relaxed">Implementamos y nos aseguramos de que tu equipo adopte el sistema sin fricción.</p>
-                </div>
-            </div>
+                    </div>
+
+                    <!-- Contenido Editorial -->
+                    <h4 class="font-playfair text-2xl font-light text-offwhite/90 group-hover:text-offwhite group-hover:translate-x-1 transition-all duration-500 ease-out mb-4">Entrega</h4>
+                    <p class="font-jakarta text-sm text-subtle/70 group-hover:text-subtle transition-all duration-500 ease-out leading-relaxed max-w-[280px]">Implementamos y nos aseguramos de que tu equipo adopte el sistema sin fricción.</p>
+                </li>
+            </ol>
             
             <div class="mt-16">
-                <CtaWhatsApp text="Agendar diagnóstico" />
+                <CtaWhatsApp text="Agendar diagnóstico" href="#diagnostico" />
             </div>
         </div>
     </section>
 
     <!-- NOVEDADES (TOP SEMANAL) -->
-    <section class="py-20 px-6">
+    <section id="novedades-ia" class="py-20 px-6">
         <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-12">
-                <span class="editorial-label block mb-3">Novedades IA</span>
-                <div class="gold-rule mx-auto mb-6"></div>
-                <h2 class="mb-4">Lo que sí importa en marketing</h2>
-                <p class="text-subtle max-w-2xl mx-auto">No más noticias bonitas que nadie aterriza. Aquí cada novedad se traduce a impacto real para marketing, contenido, visibilidad y automatización.</p>
-            </div>
+            <PremiumSectionHeader 
+                label="Novedades IA" 
+                title="Lo que sí importa en marketing" 
+                subtitle="No más noticias bonitas que nadie aterriza. Aquí cada novedad se traduce a impacto real para marketing, contenido, visibilidad y automatización."
+                centered={true}
+            />
 
             <div class="space-y-4 max-w-4xl mx-auto">
-                <!-- Mocks para la Landing Page Inicial P0 -->
-                <a href="/novedades-ia/noticia-mock" class="matte-card p-6 rounded-xl flex flex-col md:flex-row gap-6 items-center hover:border-gold/30 transition-colors group">
-                    <div class="text-gold/50 text-sm font-medium w-full md:w-24 shrink-0 text-center md:text-left">Hoy</div>
+                <a href="/novedades-ia/claude-mythos-proyecto-glasswing-2026" class="matte-card p-6 rounded-xl flex flex-col md:flex-row gap-6 items-center hover:border-gold/30 transition-colors group">
+                    <div class="text-gold/50 text-sm font-medium w-full md:w-24 shrink-0 text-center md:text-left">17 Mayo 2026</div>
                     <div class="flex-grow text-center md:text-left">
-                        <h3 class="text-white text-lg font-medium mb-1 group-hover:text-gold transition-colors">Google lanza actualización masiva en su algoritmo de IA generativa</h3>
-                        <p class="text-sm text-subtle">Cómo afectará esto a las respuestas que ofrece Google a los usuarios a partir de ahora.</p>
+                        <h3 class="text-white text-lg font-medium mb-1 group-hover:text-gold transition-colors">Claude Mythos y Project Glasswing: qué cambia en ciberseguridad, IA y marketing (2026)</h3>
+                        <p class="text-sm text-subtle">Análisis de Claude Mythos Preview y Project Glasswing de Anthropic: benchmarks, acceso restringido e implicaciones para empresas, SEO/GEO y contenido citable por IA.</p>
                     </div>
                 </a>
-                <a href="/novedades-ia/noticia-mock" class="matte-card p-6 rounded-xl flex flex-col md:flex-row gap-6 items-center hover:border-gold/30 transition-colors group">
-                    <div class="text-gold/50 text-sm font-medium w-full md:w-24 shrink-0 text-center md:text-left">Mar 2 - 2026</div>
+                <a href="/novedades-ia/agentes-ia-marketing-2026-openclaw-manus-era-agentica" class="matte-card p-6 rounded-xl flex flex-col md:flex-row gap-6 items-center hover:border-gold/30 transition-colors group">
+                    <div class="text-gold/50 text-sm font-medium w-full md:w-24 shrink-0 text-center md:text-left">11 Mayo 2026</div>
                     <div class="flex-grow text-center md:text-left">
-                        <h3 class="text-white text-lg font-medium mb-1 group-hover:text-gold transition-colors">Nueva función de agentes en HubSpot (Beta)</h3>
-                        <p class="text-sm text-subtle">Guía de cómo activar la atención 24/7 y la precalificación con leads calientes.</p>
+                        <h3 class="text-white text-lg font-medium mb-1 group-hover:text-gold transition-colors">Agentes de IA en Marketing 2026: OpenClaw, Manus y la Era de la Ejecución Autónoma</h3>
+                        <p class="text-sm text-subtle">Los agentes de IA en marketing definen la productividad en 2026 porque han pasado del lenguaje a la acción. OpenClaw, Manus y la diferencia entre agente autónomo y chatbot.</p>
                     </div>
                 </a>
-                <a href="/novedades-ia/noticia-mock" class="matte-card p-6 rounded-xl flex flex-col md:flex-row gap-6 items-center hover:border-gold/30 transition-colors group">
-                    <div class="text-gold/50 text-sm font-medium w-full md:w-24 shrink-0 text-center md:text-left">Feb 28 - 2026</div>
+                <a href="/novedades-ia" class="matte-card p-6 rounded-xl flex flex-col md:flex-row gap-6 items-center hover:border-gold/30 transition-colors group">
+                    <div class="text-gold/50 text-sm font-medium w-full md:w-24 shrink-0 text-center md:text-left">Ver todo</div>
                     <div class="flex-grow text-center md:text-left">
-                        <h3 class="text-white text-lg font-medium mb-1 group-hover:text-gold transition-colors">ChatGPT Search superando el 15% de mercado B2B</h3>
-                        <p class="text-sm text-subtle">Por qué la estrategia SEO clásica ya no es suficiente en el entorno B2B actual.</p>
+                        <h3 class="text-white text-lg font-medium mb-1 group-hover:text-gold transition-colors">Archivo completo de análisis</h3>
+                        <p class="text-sm text-subtle">Explora todas las novedades de IA y su impacto real en marketing y negocios.</p>
                     </div>
                 </a>
             </div>
@@ -480,28 +624,26 @@ import TapIALiquidGradient from '../components/TapIALiquidGradient.astro';
         </div>
     </section>
 
-    <!-- ÚLTIMO CTA -->
-    <section class="py-24 px-6 relative border-t border-white/5 overflow-hidden cta-animated-bg">
-        <!-- Textura de fondo atmosférica -->
-        <div class="absolute inset-0 w-full h-full pointer-events-none -z-10 overflow-hidden">
-            <img
-                src="/images/abstract_data_node_2.webp"
-                alt=""
-                aria-hidden="true"
-                class="absolute inset-0 w-full h-full object-cover object-center opacity-[0.05] mix-blend-screen scale-110"
-                loading="lazy"
+    <!-- DIAGNÓSTICO / FORMULARIO -->
+    <section id="diagnostico" class="py-16 md:py-20 px-4 relative overflow-hidden z-10 scroll-mt-28">
+        <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-gold/10 rounded-full blur-[90px] pointer-events-none"></div>
+
+        <div class="max-w-3xl mx-auto relative z-10">
+            <PremiumSectionHeader
+                label="Diagnóstico de encaje"
+                title='No necesitas parecer una empresa que usa IA. <span class="text-gold">Necesitas operar como una.</span>'
+                subtitle="En 3–4 minutos nos cuentas tu caso. Respondemos en 1 día hábil con el siguiente paso claro."
+                centered={true}
             />
-        </div>
-        <!-- Glow navy sutil centrado -->
-        <div class="absolute inset-0 flex items-center justify-center pointer-events-none -z-10">
-            <div class="w-[600px] h-[300px] bg-[#2563eb]/8 rounded-full blur-[120px] animate-pulse-slow"></div>
-        </div>
-        <div class="max-w-4xl mx-auto text-center relative z-10">
-            <h2 class="mb-6 text-white relative z-10">No necesitas parecer una empresa que usa IA. <br class="hidden md:block"> <span class="text-gold">Necesitas operar como una.</span></h2>
-            <p class="text-xl text-subtle mb-10 max-w-2xl mx-auto relative z-10">Si hoy tu equipo ya usa herramientas sueltas, pero todavía no convierte eso en mejor marketing, mejor visibilidad o mejor ejecución, ahí es donde entra Tap-IA.</p>
-            <div class="relative z-20">
-                <CtaWhatsApp text="Solicitar Evaluación" microcopy="Te digo si necesitas estrategia, implementación, estructura… o simplemente orden antes de seguir metiendo IA a lo loco." />
-            </div>
+
+            <ContactWizard
+                wizardId="home"
+                plan={plan}
+                problem={problem}
+                servicio={servicio}
+                demo={demo}
+                showMobileWa={true}
+            />
         </div>
     </section>
 
@@ -517,32 +659,175 @@ import TapIALiquidGradient from '../components/TapIALiquidGradient.astro';
         if (!gsap || !ScrollTrigger) return;
 
         const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const isMobileViewport = window.matchMedia('(max-width: 767px)').matches;
+        const hasFinePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+        const skipHeroMotion = prefersReducedMotion || isMobileViewport;
 
-        // Ocultar pre-render elements para el hero
-        gsap.set(".hero-item", { y: 40, opacity: 0 });
-        
-        // 1. Hero Choreography
+        // Typewriter del título (TextPlugin en Layout.astro)
+        const titleBase = document.getElementById('typewriter-base');
+        const titleAccent = document.getElementById('typewriter-accent');
+        const cursorBase = document.getElementById('cursor-base');
+        const cursorAccent = document.getElementById('cursor-accent');
+
+        const textBase = "La IA no hace marketing por ti.";
+        const textAccent = "Te obliga a hacerlo mejor.";
+
+        if (skipHeroMotion) {
+            if (titleBase) titleBase.textContent = textBase;
+            if (titleAccent) titleAccent.textContent = textAccent;
+            if (cursorBase) cursorBase.style.display = 'none';
+            if (cursorAccent) cursorAccent.style.display = 'none';
+        }
+
+        gsap.set(".hero-cta-priority", { opacity: 1, y: 0 });
+
+        if (!skipHeroMotion) {
+            gsap.set(".hero-item:not(#hero-title):not(.hero-cta-priority)", { y: 40, opacity: 0 });
+        }
+
+        function startCursorBlink(el) {
+            return gsap.to(el, {
+                opacity: 0,
+                duration: 0.45,
+                repeat: -1,
+                ease: "steps(1)",
+                yoyo: true
+            });
+        }
+
+        // Hero: typewriter + entrada del resto de elementos
         window.addEventListener('preloaderComplete', () => {
-            gsap.to(".hero-item", {
+            const tl = gsap.timeline();
+
+            if (!skipHeroMotion && titleBase && titleAccent && cursorBase && cursorAccent) {
+                tl.set(cursorBase, { opacity: 1 })
+                  .to(titleBase, {
+                      text: textBase,
+                      duration: 2,
+                      ease: "none"
+                  })
+                  .set(cursorBase, { opacity: 0 })
+                  .set(cursorAccent, { opacity: 1 }, "+=0.15")
+                  .to(titleAccent, {
+                      text: textAccent,
+                      duration: 1.6,
+                      ease: "none"
+                  }, "+=0.1")
+                  .call(() => { startCursorBlink(cursorAccent); });
+            }
+
+            tl.to(".hero-item:not(#hero-title):not(.hero-cta-priority)", {
                 y: 0,
                 opacity: 1,
-                duration: 1.2,
-                stagger: 0.15,
+                duration: skipHeroMotion ? 0 : 1.2,
+                stagger: skipHeroMotion ? 0 : 0.12,
                 ease: "power3.out",
                 force3D: true,
                 clearProps: "transform"
-            });
+            }, skipHeroMotion ? 0 : "-=0.6");
+
+            if (skipHeroMotion) {
+                gsap.set(".hero-item:not(#hero-title)", { opacity: 1, y: 0 });
+            }
         });
 
         if (prefersReducedMotion) return;
 
-        // Revelación de Texto (Efecto suave para Títulos)
-        const revealElements = document.querySelectorAll('h2');
+        // Custom Scramble Effect for Value Prop
+        function scrambleText(element, finalString, durationMs) {
+            const chars = "01A!<>*^#X%&$@?";
+            let iterations = 0;
+            const maxIterations = durationMs / 30; // approx 30ms per frame
+            
+            const interval = setInterval(() => {
+                let scrambled = "";
+                const lockCount = Math.floor((iterations / maxIterations) * finalString.length);
+                
+                for (let i = 0; i < finalString.length; i++) {
+                    if (i < lockCount) {
+                        scrambled += finalString[i];
+                    } else if (finalString[i] === " ") {
+                        scrambled += " ";
+                    } else {
+                        scrambled += chars[Math.floor(Math.random() * chars.length)];
+                    }
+                }
+                
+                element.innerText = scrambled;
+                iterations++;
+                
+                if (iterations > maxIterations) {
+                    clearInterval(interval);
+                    element.innerText = finalString;
+                }
+            }, 30);
+        }
+
+        // DECODE & ENLIGHTEN (Value Proposition Unified)
+        const vpBase = document.getElementById('decode-text-base');
+        const vpAccent = document.getElementById('decode-text-accent');
+        const vpContent = document.getElementById('value-prop-content');
+
+        if (vpBase && vpAccent && vpContent) {
+            if (!prefersReducedMotion) {
+                const decodeTargets = vpContent.querySelectorAll('.decode-target');
+                
+                // Ocultar textos INICIALMENTE para que no se lean antes del efecto
+                gsap.set([vpBase, vpAccent, ...decodeTargets], { opacity: 0 });
+
+                // Guardar texto original
+                vpBase.dataset.text = vpBase.innerText;
+                vpAccent.dataset.text = vpAccent.innerText;
+                decodeTargets.forEach(el => el.dataset.text = el.innerText);
+
+                ScrollTrigger.create({
+                    trigger: "#value-prop",
+                    start: "top 75%",
+                    once: true,
+                    onEnter: () => {
+                        // 1. Mostrar y decodificar base
+                        gsap.set(vpBase, { opacity: 1 });
+                        scrambleText(vpBase, vpBase.dataset.text, 1000);
+
+                        // 2. Timeline
+                        const tl = gsap.timeline({ delay: 1.0 });
+
+                        tl.call(() => {
+                            gsap.set(vpAccent, { opacity: 1 });
+                            scrambleText(vpAccent, vpAccent.dataset.text, 1200);
+                        })
+                        .to(vpContent, {
+                            opacity: 1,
+                            y: 0,
+                            filter: isMobileViewport ? "none" : "blur(0px)",
+                            duration: isMobileViewport ? 0.5 : 0.8,
+                            ease: "power2.out"
+                        }, "+=1.2")
+                        .call(() => {
+                            // Decodificar el contenido en cascada una vez que el contenedor es visible
+                            decodeTargets.forEach((el, index) => {
+                                setTimeout(() => {
+                                    gsap.set(el, { opacity: 1 });
+                                    scrambleText(el, el.dataset.text, 1000);
+                                }, index * 100);
+                            });
+                        });
+                    }
+                });
+            } else {
+                // Fallback
+                gsap.set([vpBase, vpAccent, ...vpContent.querySelectorAll('.decode-target')], { opacity: 1 });
+                gsap.set(vpContent, { opacity: 1, y: 0, filter: "none" });
+            }
+        }
+
+        // Revelación de Texto (Efecto suave para Títulos restantes)
+        const revealElements = document.querySelectorAll('h2:not(#value-prop h2)');
         revealElements.forEach(el => {
             gsap.fromTo(el, 
-                { y: 30, opacity: 0 },
+                { y: 40, opacity: 0 },
                 { 
-                    y: 0, opacity: 1, duration: 1, ease: "power3.out",
+                    y: 0, opacity: 1, duration: 1.5, ease: "expo.out",
                     scrollTrigger: {
                         trigger: el,
                         start: "top 85%",
@@ -552,31 +837,16 @@ import TapIALiquidGradient from '../components/TapIALiquidGradient.astro';
             );
         });
 
-        
 
-        // Parallax en los Halos de Luz de fondo (Orbs radiales)
-        const bgOrbs = document.querySelectorAll('.bg-gold\\/15, .bg-gold\\/12, .bg-gold\\/8, .bg-gold\\/10, .bg-gold\\/20');
-        bgOrbs.forEach((orb, i) => {
-            gsap.to(orb, {
-                y: (i % 2 === 0) ? -150 : 150,
-                x: (i % 2 === 0) ? 50 : -50,
-                ease: "none",
-                scrollTrigger: {
-                    trigger: orb.parentElement,
-                    start: "top bottom",
-                    end: "bottom top",
-                    scrub: 2
-                }
-            });
-        });
 
         // Entrada de tarjetas de metodología
         gsap.utils.toArray(".methodology-step").forEach((step, i) => {
             gsap.fromTo(step,
-                { y: 30, opacity: 0 },
+                { y: 40, opacity: 0 },
                 {
-                    y: 0, opacity: 1, duration: 0.8, ease: "power2.out",
+                    y: 0, opacity: 1, duration: 1.2, ease: "expo.out",
                     delay: i * 0.15,
+                    clearProps: "transform",
                     scrollTrigger: { trigger: "#methodology-container", start: "top 80%", once: true }
                 }
             );
@@ -586,13 +856,13 @@ import TapIALiquidGradient from '../components/TapIALiquidGradient.astro';
         gsap.fromTo(".trust-item",
             { opacity: 0, y: 20 },
             { 
-                opacity: 1, y: 0, stagger: 0.1, duration: 0.8, ease: "power2.out",
+                opacity: 1, y: 0, stagger: 0.1, duration: 1.2, ease: "expo.out",
                 scrollTrigger: { trigger: ".trust-section", start: "top 90%", once: true }
             }
         );
 
-        // Hover Magnético en botones (Vanilla JS + GSAP)
-        const magneticElements = document.querySelectorAll('.magnetic-btn');
+        // Hover Magnético en botones (solo puntero fino)
+        const magneticElements = hasFinePointer ? document.querySelectorAll('.magnetic-btn') : [];
         magneticElements.forEach(el => {
             el.addEventListener('mousemove', (e) => {
                 const rect = el.getBoundingClientRect();
@@ -605,29 +875,232 @@ import TapIALiquidGradient from '../components/TapIALiquidGradient.astro';
             });
         });
 
+        // Kinetic Flex Accordion (Efecto Wow)
+        const accordionItems = gsap.utils.toArray('.accordion-item');
+        if (accordionItems.length > 0) {
+            gsap.fromTo(accordionItems, 
+                { y: 50, opacity: 0 },
+                {
+                    y: 0, opacity: 1, duration: 1.2, stagger: 0.1, ease: "power3.out",
+                    scrollTrigger: {
+                        trigger: ".accordion-container",
+                        start: "top 80%",
+                        once: true
+                    }
+                }
+            );
+        }
+
         // Showcase & Portfolio Cards (Aparición)
         // Cards del grid de soluciones — stagger reveal
-        gsap.set(".card-glow", { y: 60, opacity: 0, scale: 0.96 });
+        gsap.set(".card-glow", { y: 80, opacity: 0, scale: 0.95 });
         gsap.to(".card-glow", {
             y: 0, opacity: 1, scale: 1,
-            duration: 0.9, stagger: 0.1, ease: "power3.out",
+            duration: 1.5, stagger: 0.15, ease: "expo.out",
             scrollTrigger: { trigger: ".quick-access-section", start: "top 75%", once: true }
         });
 
-        gsap.fromTo(".portfolio-panel",
-            { x: -50, opacity: 0 },
-            {
-                x: 0, opacity: 1, duration: 1, stagger: 0.15, ease: "power3.out",
-                scrollTrigger: { trigger: ".portfolio-section", start: "top 80%", once: true }
-            }
-        );
+        // Portfolio: entrada en scroll (preview vía CSS :has)
+        const portfolioItems = gsap.utils.toArray('.portfolio-item');
+        if (portfolioItems.length > 0) {
+            gsap.fromTo(portfolioItems,
+                { y: prefersReducedMotion ? 0 : 40, opacity: prefersReducedMotion ? 1 : 0 },
+                {
+                    y: 0, opacity: 1,
+                    duration: prefersReducedMotion ? 0 : 1,
+                    stagger: prefersReducedMotion ? 0 : 0.12,
+                    ease: "expo.out",
+                    scrollTrigger: { trigger: ".portfolio-section", start: "top 80%", once: true }
+                }
+            );
+        }
 
         gsap.fromTo(".pricing-card",
-            { y: 40, opacity: 0 },
+            { y: 50, opacity: 0 },
             {
-                y: 0, opacity: 1, duration: 0.8, stagger: 0.1, ease: "power2.out",
+                y: 0, opacity: 1, duration: 1.2, stagger: 0.15, ease: "expo.out",
                 scrollTrigger: { trigger: ".pricing-section", start: "top 80%", once: true }
             }
         );
+
+        // 3D Tilt Effect for Hero Image
+        const heroContainer = document.querySelector('.hero-container');
+        const tiltElement = document.querySelector('.tilt-3d-element');
+
+        if (heroContainer && tiltElement && !prefersReducedMotion && hasFinePointer) {
+            // GSAP quickTo para máximo rendimiento y evitar que la animación se trabe en mousemove
+            const xTo = gsap.quickTo(tiltElement, "rotateY", { ease: "power2.out", duration: 0.6 });
+            const yTo = gsap.quickTo(tiltElement, "rotateX", { ease: "power2.out", duration: 0.6 });
+            
+            gsap.set(tiltElement, { transformPerspective: 1200 });
+
+            heroContainer.addEventListener('mousemove', (e) => {
+                const rect = heroContainer.getBoundingClientRect();
+                const x = e.clientX - rect.left; 
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                // Rotación máxima de 12 grados
+                const rotateX = ((y - centerY) / centerY) * -12; 
+                const rotateY = ((x - centerX) / centerX) * 12;
+                
+                xTo(rotateY);
+                yTo(rotateX);
+            });
+
+            heroContainer.addEventListener('mouseleave', () => {
+                // Volver a la posición original suavemente
+                gsap.to(tiltElement, {
+                    rotateX: 0,
+                    rotateY: 0,
+                    ease: "elastic.out(1, 0.4)",
+                    duration: 1.5,
+                    overwrite: "auto"
+                });
+            });
+        }
     });
 </script>
+
+<style>
+    /* Kinetic Flex Accordion CSS */
+    .accordion-item {
+        flex: 1;
+        transition: flex 0.7s cubic-bezier(0.25, 1, 0.25, 1), background-color 0.5s ease;
+        cursor: pointer;
+        min-width: 0;
+    }
+
+    @media (max-width: 767px) {
+        .accordion-item {
+            flex: none;
+            min-height: 11rem;
+        }
+
+        .accordion-item .accordion-details {
+            opacity: 1;
+            max-height: none;
+            transform: none;
+            pointer-events: auto;
+        }
+
+        .accordion-item .accordion-icon {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+        .accordion-item {
+            will-change: flex, width;
+        }
+
+        .accordion-item:hover {
+            flex: 4;
+        }
+
+        .accordion-item .accordion-details {
+            opacity: 0;
+            max-height: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease 0.2s, transform 0.5s ease 0.2s, max-height 0.7s cubic-bezier(0.25, 1, 0.25, 1);
+            will-change: opacity, transform, max-height;
+            pointer-events: none;
+        }
+
+        .accordion-item:hover .accordion-details {
+            opacity: 1;
+            max-height: 200px;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        .accordion-item .accordion-icon {
+            opacity: 0;
+            transform: translateX(-10px);
+            transition: all 0.5s ease;
+        }
+
+        .accordion-item:hover .accordion-icon {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    /* Título rotado en Desktop */
+    @media (min-width: 768px) {
+        .accordion-title {
+            transform-origin: bottom left;
+            transform: rotate(-90deg) translateY(100%);
+        }
+
+        .accordion-item:hover .accordion-title {
+            transform: rotate(0deg) translateY(0);
+        }
+    }
+
+    /* Portfolio Split Layout — preview panel (CSS :has) */
+    @media (min-width: 1024px) {
+        .portfolio-preview-img {
+            opacity: 0;
+            transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .portfolio-preview-img.portfolio-preview-img--default {
+            opacity: 1;
+        }
+
+        .portfolio-split:has(.portfolio-item:hover) .portfolio-preview-img--default,
+        .portfolio-split:has(.portfolio-item:focus-within) .portfolio-preview-img--default {
+            opacity: 0;
+        }
+
+        .portfolio-split:has(.portfolio-list .portfolio-item:nth-child(1):hover) .portfolio-preview-img[data-preview="sitios"],
+        .portfolio-split:has(.portfolio-list .portfolio-item:nth-child(1):focus-within) .portfolio-preview-img[data-preview="sitios"],
+        .portfolio-split:has(.portfolio-list .portfolio-item:nth-child(2):hover) .portfolio-preview-img[data-preview="seo"],
+        .portfolio-split:has(.portfolio-list .portfolio-item:nth-child(2):focus-within) .portfolio-preview-img[data-preview="seo"],
+        .portfolio-split:has(.portfolio-list .portfolio-item:nth-child(3):hover) .portfolio-preview-img[data-preview="agentes"],
+        .portfolio-split:has(.portfolio-list .portfolio-item:nth-child(3):focus-within) .portfolio-preview-img[data-preview="agentes"] {
+            opacity: 1;
+        }
+
+        .portfolio-split:has(.portfolio-item:hover) .portfolio-item:not(:hover),
+        .portfolio-split:has(.portfolio-item:focus-within) .portfolio-item:not(:focus-within) {
+            opacity: 0.45;
+        }
+
+        .portfolio-split:has(.portfolio-item:hover) .portfolio-item:hover,
+        .portfolio-split:has(.portfolio-item:focus-within) .portfolio-item:focus-within {
+            opacity: 1;
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .portfolio-preview-img {
+            transition: none;
+        }
+    }
+
+    /* Value prop — imagen con bordes difuminados hacia Matte */
+    .vp-visual-img {
+        -webkit-mask-image: radial-gradient(ellipse 88% 88% at 50% 50%, #000 58%, transparent 100%);
+        mask-image: radial-gradient(ellipse 88% 88% at 50% 50%, #000 58%, transparent 100%);
+    }
+
+    .vp-visual::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        border-radius: inherit;
+        background: radial-gradient(
+            ellipse 95% 95% at 50% 50%,
+            transparent 42%,
+            rgba(22, 25, 31, 0.35) 68%,
+            rgba(22, 25, 31, 0.85) 88%,
+            rgb(22, 25, 31) 100%
+        );
+    }
+</style>
