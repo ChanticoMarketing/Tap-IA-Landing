@@ -9,7 +9,6 @@
     "start:prod": "node ./dist/server/entry.mjs",
     "preview": "astro preview",
     "astro": "astro"
-}
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
