@@ -5,10 +5,11 @@
   "scripts": {
     "dev": "astro dev --open",
     "start": "astro dev",
+    "build": "astro check && astro build",
     "start:prod": "node ./dist/server/entry.mjs",
-    "start:prod": "node server.js",
     "preview": "astro preview",
     "astro": "astro"
+}
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
