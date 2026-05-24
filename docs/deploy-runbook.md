@@ -37,11 +37,14 @@ Asegúrese de configurar las siguientes variables en su proveedor de alojamiento
 | :--- | :--- | :--- |
 | `PORT` | Puerto en el que la aplicación escuchará | Generalmente el PaaS inyecta esta variable (ej. 80 o 443). Por defecto Astro usa el `4321`. |
 | `HOST` | Interfaces de red a escuchar | Usualmente `0.0.0.0` para despliegues VPS o Docker. |
-| `N8N_WEBHOOK_URL` | URL del Webhook de n8n para recolectar leads | **Crucial para Fase 6**. Sin esta variable configurada, los envíos del formulario de `/contacto` fallarán. |
+| `RESEND_API_KEY` | API key de Resend para enviar notificaciones de lead | **Obligatoria** para que el formulario envíe correo. |
+| `RESEND_FROM_EMAIL` | Remitente verificado en Resend (dominio `tap-ia.tech`) | Ej. `Tap-IA Contacto <contacto@tap-ia.tech>` |
+| `LEAD_NOTIFY_EMAIL` | Bandeja que recibe los leads | Por defecto `emmanuel@tap-ia.tech` |
+| `N8N_WEBHOOK_URL` | URL del Webhook de n8n (opcional) | Si está definida, reenvía el payload tras el correo. No bloquea el envío si falla. |
 
-## 4. Advertencia de Funcionalidad: Formulario de Contacto
+## 4. Formulario de contacto
 
-Hasta que no se implemente la Fase 6 (Integración n8n), las solicitudes enviadas a la ruta POST `/api/submit` van a fallar (devolviendo potencialmente un error HTTP 500) si la variable de entorno `N8N_WEBHOOK_URL` no está definida. Como solución temporal, comunique a los usuarios que deben usar el contacto directo por WhatsApp.
+POST `/api/submit` envía un correo vía **Resend** a `LEAD_NOTIFY_EMAIL` (por defecto `emmanuel@tap-ia.tech`). Sin `RESEND_API_KEY` el endpoint devuelve error 500. El remitente (`RESEND_FROM_EMAIL`) debe pertenecer a un dominio verificado en Resend.
 
 ## 5. Pruebas de Humo (Smoke Test) Post-Deploy
 

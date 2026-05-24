@@ -1,11 +1,37 @@
 import type { APIRoute } from 'astro';
+import { sendLeadNotificationEmail, type LeadPayload } from '../../lib/lead-email';
 
 export const prerender = false;
 
-const N8N_WEBHOOK_URL =
-  import.meta.env.N8N_WEBHOOK_URL || 'http://localhost:5678/webhook/tap-ia-leads';
-
+const N8N_WEBHOOK_URL = import.meta.env.N8N_WEBHOOK_URL;
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+async function forwardToN8n(payload: LeadPayload): Promise<void> {
+  if (!N8N_WEBHOOK_URL) return;
+
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 10000);
+
+  try {
+    const response = await fetch(N8N_WEBHOOK_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+      body: JSON.stringify(payload),
+      signal: controller.signal,
+    });
+
+    if (!response.ok) {
+      console.warn('[submit] n8n respondió con estatus:', response.status);
+    }
+  } catch (err) {
+    console.warn('[submit] Reenvío a n8n fallido (no bloquea el envío):', err);
+  } finally {
+    clearTimeout(timeout);
+  }
+}
 
 export const POST: APIRoute = async ({ request }) => {
   try {
@@ -47,7 +73,7 @@ export const POST: APIRoute = async ({ request }) => {
       });
     }
 
-    const payload = {
+    const payload: LeadPayload = {
       name: data.name,
       email: data.email,
       company: data.company,
@@ -72,31 +98,13 @@ export const POST: APIRoute = async ({ request }) => {
       referrer: data.referrer || '',
     };
 
-    const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), 10000);
-
-    const response = await fetch(N8N_WEBHOOK_URL, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-      },
-      body: JSON.stringify(payload),
-      signal: controller.signal,
-    });
-
-    clearTimeout(timeout);
-
-    if (!response.ok) {
-      throw new Error(`Orquestador N8N respondió con estatus: ${response.status}`);
-    }
-
-    const n8nResponse = await response.json().catch(() => ({}));
+    await sendLeadNotificationEmail(payload);
+    await forwardToN8n(payload);
 
     return new Response(
       JSON.stringify({
         success: true,
-        message: n8nResponse.message || 'Solicitud recibida. Te contactaremos en 1 día hábil.',
+        message: 'Solicitud recibida. Te contactaremos en 1 día hábil.',
       }),
       {
         status: 200,
@@ -104,7 +112,7 @@ export const POST: APIRoute = async ({ request }) => {
       }
     );
   } catch (err: unknown) {
-    console.error('[SSR Error] Conexión N8N fallida:', err);
+    console.error('[SSR Error] Envío de lead fallido:', err);
     return new Response(
       JSON.stringify({ error: 'No se pudo procesar la solicitud en este momento.' }),
       {

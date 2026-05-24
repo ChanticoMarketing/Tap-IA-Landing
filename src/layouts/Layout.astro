@@ -478,8 +478,15 @@ const robotsContent = effectiveNoIndex ? 'noindex, follow' : 'index, follow';
         background: rgba(212, 175, 55, 0.1);
     }
 
+    .option-label:has(input:focus-visible) {
+        outline: 2px solid var(--color-gold);
+        outline-offset: 2px;
+        border-color: rgba(212, 175, 55, 0.6);
+        background: rgba(212, 175, 55, 0.05);
+    }
+
     input:checked+span {
-        color: #d4af37;
+        color: var(--color-gold);
         font-weight: 500;
     }
 

@@ -40,7 +40,7 @@ const wid = wizardId;
     </div>
   )}
 
-  <div class="matte-card rounded-2xl border border-white/10 p-6 md:p-10 shadow-2xl">
+  <div class="bg-transparent p-0">
     <div class="mb-6 md:mb-8" aria-label="Progreso del formulario">
       <div class="flex justify-between ui-caption mb-3">
         <span data-wizard-step-indicator>Paso 1 de 4</span>
@@ -354,7 +354,8 @@ const wid = wizardId;
   )}
 </div>
 
-<script is:inline>
+<script>
+  // @ts-nocheck
   (function initContactWizards() {
     const PLAN_SERVICES = {
       venta_rapida: ['web'],

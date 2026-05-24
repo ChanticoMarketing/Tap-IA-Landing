@@ -51,7 +51,7 @@ const description = "No tengas solo una página web. Diseña una infraestructura
         <div class="mt-12 flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6">
           <a 
             href="#paquetes" 
-            class="w-full sm:w-auto font-jakarta text-sm font-semibold text-charcoal bg-gold hover:bg-gold/90 px-8 py-4 rounded-xl transition-all duration-300 shadow-xl shadow-gold/10 text-center active:scale-95"
+            class="w-full sm:w-auto font-jakarta text-sm font-semibold text-charcoal bg-gold hover:bg-gold/90 px-8 py-4 rounded-xl transition-all duration-300 shadow-xl shadow-gold/10 text-center active:scale-95 cta-shine-sweep"
           >
             Ver Planes de Infraestructura
           </a>
@@ -82,57 +82,65 @@ const description = "No tengas solo una página web. Diseña una infraestructura
           </p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <!-- Card 1: GEO -->
-          <div class="matte-card p-8 rounded-2xl border border-white/5 relative overflow-hidden flex flex-col justify-between group hover:border-gold/20 transition-all duration-300">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12 relative">
+          <!-- Column 1: GEO (Borderless, Floating) -->
+          <div class="relative flex flex-col justify-between group py-6 transition-all duration-300">
             <div>
-              <div class="w-12 h-12 rounded-xl bg-gold/10 border border-gold/20 flex items-center justify-center text-gold mb-6 group-hover:scale-105 transition-all duration-300">
-                <i class="fa-solid fa-brain text-xl"></i>
+              <!-- Float icon without box -->
+              <div class="text-gold mb-6 flex items-center gap-3">
+                <i class="fa-solid fa-brain text-2xl animate-pulse-slow"></i>
+                <div class="h-[1px] w-8 bg-gold/30"></div>
               </div>
-              <h3 class="font-playfair text-xl text-offwhite font-bold mb-4">
+              <h3 class="font-playfair text-2xl text-offwhite font-bold mb-4 tracking-tight group-hover:text-gold transition-colors duration-300">
                 Invisibilidad en Buscadores de IA (GEO)
               </h3>
               <p class="text-subtle text-sm font-jakarta leading-relaxed">
-                Las búsquedas en Google están cambiando hacia resúmenes con IA. Si tu marca no está estructurada y optimizada semánticamente, **ChatGPT, Gemini y Perplexity no te citarán como opción**, volviéndote invisible para la nueva generación de clientes.
+                Las búsquedas en Google están cambiando hacia resúmenes con IA. Si tu marca no está estructurada y optimizada semánticamente, <strong class="text-offwhite font-normal">ChatGPT, Gemini y Perplexity no te citarán como opción</strong>, volviéndote invisible para la nueva generación de clientes.
               </p>
             </div>
-            <span class="text-xs text-gold/60 font-semibold uppercase tracking-wider font-jakarta mt-8 block">
+            <span class="text-xs text-gold font-semibold uppercase tracking-wider font-jakarta mt-8 block border-l-2 border-gold pl-3">
               Pérdida estimada: ~50% visibilidad futura
             </span>
           </div>
 
-          <!-- Card 2: Passive Pages -->
-          <div class="matte-card p-8 rounded-2xl border border-white/5 relative overflow-hidden flex flex-col justify-between group hover:border-gold/20 transition-all duration-300">
+          <!-- Column 2: Passive Pages (Borderless, Floating) -->
+          <div class="relative flex flex-col justify-between group py-6 transition-all duration-300">
+            <!-- Subtle left-side borderless divider (Desktop only) -->
+            <div class="absolute -left-6 top-0 bottom-0 w-px bg-gradient-to-b from-white/5 via-white/5 to-transparent hidden md:block"></div>
             <div>
-              <div class="w-12 h-12 rounded-xl bg-gold/10 border border-gold/20 flex items-center justify-center text-gold mb-6 group-hover:scale-105 transition-all duration-300">
-                <i class="fa-solid fa-hand-pointer text-xl"></i>
+              <div class="text-gold mb-6 flex items-center gap-3">
+                <i class="fa-solid fa-hand-pointer text-2xl animate-pulse-slow"></i>
+                <div class="h-[1px] w-8 bg-gold/30"></div>
               </div>
-              <h3 class="font-playfair text-xl text-offwhite font-bold mb-4">
+              <h3 class="font-playfair text-2xl text-offwhite font-bold mb-4 tracking-tight group-hover:text-gold transition-colors duration-300">
                 Páginas Pasivas sin Calificación
               </h3>
               <p class="text-subtle text-sm font-jakarta leading-relaxed">
                 Tener visitas no sirve de nada si se van sin dejar datos. Las webs tradicionales fatigan con formularios aburridos o un botón de WhatsApp sin filtros, atrayendo leads no calificados que consumen el tiempo valioso de tus vendedores.
               </p>
             </div>
-            <span class="text-xs text-gold/60 font-semibold uppercase tracking-wider font-jakarta mt-8 block">
+            <span class="text-xs text-gold font-semibold uppercase tracking-wider font-jakarta mt-8 block border-l-2 border-gold pl-3">
               Pérdida estimada: ~35% tasa de conversión
             </span>
           </div>
 
-          <!-- Card 3: No Automation -->
-          <div class="matte-card p-8 rounded-2xl border border-white/5 relative overflow-hidden flex flex-col justify-between group hover:border-gold/20 transition-all duration-300">
+          <!-- Column 3: No Automation (Borderless, Floating) -->
+          <div class="relative flex flex-col justify-between group py-6 transition-all duration-300">
+            <!-- Subtle left-side borderless divider (Desktop only) -->
+            <div class="absolute -left-6 top-0 bottom-0 w-px bg-gradient-to-b from-white/5 via-white/5 to-transparent hidden md:block"></div>
             <div>
-              <div class="w-12 h-12 rounded-xl bg-gold/10 border border-gold/20 flex items-center justify-center text-gold mb-6 group-hover:scale-105 transition-all duration-300">
-                <i class="fa-solid fa-bolt text-xl"></i>
+              <div class="text-gold mb-6 flex items-center gap-3">
+                <i class="fa-solid fa-bolt text-2xl animate-pulse-slow"></i>
+                <div class="h-[1px] w-8 bg-gold/30"></div>
               </div>
-              <h3 class="font-playfair text-xl text-offwhite font-bold mb-4">
+              <h3 class="font-playfair text-2xl text-offwhite font-bold mb-4 tracking-tight group-hover:text-gold transition-colors duration-300">
                 Cero Automatización de Procesos
               </h3>
               <p class="text-subtle text-sm font-jakarta leading-relaxed">
                 Si un prospecto te contacta un viernes por la noche y recibe una respuesta hasta el lunes por la mañana, la tasa de cierre se desploma un 80%. La falta de agentes de IA y flujos automáticos destruye la inmediatez comercial.
               </p>
             </div>
-            <span class="text-xs text-gold/60 font-semibold uppercase tracking-wider font-jakarta mt-8 block">
+            <span class="text-xs text-gold font-semibold uppercase tracking-wider font-jakarta mt-8 block border-l-2 border-gold pl-3">
               Pérdida estimada: ~80% efectividad de contacto
             </span>
           </div>
@@ -182,24 +190,22 @@ const description = "No tengas solo una página web. Diseña una infraestructura
             </div>
           </div>
 
-          <div class="relative">
-            <!-- Ambient glows behind the block -->
-            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-gold/5 rounded-full blur-[80px]" />
+          <div class="relative py-8 pl-8 flex flex-col justify-center">
+            <!-- Ambient glow behind floating metrics -->
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gold/5 rounded-full blur-[100px] pointer-events-none" />
             
-            <div class="matte-card p-8 rounded-2xl border border-white/5 relative z-10 shadow-2xl">
-              <div class="space-y-6">
-                <div class="border-l-2 border-gold pl-4 py-2">
-                  <span class="text-xs text-subtle font-jakarta uppercase font-semibold">Conversión Promedio</span>
-                  <div class="text-2xl font-bold text-offwhite font-playfair mt-1">+250% más leads calificados</div>
-                </div>
-                <div class="border-l-2 border-gold pl-4 py-2">
-                  <span class="text-xs text-subtle font-jakarta uppercase font-semibold">Tasa de Aprobación de TI</span>
-                  <div class="text-2xl font-bold text-offwhite font-playfair mt-1">Arquitectura SSR Server-side limpia</div>
-                </div>
-                <div class="border-l-2 border-gold pl-4 py-2">
-                  <span class="text-xs text-subtle font-jakarta uppercase font-semibold">Recomendabilidad IA</span>
-                  <div class="text-2xl font-bold text-offwhite font-playfair mt-1">Optimización GEO Nativa en Schema</div>
-                </div>
+            <div class="space-y-10 relative z-10">
+              <div class="border-l-2 border-gold pl-6 py-2 hover:translate-x-1.5 transition-transform duration-300">
+                <span class="ui-caption block text-[10px]">Conversión Promedio</span>
+                <div class="text-3xl font-bold text-offwhite font-playfair mt-1 tracking-tight">+250% más leads calificados</div>
+              </div>
+              <div class="border-l-2 border-gold pl-6 py-2 hover:translate-x-1.5 transition-transform duration-300">
+                <span class="ui-caption block text-[10px]">Tasa de Aprobación de TI</span>
+                <div class="text-3xl font-bold text-offwhite font-playfair mt-1 tracking-tight">Arquitectura SSR Server-side limpia</div>
+              </div>
+              <div class="border-l-2 border-gold pl-6 py-2 hover:translate-x-1.5 transition-transform duration-300">
+                <span class="ui-caption block text-[10px]">Recomendabilidad IA</span>
+                <div class="text-3xl font-bold text-offwhite font-playfair mt-1 tracking-tight">Optimización GEO Nativa en Schema</div>
               </div>
             </div>
           </div>
@@ -229,8 +235,8 @@ const description = "No tengas solo una página web. Diseña una infraestructura
         <!-- Pricing Cards Grid -->
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
           
-          <!-- Package 1 -->
-          <div class="matte-card p-8 rounded-2xl border border-white/5 flex flex-col justify-between h-full relative group hover:border-white/10 transition-all duration-300">
+          <!-- Package 1 (Borderless, Fades to focus Center Card) -->
+          <div class="bg-transparent p-8 flex flex-col justify-between h-full relative group transition-all duration-300">
             <div>
               <span class="editorial-label text-[10px] text-subtle block mb-1">LANDING + ACTIVACIÓN IA</span>
               <h3 class="font-playfair text-2xl text-offwhite font-bold mb-2">Impulso de Captación</h3>
@@ -239,7 +245,7 @@ const description = "No tengas solo una página web. Diseña una infraestructura
                 Para negocios que necesitan validar rápidamente su oferta, captar prospectos filtrados y arrancar con IA sin construir sistemas robustos aún.
               </p>
               
-              <div class="w-full h-px bg-white/5 my-6" />
+              <div class="gold-rule my-6" />
               
               <ul class="space-y-4">
                 <li class="flex items-start text-xs text-offwhite font-jakarta">
@@ -329,8 +335,8 @@ const description = "No tengas solo una página web. Diseña una infraestructura
             </div>
           </div>
 
-          <!-- Package 3 -->
-          <div class="matte-card p-8 rounded-2xl border border-white/5 flex flex-col justify-between h-full relative group hover:border-white/10 transition-all duration-300">
+          <!-- Package 3 (Borderless, Fades to focus Center Card) -->
+          <div class="bg-transparent p-8 flex flex-col justify-between h-full relative group transition-all duration-300">
             <div>
               <span class="editorial-label text-[10px] text-subtle block mb-1">WEB + MARKETING IA + AGENTE</span>
               <h3 class="font-playfair text-2xl text-offwhite font-bold mb-2">Arquitectura IA Comercial</h3>
@@ -339,7 +345,7 @@ const description = "No tengas solo una página web. Diseña una infraestructura
                 Para negocios que buscan integrar presencia web premium de alta gama con un agente de IA entrenado a medida para automatizar operaciones de ventas.
               </p>
               
-              <div class="w-full h-px bg-white/5 my-6" />
+              <div class="gold-rule my-6" />
               
               <ul class="space-y-4">
                 <li class="flex items-start text-xs text-offwhite font-jakarta">
@@ -422,64 +428,62 @@ const description = "No tengas solo una página web. Diseña una infraestructura
           </p>
         </div>
 
-        <!-- Responsive Table Grid -->
-        <div class="matte-card rounded-2xl border border-white/5 overflow-hidden shadow-xl">
-          <div class="overflow-x-auto">
-            <table class="w-full text-left border-collapse">
-              <thead>
-                <tr class="border-b border-white/10 bg-charcoal/40 text-xs font-jakarta uppercase font-semibold text-offwhite tracking-wider">
-                  <th class="p-6">Especificaciones y Entregables</th>
-                  <th class="p-6">Impulso de Captación</th>
-                  <th class="p-6 text-gold">Sistema Web Inteligente</th>
-                  <th class="p-6">Arquitectura IA Comercial</th>
-                </tr>
-              </thead>
-              <tbody class="text-sm font-jakarta text-subtle divide-y divide-white/5">
-                <tr>
-                  <td class="p-6 font-semibold text-offwhite">Alcance de Páginas</td>
-                  <td class="p-6">1 Landing Page Estratégica</td>
-                  <td class="p-6 text-offwhite font-medium">Multidisciplinaria (3 a 5 páginas)</td>
-                  <td class="p-6">Estructura Corporativa Completa</td>
-                </tr>
-                <tr>
-                  <td class="p-6 font-semibold text-offwhite">Diseño Visual Premium</td>
-                  <td class="p-6 text-emerald-400"><i class="fa-solid fa-circle-check"></i> Sí (Premium)</td>
-                  <td class="p-6 text-emerald-400"><i class="fa-solid fa-circle-check"></i> Sí (Premium)</td>
-                  <td class="p-6 text-emerald-400"><i class="fa-solid fa-circle-check"></i> Sí (Premium + A Medida)</td>
-                </tr>
-                <tr>
-                  <td class="p-6 font-semibold text-offwhite">Copywriting B2B</td>
-                  <td class="p-6">Base (Conversión comercial)</td>
-                  <td class="p-6 text-offwhite font-medium">Avanzado (Psicología B2B)</td>
-                  <td class="p-6">Altamente persuasivo y adaptado</td>
-                </tr>
-                <tr>
-                  <td class="p-6 font-semibold text-offwhite">Optimización SEO/GEO</td>
-                  <td class="p-6">Indexación Base en Google</td>
-                  <td class="p-6 text-emerald-400 font-medium"><i class="fa-solid fa-circle-check"></i> Avanzado (Schema JSON-LD)</td>
-                  <td class="p-6 text-emerald-400"><i class="fa-solid fa-circle-check"></i> Avanzado (Optimización semántica IA)</td>
-                </tr>
-                <tr>
-                  <td class="p-6 font-semibold text-offwhite">Cualificación Inteligente</td>
-                  <td class="p-6">Formulario básico</td>
-                  <td class="p-6 text-emerald-400 font-medium"><i class="fa-solid fa-circle-check"></i> Wizard Interactivo Avanzado</td>
-                  <td class="p-6 text-emerald-400"><i class="fa-solid fa-circle-check"></i> Wizard + Agente IA de Ventas</td>
-                </tr>
-                <tr>
-                  <td class="p-6 font-semibold text-offwhite">Integración de Agente IA</td>
-                  <td class="p-6 text-rose-500">—</td>
-                  <td class="p-6 text-rose-500">—</td>
-                  <td class="p-6 text-emerald-400"><i class="fa-solid fa-circle-check"></i> Agente entrenado a medida</td>
-                </tr>
-                <tr>
-                  <td class="p-6 font-semibold text-offwhite">Soporte Técnico</td>
-                  <td class="p-6">15 días de soporte básico</td>
-                  <td class="p-6">30 días de soporte post-entrega</td>
-                  <td class="p-6 text-offwhite font-medium">Soporte prioritario y del Agente</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+        <!-- Responsive Table Grid (Borderless, Editorial style) -->
+        <div class="overflow-x-auto w-full">
+          <table class="w-full text-left border-collapse">
+            <thead>
+              <tr class="border-b border-white/10 text-xs font-jakarta uppercase font-semibold text-offwhite tracking-wider">
+                <th class="p-6 pl-0">Especificaciones y Entregables</th>
+                <th class="p-6">Impulso de Captación</th>
+                <th class="p-6 text-gold">Sistema Web Inteligente</th>
+                <th class="p-6">Arquitectura IA Comercial</th>
+              </tr>
+            </thead>
+            <tbody class="text-sm font-jakarta text-subtle divide-y divide-white/5">
+              <tr>
+                <td class="p-6 pl-0 font-semibold text-offwhite">Alcance de Páginas</td>
+                <td class="p-6">1 Landing Page Estratégica</td>
+                <td class="p-6 text-offwhite font-medium">Multidisciplinaria (3 a 5 páginas)</td>
+                <td class="p-6">Estructura Corporativa Completa</td>
+              </tr>
+              <tr>
+                <td class="p-6 pl-0 font-semibold text-offwhite">Diseño Visual Premium</td>
+                <td class="p-6 text-emerald-400"><i class="fa-solid fa-circle-check"></i> Sí (Premium)</td>
+                <td class="p-6 text-emerald-400"><i class="fa-solid fa-circle-check"></i> Sí (Premium)</td>
+                <td class="p-6 text-emerald-400"><i class="fa-solid fa-circle-check"></i> Sí (Premium + A Medida)</td>
+              </tr>
+              <tr>
+                <td class="p-6 pl-0 font-semibold text-offwhite">Copywriting B2B</td>
+                <td class="p-6">Base (Conversión comercial)</td>
+                <td class="p-6 text-offwhite font-medium">Avanzado (Psicología B2B)</td>
+                <td class="p-6">Altamente persuasivo y adaptado</td>
+              </tr>
+              <tr>
+                <td class="p-6 pl-0 font-semibold text-offwhite">Optimización SEO/GEO</td>
+                <td class="p-6">Indexación Base en Google</td>
+                <td class="p-6 text-emerald-400 font-medium"><i class="fa-solid fa-circle-check"></i> Avanzado (Schema JSON-LD)</td>
+                <td class="p-6 text-emerald-400"><i class="fa-solid fa-circle-check"></i> Avanzado (Optimización semántica IA)</td>
+              </tr>
+              <tr>
+                <td class="p-6 pl-0 font-semibold text-offwhite">Cualificación Inteligente</td>
+                <td class="p-6">Formulario básico</td>
+                <td class="p-6 text-emerald-400 font-medium"><i class="fa-solid fa-circle-check"></i> Wizard Interactivo Avanzado</td>
+                <td class="p-6 text-emerald-400"><i class="fa-solid fa-circle-check"></i> Wizard + Agente IA de Ventas</td>
+              </tr>
+              <tr>
+                <td class="p-6 pl-0 font-semibold text-offwhite">Integración de Agente IA</td>
+                <td class="p-6 text-rose-500">—</td>
+                <td class="p-6 text-rose-500">—</td>
+                <td class="p-6 text-emerald-400"><i class="fa-solid fa-circle-check"></i> Agente entrenado a medida</td>
+              </tr>
+              <tr>
+                <td class="p-6 pl-0 font-semibold text-offwhite">Soporte Técnico</td>
+                <td class="p-6">15 días de soporte básico</td>
+                <td class="p-6">30 días de soporte post-entrega</td>
+                <td class="p-6 text-offwhite font-medium">Soporte prioritario y del Agente</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
 
       </div>
@@ -527,43 +531,47 @@ const description = "No tengas solo una página web. Diseña una infraestructura
           </p>
         </div>
 
-        <div class="space-y-6">
-          <!-- FAQ 1 -->
-          <div class="matte-card p-6 rounded-xl border border-white/5">
-            <h4 class="text-offwhite font-bold font-jakarta text-base mb-2">
-              ¿Por qué no es suficiente un sitio estático tradicional?
+        <div class="divide-y divide-white/5">
+          <!-- FAQ 1 (Borderless Accordion Style) -->
+          <div class="py-8 group transition-all duration-300">
+            <h4 class="text-offwhite group-hover:text-gold font-bold font-jakarta text-lg mb-3 flex justify-between items-center transition-colors duration-300">
+              <span>¿Por qué no es suficiente un sitio estático tradicional?</span>
+              <span class="text-gold font-light text-xl group-hover:translate-x-1.5 transition-transform duration-300">+</span>
             </h4>
-            <p class="text-subtle text-sm font-jakarta leading-relaxed">
-              Un sitio web estático es pasivo; espera a que las personas lean y adivinen qué hacer. Una **infraestructura digital activa** califica a los prospectos mediante un flujo de preguntas, se indexa semánticamente para aparecer en las recomendaciones de Inteligencia Artificial (GEO) y conecta automatizaciones que responden en tiempo real.
+            <p class="text-subtle text-sm font-jakarta leading-relaxed max-w-4xl">
+              Un sitio web estático es pasivo; espera a que las personas lean y adivinen qué hacer. Una <strong class="text-offwhite font-normal">infraestructura digital activa</strong> califica a los prospectos mediante un flujo de preguntas, se indexa semánticamente para aparecer en las recomendaciones de Inteligencia Artificial (GEO) y conecta automatizaciones que responden en tiempo real.
             </p>
           </div>
 
-          <!-- FAQ 2 -->
-          <div class="matte-card p-6 rounded-xl border border-white/5">
-            <h4 class="text-offwhite font-bold font-jakarta text-base mb-2">
-              ¿Qué es el SEO/GEO y cómo beneficia a mi negocio?
+          <!-- FAQ 2 (Borderless Accordion Style) -->
+          <div class="py-8 group transition-all duration-300">
+            <h4 class="text-offwhite group-hover:text-gold font-bold font-jakarta text-lg mb-3 flex justify-between items-center transition-colors duration-300">
+              <span>¿Qué es el SEO/GEO y cómo beneficia a mi negocio?</span>
+              <span class="text-gold font-light text-xl group-hover:translate-x-1.5 transition-transform duration-300">+</span>
             </h4>
-            <p class="text-subtle text-sm font-jakarta leading-relaxed">
-              El SEO te posiciona en Google tradicional. El **GEO (Generative Engine Optimization)** es la optimización para que motores de respuesta de Inteligencia Artificial como ChatGPT, Gemini o Perplexity encuentren, lean y recomienden tu marca a usuarios que hacen preguntas complejas de compra. Usamos microdatos estructurados Schema.org avanzados para lograrlo.
+            <p class="text-subtle text-sm font-jakarta leading-relaxed max-w-4xl">
+              El SEO te posiciona en Google tradicional. El <strong class="text-offwhite font-normal">GEO (Generative Engine Optimization)</strong> es la optimización para que motores de respuesta de Inteligencia Artificial como ChatGPT, Gemini o Perplexity encuentren, lean y recomienden tu marca a usuarios que hacen preguntas complejas de compra. Usamos microdatos estructurados Schema.org avanzados para lograrlo.
             </p>
           </div>
 
-          <!-- FAQ 3 -->
-          <div class="matte-card p-6 rounded-xl border border-white/5">
-            <h4 class="text-offwhite font-bold font-jakarta text-base mb-2">
-              ¿Cómo funciona un Agente de IA Comercial?
+          <!-- FAQ 3 (Borderless Accordion Style) -->
+          <div class="py-8 group transition-all duration-300">
+            <h4 class="text-offwhite group-hover:text-gold font-bold font-jakarta text-lg mb-3 flex justify-between items-center transition-colors duration-300">
+              <span>¿Cómo funciona un Agente de IA Comercial?</span>
+              <span class="text-gold font-light text-xl group-hover:translate-x-1.5 transition-transform duration-300">+</span>
             </h4>
-            <p class="text-subtle text-sm font-jakarta leading-relaxed">
+            <p class="text-subtle text-sm font-jakarta leading-relaxed max-w-4xl">
               Es un software programado y alimentado exclusivamente con el manual de ventas, catálogo, precios y objeciones de tu negocio. Se integra directamente con tu base de datos o webhook (como n8n) para calificar prospectos, cotizar y agendar reuniones las 24 horas del día.
             </p>
           </div>
 
-          <!-- FAQ 4 -->
-          <div class="matte-card p-6 rounded-xl border border-white/5">
-            <h4 class="text-offwhite font-bold font-jakarta text-base mb-2">
-              ¿Cuáles son los costos de mantenimiento y hosting?
+          <!-- FAQ 4 (Borderless Accordion Style) -->
+          <div class="py-8 group transition-all duration-300">
+            <h4 class="text-offwhite group-hover:text-gold font-bold font-jakarta text-lg mb-3 flex justify-between items-center transition-colors duration-300">
+              <span>¿Cuáles son los costos de mantenimiento y hosting?</span>
+              <span class="text-gold font-light text-xl group-hover:translate-x-1.5 transition-transform duration-300">+</span>
             </h4>
-            <p class="text-subtle text-sm font-jakarta leading-relaxed">
+            <p class="text-subtle text-sm font-jakarta leading-relaxed max-w-4xl">
               Nuestra arquitectura está montada sobre código limpio e independiente. Los costos recurrentes en un hosting administrado de Node.js son muy bajos (desde $5 a $10 USD mensuales de servidor). No cobramos rentas obligatorias ni comisiones por ventas.
             </p>
           </div>
@@ -582,3 +590,322 @@ const description = "No tengas solo una página web. Diseña una infraestructura
     </div>
   </footer>
 </Layout>
+
+<!-- ========================================================== -->
+<!-- PREMIUM GSAP ENTRY & SCROLL-TRIGGER ANIMATION SYSTEM       -->
+<!-- ========================================================== -->
+<script>
+  // @ts-nocheck
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  // Double-check ScrollTrigger registration in Astro bundle
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.addEventListener("DOMContentLoaded", () => {
+    // 1. ENVIRONMENT AUDIT (Accessibility & Device Responsive Constraints)
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const isMobile = window.matchMedia('(max-width: 767px)').matches;
+    const hasFinePointer = window.matchMedia('(pointer: fine)').matches;
+
+    // 2. DRY ACCESSIBILITY NORMALIZER
+    const getAnimProps = (originalProps) => {
+      if (prefersReducedMotion) {
+        const { y, x, scale, rotationY, rotateX, rotateY, skewX, skewY, ...rest } = originalProps;
+        return {
+          ...rest,
+          opacity: 0,
+          duration: 0.35,
+          ease: "sine.out",
+          stagger: originalProps.stagger ? 0.05 : 0
+        };
+      }
+
+      if (isMobile) {
+        const simplified = { ...originalProps };
+        if (typeof simplified.y === 'number') simplified.y *= 0.4;
+        if (typeof simplified.x === 'number') simplified.x *= 0.4;
+        delete simplified.rotationY;
+        delete simplified.rotateX;
+        delete simplified.rotateY;
+        if (typeof simplified.scale === 'number') simplified.scale = 0.98;
+        return simplified;
+      }
+
+      return originalProps;
+    };
+
+    // 3. PREMIUM CARD-GLOW RADIAL LIGHT ACTIVATION
+    if (hasFinePointer) {
+      const glowCards = document.querySelectorAll('.card-glow');
+      glowCards.forEach((card) => {
+        card.addEventListener('mousemove', (e) => {
+          const rect = card.getBoundingClientRect();
+          const x = ((e.clientX - rect.left) / rect.width) * 100;
+          const y = ((e.clientY - rect.top) / rect.height) * 100;
+          card.style.setProperty('--mouse-x', `${x}%`);
+          card.style.setProperty('--mouse-y', `${y}%`);
+        });
+      });
+    }
+
+    // 4. MASTER MOTION CHOREOGRAPHY INITIALIZATION
+    const initAllAnimations = () => {
+      if (window.__animationsInitialized) return;
+      window.__animationsInitialized = true;
+
+      // STAGE 1: HERO ENTRY ANIMATION (Triggered on Preloader End)
+      const heroTl = gsap.timeline({
+        defaults: { ease: "power4.out", duration: 1.2 }
+      });
+
+      // Animate Header Nav Down
+      heroTl.from("header", getAnimProps({
+        y: -40,
+        opacity: 0,
+        duration: 1
+      }));
+
+      // Animate Hero Tagline
+      heroTl.from("main > section:nth-of-type(1) .editorial-label", getAnimProps({
+        scale: 1.15,
+        opacity: 0,
+        duration: 0.8
+      }), "-=0.6");
+
+      // Animate Hero Heading (H1)
+      heroTl.from("main > section:nth-of-type(1) h1", getAnimProps({
+        y: 45,
+        opacity: 0,
+        duration: 1.2
+      }), "-=0.6");
+
+      // Animate Hero Paragraph Subtitle
+      heroTl.from("main > section:nth-of-type(1) p", getAnimProps({
+        y: 30,
+        opacity: 0,
+        duration: 1.4
+      }), "-=0.8");
+
+      // Animate Hero CTA Buttons
+      heroTl.from("main > section:nth-of-type(1) a", getAnimProps({
+        y: 20,
+        opacity: 0,
+        stagger: 0.12,
+        duration: 1
+      }), "-=1.1");
+
+
+      // STAGE 2: SCROLLTRIGGER REVEALS (Sequential Section Entrances)
+
+      // SECTION 2: THE PROBLEM (id="dolor")
+      const dolorTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: "#dolor",
+          start: "top 82%",
+          toggleActions: "play none none none"
+        }
+      });
+      dolorTl.from("#dolor .text-center", getAnimProps({
+        y: 30,
+        opacity: 0,
+        duration: 0.8
+      }))
+      .from("#dolor .grid > div", getAnimProps({
+        y: 45,
+        opacity: 0,
+        stagger: 0.15,
+        duration: 1,
+        ease: "power3.out"
+      }), "-=0.4");
+
+      // SECTION 3: THE FORMULA (main > section:nth-of-type(3))
+      const formulaSection = document.querySelector("main > section:nth-of-type(3)");
+      if (formulaSection) {
+        const formulaTl = gsap.timeline({
+          scrollTrigger: {
+            trigger: formulaSection,
+            start: "top 82%",
+            toggleActions: "play none none none"
+          }
+        });
+        
+        if (!prefersReducedMotion && !isMobile) {
+          gsap.set(formulaSection.querySelector(".grid"), { perspective: 1000 });
+        }
+
+        formulaTl.from(formulaSection.querySelectorAll("h2, p:first-of-type"), getAnimProps({
+          y: 30,
+          opacity: 0,
+          stagger: 0.15,
+          duration: 0.8
+        }))
+        .from(formulaSection.querySelectorAll(".mt-8 > div"), getAnimProps({
+          x: -40,
+          opacity: 0,
+          stagger: 0.18,
+          duration: 0.9,
+          ease: "power2.out"
+        }), "-=0.5")
+        .from(formulaSection.querySelector(".relative"), getAnimProps({
+          x: 40,
+          rotationY: -12,
+          opacity: 0,
+          duration: 1.3,
+          ease: "power4.out"
+        }), "-=0.8");
+      }
+
+      // SECTION 4: PACKAGES & PRICING (id="paquetes")
+      const paquetesTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: "#paquetes",
+          start: "top 82%",
+          toggleActions: "play none none none"
+        }
+      });
+      paquetesTl.from("#paquetes .text-center", getAnimProps({
+        y: 30,
+        opacity: 0,
+        duration: 0.8
+      }))
+      .from("#paquetes .grid > div", getAnimProps({
+        y: 50,
+        opacity: 0,
+        stagger: 0.18,
+        duration: 1.2,
+        ease: "power4.out"
+      }), "-=0.4");
+
+      // SECTION 5: ROI CALCULATOR (main > section:nth-of-type(5))
+      const roiSection = document.querySelector("main > section:nth-of-type(5)");
+      if (roiSection) {
+        const roiTl = gsap.timeline({
+          scrollTrigger: {
+            trigger: roiSection,
+            start: "top 82%",
+            toggleActions: "play none none none"
+          }
+        });
+        roiTl.from(roiSection.querySelector(".text-center"), getAnimProps({
+          y: 30,
+          opacity: 0,
+          duration: 0.8
+        }))
+        .from(roiSection.querySelector("div:last-child"), getAnimProps({
+          scale: 0.97,
+          y: 35,
+          opacity: 0,
+          duration: 1.1,
+          ease: "back.out(1.15)"
+        }), "-=0.4");
+      }
+
+      // SECTION 6: SPECIFICATIONS (main > section:nth-of-type(6))
+      const specsSection = document.querySelector("main > section:nth-of-type(6)");
+      if (specsSection) {
+        const specsTl = gsap.timeline({
+          scrollTrigger: {
+            trigger: specsSection,
+            start: "top 82%",
+            toggleActions: "play none none none"
+          }
+        });
+        specsTl.from(specsSection.querySelector(".text-center"), getAnimProps({
+          y: 30,
+          opacity: 0,
+          duration: 0.8
+        }))
+        .from(specsSection.querySelector(".overflow-x-auto"), getAnimProps({
+          y: 35,
+          opacity: 0,
+          duration: 1,
+          ease: "power3.out"
+        }), "-=0.4");
+      }
+
+      // SECTION 7: LEAD CONVERSION WIZARD (id="diagnostico")
+      const diagnosticoTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: "#diagnostico",
+          start: "top 82%",
+          toggleActions: "play none none none"
+        }
+      });
+      diagnosticoTl.from("#diagnostico .text-center", getAnimProps({
+        y: 30,
+        opacity: 0,
+        duration: 0.8
+      }))
+      .from("#diagnostico .shadow-2xl", getAnimProps({
+        y: 45,
+        opacity: 0,
+        scale: 0.98,
+        duration: 1.2,
+        ease: "power3.out"
+      }), "-=0.4");
+
+      // SECTION 8: FAQ & OBJECTIONS (main > section:nth-of-type(8))
+      const faqSection = document.querySelector("main > section:nth-of-type(8)");
+      if (faqSection) {
+        const faqTl = gsap.timeline({
+          scrollTrigger: {
+            trigger: faqSection,
+            start: "top 82%",
+            toggleActions: "play none none none"
+          }
+        });
+        faqTl.from(faqSection.querySelector(".text-center"), getAnimProps({
+          y: 30,
+          opacity: 0,
+          duration: 0.8
+        }))
+        .from(faqSection.querySelectorAll(".divide-y > div"), getAnimProps({
+          y: 20,
+          opacity: 0,
+          stagger: 0.12,
+          duration: 0.8,
+          ease: "power2.out"
+        }), "-=0.4");
+      }
+    };
+
+    // 5. SYNCHRONIZED LAUNCH CONTROLLER
+    window.addEventListener('preloaderComplete', initAllAnimations);
+
+    if (document.readyState === 'complete' || document.readyState === 'interactive') {
+      const preloader = document.getElementById('preloader');
+      if (!preloader || preloader.style.display === 'none' || preloader.style.transform.includes('-100%')) {
+        initAllAnimations();
+      }
+    }
+
+    setTimeout(initAllAnimations, 3000);
+  });
+</script>
+
+<style>
+  @keyframes sweep-shine {
+    0% { transform: translateX(-100%) skewX(-12deg); }
+    100% { transform: translateX(200%) skewX(-12deg); }
+  }
+  .cta-shine-sweep {
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-shine-sweep::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 35%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+    transform: translateX(-100%) skewX(-12deg);
+    pointer-events: none;
+  }
+  .cta-shine-sweep:hover::after {
+    animation: sweep-shine 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+</style>
+
