@@ -94,29 +94,38 @@ Asegúrate de empujar la última versión estable del código a tu repositorio p
 5. Configura los parámetros de ejecución en la interfaz gráfica:
    - **Versión de Node.js**: Elige **Node.js 22** o superior (requisito de Astro 5.x).
    - **Comando de Construcción (Build Command)**: `npm run build`
-   - **Comando de Inicio (Start Command)**: `node ./dist/server/entry.mjs`
+   - **Comando de Inicio (Start Command)**: `npm run start:prod`
    - **Puerto**: Configura el puerto indicado en la UI (generalmente el sistema del hPanel auto-asigna y expone el puerto adecuado).
 6. Haz clic en **Desplegar** (Deploy). Hostinger instalará las dependencias en una sandbox segura y ejecutará el build.
+
+#### 2.1. Dominio canónico, DNS y SSL
+El dominio canónico del proyecto es `https://tap-ia.tech`. Mantén esta decisión alineada con `astro.config.mjs` y `src/lib/seo.ts`.
+
+Configura:
+* `tap-ia.tech` → aplicación Node.js de producción en Hostinger.
+* `www.tap-ia.tech` → redirección 301 hacia `https://tap-ia.tech`.
+* SSL activo para `tap-ia.tech` y `www.tap-ia.tech`.
 
 #### 3. Variables de Entorno en hPanel
 En el menú de administración de la aplicación web en hPanel, navega a la sección de **Variables de Entorno** (Environment Variables) y añade:
 * `N8N_WEBHOOK_URL` = `<tu-webhook-de-n8n>`
 * `HOST` = `0.0.0.0`
 
-#### 4. Resolución del error "403 Forbidden" (Reverse Proxy y .htaccess)
-Si tras desplegar la aplicación al ingresar a `https://tap-ia.tech` obtienes un error **403 Forbidden**, se debe a que el servidor web Apache/LiteSpeed de Hostinger intercepta las peticiones buscando un archivo index estático (`index.html` o `index.php`) en vez de delegar el tráfico al proceso Node.js en ejecución.
+#### 4. Resolución del error "403 Forbidden" (.htaccess generado por Hostinger)
+Si tras desplegar la aplicación al ingresar a `https://tap-ia.tech` obtienes un error **403 Forbidden**, revisa primero que el sitio esté configurado como **Node.js Web App** y no como despliegue estático en `public_html`.
 
-Para solucionarlo utilizando el archivo `.htaccess` provisto:
-1. Hemos creado un archivo de configuración listo para producción en [public/.htaccess](file:///C:/Users/Departamento%20AI/OneDrive/Documents/C%C3%B3digos/P%C3%A1gina%20web%20prueba/public/.htaccess).
-2. Al ejecutar la compilación (`npm run build`), Astro copiará este archivo automáticamente a la carpeta de salida del cliente (`dist/client/.htaccess`).
-3. Abre el **Administrador de Archivos** en el hPanel de tu sitio web en Hostinger.
-4. Asegúrate de colocar este archivo `.htaccess` en la carpeta raíz del dominio (generalmente `public_html/` o la carpeta donde está configurada tu Node.js Web App).
-5. Abre el archivo `.htaccess` desde el editor de hPanel y edita la última regla para verificar que apunte al puerto local exacto que Hostinger le asignó a tu aplicación Node.js (el puerto se indica en la interfaz del dashboard de Node.js, por ejemplo `3000`, `3001` o `4321`):
-   ```apache
-   RewriteRule ^(.*)$ http://127.0.0.1:PUERTO_ASIGNADO/$1 [P,L]
+No subas un `.htaccess` personalizado desde el repositorio para hacer proxy manual a `127.0.0.1:4321`. Hostinger genera su propio `.htaccess` en `public_html` para enrutar el tráfico hacia la aplicación Node.js. Un proxy fijo a `4321` puede romper el despliegue si hPanel asigna otro puerto o usa un mecanismo interno distinto.
+
+Pasos recomendados:
+1. Elimina o renombra cualquier `.htaccess` personalizado que hayas subido manualmente a `public_html`.
+2. Vuelve a desplegar la aplicación desde hPanel para que Hostinger regenere su configuración.
+3. Configura:
+   ```bash
+   Build Command: npm run build
+   Start Command: npm run start:prod
    ```
-   *(Reemplaza `PUERTO_ASIGNADO` por el número de puerto que te muestre Hostinger, por ejemplo: `http://127.0.0.1:3000/$1`)*
-6. Guarda los cambios en el editor y accede a `https://tap-ia.tech` para verificar que el sitio carga correctamente.
+4. Verifica que `HOST=0.0.0.0` esté configurado en las variables de entorno.
+5. Si el 403 persiste, inspecciona el `.htaccess` generado por Hostinger en `public_html` y confirma que la app Node.js esté activa en el panel.
 
 ---
 
