@@ -124,11 +124,15 @@ export default function RoiCalculator() {
                 const paybackText = paybackMonths <= 0.3 ? 'Días' : paybackMonths <= 1 ? '1 Mes' : `${Math.ceil(paybackMonths)} Meses`;
                 const roiPercentage = ((annualRevenue - pkg.cost) / pkg.cost) * 100;
                 
+                // Show multiplier for high ROI percentages, which is more professional for CEOs
+                const multiplier = annualRevenue / pkg.cost;
+                const roiText = multiplier >= 2 ? `x${multiplier.toFixed(1)} veces` : `+${Math.round(roiPercentage)}%`;
+                
                 return (
-                  <div key={idx} className="bg-transparent border-0 flex flex-col justify-between relative overflow-hidden group transition-all duration-300">
+                  <div key={idx} className="bg-transparent border border-white/5 hover:border-gold/25 hover:bg-white/[0.01] flex flex-col justify-between relative overflow-hidden group transition-all duration-300 rounded-xl p-4">
                     <div>
                       <div className="flex justify-between items-center mb-1">
-                        <span className="text-[10px] uppercase font-bold text-subtle bg-white/5 px-2 py-0.5 rounded-full font-jakarta">
+                        <span className="text-[9px] uppercase font-bold text-subtle bg-white/5 px-2 py-0.5 rounded-full font-jakarta">
                           {pkg.badge}
                         </span>
                         <span className="text-xs font-bold text-gold font-jakarta">{formatCurrency(pkg.cost)}</span>
@@ -140,12 +144,12 @@ export default function RoiCalculator() {
                     
                     <div className="mt-4 pt-3 border-t border-white/5 flex justify-between items-end">
                       <div>
-                        <span className="text-[10px] text-subtle font-jakarta block">Amortización</span>
+                        <span className="text-[9px] text-subtle font-jakarta block">Amortización</span>
                         <span className="text-xs font-bold text-offwhite font-jakarta">{paybackText}</span>
                       </div>
                       <div className="text-right">
-                        <span className="text-[10px] text-subtle font-jakarta block">ROI Anual</span>
-                        <span className="text-xs font-bold text-emerald-400 font-jakarta">+{Math.round(roiPercentage)}%</span>
+                        <span className="text-[9px] text-subtle font-jakarta block">ROI Anual</span>
+                        <span className="text-xs font-bold text-success font-jakarta">{roiText}</span>
                       </div>
                     </div>
                   </div>

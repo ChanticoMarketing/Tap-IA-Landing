@@ -15,7 +15,6 @@ const {
   problem = '',
   servicio = '',
   demo = '',
-  showMobileWa = false,
   showDesktopWaLink = false,
 } = Astro.props;
 
@@ -25,26 +24,13 @@ const wid = wizardId;
 ---
 
 <div class="contact-wizard" data-contact-wizard={wid} id={`contact-wizard-${wid}`}>
-  {showMobileWa && (
-    <div class="md:hidden flex flex-col items-center gap-3 mb-8">
-      <a
-        href={waHref}
-        target="_blank"
-        rel="noopener noreferrer"
-        class="w-full max-w-sm inline-flex items-center justify-center gap-3 px-8 py-4 bg-green-600 hover:bg-green-500 text-white font-bold rounded-full shadow-[0_0_20px_rgba(34,197,94,0.25)] text-sm uppercase tracking-wider transition-colors"
-      >
-        <i class="fa-brands fa-whatsapp text-xl" aria-hidden="true"></i>
-        WhatsApp rápido
-      </a>
-      <p class="text-subtle text-xs text-center">¿Prefieres más contexto? Completa el formulario abajo.</p>
-    </div>
-  )}
 
   <div class="bg-transparent p-0">
+    <!-- Progress Indicator -->
     <div class="mb-6 md:mb-8" aria-label="Progreso del formulario">
       <div class="flex justify-between ui-caption mb-3">
         <span data-wizard-step-indicator>Paso 1 de 4</span>
-        <span data-wizard-progress-percent class="text-gold">0%</span>
+        <span data-wizard-progress-percent class="text-gold font-semibold">0%</span>
       </div>
       <div
         class="w-full bg-white/5 h-1.5 rounded-full overflow-hidden"
@@ -58,6 +44,7 @@ const wid = wizardId;
       </div>
     </div>
 
+    <!-- Live Status Banner -->
     <div
       data-wizard-form-status
       class="hidden mb-6 p-4 rounded-lg border text-sm"
@@ -67,6 +54,7 @@ const wid = wizardId;
     </div>
 
     <form data-wizard-form novalidate>
+      <!-- Honeypot Spam Filter -->
       <input
         type="text"
         name="bot_field"
@@ -86,51 +74,153 @@ const wid = wizardId;
       <input type="hidden" name="demo" data-attr="demo" value={demo} />
       <input type="hidden" name="referrer" data-attr="referrer" value="" />
 
+      <!-- ========================================== -->
+      <!-- STEP 1: CURRENT OBSTACLES -->
+      <!-- ========================================== -->
       <div class="step-content active" data-step="1">
-        <h3 class="mb-6 text-white font-playfair text-xl md:text-2xl" data-wizard-step-title="1" tabindex="-1">1. Situación Actual</h3>
+        <h3 class="mb-6 text-white font-playfair text-xl md:text-2xl" data-wizard-step-title="1" tabindex="-1">
+          1. Situación Actual
+        </h3>
 
-        <div class="mb-6">
-          <label class="block ui-caption mb-2 text-gold font-jakarta" for={`${wid}-field-obstacle`}>
-            ¿Cuál es el mayor obstáculo digital para tu negocio hoy?
+        <!-- Interactive Obstacle Tiles -->
+        <div class="mb-6" data-wizard-obstacle-group>
+          <label class="block ui-caption mb-3 text-gold font-jakarta">
+            ¿Cuál es el mayor obstáculo digital para tu negocio hoy? <span class="text-gold">*</span>
           </label>
-          <select name="obstacle" id={`${wid}-field-obstacle`} class="input-field font-jakarta" required>
-            <option value="" disabled selected>Elige la opción que mejor describa tu caso</option>
-            <option value="invisibility">No aparecemos en Google (Falta de visitas / SEO)</option>
-            <option value="conversion">Tenemos visitas en la web, pero nadie nos contacta o compra</option>
-            <option value="trust">Nuestra web se ve vieja y la competencia luce más profesional</option>
-            <option value="tech">La IA (ChatGPT, Gemini) no recomienda nuestro negocio (GEO)</option>
-          </select>
+          <input type="hidden" name="obstacle" id={`${wid}-field-obstacle`} required />
+          
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 font-jakarta text-sm">
+            <button
+              type="button"
+              data-tile-name="obstacle"
+              data-tile-value="invisibility"
+              class="tile-option p-4 rounded-xl border border-white/5 bg-matte/45 text-left hover:border-gold/30 hover:bg-gold/5 transition-all focus:outline-none flex items-start gap-4"
+            >
+              <i class="fa-solid fa-magnifying-glass text-gold text-lg mt-0.5" aria-hidden="true"></i>
+              <div>
+                <span class="font-bold text-offwhite block">No aparecemos en Google</span>
+                <span class="text-xs text-subtle mt-1 block leading-normal">Falta de visitas y nula recordación de marca.</span>
+              </div>
+            </button>
+            
+            <button
+              type="button"
+              data-tile-name="obstacle"
+              data-tile-value="conversion"
+              class="tile-option p-4 rounded-xl border border-white/5 bg-matte/45 text-left hover:border-gold/30 hover:bg-gold/5 transition-all focus:outline-none flex items-start gap-4"
+            >
+              <i class="fa-solid fa-users-slash text-gold text-lg mt-0.5" aria-hidden="true"></i>
+              <div>
+                <span class="font-bold text-offwhite block">Visitas sin Conversión</span>
+                <span class="text-xs text-subtle mt-1 block leading-normal">Tenemos tráfico pero nadie compra o agenda llamadas.</span>
+              </div>
+            </button>
+            
+            <button
+              type="button"
+              data-tile-name="obstacle"
+              data-tile-value="trust"
+              class="tile-option p-4 rounded-xl border border-white/5 bg-matte/45 text-left hover:border-gold/30 hover:bg-gold/5 transition-all focus:outline-none flex items-start gap-4"
+            >
+              <i class="fa-solid fa-triangle-exclamation text-gold text-lg mt-0.5" aria-hidden="true"></i>
+              <div>
+                <span class="font-bold text-offwhite block">Web Obsoleta y Lenta</span>
+                <span class="text-xs text-subtle mt-1 block leading-normal">La web actual luce desactualizada frente a los competidores.</span>
+              </div>
+            </button>
+            
+            <button
+              type="button"
+              data-tile-name="obstacle"
+              data-tile-value="tech"
+              class="tile-option p-4 rounded-xl border border-white/5 bg-matte/45 text-left hover:border-gold/30 hover:bg-gold/5 transition-all focus:outline-none flex items-start gap-4"
+            >
+              <i class="fa-solid fa-robot text-gold text-lg mt-0.5" aria-hidden="true"></i>
+              <div>
+                <span class="font-bold text-offwhite block">Invisibles ante la IA</span>
+                <span class="text-xs text-subtle mt-1 block leading-normal">ChatGPT y buscadores GEO no recomiendan tu marca.</span>
+              </div>
+            </button>
+          </div>
+          <p data-wizard-obstacle-error class="field-error hidden" role="alert"></p>
         </div>
 
         <div class="mb-6">
           <label class="block ui-caption mb-2 font-jakarta" for={`${wid}-field-value_prop`}>
-            ¿Qué hace que tus clientes te elijan a ti y no a otros? <span class="normal-case text-subtle font-jakarta">(opcional)</span>
+            ¿Qué hace que tus clientes te elijan a ti? <span class="normal-case text-subtle font-jakarta">(opcional)</span>
           </label>
           <textarea
             name="value_prop"
             id={`${wid}-field-value_prop`}
-            rows="3"
+            rows="2"
             maxlength="280"
             class="input-field font-jakarta text-sm"
-            placeholder="Ej. Nuestro servicio rápido, 15 años de experiencia, soporte inmediato, etc."></textarea>
+            placeholder="Ej. Soporte 24/7, tecnología propietaria, atención especializada..."></textarea>
         </div>
       </div>
 
+      <!-- ========================================== -->
+      <!-- STEP 2: DIGITAL PRESENCE -->
+      <!-- ========================================== -->
       <div class="step-content" data-step="2">
-        <h3 class="mb-6 text-white font-playfair text-xl md:text-2xl" data-wizard-step-title="2" tabindex="-1">2. Presencia Digital</h3>
+        <h3 class="mb-6 text-white font-playfair text-xl md:text-2xl" data-wizard-step-title="2" tabindex="-1">
+          2. Presencia Digital
+        </h3>
 
-        <div class="mb-6">
-          <label class="block ui-caption mb-2 text-gold font-jakarta" for={`${wid}-field-has_website`}>
-            ¿Tu negocio tiene una página web activa?
+        <!-- Interactive Website Status Tiles -->
+        <div class="mb-6" data-wizard-has_website-group>
+          <label class="block ui-caption mb-3 text-gold font-jakarta">
+            ¿Tu negocio tiene una página web activa? <span class="text-gold">*</span>
           </label>
-          <select name="has_website" id={`${wid}-field-has_website`} class="input-field font-jakarta" required>
-            <option value="" disabled selected>Selecciona una opción...</option>
-            <option value="yes">Sí, tenemos una web activa</option>
-            <option value="no">No, todavía no tenemos página web</option>
-            <option value="old">Sí, pero es muy vieja, no funciona o no vende</option>
-          </select>
-          <div id={`${wid}-website-url`} class="hidden mt-4">
-            <label class="block ui-caption mb-2 font-jakarta" for={`${wid}-field-current_website`}>Dirección (URL) de tu web actual</label>
+          <input type="hidden" name="has_website" id={`${wid}-field-has_website`} required />
+          
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 font-jakarta text-sm">
+            <button
+              type="button"
+              data-tile-name="has_website"
+              data-tile-value="yes"
+              class="tile-option p-4 rounded-xl border border-white/5 bg-matte/45 text-left hover:border-gold/30 hover:bg-gold/5 transition-all focus:outline-none flex flex-col justify-between gap-4"
+            >
+              <i class="fa-solid fa-circle-check text-gold text-lg" aria-hidden="true"></i>
+              <div>
+                <span class="font-bold text-offwhite block">Sí, activa</span>
+                <span class="text-[11px] text-subtle mt-1 block leading-normal">Web estable funcionando en internet.</span>
+              </div>
+            </button>
+            
+            <button
+              type="button"
+              data-tile-name="has_website"
+              data-tile-value="no"
+              class="tile-option p-4 rounded-xl border border-white/5 bg-matte/45 text-left hover:border-gold/30 hover:bg-gold/5 transition-all focus:outline-none flex flex-col justify-between gap-4"
+            >
+              <i class="fa-solid fa-circle-xmark text-subtle text-lg" aria-hidden="true"></i>
+              <div>
+                <span class="font-bold text-offwhite block">No, aún no</span>
+                <span class="text-[11px] text-subtle mt-1 block leading-normal">Buscamos arrancar una estrategia desde cero.</span>
+              </div>
+            </button>
+            
+            <button
+              type="button"
+              data-tile-name="has_website"
+              data-tile-value="old"
+              class="tile-option p-4 rounded-xl border border-white/5 bg-matte/45 text-left hover:border-gold/30 hover:bg-gold/5 transition-all focus:outline-none flex flex-col justify-between gap-4"
+            >
+              <i class="fa-solid fa-clock-rotate-left text-gold text-lg" aria-hidden="true"></i>
+              <div>
+                <span class="font-bold text-offwhite block">Sí, pero obsoleta</span>
+                <span class="text-[11px] text-subtle mt-1 block leading-normal">Es lenta, no vende o no tiene soporte.</span>
+              </div>
+            </button>
+          </div>
+          <p data-wizard-has_website-error class="field-error hidden" role="alert"></p>
+
+          <!-- Conditionally shown URL input -->
+          <div id={`${wizardId}-website-url`} class="hidden mt-4 animate-sweep">
+            <label class="block ui-caption mb-2 font-jakarta" for={`${wid}-field-current_website`}>
+              Dirección (URL) de tu web actual
+            </label>
             <input
               type="url"
               name="current_website"
@@ -141,13 +231,14 @@ const wid = wizardId;
           </div>
         </div>
 
+        <!-- Services Checkboxes Group -->
         <div class="mb-6" data-wizard-services-group>
           <span class="block ui-caption mb-2 text-gold font-jakarta" id={`${wid}-services-label`}>
             ¿Qué te gustaría construir o mejorar primero? <span class="text-gold">*</span>
           </span>
           <p class="text-subtle text-xs mb-3 font-jakarta">Puedes seleccionar varias opciones.</p>
           <div
-            class="grid grid-cols-1 md:grid-cols-2 gap-4 font-jakarta text-sm"
+            class="grid grid-cols-1 md:grid-cols-2 gap-3 font-jakarta text-sm"
             role="group"
             aria-labelledby={`${wid}-services-label`}
           >
@@ -180,35 +271,135 @@ const wid = wizardId;
         </div>
       </div>
 
+      <!-- ========================================== -->
+      <!-- STEP 3: TIMES & BUDGET SCALE -->
+      <!-- ========================================== -->
       <div class="step-content" data-step="3">
-        <h3 class="mb-6 text-white font-playfair text-xl md:text-2xl" data-wizard-step-title="3" tabindex="-1">3. Tiempos y Presupuesto</h3>
+        <h3 class="mb-6 text-white font-playfair text-xl md:text-2xl" data-wizard-step-title="3" tabindex="-1">
+          3. Tiempos y Presupuesto
+        </h3>
 
-        <div class="mb-6">
-          <label class="block ui-caption mb-2 text-gold font-jakarta" for={`${wid}-field-urgency`}>¿Cuándo te gustaría iniciar este proyecto?</label>
-          <select name="urgency" id={`${wid}-field-urgency`} class="input-field font-jakarta" required>
-            <option value="" disabled selected>Selecciona una opción...</option>
-            <option value="asap">Lo antes posible (en menos de 2 semanas)</option>
-            <option value="soon">El próximo mes (ventana planificada)</option>
-            <option value="info">Solo estoy explorando opciones por ahora</option>
-          </select>
+        <!-- Interactive Urgency Tiles -->
+        <div class="mb-6" data-wizard-urgency-group>
+          <label class="block ui-caption mb-3 text-gold font-jakarta">
+            ¿Cuándo te gustaría iniciar este proyecto? <span class="text-gold">*</span>
+          </label>
+          <input type="hidden" name="urgency" id={`${wid}-field-urgency`} required />
+          
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 font-jakarta text-sm">
+            <button
+              type="button"
+              data-tile-name="urgency"
+              data-tile-value="asap"
+              class="tile-option p-4 rounded-xl border border-white/5 bg-matte/45 text-left hover:border-gold/30 hover:bg-gold/5 transition-all focus:outline-none flex flex-col justify-between gap-4"
+            >
+              <i class="fa-solid fa-bolt text-gold text-lg" aria-hidden="true"></i>
+              <div>
+                <span class="font-bold text-offwhite block">Inmediato</span>
+                <span class="text-[11px] text-subtle mt-1 block leading-normal">En menos de 2 semanas.</span>
+              </div>
+            </button>
+            
+            <button
+              type="button"
+              data-tile-name="urgency"
+              data-tile-value="soon"
+              class="tile-option p-4 rounded-xl border border-white/5 bg-matte/45 text-left hover:border-gold/30 hover:bg-gold/5 transition-all focus:outline-none flex flex-col justify-between gap-4"
+            >
+              <i class="fa-solid fa-calendar-days text-gold text-lg" aria-hidden="true"></i>
+              <div>
+                <span class="font-bold text-offwhite block">Próximo mes</span>
+                <span class="text-[11px] text-subtle mt-1 block leading-normal">Ventana de tiempo planificada.</span>
+              </div>
+            </button>
+            
+            <button
+              type="button"
+              data-tile-name="urgency"
+              data-tile-value="info"
+              class="tile-option p-4 rounded-xl border border-white/5 bg-matte/45 text-left hover:border-gold/30 hover:bg-gold/5 transition-all focus:outline-none flex flex-col justify-between gap-4"
+            >
+              <i class="fa-solid fa-magnifying-glass-chart text-subtle text-lg" aria-hidden="true"></i>
+              <div>
+                <span class="font-bold text-offwhite block">Investigación</span>
+                <span class="text-[11px] text-subtle mt-1 block leading-normal">Solo explorando factibilidad inicial.</span>
+              </div>
+            </button>
+          </div>
+          <p data-wizard-urgency-error class="field-error hidden" role="alert"></p>
         </div>
 
-        <div class="mb-6 font-jakarta">
-          <label class="block ui-caption mb-2 text-gold" for={`${wid}-field-budget`}>
-            ¿Cuál es la escala actual de tu operación comercial?
+        <!-- Interactive Budget scale Tiles -->
+        <div class="mb-6 font-jakarta" data-wizard-budget-group>
+          <label class="block ui-caption mb-3 text-gold">
+            ¿Cuál es la escala actual de tu operación comercial? <span class="text-gold">*</span>
           </label>
-          <select name="budget" id={`${wid}-field-budget`} class="input-field" required>
-            <option value="" disabled selected>Selecciona la escala de tu empresa...</option>
-            <option value="captacion">Profesional independiente o Validando negocio</option>
-            <option value="sistema">Equipo pequeño o mediano (de 2 a 15 personas)</option>
-            <option value="arquitectura">Empresa consolidada (más de 15 personas / corporativo)</option>
-            <option value="evaluar">Prefiero definirlo en la sesión de diagnóstico</option>
-          </select>
+          <input type="hidden" name="budget" id={`${wid}-field-budget`} required />
+          
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 font-jakarta text-sm">
+            <button
+              type="button"
+              data-tile-name="budget"
+              data-tile-value="captacion"
+              class="tile-option p-4 rounded-xl border border-white/5 bg-matte/45 text-left hover:border-gold/30 hover:bg-gold/5 transition-all focus:outline-none flex items-start gap-4"
+            >
+              <i class="fa-solid fa-user text-gold text-lg mt-0.5" aria-hidden="true"></i>
+              <div>
+                <span class="font-bold text-offwhite block">Independiente / Startup</span>
+                <span class="text-xs text-subtle mt-1 block leading-normal">Validando negocio u operación inicial.</span>
+              </div>
+            </button>
+            
+            <button
+              type="button"
+              data-tile-name="budget"
+              data-tile-value="sistema"
+              class="tile-option p-4 rounded-xl border border-white/5 bg-matte/45 text-left hover:border-gold/30 hover:bg-gold/5 transition-all focus:outline-none flex items-start gap-4"
+            >
+              <i class="fa-solid fa-users text-gold text-lg mt-0.5" aria-hidden="true"></i>
+              <div>
+                <span class="font-bold text-offwhite block">Equipo en crecimiento</span>
+                <span class="text-xs text-subtle mt-1 block leading-normal">De 2 a 15 colaboradores activos.</span>
+              </div>
+            </button>
+            
+            <button
+              type="button"
+              data-tile-name="budget"
+              data-tile-value="arquitectura"
+              class="tile-option p-4 rounded-xl border border-white/5 bg-matte/45 text-left hover:border-gold/30 hover:bg-gold/5 transition-all focus:outline-none flex items-start gap-4"
+            >
+              <i class="fa-solid fa-building text-gold text-lg mt-0.5" aria-hidden="true"></i>
+              <div>
+                <span class="font-bold text-offwhite block">Empresa Consolidada</span>
+                <span class="text-xs text-subtle mt-1 block leading-normal">Más de 15 personas o corporación.</span>
+              </div>
+            </button>
+            
+            <button
+              type="button"
+              data-tile-name="budget"
+              data-tile-value="evaluar"
+              class="tile-option p-4 rounded-xl border border-white/5 bg-matte/45 text-left hover:border-gold/30 hover:bg-gold/5 transition-all focus:outline-none flex items-start gap-4"
+            >
+              <i class="fa-solid fa-comments text-subtle text-lg mt-0.5" aria-hidden="true"></i>
+              <div>
+                <span class="font-bold text-offwhite block">Definir en la sesión</span>
+                <span class="text-xs text-subtle mt-1 block leading-normal">Revisar las opciones con el consultor.</span>
+              </div>
+            </button>
+          </div>
+          <p data-wizard-budget-error class="field-error hidden" role="alert"></p>
         </div>
       </div>
 
+      <!-- ========================================== -->
+      <!-- STEP 4: CONTACT ACQUISITION -->
+      <!-- ========================================== -->
       <div class="step-content" data-step="4">
-        <h3 class="mb-6 text-white font-playfair text-xl md:text-2xl" data-wizard-step-title="4" tabindex="-1">4. ¿A dónde enviamos tu diagnóstico?</h3>
+        <h3 class="mb-6 text-white font-playfair text-xl md:text-2xl" data-wizard-step-title="4" tabindex="-1">
+          4. ¿A dónde enviamos tu diagnóstico?
+        </h3>
         <p class="text-subtle mb-6 text-sm font-jakarta">
           Ingresa tus datos para enviarte los resultados del test y el plan de acción sugerido para tu negocio.
         </p>
@@ -249,7 +440,7 @@ const wid = wizardId;
               id={`${wid}-field-role`}
               class="input-field font-jakarta text-sm"
               autocomplete="organization-title"
-              placeholder="Ej. Director, Gerente, Fundador"
+              placeholder="Ej. Director, Fundador, CMO"
             />
           </div>
           <div>
@@ -280,16 +471,7 @@ const wid = wizardId;
           />
         </div>
 
-        <div class="mb-6 font-jakarta">
-          <label class="block ui-caption mb-2" for={`${wid}-field-tool`}>
-            ¿Usan Notion o Taskade en tu equipo? <span class="normal-case text-subtle font-jakarta">(opcional)</span>
-          </label>
-          <select name="tool" id={`${wid}-field-tool`} class="input-field font-jakarta">
-            <option value="none">No usamos ninguno</option>
-            <option value="taskade">Sí, usamos Taskade</option>
-            <option value="notion">Sí, usamos Notion</option>
-          </select>
-        </div>
+        <!-- Notion field removed to prevent final step friction -->
 
         <div class="mb-4">
           <label class="option-label items-start gap-3">
@@ -298,10 +480,10 @@ const wid = wizardId;
               name="consent"
               id={`${wid}-field-consent`}
               value="1"
-              class="mt-1 shrink-0"
+              class="mt-1 shrink-0 animate-pulse-slow"
               required
             />
-            <span class="text-sm text-subtle normal-case tracking-normal">
+            <span class="text-sm text-subtle normal-case tracking-normal leading-normal">
               Acepto el <a href="/legal#privacidad" class="text-gold hover:underline" target="_blank"
                 >tratamiento de mis datos</a
               > según el aviso de privacidad de Tap-IA.
@@ -310,11 +492,12 @@ const wid = wizardId;
         </div>
       </div>
 
+      <!-- Action Navigation Buttons -->
       <div class="flex justify-between items-center mt-8 pt-6 border-t border-white/10">
         <button
           type="button"
           data-wizard-prev
-          class="ui-caption text-subtle hover:text-white px-4 py-2 transition-colors hidden min-h-[44px]"
+          class="ui-caption text-subtle hover:text-white px-4 py-2 transition-colors hidden min-h-[44px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold"
         >
           <i class="fa-solid fa-arrow-left mr-2" aria-hidden="true"></i> Atrás
         </button>
@@ -322,7 +505,7 @@ const wid = wizardId;
         <button
           type="button"
           data-wizard-next
-          class="bg-white text-charcoal hover:bg-gold hover:text-white px-8 py-3 rounded-full font-bold transition-all duration-300 shadow-lg ml-auto uppercase tracking-wider text-sm min-h-[44px]"
+          class="bg-white text-charcoal hover:bg-gold hover:text-white px-8 py-3 rounded-full font-bold transition-all duration-300 shadow-lg ml-auto uppercase tracking-wider text-sm min-h-[44px] active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold"
         >
           Siguiente <i class="fa-solid fa-arrow-right ml-2" aria-hidden="true"></i>
         </button>
@@ -330,9 +513,9 @@ const wid = wizardId;
         <button
           type="button"
           data-wizard-submit
-          class="bg-gold text-charcoal hover:bg-white hover:text-charcoal px-8 py-3 rounded-full font-bold transition-all duration-300 shadow-lg ml-auto hidden items-center gap-2 uppercase tracking-wider text-sm min-h-[44px]"
+          class="bg-gold text-charcoal hover:bg-white hover:text-charcoal px-8 py-3 rounded-full font-bold transition-all duration-300 shadow-lg ml-auto hidden items-center gap-2 uppercase tracking-wider text-sm min-h-[44px] active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold"
         >
-          <i class="fa-solid fa-paper-plane text-xl" aria-hidden="true"></i>
+          <i class="fa-solid fa-paper-plane text-base" aria-hidden="true"></i>
           Enviar solicitud de diagnóstico
         </button>
       </div>
@@ -347,12 +530,33 @@ const wid = wizardId;
         rel="noopener noreferrer"
         class="text-subtle hover:text-gold text-sm transition-colors inline-flex items-center gap-2"
       >
-        <i class="fa-brands fa-whatsapp text-green-500" aria-hidden="true"></i>
+        <i class="fa-brands fa-whatsapp text-whatsapp" aria-hidden="true"></i>
         ¿Prefieres WhatsApp? Escríbenos directamente
       </a>
     </p>
   )}
 </div>
+
+<style>
+  .tile-option {
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    transform-style: preserve-3d;
+    will-change: transform, border-color, background-color;
+  }
+  .tile-option:hover {
+    border-color: rgba(212, 175, 55, 0.3);
+    background-color: rgba(212, 175, 55, 0.04);
+    transform: translateY(-2px);
+  }
+  .tile-option:focus-visible {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 2px;
+  }
+  .tile-option:active {
+    transform: translateY(0) scale(0.98);
+  }
+</style>
 
 <script>
   // @ts-nocheck
@@ -464,12 +668,11 @@ const wid = wizardId;
         if (shouldFocus) focusStepTitle();
       };
 
-      const toggleWebsiteUrl = () => {
-        const select = qs('select[name="has_website"]');
+      const toggleWebsiteUrl = (value) => {
         const otherDiv = document.getElementById(`${wizardId}-website-url`);
         const input = otherDiv?.querySelector('input');
 
-        if (select?.value === 'yes') {
+        if (value === 'yes') {
           otherDiv?.classList.remove('hidden');
           input?.setAttribute('required', '');
         } else {
@@ -482,7 +685,39 @@ const wid = wizardId;
         }
       };
 
-      qs('select[name="has_website"]')?.addEventListener('change', toggleWebsiteUrl);
+      // Handle interactive tile option clicks
+      root.querySelectorAll('.tile-option').forEach(tile => {
+        tile.addEventListener('click', (e) => {
+          e.preventDefault();
+          const name = tile.getAttribute('data-tile-name');
+          const value = tile.getAttribute('data-tile-value');
+          
+          const hiddenInput = qs(`input[name="${name}"]`);
+          if (hiddenInput) {
+            hiddenInput.value = value;
+            setFieldError(hiddenInput, false);
+            
+            // Clean custom error if set
+            const errEl = qs(`[data-wizard-${name}-error]`);
+            if (errEl) errEl.classList.add('hidden');
+            const group = qs(`[data-wizard-${name}-group]`);
+            if (group) group.classList.remove('services-group--error');
+          }
+          
+          // Style state management
+          root.querySelectorAll(`.tile-option[data-tile-name="${name}"]`).forEach(t => {
+            t.classList.remove('border-gold/50', 'bg-gold/5', 'shadow-lg', 'shadow-gold/2');
+            t.classList.add('border-white/5', 'bg-matte/45');
+          });
+          
+          tile.classList.remove('border-white/5', 'bg-matte/45');
+          tile.classList.add('border-gold/50', 'bg-gold/5', 'shadow-lg', 'shadow-gold/2');
+          
+          if (name === 'has_website') {
+            toggleWebsiteUrl(value);
+          }
+        });
+      });
 
       const validateServices = () => {
         const checked = root.querySelectorAll('input[name="services"]:checked');
@@ -516,7 +751,7 @@ const wid = wizardId;
 
           const isRequired =
             field.hasAttribute('required') ||
-            (field.name === 'current_website' && qs('select[name="has_website"]')?.value === 'yes');
+            (field.name === 'current_website' && qs('input[name="has_website"]')?.value === 'yes');
 
           if (!isRequired) {
             setFieldError(field, false);
@@ -528,7 +763,66 @@ const wid = wizardId;
           if (!fieldValid) isValid = false;
         });
 
-        if (step === 2 && !validateServices()) isValid = false;
+        // Hidden input validations for our option tiles
+        if (step === 1) {
+          const obstacleInput = qs('input[name="obstacle"]');
+          const obstacleValid = obstacleInput && obstacleInput.value !== '';
+          const group = qs('[data-wizard-obstacle-group]');
+          const errEl = qs('[data-wizard-obstacle-error]');
+          if (!obstacleValid) {
+            isValid = false;
+            group?.classList.add('services-group--error');
+            if (errEl) {
+              errEl.textContent = 'Seleccione una de las opciones.';
+              errEl.classList.remove('hidden');
+            }
+          }
+        }
+
+        if (step === 2) {
+          const hasWebInput = qs('input[name="has_website"]');
+          const hasWebValid = hasWebInput && hasWebInput.value !== '';
+          const group = qs('[data-wizard-has_website-group]');
+          const errEl = qs('[data-wizard-has_website-error]');
+          if (!hasWebValid) {
+            isValid = false;
+            group?.classList.add('services-group--error');
+            if (errEl) {
+              errEl.textContent = 'Seleccione una de las opciones sobre su web.';
+              errEl.classList.remove('hidden');
+            }
+          }
+          
+          if (!validateServices()) isValid = false;
+        }
+
+        if (step === 3) {
+          const urgencyInput = qs('input[name="urgency"]');
+          const budgetInput = qs('input[name="budget"]');
+          
+          const urgencyValid = urgencyInput && urgencyInput.value !== '';
+          const budgetValid = budgetInput && budgetInput.value !== '';
+          
+          if (!urgencyValid) {
+            isValid = false;
+            qs('[data-wizard-urgency-group]')?.classList.add('services-group--error');
+            const err = qs('[data-wizard-urgency-error]');
+            if (err) {
+              err.textContent = 'Seleccione una fecha de inicio.';
+              err.classList.remove('hidden');
+            }
+          }
+          
+          if (!budgetValid) {
+            isValid = false;
+            qs('[data-wizard-budget-group]')?.classList.add('services-group--error');
+            const err = qs('[data-wizard-budget-error]');
+            if (err) {
+              err.textContent = 'Seleccione la escala actual de su operación.';
+              err.classList.remove('hidden');
+            }
+          }
+        }
 
         return isValid;
       };
@@ -573,7 +867,7 @@ const wid = wizardId;
           services: selectedServices,
           urgency: formData.get('urgency'),
           budget: formData.get('budget'),
-          tool: formData.get('tool') || 'none',
+          tool: 'none', // Hardcoded none since notion field is trimmed from UI
           consent: formData.get('consent') === '1',
           bot_field: formData.get('bot_field') || '',
           source_page: formData.get('source_page') || '',
@@ -590,7 +884,7 @@ const wid = wizardId;
         const submitBtn = qs('[data-wizard-submit]');
         const originalHtml = submitBtn.innerHTML;
         submitBtn.innerHTML =
-          '<i class="fa-solid fa-spinner fa-spin text-xl" aria-hidden="true"></i> Enviando...';
+          '<i class="fa-solid fa-spinner fa-spin text-base" aria-hidden="true"></i> Enviando...';
         submitBtn.disabled = true;
         hideFormStatus();
 
@@ -606,7 +900,7 @@ const wid = wizardId;
           if (response.ok) {
             sessionStorage.setItem('tap_contact_name', String(data.name || ''));
             submitBtn.innerHTML =
-              '<i class="fa-solid fa-check text-xl" aria-hidden="true"></i> Recibido';
+              '<i class="fa-solid fa-check text-base" aria-hidden="true"></i> Recibido';
             setTimeout(() => {
               window.location.href = '/contacto/gracias';
             }, 600);
@@ -629,9 +923,8 @@ const wid = wizardId;
 
       const problemParam = urlParams.get('problem') || getAttr('problem');
       if (problemParam) {
-        const select = qs('select[name="obstacle"]');
-        const opt = select?.querySelector(`option[value="${problemParam}"]`);
-        if (select && opt) select.value = problemParam;
+        const tile = root.querySelector(`.tile-option[data-tile-name="obstacle"][data-tile-value="${problemParam}"]`);
+        if (tile) tile.click();
       }
 
       const planParam = urlParams.get('plan') || getAttr('plan');
@@ -640,6 +933,17 @@ const wid = wizardId;
           const cb = root.querySelector(`input[name="services"][value="${val}"]`);
           if (cb) cb.checked = true;
         });
+        
+        // Match the pricing plan to the pre-selected scale (budget)
+        let budgetVal = '';
+        if (planParam === 'impulso_captacion') budgetVal = 'captacion';
+        else if (planParam === 'sistema_web_inteligente') budgetVal = 'sistema';
+        else if (planParam === 'arquitectura_ia_comercial') budgetVal = 'arquitectura';
+        
+        if (budgetVal) {
+          const budgetTile = root.querySelector(`.tile-option[data-tile-name="budget"][data-tile-value="${budgetVal}"]`);
+          if (budgetTile) budgetTile.click();
+        }
       }
 
       const servicioParam = urlParams.get('servicio') || getAttr('servicio');
@@ -666,6 +970,34 @@ const wid = wizardId;
       });
 
       updateUI();
+      
+      // Global interface hook to trigger options pre-selection on click of pricing CTA buttons
+      window.addEventListener('selectContactWizardPlan', (e) => {
+        const selectedPlan = e.detail?.plan;
+        if (!selectedPlan) return;
+        
+        // Clean checks
+        root.querySelectorAll('input[name="services"]').forEach(cb => cb.checked = false);
+        
+        // Auto check services
+        if (PLAN_SERVICES[selectedPlan]) {
+          PLAN_SERVICES[selectedPlan].forEach(val => {
+            const cb = root.querySelector(`input[name="services"][value="${val}"]`);
+            if (cb) cb.checked = true;
+          });
+        }
+        
+        // Set scale
+        let budgetVal = '';
+        if (selectedPlan === 'impulso_captacion') budgetVal = 'captacion';
+        else if (selectedPlan === 'sistema_web_inteligente') budgetVal = 'sistema';
+        else if (selectedPlan === 'arquitectura_ia_comercial') budgetVal = 'arquitectura';
+        
+        if (budgetVal) {
+          const budgetTile = root.querySelector(`.tile-option[data-tile-name="budget"][data-tile-value="${budgetVal}"]`);
+          if (budgetTile) budgetTile.click();
+        }
+      });
     });
   })();
 </script>
