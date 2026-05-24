@@ -103,6 +103,21 @@ En el menú de administración de la aplicación web en hPanel, navega a la secc
 * `N8N_WEBHOOK_URL` = `<tu-webhook-de-n8n>`
 * `HOST` = `0.0.0.0`
 
+#### 4. Resolución del error "403 Forbidden" (Reverse Proxy y .htaccess)
+Si tras desplegar la aplicación al ingresar a `https://tap-ia.tech` obtienes un error **403 Forbidden**, se debe a que el servidor web Apache/LiteSpeed de Hostinger intercepta las peticiones buscando un archivo index estático (`index.html` o `index.php`) en vez de delegar el tráfico al proceso Node.js en ejecución.
+
+Para solucionarlo utilizando el archivo `.htaccess` provisto:
+1. Hemos creado un archivo de configuración listo para producción en [public/.htaccess](file:///C:/Users/Departamento%20AI/OneDrive/Documents/C%C3%B3digos/P%C3%A1gina%20web%20prueba/public/.htaccess).
+2. Al ejecutar la compilación (`npm run build`), Astro copiará este archivo automáticamente a la carpeta de salida del cliente (`dist/client/.htaccess`).
+3. Abre el **Administrador de Archivos** en el hPanel de tu sitio web en Hostinger.
+4. Asegúrate de colocar este archivo `.htaccess` en la carpeta raíz del dominio (generalmente `public_html/` o la carpeta donde está configurada tu Node.js Web App).
+5. Abre el archivo `.htaccess` desde el editor de hPanel y edita la última regla para verificar que apunte al puerto local exacto que Hostinger le asignó a tu aplicación Node.js (el puerto se indica en la interfaz del dashboard de Node.js, por ejemplo `3000`, `3001` o `4321`):
+   ```apache
+   RewriteRule ^(.*)$ http://127.0.0.1:PUERTO_ASIGNADO/$1 [P,L]
+   ```
+   *(Reemplaza `PUERTO_ASIGNADO` por el número de puerto que te muestre Hostinger, por ejemplo: `http://127.0.0.1:3000/$1`)*
+6. Guarda los cambios en el editor y accede a `https://tap-ia.tech` para verificar que el sitio carga correctamente.
+
 ---
 
 ### Método B: Servidor VPS KVM (Planes VPS de Hostinger)
