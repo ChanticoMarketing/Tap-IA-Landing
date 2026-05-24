@@ -58,6 +58,7 @@ Una vez que el proyecto esté en vivo bajo `https://tap-ia.tech` ejecute la sigu
 | `/legal` | HTTP 200. Sin placeholders obvios tipo `[COMPLETAR...]`. |
 | `/novedades-ia` | HTTP 200. Hub editorial (sólo artículos reales, sin input). |
 | `/portafolio` | HTTP 200. Card Avatares muestra la etiqueta 'Próximamente'. |
+| `/infraestructura-digital` | HTTP 200. Landing page de ventas premium (calculadora y wizard activos). |
 
 ### 5.2. Comprobación Técnica Rápida (Consola / Curl)
 
