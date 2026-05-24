@@ -257,6 +257,8 @@ const robotsContent = effectiveNoIndex ? 'noindex, follow' : 'index, follow';
                         });
                     }
 
+                    (window as any).stopOrbAmbient = stopOrbAmbient;
+
                     window.addEventListener('resize', () => {
                         if (!orbsAmbientActive) return;
                         orbs.forEach((orb) => {
