@@ -25,7 +25,7 @@ Dado que la aplicación de TAP-IA utiliza la configuración `output: 'server'` c
 
 3.  **Arranque del Servidor en Producción:**
     ```bash
-    node ./dist/server/entry.mjs
+    node server.js
     ```
     *(También se puede utilizar el alias de npm: `npm run start:prod`)*
 
