@@ -40,9 +40,9 @@ const description = "No tengas solo una página web. Diseña una infraestructura
         <span class="editorial-label text-xs md:text-sm inline-block mb-6 animate-pulse-slow">
           Exclusivo para Líderes de Negocio y CEOs B2B
         </span>
-        <h1 class="font-playfair text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-offwhite leading-[1.1] tracking-tight">
-          No tengas solo una web.<br />
-          Crea una <span class="text-transparent bg-clip-text bg-gradient-to-r from-gold via-gold/80 to-white">Infraestructura Digital</span>.
+        <h1 class="font-playfair text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-offwhite leading-[1.1] tracking-tight" id="hero-title">
+          <span id="typewriter-base"></span><span id="cursor-base" class="inline-block w-[3px] md:w-[4px] h-[0.9em] bg-gold ml-1 align-middle opacity-0" aria-hidden="true"></span><br />
+          <span id="typewriter-accent" class="text-transparent bg-clip-text bg-gradient-to-r from-gold via-gold/80 to-white"></span><span id="cursor-accent" class="inline-block w-[3px] md:w-[4px] h-[0.9em] bg-gold ml-1 align-middle opacity-0" aria-hidden="true"></span>
         </h1>
         <p class="font-jakarta text-subtle text-base sm:text-lg md:text-xl max-w-3xl mx-auto mt-8 leading-relaxed">
           Las webs estáticas tradicionales ya no venden. Diseña un ecosistema premium de alta conversión que califique prospectos en piloto automático, se posicione en motores de búsqueda con IA y optimice tus operaciones comerciales.
@@ -68,7 +68,7 @@ const description = "No tengas solo una página web. Diseña una infraestructura
     <!-- ========================================== -->
     <!-- SECTION 2: THE PROBLEM (INTEREST) -->
     <!-- ========================================== -->
-    <section id="dolor" class="py-24 bg-transparent relative">
+    <section id="dolor" class="py-12 md:py-16 bg-transparent relative">
     <div class="absolute inset-x-0 bottom-0 h-1/2 bg-matte/40 pointer-events-none" />
     <!-- Atmosphere backlights for borderless flow -->
     <div class="absolute top-1/3 left-1/4 w-[350px] h-[350px] bg-royal/5 rounded-full blur-[110px] pointer-events-none" />
@@ -155,7 +155,7 @@ const description = "No tengas solo una página web. Diseña una infraestructura
     <!-- ========================================== -->
     <!-- SECTION 3: THE FORMULA (DESIRE) -->
     <!-- ========================================== -->
-    <section class="py-24 bg-transparent relative">
+    <section class="py-12 md:py-16 bg-transparent relative">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -220,7 +220,7 @@ const description = "No tengas solo una página web. Diseña una infraestructura
     <!-- ========================================== -->
     <!-- SECTION 4: PACKAGES & PRICING -->
     <!-- ========================================== -->
-    <section id="paquetes" class="py-24 bg-transparent relative">
+    <section id="paquetes" class="py-12 md:py-16 bg-transparent relative">
       <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gold/5 rounded-full blur-[150px] pointer-events-none" />
 
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -399,7 +399,7 @@ const description = "No tengas solo una página web. Diseña una infraestructura
     <!-- ========================================== -->
     <!-- SECTION 5: INTERACTIVE ROI CALCULATOR -->
     <!-- ========================================== -->
-    <section class="py-24 bg-transparent relative">
+    <section class="py-12 md:py-16 bg-transparent relative">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div class="text-center max-w-3xl mx-auto mb-16">
@@ -421,7 +421,7 @@ const description = "No tengas solo una página web. Diseña una infraestructura
     <!-- ========================================== -->
     <!-- SECTION 6: DETAILED SPECIFICATIONS GRID -->
     <!-- ========================================== -->
-    <section class="py-24 bg-transparent relative">
+    <section class="py-12 md:py-16 bg-transparent relative">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div class="text-center max-w-3xl mx-auto mb-16">
@@ -522,7 +522,7 @@ const description = "No tengas solo una página web. Diseña una infraestructura
     <!-- ========================================== -->
     <!-- SECTION 7: LEAD CONVERSION WIZARD -->
     <!-- ========================================== -->
-    <section id="diagnostico" class="py-24 bg-transparent relative">
+    <section id="diagnostico" class="py-12 md:py-16 bg-transparent relative">
       <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-gold/5 rounded-full blur-[180px] pointer-events-none" />
 
       <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -548,7 +548,7 @@ const description = "No tengas solo una página web. Diseña una infraestructura
     <!-- ========================================== -->
     <!-- SECTION 8: FAQ & CLOSING OBJECTIONS -->
     <!-- ========================================== -->
-    <section class="py-24 bg-transparent relative">
+    <section class="py-12 md:py-16 bg-transparent relative">
       <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div class="text-center max-w-2xl mx-auto mb-16">
@@ -621,9 +621,10 @@ const description = "No tengas solo una página web. Diseña una infraestructura
   // @ts-nocheck
   import { gsap } from "gsap";
   import { ScrollTrigger } from "gsap/ScrollTrigger";
+  import { TextPlugin } from "gsap/TextPlugin";
 
-  // Register ScrollTrigger plugin
-  gsap.registerPlugin(ScrollTrigger);
+  // Register plugins
+  gsap.registerPlugin(ScrollTrigger, TextPlugin);
 
   document.addEventListener("DOMContentLoaded", () => {
     // 1. DYNAMIC ENVIRONMENT AUDIT
@@ -785,13 +786,51 @@ const description = "No tengas solo una página web. Diseña una infraestructura
         duration: 0.9
       }), "-=0.8");
 
-      // Animate Hero Heading (H1)
-      heroTl.from("main > section:nth-of-type(1) h1", getAnimProps({
-        y: 60,
-        opacity: 0,
-        duration: 1.5,
-        ease: "expo.out"
-      }), "-=0.7");
+      // Typewriter del título (using TextPlugin)
+      const titleBase = document.getElementById('typewriter-base');
+      const titleAccent = document.getElementById('typewriter-accent');
+      const cursorBase = document.getElementById('cursor-base');
+      const cursorAccent = document.getElementById('cursor-accent');
+
+      const textBase = "No tengas solo una web.";
+      const textAccent = "Crea una Infraestructura Digital.";
+
+      if (!prefersReducedMotion && !isMobile && titleBase && titleAccent && cursorBase && cursorAccent) {
+        heroTl.set(cursorBase, { opacity: 1 }, "-=0.5")
+          .to(titleBase, {
+            text: textBase,
+            duration: 1.8,
+            ease: "none"
+          })
+          .set(cursorBase, { opacity: 0 })
+          .set(cursorAccent, { opacity: 1 }, "+=0.15")
+          .to(titleAccent, {
+            text: textAccent,
+            duration: 1.8,
+            ease: "none"
+          }, "+=0.1")
+          .call(() => {
+            gsap.to(cursorAccent, {
+              opacity: 0,
+              duration: 0.45,
+              repeat: -1,
+              ease: "steps(1)",
+              yoyo: true
+            });
+          });
+      } else {
+        if (titleBase) titleBase.textContent = textBase;
+        if (titleAccent) titleAccent.textContent = textAccent;
+        if (cursorBase) cursorBase.style.display = 'none';
+        if (cursorAccent) cursorAccent.style.display = 'none';
+
+        heroTl.from("main > section:nth-of-type(1) h1", getAnimProps({
+          y: 60,
+          opacity: 0,
+          duration: 1.5,
+          ease: "expo.out"
+        }), "-=0.7");
+      }
 
       // Animate Hero Paragraph Subtitle
       heroTl.from("main > section:nth-of-type(1) p", getAnimProps({
