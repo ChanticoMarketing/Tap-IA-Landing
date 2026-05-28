@@ -1,5 +1,6 @@
 ---
 import SchemaOrganization from '../components/SchemaOrganization.astro';
+import WhatsAppFloat from '../components/WhatsAppFloat.astro';
 import { getSeoDefaults, SITE_URL } from '../lib/seo';
 
 interface Props {
@@ -102,6 +103,7 @@ const robotsContent = effectiveNoIndex ? 'noindex, follow' : 'index, follow';
 		<SchemaOrganization />
 		<div class="noise-overlay z-[-1]"></div>
 		<slot />
+		<WhatsAppFloat />
 
         <script>
             import { gsap } from "gsap";
