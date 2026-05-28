@@ -1,7 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import ContactWizard from '../components/ContactWizard.astro';
-import RoiCalculator from '../components/RoiCalculator';
+
 
 // Metadatos optimizados para B2B
 const title = "Infraestructura Digital de Alta Conversión con IA | TAP-IA";
@@ -10,11 +10,11 @@ const description = "No tengas solo una página web. Diseña una infraestructura
 
 <Layout title={title} description={description}>
   <!-- Minimalist Custom Header to prevent traffic leaks -->
-  <header class="fixed top-0 left-0 w-full z-50 bg-charcoal/80 backdrop-blur-md border-b border-white/5 py-4">
+  <header class="fixed top-0 left-0 w-full z-50 bg-charcoal/80 backdrop-blur-md border-b border-white/5 py-3 md:py-2.5">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
       <div class="flex items-center">
         <a href="/">
-          <img src="/Logo-No-Background.png" alt="TAP-IA Logo" width="578" height="432" class="h-8 md:h-9 w-auto" />
+          <img src="/Logo-No-Background.png" alt="TAP-IA Logo" width="578" height="432" class="h-10 md:h-12 w-auto" />
         </a>
       </div>
       <a 
@@ -239,7 +239,7 @@ const description = "No tengas solo una página web. Diseña una infraestructura
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
           
           <!-- Package 1 (Subtle borderless relief on hover) -->
-          <div class="card-glow p-8 rounded-2xl border border-white/5 bg-matte flex flex-col justify-between h-full relative group transition-all duration-300">
+          <div class="card-glow p-8 rounded-2xl border border-white/5 bg-matte flex flex-col justify-between h-full relative group">
             <div>
               <span class="ui-caption text-[10px] block mb-1">LANDING + ACTIVACIÓN IA</span>
               <h3 class="font-playfair text-2xl text-offwhite font-bold mb-2">Impulso de Captación</h3>
@@ -287,10 +287,14 @@ const description = "No tengas solo una página web. Diseña una infraestructura
 
           <!-- Package 2 - Highlighted -->
           <div class="card-glow p-8 rounded-2xl border border-gold/25 bg-matte flex flex-col justify-between h-full relative group shadow-xl shadow-gold/5">
-            <div class="absolute top-0 right-8 -translate-y-1/2 bg-gold text-charcoal text-[9px] uppercase tracking-widest font-extrabold px-3 py-1 rounded-full font-jakarta">
-              Recomendado
-            </div>
             
+            <!-- Badge centrado dentro de la tarjeta -->
+            <div class="flex justify-center mb-6">
+              <span class="bg-gold text-charcoal text-[11px] uppercase tracking-widest font-extrabold px-5 py-1.5 rounded-full font-jakarta shadow-md shadow-gold/20">
+                ✦ Recomendado
+              </span>
+            </div>
+
             <div>
               <span class="editorial-label text-[10px] text-gold block mb-1">WEB + SEO/GEO + ROADMAP IA</span>
               <h3 class="font-playfair text-2xl text-offwhite font-bold mb-2">Sistema Web Inteligente</h3>
@@ -340,8 +344,9 @@ const description = "No tengas solo una página web. Diseña una infraestructura
             </div>
           </div>
 
+
           <!-- Package 3 (Subtle borderless relief on hover) -->
-          <div class="card-glow p-8 rounded-2xl border border-white/5 bg-matte flex flex-col justify-between h-full relative group transition-all duration-300">
+          <div class="card-glow p-8 rounded-2xl border border-white/5 bg-matte flex flex-col justify-between h-full relative group">
             <div>
               <span class="ui-caption text-[10px] block mb-1">WEB + MARKETING IA + AGENTE</span>
               <h3 class="font-playfair text-2xl text-offwhite font-bold mb-2">Arquitectura IA Comercial</h3>
@@ -396,128 +401,9 @@ const description = "No tengas solo una página web. Diseña una infraestructura
       </div>
     </section>
 
-    <!-- ========================================== -->
-    <!-- SECTION 5: INTERACTIVE ROI CALCULATOR -->
-    <!-- ========================================== -->
-    <section class="py-12 md:py-16 bg-transparent relative">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        <div class="text-center max-w-3xl mx-auto mb-16">
-          <span class="editorial-label text-xs block mb-3">Simulación de Retorno Comercial</span>
-          <h2 class="font-playfair text-3xl md:text-4xl text-offwhite font-bold leading-tight">
-            ¿Por qué la Infraestructura Digital es una inversión autoliquidable?
-          </h2>
-          <p class="text-subtle text-sm md:text-base mt-4 font-jakarta leading-relaxed">
-            Una infraestructura digital no es un gasto, es un activo financiero. Utiliza nuestro simulador interactivo para ver lo rápido que recuperas tu inversión (payback) según el volumen y ticket de tu negocio.
-          </p>
-        </div>
 
-        <!-- React Component for ROI (client:visible reduces initial load overhead) -->
-        <RoiCalculator client:visible />
 
-      </div>
-    </section>
 
-    <!-- ========================================== -->
-    <!-- SECTION 6: DETAILED SPECIFICATIONS GRID -->
-    <!-- ========================================== -->
-    <section class="py-12 md:py-16 bg-transparent relative">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        <div class="text-center max-w-3xl mx-auto mb-16">
-          <span class="editorial-label text-xs block mb-3">Transparencia al 100%</span>
-          <h2 class="font-playfair text-3xl md:text-4xl text-offwhite font-bold leading-tight">
-            Tabla Comparativa de Especificaciones
-          </h2>
-          <p class="text-subtle text-sm font-jakarta mt-3">
-            Compara de forma clara el alcance, los entregables y las tecnologías de cada uno de nuestros paquetes.
-          </p>
-        </div>
-
-        <!-- Responsive Table Grid (Borderless, Editorial style) -->
-        <div class="overflow-x-auto w-full">
-          <table class="w-full text-left border-collapse">
-            <thead>
-              <tr class="border-b border-white/10 text-xs font-jakarta uppercase font-semibold text-offwhite tracking-wider">
-                <th class="p-6 pl-0">Especificaciones y Entregables</th>
-                <th class="p-6">Impulso de Captación</th>
-                <th class="p-6 text-gold">Sistema Web Inteligente</th>
-                <th class="p-6">Arquitectura IA Comercial</th>
-              </tr>
-            </thead>
-            <tbody class="text-sm font-jakarta text-subtle divide-y divide-white/5">
-              <tr>
-                <td class="p-6 pl-0 font-semibold text-offwhite">Alcance de Páginas</td>
-                <td class="p-6">1 Landing Page Estratégica</td>
-                <td class="p-6 text-offwhite font-medium">Multidisciplinaria (3 a 5 páginas)</td>
-                <td class="p-6">Estructura Corporativa Completa</td>
-              </tr>
-              <tr>
-                <td class="p-6 pl-0 font-semibold text-offwhite">Diseño Visual Premium</td>
-                <td class="p-6 text-success flex items-center gap-2">
-                  <svg class="w-4 h-4 shrink-0 text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
-                  Sí (Premium)
-                </td>
-                <td class="p-6 text-success flex items-center gap-2">
-                  <svg class="w-4 h-4 shrink-0 text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
-                  Sí (Premium)
-                </td>
-                <td class="p-6 text-success flex items-center gap-2">
-                  <svg class="w-4 h-4 shrink-0 text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
-                  Sí (Premium + A Medida)
-                </td>
-              </tr>
-              <tr>
-                <td class="p-6 pl-0 font-semibold text-offwhite">Copywriting B2B</td>
-                <td class="p-6">Base (Conversión comercial)</td>
-                <td class="p-6 text-offwhite font-medium">Avanzado (Psicología B2B)</td>
-                <td class="p-6">Altamente persuasivo y adaptado</td>
-              </tr>
-              <tr>
-                <td class="p-6 pl-0 font-semibold text-offwhite">Optimización SEO/GEO</td>
-                <td class="p-6">Indexación Base en Google</td>
-                <td class="p-6 text-success font-medium flex items-center gap-2">
-                  <svg class="w-4 h-4 shrink-0 text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
-                  Avanzado (Schema JSON-LD)
-                </td>
-                <td class="p-6 text-success flex items-center gap-2">
-                  <svg class="w-4 h-4 shrink-0 text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
-                  Avanzado (Optimización semántica IA)
-                </td>
-              </tr>
-              <tr>
-                <td class="p-6 pl-0 font-semibold text-offwhite">Cualificación Inteligente</td>
-                <td class="p-6">Formulario básico</td>
-                <td class="p-6 text-success font-medium flex items-center gap-2">
-                  <svg class="w-4 h-4 shrink-0 text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
-                  Wizard Interactivo Avanzado
-                </td>
-                <td class="p-6 text-success flex items-center gap-2">
-                  <svg class="w-4 h-4 shrink-0 text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
-                  Wizard + Agente IA de Ventas
-                </td>
-              </tr>
-              <tr>
-                <td class="p-6 pl-0 font-semibold text-offwhite">Integración de Agente IA</td>
-                <td class="p-6 text-error font-medium">—</td>
-                <td class="p-6 text-error font-medium">—</td>
-                <td class="p-6 text-success flex items-center gap-2">
-                  <svg class="w-4 h-4 shrink-0 text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
-                  Agente entrenado a medida
-                </td>
-              </tr>
-              <tr>
-                <td class="p-6 pl-0 font-semibold text-offwhite">Soporte Técnico</td>
-                <td class="p-6">15 días de soporte básico</td>
-                <td class="p-6">30 días de soporte post-entrega</td>
-                <td class="p-6 text-offwhite font-medium">Soporte prioritario y del Agente</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-      </div>
-    </section>
 
     <!-- ========================================== -->
     <!-- SECTION 7: LEAD CONVERSION WIZARD -->
@@ -548,7 +434,7 @@ const description = "No tengas solo una página web. Diseña una infraestructura
     <!-- ========================================== -->
     <!-- SECTION 8: FAQ & CLOSING OBJECTIONS -->
     <!-- ========================================== -->
-    <section class="py-12 md:py-16 bg-transparent relative">
+    <section id="faq" class="py-12 md:py-16 bg-transparent relative">
       <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div class="text-center max-w-2xl mx-auto mb-16">
@@ -986,59 +872,15 @@ const description = "No tengas solo una página web. Diseña una infraestructura
         paquetesTl.from(card, customProps, index === 0 ? "-=0.4" : "-=1.1");
       });
 
-      // SECTION 5: ROI CALCULATOR
-      const roiSection = document.querySelector("main > section:nth-of-type(5)");
-      if (roiSection) {
-        const roiTl = gsap.timeline({
-          scrollTrigger: {
-            trigger: roiSection,
-            start: "top 80%",
-            toggleActions: "play none none none"
-          }
-        });
-        roiTl.from(roiSection.querySelector(".text-center"), getAnimProps({
-          y: 30,
-          opacity: 0,
-          duration: 0.8
-        }))
-        .from(roiSection.querySelector("div:last-child"), getAnimProps({
-          scale: 0.98,
-          y: 30,
-          opacity: 0,
-          duration: 1.1,
-          ease: "power3.out"
-        }), "-=0.45");
-      }
 
-      // SECTION 6: SPECIFICATIONS TABLE
-      const specsSection = document.querySelector("main > section:nth-of-type(6)");
-      if (specsSection) {
-        const specsTl = gsap.timeline({
-          scrollTrigger: {
-            trigger: specsSection,
-            start: "top 80%",
-            toggleActions: "play none none none"
-          }
-        });
-        specsTl.from(specsSection.querySelector(".text-center"), getAnimProps({
-          y: 30,
-          opacity: 0,
-          duration: 0.8
-        }))
-        .from(specsSection.querySelectorAll("tbody tr"), getAnimProps({
-          y: 15,
-          opacity: 0,
-          stagger: 0.08,
-          duration: 0.8,
-          ease: "power2.out"
-        }), "-=0.5");
-      }
+
+
 
       // SECTION 7: LEAD CONVERSION WIZARD
       const diagnosticoTl = gsap.timeline({
         scrollTrigger: {
           trigger: "#diagnostico",
-          start: "top 80%",
+          start: "top 95%",
           toggleActions: "play none none none"
         }
       });
@@ -1056,12 +898,12 @@ const description = "No tengas solo una página web. Diseña una infraestructura
       }), "-=0.4");
 
       // SECTION 8: FAQ & OBJECTIONS
-      const faqSection = document.querySelector("main > section:nth-of-type(8)");
+      const faqSection = document.querySelector("#faq");
       if (faqSection) {
         const faqTl = gsap.timeline({
           scrollTrigger: {
             trigger: faqSection,
-            start: "top 80%",
+            start: "top 95%",
             toggleActions: "play none none none"
           }
         });
