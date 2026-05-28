@@ -66,6 +66,9 @@ const robotsContent = effectiveNoIndex ? 'noindex, follow' : 'index, follow';
         <!-- Iconos -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+        <!-- Contentsquare / Hotjar Tracking -->
+        <script src="https://t.contentsquare.net/uxa/df620f776941c.js" async defer></script>
+
 	</head>
 	<body class="bg-charcoal text-offwhite font-sans antialiased selection:bg-gold selection:text-white overflow-x-hidden">
         
@@ -108,6 +111,7 @@ const robotsContent = effectiveNoIndex ? 'noindex, follow' : 'index, follow';
                 function finishPreloader() {
                     document.documentElement.style.overflow = '';
                     document.body.style.overflow = '';
+                    (window as any).__preloaderComplete = true;
                     window.dispatchEvent(new Event('preloaderComplete'));
                 }
 
@@ -117,6 +121,7 @@ const robotsContent = effectiveNoIndex ? 'noindex, follow' : 'index, follow';
                     if (preloaderEl) {
                         preloaderEl.style.display = 'none';
                     }
+                    (window as any).__preloaderComplete = true;
                     finishPreloader();
                 } else {
                     document.documentElement.style.overflow = 'hidden';
@@ -417,10 +422,10 @@ const robotsContent = effectiveNoIndex ? 'noindex, follow' : 'index, follow';
     }
 
     .matte-card {
-        background: linear-gradient(180deg, rgba(22, 25, 31, 0.4) 0%, rgba(10, 11, 14, 0.8) 100%);
-        backdrop-filter: blur(12px);
-        border: 1px solid rgba(255, 255, 255, 0.06);
-        box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.05), 0 4px 20px rgba(0, 0, 0, 0.3);
+        background: linear-gradient(180deg, rgba(15, 17, 20, 0.96) 0%, rgba(8, 9, 11, 0.99) 100%);
+        backdrop-filter: blur(16px);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.05), 0 12px 40px rgba(0, 0, 0, 0.65);
         border-radius: 12px;
         transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.4s ease, border-color 0.4s ease;
         will-change: transform, opacity;
@@ -606,13 +611,12 @@ const robotsContent = effectiveNoIndex ? 'noindex, follow' : 'index, follow';
             inset 0 1px 1px rgba(255, 255, 255, 0.03), 
             0 10px 40px rgba(0, 0, 0, 0.4);
         border-radius: 20px;
-        transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        transition: background 0.6s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.6s cubic-bezier(0.16, 1, 0.3, 1), backdrop-filter 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         overflow: hidden;
         backdrop-filter: blur(12px);
     }
 
     .card-glow:hover {
-        transform: translateY(-5px);
         background: linear-gradient(180deg, rgba(22, 25, 31, 0.4) 0%, rgba(10, 11, 14, 0.8) 100%);
         border-color: rgba(212, 175, 55, 0.3);
         box-shadow: 
