@@ -11,21 +11,21 @@ const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(mess
   href={whatsappUrl}
   target="_blank"
   rel="noopener noreferrer"
-  class="whatsapp-float group fixed bottom-6 right-6 z-[999] flex items-center justify-center w-14 h-14 rounded-full bg-matte border border-white/10 shadow-[0_8px_30px_rgb(0,0,0,0.8)] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:scale-110 hover:-translate-y-1 hover:border-gold/40 hover:shadow-[0_0_25px_rgba(212,175,55,0.2)] focus:outline-none focus:ring-2 focus:ring-gold/50"
+  class="whatsapp-float group fixed bottom-6 right-6 z-[999] flex items-center justify-center w-14 h-14 rounded-full bg-matte border border-[#25D366]/40 shadow-[0_8px_30px_rgba(0,0,0,0.8),0_0_15px_rgba(37,211,102,0.15)] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:scale-110 hover:-translate-y-1 hover:border-[#25D366] hover:shadow-[0_0_30px_rgba(37,211,102,0.4)] focus:outline-none focus:ring-2 focus:ring-[#25D366]/50"
   aria-label="Contactar por WhatsApp para asesoría gratuita"
 >
   <!-- Glow Atmosférico en Hover -->
   <span class="absolute inset-0 rounded-full bg-radial-glow opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></span>
 
   <!-- Tooltip Premium Estilo Tap-IA -->
-  <span class="absolute right-16 px-4 py-2 rounded-lg bg-matte/95 border border-white/10 text-offwhite text-sm font-medium tracking-wide whitespace-nowrap opacity-0 scale-95 origin-right translate-x-2 pointer-events-none transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:opacity-100 group-hover:scale-100 group-hover:translate-x-0 shadow-[0_4px_20px_rgba(0,0,0,0.5)]">
+  <span class="absolute right-16 px-4 py-2 rounded-lg bg-matte/95 border border-[#25D366]/30 text-offwhite text-sm font-medium tracking-wide whitespace-nowrap opacity-0 scale-95 origin-right translate-x-2 pointer-events-none transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:opacity-100 group-hover:scale-100 group-hover:translate-x-0 shadow-[0_4px_20px_rgba(0,0,0,0.5)]">
     ¿Platicamos de tu proyecto?
-    <span class="absolute right-[-4px] top-1/2 -translate-y-1/2 w-2 h-2 rotate-45 bg-matte border-t border-r border-white/10"></span>
+    <span class="absolute right-[-4px] top-1/2 -translate-y-1/2 w-2 h-2 rotate-45 bg-matte border-t border-r border-[#25D366]/30"></span>
   </span>
 
   <!-- Icono de WhatsApp con micro-rotación al hover -->
   <svg 
-    class="w-7 h-7 text-offwhite transition-transform duration-500 group-hover:rotate-[12deg] group-hover:text-gold relative z-10" 
+    class="w-7 h-7 text-offwhite transition-transform duration-500 group-hover:rotate-[12deg] group-hover:text-[#25D366] relative z-10" 
     fill="currentColor" 
     viewBox="0 0 24 24" 
     aria-hidden="true"
@@ -41,7 +41,7 @@ const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(mess
   }
   
   .bg-radial-glow {
-    background: radial-gradient(circle, rgba(37, 211, 102, 0.15) 0%, rgba(37, 211, 102, 0) 70%);
+    background: radial-gradient(circle, rgba(37, 211, 102, 0.25) 0%, rgba(37, 211, 102, 0) 70%);
   }
 
   /* Animación sutil de entrada para captar atención sin ser invasiva */

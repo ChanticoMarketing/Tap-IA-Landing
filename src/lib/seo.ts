@@ -1,5 +1,16 @@
 export const SITE_URL = 'https://tap-ia.tech';
 
+/** Token público de Search Console (visible en HTML). Override con PUBLIC_GOOGLE_SITE_VERIFICATION. */
+const GOOGLE_SITE_VERIFICATION_DEFAULT = 'UnvzIf5Fe7a61U4AM2dLWfY3khV_64_mMUlG7OCBa0o';
+
+const envVerification = (import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION ?? '').trim();
+const GOOGLE_SITE_VERIFICATION_RAW = envVerification || GOOGLE_SITE_VERIFICATION_DEFAULT;
+
+export const GOOGLE_SITE_VERIFICATION_CONTENT = GOOGLE_SITE_VERIFICATION_RAW.replace(
+  /^google-site-verification=/i,
+  ''
+);
+
 const normalizePath = (pathname: string) => {
   const normalized = pathname.replace(/\/+$/, '');
   return normalized === '' ? '/' : normalized;
@@ -116,4 +127,3 @@ export const getSeoDefaults = (pathname: string): SeoDefaults => {
     noIndex: NOINDEX_ROUTES.has(normalizedPath),
   };
 };
-

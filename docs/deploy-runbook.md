@@ -41,6 +41,7 @@ Asegúrese de configurar las siguientes variables en su proveedor de alojamiento
 | `RESEND_FROM_EMAIL` | Remitente verificado en Resend (dominio `tap-ia.tech`) | Ej. `Tap-IA Contacto <contacto@tap-ia.tech>` |
 | `LEAD_NOTIFY_EMAIL` | Bandeja que recibe los leads | Por defecto `emmanuel@tap-ia.tech` |
 | `N8N_WEBHOOK_URL` | URL del Webhook de n8n (opcional) | Si está definida, reenvía el payload tras el correo. No bloquea el envío si falla. |
+| `PUBLIC_GOOGLE_SITE_VERIFICATION` | Token de verificación para Google Search Console (propiedad **Prefijo de URL**) | Acepta solo el token (`Unvz...`) o el formato completo (`google-site-verification=Unvz...`). Se renderiza en `<meta name="google-site-verification" content="...">` vía `Layout.astro`. Si no se define, el build usa el valor por defecto del repo. |
 
 ## 4. Formulario de contacto
 
@@ -74,7 +75,17 @@ curl -sI https://tap-ia.tech/robots.txt
 
 # Verificar que el sitemap excluyó el phantom link, y sí contiene el artículo válido de agentes.
 curl -s https://tap-ia.tech/sitemap.xml | findstr /i "agentes"
+
+# Verificar meta de Google Search Console en la home (debe devolver una línea con content="UnvzIf5...")
+curl -s https://tap-ia.tech/ | findstr /i "google-site-verification"
 ```
+
+### 5.3. Google Search Console (verificación HTML)
+
+1. En Search Console, crea una propiedad de tipo **Prefijo de URL** con `https://tap-ia.tech/` (no uses propiedad de **Dominio** si eliges el método de etiqueta HTML).
+2. Método recomendado: **Etiqueta HTML**. El token debe coincidir con `PUBLIC_GOOGLE_SITE_VERIFICATION` (o el valor por defecto en `src/lib/seo.ts`).
+3. Tras desplegar, confirma que la home responde **HTTP 200** (no 403) y que el `curl` anterior encuentra la meta. Si la home devuelve 403, Google no podrá verificar aunque el código sea correcto — revisa la sección 6 (Hostinger Node.js vs estático).
+4. Pulsa **Verificar** en Search Console. Puede tardar unos minutos tras un deploy nuevo.
 
 ---
 
@@ -114,6 +125,7 @@ Configura:
 En el menú de administración de la aplicación web en hPanel, navega a la sección de **Variables de Entorno** (Environment Variables) y añade:
 * `N8N_WEBHOOK_URL` = `<tu-webhook-de-n8n>`
 * `HOST` = `0.0.0.0`
+* `PUBLIC_GOOGLE_SITE_VERIFICATION` = `UnvzIf5Fe7a61U4AM2dLWfY3khV_64_mMUlG7OCBa0o` (opcional si ya está el valor por defecto en el build desplegado)
 
 #### 4. Resolución del error "403 Forbidden" (.htaccess generado por Hostinger)
 Si tras desplegar la aplicación al ingresar a `https://tap-ia.tech` obtienes un error **403 Forbidden**, revisa primero que el sitio esté configurado como **Node.js Web App** y no como despliegue estático en `public_html`.
