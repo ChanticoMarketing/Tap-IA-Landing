@@ -30,6 +30,8 @@ export const GET: APIRoute = ({ site }) => {
       '',
       `Sitemap: ${sitemapURL.href}`,
       '',
+      '# GEO: https://tap-ia.tech/llms.txt',
+      '',
     ].join('\n'),
     {
       headers: {

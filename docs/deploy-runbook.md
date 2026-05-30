@@ -121,6 +121,21 @@ Configura:
 * `www.tap-ia.tech` → redirección 301 hacia `https://tap-ia.tech`.
 * SSL activo para `tap-ia.tech` y `www.tap-ia.tech`.
 
+#### 2.2. HSTS (auditorías Semrush / seguridad)
+
+Para cerrar avisos de *subdomains don't support HSTS* y reforzar HTTPS:
+
+1. En **Cloudflare** (si el DNS pasa por ahí): SSL/TLS → *Full (strict)*; activar **Always Use HTTPS** y **HSTS** (max-age ≥ 31536000; incluir subdominios si aplica).
+2. En **Hostinger hPanel**: confirma certificado Let's Encrypt en apex y `www`; la redirección 301 de `www` → apex debe ser HTTPS→HTTPS.
+3. Tras activar HSTS, valida con:
+   ```bash
+   curl.exe -sI https://tap-ia.tech/ | findstr /i "strict-transport"
+   curl.exe -sI https://www.tap-ia.tech/ | findstr /i "strict-transport location"
+   ```
+4. No fuerces HSTS desde `src/middleware.ts` hasta tener redirects estables; un HSTS mal configurado puede bloquear usuarios si el certificado falla.
+
+**Post-deploy SEO:** tras publicar cambios de `llms.txt`, sitemap y cache, re-ejecuta *Site Audit* en Semrush (48–72 h) y comprueba que `/llms.txt` responde **200**.
+
 #### 3. Variables de Entorno en hPanel
 En el menú de administración de la aplicación web en hPanel, navega a la sección de **Variables de Entorno** (Environment Variables) y añade:
 * `N8N_WEBHOOK_URL` = `<tu-webhook-de-n8n>`

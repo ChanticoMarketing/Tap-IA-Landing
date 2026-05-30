@@ -23,7 +23,8 @@ import ContactWizard from '../../components/ContactWizard.astro';
             { name: 'AI Digital Marketing', url: '/ai-marketing' },
             { name: 'Agentes IA a medida', url: '/agentes-ia-a-medida' },
             { name: 'WebApps / Soluciones IA aplicadas', url: '/webapps-ia-a-medida' },
-            { name: 'Consultoría estratégica en IA', url: '/consultoria-inteligencia-artificial' }
+            { name: 'Consultoría estratégica en IA', url: '/consultoria-inteligencia-artificial' },
+            { name: 'Avatares IA', url: '/soluciones/avatares-ia' }
         ]}
     />
 
@@ -90,7 +91,8 @@ import ContactWizard from '../../components/ContactWizard.astro';
                         { icon: 'fa-bullseye', text: 'Optimizar marketing', href: '/ai-marketing', label: 'Ver IA y marketing digital' },
                         { icon: 'fa-gears', text: 'Automatizar procesos', href: '/agentes-ia-a-medida', label: 'Ver agentes de inteligencia artificial' },
                         { icon: 'fa-code', text: 'Crear solución a medida', href: '/webapps-ia-a-medida', label: 'Ver software y WebApps' },
-                        { icon: 'fa-chess-knight', text: 'Acompañamiento estratégico', href: '/consultoria-inteligencia-artificial', label: 'Ver consultoría estratégica' }
+                        { icon: 'fa-chess-knight', text: 'Acompañamiento estratégico', href: '/consultoria-inteligencia-artificial', label: 'Ver consultoría estratégica' },
+                        { icon: 'fa-user-astronaut', text: 'Escalar con video', href: '/soluciones/avatares-ia', label: 'Ver solución de avatares IA' }
                     ].map(item => (
                         <li role="listitem">
                             <a 
@@ -344,6 +346,14 @@ import ContactWizard from '../../components/ContactWizard.astro';
                     <p class="text-subtle mb-6 text-sm font-light leading-relaxed">Claridad ejecutiva para transformar la IA en roadmaps y decisiones rentables.</p>
                     <a href="/consultoria-inteligencia-artificial" class="inline-flex items-center text-gold hover:text-white transition-colors text-sm font-medium uppercase tracking-widest">Ver Consultoría <i class="fa-solid fa-arrow-right ml-2"></i></a>
                 </li>
+
+                <li role="listitem" class="relative p-6 rounded-2xl border border-white/5 bg-[#161922]/10 backdrop-blur-md transition-all duration-500 hover:border-gold/20 hover:bg-[#161922]/20 reveal-item">
+                    <div class="absolute inset-0 bg-noise opacity-[0.03] pointer-events-none z-10"></div>
+                    <div class="text-white/20 font-serif text-4xl italic select-none mb-6">08.</div>
+                    <h3 class="text-2xl text-white font-light tracking-tight mb-3">Avatares IA</h3>
+                    <p class="text-subtle mb-6 text-sm font-light leading-relaxed">Clones digitales para escalar video, formación y comunicación sin grabaciones constantes.</p>
+                    <a href="/soluciones/avatares-ia" class="inline-flex items-center text-gold hover:text-white transition-colors text-sm font-medium uppercase tracking-widest">Ver Avatares <i class="fa-solid fa-arrow-right ml-2"></i></a>
+                </li>
             </ul>
 
         </div>
@@ -373,22 +383,39 @@ import ContactWizard from '../../components/ContactWizard.astro';
                     { 
                         title: 'Avatares IA', 
                         desc: 'Generación de clones digitales hiperrealistas para escalar su presencia en video sin depender de grabaciones constantes.', 
-                        icon: 'fa-user-astronaut' 
+                        icon: 'fa-user-astronaut',
+                        href: '/soluciones/avatares-ia'
                     }
                 ].map(item => (
-                    <article class="group relative flex gap-6 py-4 bg-transparent transition-all duration-300">
-                        <!-- Icono flotante libre sin contenedor de fondo -->
-                        <div class="flex-shrink-0 w-12 h-12 flex items-center justify-start">
-                            <i class={`fa-solid ${item.icon} text-2xl text-gold/85 group-hover:text-gold transition-colors duration-300`} aria-hidden="true"></i>
-                        </div>
-                        <!-- Bloque de contenido -->
-                        <div class="flex flex-col justify-start">
-                            <h3 class="font-playfair text-lg md:text-xl text-offwhite font-light tracking-wide mb-2 transition-colors duration-300 group-hover:text-gold">
-                                {item.title}
-                            </h3>
-                            <p class="text-xs md:text-sm text-subtle/90 leading-relaxed font-light">{item.desc}</p>
-                        </div>
-                    </article>
+                    item.href ? (
+                        <a
+                            href={item.href}
+                            class="group relative flex gap-6 py-4 bg-transparent transition-all duration-300 rounded-xl hover:bg-white/[0.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/60"
+                        >
+                            <div class="flex-shrink-0 w-12 h-12 flex items-center justify-start">
+                                <i class={`fa-solid ${item.icon} text-2xl text-gold/85 group-hover:text-gold transition-colors duration-300`} aria-hidden="true"></i>
+                            </div>
+                            <div class="flex flex-col justify-start">
+                                <h3 class="font-playfair text-lg md:text-xl text-offwhite font-light tracking-wide mb-2 transition-colors duration-300 group-hover:text-gold">
+                                    {item.title}
+                                </h3>
+                                <p class="text-xs md:text-sm text-subtle/90 leading-relaxed font-light">{item.desc}</p>
+                                <span class="text-gold text-xs uppercase tracking-widest mt-2 inline-flex items-center gap-1">Ver solución <i class="fa-solid fa-arrow-right text-[10px]" aria-hidden="true"></i></span>
+                            </div>
+                        </a>
+                    ) : (
+                        <article class="group relative flex gap-6 py-4 bg-transparent transition-all duration-300">
+                            <div class="flex-shrink-0 w-12 h-12 flex items-center justify-start">
+                                <i class={`fa-solid ${item.icon} text-2xl text-gold/85 group-hover:text-gold transition-colors duration-300`} aria-hidden="true"></i>
+                            </div>
+                            <div class="flex flex-col justify-start">
+                                <h3 class="font-playfair text-lg md:text-xl text-offwhite font-light tracking-wide mb-2 transition-colors duration-300 group-hover:text-gold">
+                                    {item.title}
+                                </h3>
+                                <p class="text-xs md:text-sm text-subtle/90 leading-relaxed font-light">{item.desc}</p>
+                            </div>
+                        </article>
+                    )
                 ))}
             </div>
         </div>
