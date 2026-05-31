@@ -27,24 +27,24 @@ const SERVICIO_LABELS: Record<string, string> = {
 
 let pageTitle = 'Solicitar diagnóstico de encaje';
 let pageSubtitle =
-  'En 3–4 minutos nos cuentas tu caso. Respondemos en 1 día hábil con el siguiente paso claro.';
+  'En 3–4 minutos me cuentas tu caso. Respondo en 1 día hábil con el siguiente paso claro.';
 
 if (plan && PLAN_LABELS[plan]) {
   pageTitle = `Quiero avanzar con ${PLAN_LABELS[plan]}`;
   pageSubtitle =
-    'Revisamos si el paquete encaja con tu situación antes de comprometer producción.';
+    'Reviso si el paquete encaja con tu situación antes de comprometer producción.';
 } else if (problem) {
   pageTitle = 'Reconozco este reto en mi negocio';
   pageSubtitle = 'Partimos de tu obstáculo; el resto del formulario adapta la propuesta.';
 } else if (servicio && SERVICIO_LABELS[servicio]) {
   pageTitle = `Consulta sobre ${SERVICIO_LABELS[servicio]}`;
-  pageSubtitle = 'Cuéntanos tu contexto y priorizamos una respuesta alineada a ese servicio.';
+  pageSubtitle = 'Cuéntame tu contexto y priorizo una respuesta alineada a ese servicio.';
 } else if (demo === 'agent-waitlist') {
   pageTitle = 'Lista de espera — Agentes IA';
-  pageSubtitle = 'Te avisamos del lanzamiento y evaluamos tu caso con prioridad.';
+  pageSubtitle = 'Te aviso del lanzamiento y evalúo tu caso con prioridad.';
 }
 
-const waText = encodeURIComponent('Hola Tap-IA, quisiera evaluar mi caso de negocio.');
+const waText = encodeURIComponent('¡Hola Tap-IA! Estoy en tu web y prefiero platicarte mi idea directamente por chat para ver cómo lo ves. ¿Platicamos? 📲');
 const waHref = `https://wa.me/5213324239103?text=${waText}`;
 ---
 

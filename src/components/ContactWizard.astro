@@ -18,7 +18,7 @@ const {
   showDesktopWaLink = false,
 } = Astro.props;
 
-const waText = encodeURIComponent('Hola Tap-IA, quisiera evaluar mi caso de negocio.');
+const waText = encodeURIComponent('¡Hola Tap-IA! Estoy en tu web y prefiero platicarte mi idea directamente por chat para ver cómo lo ves. ¿Platicamos? 📲');
 const waHref = `https://wa.me/5213324239103?text=${waText}`;
 const wid = wizardId;
 ---
@@ -531,7 +531,7 @@ const wid = wizardId;
         class="text-subtle hover:text-gold text-sm transition-colors inline-flex items-center gap-2"
       >
         <i class="fa-brands fa-whatsapp text-whatsapp" aria-hidden="true"></i>
-        ¿Prefieres WhatsApp? Escríbenos directamente
+        ¿Prefieres WhatsApp? Escríbeme y lo platicamos directo 💬
       </a>
     </p>
   )}
@@ -910,7 +910,7 @@ const wid = wizardId;
         } catch (err) {
           console.error(err);
           showFormStatus(
-            'Hubo un problema al enviar. Intente de nuevo o escríbenos por WhatsApp.',
+            'Hubo un problema al enviar. Intenta de nuevo o escríbeme por WhatsApp.',
             'error'
           );
           submitBtn.innerHTML = originalHtml;

@@ -5,7 +5,7 @@ import Footer from '../../components/Footer.astro';
 
 const waBase = 'https://wa.me/5213324239103';
 const waText = encodeURIComponent(
-  'Hola Tap-IA, acabo de enviar el formulario de diagnóstico. Si es urgente, prefiero continuar por aquí.'
+  '¡Hola Tap-IA! Acabo de enviarte mi diagnóstico por la web. Si andas por ahí, me gustaría que empecemos a rebotar ideas por aquí de una vez. ¡Gracias!'
 );
 const waHref = `${waBase}?text=${waText}`;
 ---
@@ -32,8 +32,8 @@ const waHref = `${waBase}?text=${waText}`;
         <p class="text-subtle text-lg mb-6" id="gracias-greeting"></p>
 
         <p class="text-subtle text-sm mb-10 max-w-md mx-auto">
-          Revisamos tu caso y te contactamos en <strong class="text-offwhite">1 día hábil</strong> con el siguiente paso.
-          Si tu proyecto es urgente, puedes escribirnos por WhatsApp.
+          Reviso tu caso y te contacto en <strong class="text-offwhite">1 día hábil</strong> con el siguiente paso.
+          Si tu proyecto es urgente, puedes escribirme directamente por WhatsApp.
         </p>
 
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
@@ -41,10 +41,10 @@ const waHref = `${waBase}?text=${waText}`;
             href={waHref}
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full font-bold text-sm uppercase tracking-wider bg-green-600 hover:bg-green-500 text-white transition-colors"
+            class="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full font-bold text-xs uppercase tracking-wider bg-green-600 hover:bg-green-500 text-white transition-colors"
           >
             <i class="fa-brands fa-whatsapp text-xl"></i>
-            WhatsApp urgente
+            Prefiero que lo platiquemos por WhatsApp
           </a>
           <a
             href="/"

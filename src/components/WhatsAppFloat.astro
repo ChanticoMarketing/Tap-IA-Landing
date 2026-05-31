@@ -3,7 +3,7 @@
 // Botón flotante premium de WhatsApp integrado con la identidad de marca Tap-IA.
 
 const phoneNumber = "523324239103";
-const message = "¡Hola! Vi su página web y me gustaría platicar con un asesor para conocer más sobre cómo me pueden ayudar con mi proyecto. ¡Gracias!";
+const message = "¡Hola Tap-IA! Vi tu página y me gustaría platicar contigo directamente para contarte de mi proyecto y ver cómo me puedes ayudar. ¡Gracias!";
 const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 ---
 
@@ -12,14 +12,14 @@ const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(mess
   target="_blank"
   rel="noopener noreferrer"
   class="whatsapp-float group fixed bottom-6 right-6 z-[999] flex items-center justify-center w-14 h-14 rounded-full bg-matte border border-[#25D366]/40 shadow-[0_8px_30px_rgba(0,0,0,0.8),0_0_15px_rgba(37,211,102,0.15)] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:scale-110 hover:-translate-y-1 hover:border-[#25D366] hover:shadow-[0_0_30px_rgba(37,211,102,0.4)] focus:outline-none focus:ring-2 focus:ring-[#25D366]/50"
-  aria-label="Contactar por WhatsApp para asesoría gratuita"
+  aria-label="Platicar por WhatsApp con Tap-IA"
 >
   <!-- Glow Atmosférico en Hover -->
   <span class="absolute inset-0 rounded-full bg-radial-glow opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></span>
 
   <!-- Tooltip Premium Estilo Tap-IA -->
   <span class="absolute right-16 px-4 py-2 rounded-lg bg-matte/95 border border-[#25D366]/30 text-offwhite text-sm font-medium tracking-wide whitespace-nowrap opacity-0 scale-95 origin-right translate-x-2 pointer-events-none transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:opacity-100 group-hover:scale-100 group-hover:translate-x-0 shadow-[0_4px_20px_rgba(0,0,0,0.5)]">
-    ¿Platicamos de tu proyecto?
+    ¿Tienes dudas? Escríbeme directo 📲
     <span class="absolute right-[-4px] top-1/2 -translate-y-1/2 w-2 h-2 rotate-45 bg-matte border-t border-r border-[#25D366]/30"></span>
   </span>
 
