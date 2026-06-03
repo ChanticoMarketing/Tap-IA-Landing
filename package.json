@@ -5,9 +5,13 @@
   "scripts": {
     "dev": "astro dev --open",
     "start": "astro dev",
+    "prebuild": "node scripts/build-favicon.mjs",
     "build": "astro check && astro build",
     "start:prod": "node ./dist/server/entry.mjs",
+    "prod": "npm run build && node ./dist/server/entry.mjs",
+    "prod:clean": "node scripts/restart-prod.mjs",
     "preview": "astro preview",
+    "favicon": "node scripts/build-favicon.mjs",
     "astro": "astro"
   },
   "dependencies": {
@@ -26,5 +30,9 @@
     "tailwindcss": "^4.2.1",
     "three": "^0.183.2",
     "typescript": "^5.7.3"
+  },
+  "devDependencies": {
+    "sharp": "^0.34.5",
+    "to-ico": "^1.1.5"
   }
 }

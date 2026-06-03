@@ -21,7 +21,9 @@ Dado que la aplicación de TAP-IA utiliza la configuración `output: 'server'` c
     ```bash
     npm run build
     ```
-    *(Este comando generará los artefactos en el directorio `/dist`)*
+    *(Ejecuta `prebuild` → regenera `public/Logo-Favicon.png` y `public/favicon.ico` desde `public/Logo-Favicon.source.png`, luego genera `/dist`. Tras desplegar, **reinicia** el proceso Node para que no sirva assets viejos.)*
+
+    **Local (producción en 4321):** si la página se ve sin estilos (HTML crudo), el proceso Node suele estar desincronizado con `dist/`. Usa `npm run prod:clean` (libera el puerto, borra `dist` + `node_modules/.astro`, build y arranque) en lugar de dejar un `node ./dist/server/entry.mjs` abierto días sin rebuild.
 
 3.  **Arranque del Servidor en Producción:**
     ```bash
@@ -39,13 +41,11 @@ Asegúrese de configurar las siguientes variables en su proveedor de alojamiento
 | `HOST` | Interfaces de red a escuchar | Usualmente `0.0.0.0` para despliegues VPS o Docker. |
 | `RESEND_API_KEY` | API key de Resend para enviar notificaciones de lead | **Obligatoria** para que el formulario envíe correo. |
 | `RESEND_FROM_EMAIL` | Remitente verificado en Resend (dominio `tap-ia.tech`) | Ej. `Tap-IA Contacto <contacto@tap-ia.tech>` |
-| `LEAD_NOTIFY_EMAIL` | Bandeja que recibe los leads | Por defecto `emmanuel@tap-ia.tech` |
-| `N8N_WEBHOOK_URL` | URL del Webhook de n8n (opcional) | Si está definida, reenvía el payload tras el correo. No bloquea el envío si falla. |
 | `PUBLIC_GOOGLE_SITE_VERIFICATION` | Token de verificación para Google Search Console (propiedad **Prefijo de URL**) | Acepta solo el token (`Unvz...`) o el formato completo (`google-site-verification=Unvz...`). Se renderiza en `<meta name="google-site-verification" content="...">` vía `Layout.astro`. Si no se define, el build usa el valor por defecto del repo. |
 
 ## 4. Formulario de contacto
 
-POST `/api/submit` envía un correo vía **Resend** a `LEAD_NOTIFY_EMAIL` (por defecto `emmanuel@tap-ia.tech`). Sin `RESEND_API_KEY` el endpoint devuelve error 500. El remitente (`RESEND_FROM_EMAIL`) debe pertenecer a un dominio verificado en Resend.
+POST `/api/submit` envía un correo vía **Resend** a **`emmanuel@tap-ia.tech`** (destino fijo en `src/lib/lead-email.ts`). Sin `RESEND_API_KEY` el endpoint devuelve error 500. El remitente (`RESEND_FROM_EMAIL`) debe pertenecer a un dominio verificado en Resend. El campo `replyTo` es el correo del lead.
 
 ## 5. Pruebas de Humo (Smoke Test) Post-Deploy
 
@@ -78,6 +78,10 @@ curl -s https://tap-ia.tech/sitemap.xml | findstr /i "agentes"
 
 # Verificar meta de Google Search Console en la home (debe devolver una línea con content="UnvzIf5...")
 curl -s https://tap-ia.tech/ | findstr /i "google-site-verification"
+
+# Favicon (debe ser imagen, no HTML)
+curl -sI https://tap-ia.tech/favicon.ico | findstr /i "HTTP Content-Type"
+curl -sI https://tap-ia.tech/Logo-Favicon.png | findstr /i "HTTP Content-Type"
 ```
 
 ### 5.3. Google Search Console (verificación HTML)
@@ -138,9 +142,12 @@ Para cerrar avisos de *subdomains don't support HSTS* y reforzar HTTPS:
 
 #### 3. Variables de Entorno en hPanel
 En el menú de administración de la aplicación web en hPanel, navega a la sección de **Variables de Entorno** (Environment Variables) y añade:
-* `N8N_WEBHOOK_URL` = `<tu-webhook-de-n8n>`
+* `RESEND_API_KEY` = `<tu-api-key-de-resend>`
+* `RESEND_FROM_EMAIL` = `Tap-IA Contacto <contacto@tap-ia.tech>` (o el remitente verificado en Resend)
 * `HOST` = `0.0.0.0`
 * `PUBLIC_GOOGLE_SITE_VERIFICATION` = `UnvzIf5Fe7a61U4AM2dLWfY3khV_64_mMUlG7OCBa0o` (opcional si ya está el valor por defecto en el build desplegado)
+
+Los leads del formulario llegan siempre a **emmanuel@tap-ia.tech**; no uses `LEAD_NOTIFY_EMAIL` ni `N8N_WEBHOOK_URL`.
 
 #### 4. Resolución del error "403 Forbidden" (.htaccess generado por Hostinger)
 Si tras desplegar la aplicación al ingresar a `https://tap-ia.tech` obtienes un error **403 Forbidden**, revisa primero que el sitio esté configurado como **Node.js Web App** y no como despliegue estático en `public_html`.

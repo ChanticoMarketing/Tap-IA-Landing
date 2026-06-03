@@ -1,6 +1,6 @@
 # Plan Fase 5 — Deploy y smoke test (Tap-IA)
 
-> **Objetivo:** publicar el sitio en producción con **Node SSR** (`@astrojs/node` standalone), validar rutas críticas en `https://tap-ia.tech` y dejar documentado el runbook para operación. **n8n (Fase 6)** queda fuera del alcance de implementación, pero el deploy debe contemplar el formulario.
+> **Objetivo:** publicar el sitio en producción con **Node SSR** (`@astrojs/node` standalone), validar rutas críticas en `https://tap-ia.tech` y dejar documentado el runbook para operación. El formulario de contacto notifica leads vía **Resend** a `emmanuel@tap-ia.tech`.
 
 **Precondiciones:** Fases 1, 2, 3 y 4 aprobadas (Fase 4 con placeholders legales resueltos **antes de tráfico público**).
 
@@ -16,7 +16,7 @@ Tap-IA **no es un sitio estático**: `astro.config.mjs` define `output: 'server'
 node ./dist/server/entry.mjs
 ```
 
-**Soft launch recomendado:** orgánico + WhatsApp directo hasta Fase 6 (formulario + n8n). El deploy puede hacerse igual; documentar que `/api/submit` fallará sin `N8N_WEBHOOK_URL`.
+**Formulario:** requiere `RESEND_API_KEY` y remitente verificado en Resend. Sin ellas, `/api/submit` devuelve 500. Los leads llegan a `emmanuel@tap-ia.tech`.
 
 ---
 
@@ -35,11 +35,12 @@ node ./dist/server/entry.mjs
 
 ### Variables de entorno
 
-| Variable | Obligatoria Fase 5 | Notas |
-|----------|-------------------|--------|
+| Variable | Obligatoria | Notas |
+|----------|-------------|--------|
 | `PORT` | Según host | Muchos PaaS la inyectan automáticamente |
 | `HOST` | Opcional | `0.0.0.0` en VPS/Docker |
-| `N8N_WEBHOOK_URL` | **No** (Fase 6) | Sin ella, formulario devuelve 500 |
+| `RESEND_API_KEY` | **Sí** (formulario) | Sin ella, `/api/submit` devuelve 500 |
+| `RESEND_FROM_EMAIL` | **Sí** (formulario) | Remitente en dominio verificado en Resend |
 
 ---
 
@@ -71,8 +72,9 @@ Completar **antes** de apuntar DNS o anunciar el sitio:
 PORT=4321
 HOST=0.0.0.0
 
-# Fase 6 — Webhook n8n para leads del formulario
-# N8N_WEBHOOK_URL=https://tu-instancia.n8n.cloud/webhook/tap-ia-leads
+# Resend — leads del formulario → emmanuel@tap-ia.tech (destino fijo en código)
+# RESEND_API_KEY=re_xxxxxxxx
+# RESEND_FROM_EMAIL=Tap-IA Contacto <contacto@tap-ia.tech>
 ```
 
 ---
@@ -180,12 +182,13 @@ Ejecutar contra **`https://tap-ia.tech`** (no solo localhost).
 | `/novedades-ia/agentes-autonomos-operativa-real` | **404** |
 | `/novedades-ia/noticia-mock` | 200 pero `noindex` (o no enlazada desde home) |
 
-#### Formulario (sin n8n — Fase 6)
+#### Formulario (Resend)
 
-| Prueba | Resultado esperado hasta Fase 6 |
-|--------|----------------------------------|
-| POST `/api/submit` sin `N8N_WEBHOOK_URL` | 500 o error usuario — **documentar** |
-| WhatsApp en `/contacto` | Enlace `wa.me/5213324239103` funciona |
+| Prueba | Resultado esperado |
+|--------|-------------------|
+| POST `/api/submit` sin `RESEND_API_KEY` | 500 |
+| POST `/api/submit` con Resend configurado | 200; correo en `emmanuel@tap-ia.tech` |
+| WhatsApp en `/contacto` y hero | Enlace `wa.me/5213324239103` funciona |
 
 #### Regresiones Fases 1–4
 
@@ -202,8 +205,7 @@ Ejecutar contra **`https://tap-ia.tech`** (no solo localhost).
 
 - [ ] Enviar sitemap en Google Search Console (opcional P2)
 - [ ] Probar OG en [opengraph.xyz](https://www.opengraph.xyz/) o similar (P2)
-- [ ] Comunicar internamente: leads por WhatsApp hasta Fase 6
-- [ ] **No activar paid** al formulario hasta n8n
+- [ ] Verificar recepción de lead de prueba en `emmanuel@tap-ia.tech`
 
 ---
 
@@ -218,27 +220,28 @@ Ejecutar contra **`https://tap-ia.tech`** (no solo localhost).
 - [ ] **AC7:** `robots.txt` accesible en prod
 - [ ] **AC8:** `/legal` sin placeholders `[COMPLETAR]` en producción
 - [ ] **AC9:** Regresiones Fases 1–3 verificadas en prod
-- [ ] **AC10:** Limitación formulario/n8n documentada para el cliente
+- [ ] **AC10:** Formulario con Resend documentado (`RESEND_*` en runbook)
 
 ---
 
 ## 6. Fuera de alcance (Fase 5)
 
-- Configurar `N8N_WEBHOOK_URL` en producción (Fase 6)
+- Auto-respuesta al lead por correo (solo notificación interna vía Resend)
 - GA4, banner cookies Track B
 - CI/CD completo (opcional P2)
 - Commitear carpeta `dist/`
 
 ---
 
-## 7. Relación con Fase 6
+## 7. Leads del formulario (actualizado)
 
-Tras Fase 5 aprobada:
+Los leads se envían solo por **Resend** a `emmanuel@tap-ia.tech`. No se usa n8n desde `/api/submit`.
 
-1. Crear workflow n8n `tap-ia-leads`
-2. Añadir `N8N_WEBHOOK_URL` en el panel del host
-3. Prueba E2E: formulario → n8n → `/contacto/gracias`
-4. Entonces: paid media y campañas al formulario
+Checklist operativo:
+
+1. Dominio `tap-ia.tech` verificado en Resend
+2. `RESEND_API_KEY` y `RESEND_FROM_EMAIL` en el host
+3. Prueba E2E: formulario → `/contacto/gracias` → correo recibido
 
 ---
 
@@ -258,7 +261,7 @@ Eres un **agente de DevOps / implementación** en el proyecto Astro SSR **Tap-IA
 - Usuario debe resolver placeholders legales **antes** de considerar AC8 en producción
 
 **Fuera de alcance:**
-- Implementar n8n o configurar `N8N_WEBHOOK_URL` en producción (Fase 6)
+- Integraciones CRM adicionales (n8n, Zapier) salvo que se pidan aparte
 - Cambios en contenido editorial, SEO (`seo.ts`), legal (salvo aviso al usuario sobre placeholders)
 - Commitear `dist/` o `node_modules/`
 
@@ -276,8 +279,8 @@ Incluir:
 
 1. Requisitos (Node 20+, SSR, no estático)
 2. Comandos: `npm ci`, `npm run build`, `node ./dist/server/entry.mjs`
-3. Variables `PORT`, `HOST`, `N8N_WEBHOOK_URL` (Fase 6)
-4. Nota: formulario falla sin n8n
+3. Variables `PORT`, `HOST`, `RESEND_API_KEY`, `RESEND_FROM_EMAIL`
+4. Nota: formulario falla sin `RESEND_API_KEY`; destino fijo `emmanuel@tap-ia.tech`
 5. Tabla smoke test §5.4 del plan
 6. Comando curl de ejemplo para `robots.txt` y `sitemap.xml` en prod
 
@@ -372,7 +375,7 @@ Marcar ✅/❌: AC1–AC10 del plan §5.
 - Placeholders [COMPLETAR]: [0 / N]
 
 ### Formulario
-- /api/submit sin n8n: [comportamiento observado]
+- /api/submit + Resend: [200 + correo recibido / error]
 
 ### Criterios AC1–AC10
 - [lista ✅/❌]
@@ -394,8 +397,7 @@ Al recibir el reporte:
 1. Confirmar `.env.example` + runbook en repo
 2. Si prod live: reproducir 3–5 curls del smoke test
 3. Verificar `/legal` sin placeholders
-4. Aprobar **soft launch** si AC1–AC9 OK; AC10 = formulario documentado
-5. Autorizar **Fase 6 (n8n)**
+4. Aprobar **soft launch** si AC1–AC9 OK; AC10 = Resend configurado en prod
 
 ---
 
@@ -405,7 +407,7 @@ Al recibir el reporte:
 |------|--------|
 | 1–4 | ✅ Cerradas (legal: placeholders P0 usuario) |
 | **5 Deploy** | ⏭️ En curso |
-| 6 n8n | Pendiente |
+| 6 n8n (leads) | Cancelado — sustituido por Resend |
 
 ---
 

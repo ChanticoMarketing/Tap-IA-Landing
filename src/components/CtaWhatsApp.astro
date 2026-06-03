@@ -20,12 +20,18 @@ const {
 } = Astro.props;
 
 const isExternal = /^https?:\/\//.test(href);
+const isWhatsApp = href.includes('wa.me/');
 const alignClass = align === 'start' ? 'items-start text-left' : 'items-center text-center';
 ---
 
 <div class:list={['flex flex-col', alignClass]}>
     <a href={href} class={classes} target={isExternal ? "_blank" : undefined} rel={isExternal ? "noopener noreferrer" : undefined}>
-        {text} <i class="fa-solid fa-arrow-right text-sm opacity-80"></i>
+        {text}
+        {isWhatsApp ? (
+            <i class="fa-brands fa-whatsapp text-base opacity-90" aria-hidden="true"></i>
+        ) : (
+            <i class="fa-solid fa-arrow-right text-sm opacity-80" aria-hidden="true"></i>
+        )}
     </a>
     {microcopy && (
         <p class="text-xs text-subtle mt-4 font-medium tracking-wide uppercase">

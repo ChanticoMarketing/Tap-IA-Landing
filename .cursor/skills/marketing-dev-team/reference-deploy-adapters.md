@@ -29,7 +29,7 @@ El Director identifica el modo del proyecto **antes** de proponer hosting.
 | Build | `npm run build` |
 | Start | `node ./dist/server/entry.mjs` |
 | Site URL | `https://tap-ia.tech` |
-| Error conocido sin Fase 6 | POST `/api/submit` → 500 sin `N8N_WEBHOOK_URL` |
+| Error conocido sin Resend | POST `/api/submit` → 500 sin `RESEND_API_KEY` |
 
 Runbook: `docs/deploy-runbook.md`. Plan: `docs/plan-fase-5-deploy.md`.
 

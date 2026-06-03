@@ -1,5 +1,8 @@
 import { Resend } from 'resend';
 
+/** Único destinatario de notificaciones del formulario de contacto. */
+const LEAD_NOTIFY_TO = 'emmanuel@tap-ia.tech';
+
 export type LeadPayload = {
   name: string;
   email: string;
@@ -7,6 +10,7 @@ export type LeadPayload = {
   role: string;
   phone: string;
   obstacle: string;
+  primary_goal: string;
   value_prop: string;
   has_website: string;
   current_website: string;
@@ -30,6 +34,14 @@ const OBSTACLE_LABELS: Record<string, string> = {
   conversion: 'Visitas sin contactos ni ventas',
   trust: 'Web desactualizada frente a la competencia',
   tech: 'La IA no recomienda nuestro negocio (GEO)',
+};
+
+const PRIMARY_GOAL_LABELS: Record<string, string> = {
+  launch_presence: 'Lanzar mi presencia online',
+  get_found_google: 'Que me encuentren en Google',
+  ai_visibility: 'Aparecer en respuestas de IA',
+  automate_leads: 'Automatizar atención o ventas con IA',
+  not_sure: 'No estoy seguro, necesito un diagnóstico',
 };
 
 const WEBSITE_LABELS: Record<string, string> = {
@@ -103,6 +115,7 @@ export function buildLeadEmailContent(payload: LeadPayload): { subject: string; 
       ${row('Cargo', payload.role)}
       ${row('WhatsApp', payload.phone || 'No indicado')}
       ${row('Obstáculo', label(OBSTACLE_LABELS, payload.obstacle))}
+      ${row('Objetivo principal', label(PRIMARY_GOAL_LABELS, payload.primary_goal))}
       ${row('Propuesta de valor', payload.value_prop || '—')}
       ${row('Sitio web', label(WEBSITE_LABELS, payload.has_website))}
       ${row('URL actual', payload.current_website || '—')}
@@ -129,6 +142,7 @@ export function buildLeadEmailContent(payload: LeadPayload): { subject: string; 
     `Cargo: ${payload.role}`,
     `WhatsApp: ${payload.phone || 'No indicado'}`,
     `Obstáculo: ${label(OBSTACLE_LABELS, payload.obstacle)}`,
+    `Objetivo principal: ${label(PRIMARY_GOAL_LABELS, payload.primary_goal)}`,
     `Propuesta de valor: ${payload.value_prop || '—'}`,
     `Web: ${label(WEBSITE_LABELS, payload.has_website)}`,
     `URL: ${payload.current_website || '—'}`,
@@ -149,7 +163,6 @@ export async function sendLeadNotificationEmail(payload: LeadPayload): Promise<{
     throw new Error('RESEND_API_KEY no configurada');
   }
 
-  const to = import.meta.env.LEAD_NOTIFY_EMAIL || 'emmanuel@tap-ia.tech';
   const from =
     import.meta.env.RESEND_FROM_EMAIL || 'Tap-IA Contacto <contacto@tap-ia.tech>';
 
@@ -158,7 +171,7 @@ export async function sendLeadNotificationEmail(payload: LeadPayload): Promise<{
 
   const { data, error } = await resend.emails.send({
     from,
-    to: [to],
+    to: [LEAD_NOTIFY_TO],
     replyTo: payload.email,
     subject,
     html,

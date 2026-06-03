@@ -75,74 +75,216 @@ const wid = wizardId;
       <input type="hidden" name="referrer" data-attr="referrer" value="" />
 
       <!-- ========================================== -->
-      <!-- STEP 1: CURRENT OBSTACLES -->
+      <!-- STEP 1: DIGITAL STARTING POINT -->
       <!-- ========================================== -->
       <div class="step-content active" data-step="1">
         <h3 class="mb-6 text-white font-playfair text-xl md:text-2xl" data-wizard-step-title="1" tabindex="-1">
-          1. Situación Actual
+          1. Tu punto de partida digital
         </h3>
 
-        <!-- Interactive Obstacle Tiles -->
-        <div class="mb-6" data-wizard-obstacle-group>
+        <!-- Website Status Tiles (router) -->
+        <div class="mb-6" data-wizard-has_website-group>
           <label class="block ui-caption mb-3 text-gold font-jakarta">
-            ¿Cuál es el mayor obstáculo digital para tu negocio hoy? <span class="text-gold">*</span>
+            ¿Tu negocio tiene una página web activa? <span class="text-gold">*</span>
           </label>
-          <input type="hidden" name="obstacle" id={`${wid}-field-obstacle`} required />
-          
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 font-jakarta text-sm">
+          <input type="hidden" name="has_website" id={`${wid}-field-has_website`} required />
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 font-jakarta text-sm">
             <button
               type="button"
-              data-tile-name="obstacle"
-              data-tile-value="invisibility"
+              data-tile-name="has_website"
+              data-tile-value="no"
+              class="tile-option p-4 rounded-xl border border-white/5 bg-matte/45 text-left hover:border-gold/30 hover:bg-gold/5 transition-all focus:outline-none flex flex-col justify-between gap-4"
+            >
+              <i class="fa-solid fa-circle-xmark text-subtle text-lg" aria-hidden="true"></i>
+              <div>
+                <span class="font-bold text-offwhite block">No, aún no</span>
+                <span class="text-[11px] text-subtle mt-1 block leading-normal">Buscamos arrancar una estrategia desde cero.</span>
+              </div>
+            </button>
+
+            <button
+              type="button"
+              data-tile-name="has_website"
+              data-tile-value="old"
+              class="tile-option p-4 rounded-xl border border-white/5 bg-matte/45 text-left hover:border-gold/30 hover:bg-gold/5 transition-all focus:outline-none flex flex-col justify-between gap-4"
+            >
+              <i class="fa-solid fa-clock-rotate-left text-gold text-lg" aria-hidden="true"></i>
+              <div>
+                <span class="font-bold text-offwhite block">Sí, pero obsoleta</span>
+                <span class="text-[11px] text-subtle mt-1 block leading-normal">Es lenta, no vende o no tiene soporte.</span>
+              </div>
+            </button>
+
+            <button
+              type="button"
+              data-tile-name="has_website"
+              data-tile-value="yes"
+              class="tile-option p-4 rounded-xl border border-white/5 bg-matte/45 text-left hover:border-gold/30 hover:bg-gold/5 transition-all focus:outline-none flex flex-col justify-between gap-4"
+            >
+              <i class="fa-solid fa-circle-check text-gold text-lg" aria-hidden="true"></i>
+              <div>
+                <span class="font-bold text-offwhite block">Sí, activa</span>
+                <span class="text-[11px] text-subtle mt-1 block leading-normal">Web estable funcionando en internet.</span>
+              </div>
+            </button>
+          </div>
+          <p data-wizard-has_website-error class="field-error hidden" role="alert"></p>
+        </div>
+
+        <!-- Branch: no web → primary goal -->
+        <div class="mb-6 hidden" data-wizard-primary-goal-block>
+          <label class="block ui-caption mb-3 text-gold font-jakarta">
+            ¿Qué quieres lograr primero? <span class="text-gold">*</span>
+          </label>
+          <input type="hidden" name="primary_goal" id={`${wid}-field-primary_goal`} />
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 font-jakarta text-sm" data-wizard-primary_goal-group>
+            <button
+              type="button"
+              data-tile-name="primary_goal"
+              data-tile-value="launch_presence"
+              class="tile-option p-4 rounded-xl border border-white/5 bg-matte/45 text-left hover:border-gold/30 hover:bg-gold/5 transition-all focus:outline-none flex items-start gap-4"
+            >
+              <i class="fa-solid fa-rocket text-gold text-lg mt-0.5" aria-hidden="true"></i>
+              <div>
+                <span class="font-bold text-offwhite block">Lanzar mi presencia online</span>
+                <span class="text-xs text-subtle mt-1 block leading-normal">Web, landing o canal digital desde cero.</span>
+              </div>
+            </button>
+
+            <button
+              type="button"
+              data-tile-name="primary_goal"
+              data-tile-value="get_found_google"
               class="tile-option p-4 rounded-xl border border-white/5 bg-matte/45 text-left hover:border-gold/30 hover:bg-gold/5 transition-all focus:outline-none flex items-start gap-4"
             >
               <i class="fa-solid fa-magnifying-glass text-gold text-lg mt-0.5" aria-hidden="true"></i>
               <div>
-                <span class="font-bold text-offwhite block">No aparecemos en Google</span>
-                <span class="text-xs text-subtle mt-1 block leading-normal">Falta de visitas y nula recordación de marca.</span>
+                <span class="font-bold text-offwhite block">Que me encuentren en Google</span>
+                <span class="text-xs text-subtle mt-1 block leading-normal">Visibilidad orgánica y tráfico cualificado.</span>
               </div>
             </button>
-            
+
             <button
               type="button"
-              data-tile-name="obstacle"
-              data-tile-value="conversion"
+              data-tile-name="primary_goal"
+              data-tile-value="ai_visibility"
               class="tile-option p-4 rounded-xl border border-white/5 bg-matte/45 text-left hover:border-gold/30 hover:bg-gold/5 transition-all focus:outline-none flex items-start gap-4"
             >
-              <i class="fa-solid fa-users-slash text-gold text-lg mt-0.5" aria-hidden="true"></i>
+              <i class="fa-solid fa-wand-magic-sparkles text-gold text-lg mt-0.5" aria-hidden="true"></i>
               <div>
-                <span class="font-bold text-offwhite block">Visitas sin Conversión</span>
-                <span class="text-xs text-subtle mt-1 block leading-normal">Tenemos tráfico pero nadie compra o agenda llamadas.</span>
+                <span class="font-bold text-offwhite block">Aparecer en respuestas de IA</span>
+                <span class="text-xs text-subtle mt-1 block leading-normal">GEO y citabilidad en ChatGPT y buscadores IA.</span>
               </div>
             </button>
-            
+
             <button
               type="button"
-              data-tile-name="obstacle"
-              data-tile-value="trust"
-              class="tile-option p-4 rounded-xl border border-white/5 bg-matte/45 text-left hover:border-gold/30 hover:bg-gold/5 transition-all focus:outline-none flex items-start gap-4"
-            >
-              <i class="fa-solid fa-triangle-exclamation text-gold text-lg mt-0.5" aria-hidden="true"></i>
-              <div>
-                <span class="font-bold text-offwhite block">Web Obsoleta y Lenta</span>
-                <span class="text-xs text-subtle mt-1 block leading-normal">La web actual luce desactualizada frente a los competidores.</span>
-              </div>
-            </button>
-            
-            <button
-              type="button"
-              data-tile-name="obstacle"
-              data-tile-value="tech"
+              data-tile-name="primary_goal"
+              data-tile-value="automate_leads"
               class="tile-option p-4 rounded-xl border border-white/5 bg-matte/45 text-left hover:border-gold/30 hover:bg-gold/5 transition-all focus:outline-none flex items-start gap-4"
             >
               <i class="fa-solid fa-robot text-gold text-lg mt-0.5" aria-hidden="true"></i>
               <div>
-                <span class="font-bold text-offwhite block">Invisibles ante la IA</span>
-                <span class="text-xs text-subtle mt-1 block leading-normal">ChatGPT y buscadores GEO no recomiendan tu marca.</span>
+                <span class="font-bold text-offwhite block">Automatizar atención o ventas con IA</span>
+                <span class="text-xs text-subtle mt-1 block leading-normal">Agentes, flujos y respuesta comercial 24/7.</span>
+              </div>
+            </button>
+
+            <button
+              type="button"
+              data-tile-name="primary_goal"
+              data-tile-value="not_sure"
+              class="tile-option p-4 rounded-xl border border-white/5 bg-matte/45 text-left hover:border-gold/30 hover:bg-gold/5 transition-all focus:outline-none flex items-start gap-4 sm:col-span-2"
+            >
+              <i class="fa-solid fa-compass text-subtle text-lg mt-0.5" aria-hidden="true"></i>
+              <div>
+                <span class="font-bold text-offwhite block">No estoy seguro, necesito un diagnóstico</span>
+                <span class="text-xs text-subtle mt-1 block leading-normal">Quiero una sesión para definir el mejor punto de partida.</span>
               </div>
             </button>
           </div>
-          <p data-wizard-obstacle-error class="field-error hidden" role="alert"></p>
+          <p data-wizard-primary_goal-error class="field-error hidden" role="alert"></p>
+        </div>
+
+        <!-- Branch: yes/old web → obstacle -->
+        <div class="mb-6 hidden" data-wizard-obstacle-block>
+          <div data-wizard-obstacle-group>
+            <label class="block ui-caption mb-3 text-gold font-jakarta">
+              ¿Cuál es el mayor obstáculo digital para tu negocio hoy? <span class="text-gold">*</span>
+            </label>
+            <input type="hidden" name="obstacle" id={`${wid}-field-obstacle`} />
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 font-jakarta text-sm">
+              <button
+                type="button"
+                data-tile-name="obstacle"
+                data-tile-value="invisibility"
+                class="tile-option p-4 rounded-xl border border-white/5 bg-matte/45 text-left hover:border-gold/30 hover:bg-gold/5 transition-all focus:outline-none flex items-start gap-4"
+              >
+                <i class="fa-solid fa-magnifying-glass text-gold text-lg mt-0.5" aria-hidden="true"></i>
+                <div>
+                  <span class="font-bold text-offwhite block">No aparecemos en Google</span>
+                  <span class="text-xs text-subtle mt-1 block leading-normal">Falta de visitas y nula recordación de marca.</span>
+                </div>
+              </button>
+
+              <button
+                type="button"
+                data-tile-name="obstacle"
+                data-tile-value="conversion"
+                class="tile-option p-4 rounded-xl border border-white/5 bg-matte/45 text-left hover:border-gold/30 hover:bg-gold/5 transition-all focus:outline-none flex items-start gap-4"
+              >
+                <i class="fa-solid fa-users-slash text-gold text-lg mt-0.5" aria-hidden="true"></i>
+                <div>
+                  <span class="font-bold text-offwhite block">Visitas sin Conversión</span>
+                  <span class="text-xs text-subtle mt-1 block leading-normal">Tenemos tráfico pero nadie compra o agenda llamadas.</span>
+                </div>
+              </button>
+
+              <button
+                type="button"
+                data-tile-name="obstacle"
+                data-tile-value="trust"
+                class="tile-option p-4 rounded-xl border border-white/5 bg-matte/45 text-left hover:border-gold/30 hover:bg-gold/5 transition-all focus:outline-none flex items-start gap-4"
+              >
+                <i class="fa-solid fa-triangle-exclamation text-gold text-lg mt-0.5" aria-hidden="true"></i>
+                <div>
+                  <span class="font-bold text-offwhite block">Web Obsoleta y Lenta</span>
+                  <span class="text-xs text-subtle mt-1 block leading-normal">La web actual luce desactualizada frente a los competidores.</span>
+                </div>
+              </button>
+
+              <button
+                type="button"
+                data-tile-name="obstacle"
+                data-tile-value="tech"
+                class="tile-option p-4 rounded-xl border border-white/5 bg-matte/45 text-left hover:border-gold/30 hover:bg-gold/5 transition-all focus:outline-none flex items-start gap-4"
+              >
+                <i class="fa-solid fa-robot text-gold text-lg mt-0.5" aria-hidden="true"></i>
+                <div>
+                  <span class="font-bold text-offwhite block">Invisibles ante la IA</span>
+                  <span class="text-xs text-subtle mt-1 block leading-normal">ChatGPT y buscadores GEO no recomiendan tu marca.</span>
+                </div>
+              </button>
+            </div>
+            <p data-wizard-obstacle-error class="field-error hidden" role="alert"></p>
+          </div>
+        </div>
+
+        <!-- URL input (yes or old) -->
+        <div id={`${wizardId}-website-url`} class="hidden mb-6 animate-sweep">
+          <label class="block ui-caption mb-2 font-jakarta" for={`${wid}-field-current_website`}>
+            Dirección (URL) de tu web actual
+          </label>
+          <input
+            type="url"
+            name="current_website"
+            id={`${wid}-field-current_website`}
+            class="input-field font-jakarta text-sm"
+            placeholder="https://www.tuempresa.com"
+          />
         </div>
 
         <div class="mb-6">
@@ -160,109 +302,46 @@ const wid = wizardId;
       </div>
 
       <!-- ========================================== -->
-      <!-- STEP 2: DIGITAL PRESENCE -->
+      <!-- STEP 2: SERVICES -->
       <!-- ========================================== -->
       <div class="step-content" data-step="2">
         <h3 class="mb-6 text-white font-playfair text-xl md:text-2xl" data-wizard-step-title="2" tabindex="-1">
-          2. Presencia Digital
+          2. Prioridades de proyecto
         </h3>
-
-        <!-- Interactive Website Status Tiles -->
-        <div class="mb-6" data-wizard-has_website-group>
-          <label class="block ui-caption mb-3 text-gold font-jakarta">
-            ¿Tu negocio tiene una página web activa? <span class="text-gold">*</span>
-          </label>
-          <input type="hidden" name="has_website" id={`${wid}-field-has_website`} required />
-          
-          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 font-jakarta text-sm">
-            <button
-              type="button"
-              data-tile-name="has_website"
-              data-tile-value="yes"
-              class="tile-option p-4 rounded-xl border border-white/5 bg-matte/45 text-left hover:border-gold/30 hover:bg-gold/5 transition-all focus:outline-none flex flex-col justify-between gap-4"
-            >
-              <i class="fa-solid fa-circle-check text-gold text-lg" aria-hidden="true"></i>
-              <div>
-                <span class="font-bold text-offwhite block">Sí, activa</span>
-                <span class="text-[11px] text-subtle mt-1 block leading-normal">Web estable funcionando en internet.</span>
-              </div>
-            </button>
-            
-            <button
-              type="button"
-              data-tile-name="has_website"
-              data-tile-value="no"
-              class="tile-option p-4 rounded-xl border border-white/5 bg-matte/45 text-left hover:border-gold/30 hover:bg-gold/5 transition-all focus:outline-none flex flex-col justify-between gap-4"
-            >
-              <i class="fa-solid fa-circle-xmark text-subtle text-lg" aria-hidden="true"></i>
-              <div>
-                <span class="font-bold text-offwhite block">No, aún no</span>
-                <span class="text-[11px] text-subtle mt-1 block leading-normal">Buscamos arrancar una estrategia desde cero.</span>
-              </div>
-            </button>
-            
-            <button
-              type="button"
-              data-tile-name="has_website"
-              data-tile-value="old"
-              class="tile-option p-4 rounded-xl border border-white/5 bg-matte/45 text-left hover:border-gold/30 hover:bg-gold/5 transition-all focus:outline-none flex flex-col justify-between gap-4"
-            >
-              <i class="fa-solid fa-clock-rotate-left text-gold text-lg" aria-hidden="true"></i>
-              <div>
-                <span class="font-bold text-offwhite block">Sí, pero obsoleta</span>
-                <span class="text-[11px] text-subtle mt-1 block leading-normal">Es lenta, no vende o no tiene soporte.</span>
-              </div>
-            </button>
-          </div>
-          <p data-wizard-has_website-error class="field-error hidden" role="alert"></p>
-
-          <!-- Conditionally shown URL input -->
-          <div id={`${wizardId}-website-url`} class="hidden mt-4 animate-sweep">
-            <label class="block ui-caption mb-2 font-jakarta" for={`${wid}-field-current_website`}>
-              Dirección (URL) de tu web actual
-            </label>
-            <input
-              type="url"
-              name="current_website"
-              id={`${wid}-field-current_website`}
-              class="input-field font-jakarta text-sm"
-              placeholder="https://www.tuempresa.com"
-            />
-          </div>
-        </div>
 
         <!-- Services Checkboxes Group -->
         <div class="mb-6" data-wizard-services-group>
           <span class="block ui-caption mb-2 text-gold font-jakarta" id={`${wid}-services-label`}>
             ¿Qué te gustaría construir o mejorar primero? <span class="text-gold">*</span>
           </span>
-          <p class="text-subtle text-xs mb-3 font-jakarta">Puedes seleccionar varias opciones.</p>
+          <p class="text-subtle text-xs mb-3 font-jakarta" data-wizard-services-hint>Puedes seleccionar varias opciones.</p>
           <div
             class="grid grid-cols-1 md:grid-cols-2 gap-3 font-jakarta text-sm"
             role="group"
             aria-labelledby={`${wid}-services-label`}
+            data-wizard-services-grid
           >
-            <label class="option-label">
+            <label class="option-label" data-service-item="web">
               <input type="checkbox" name="services" value="web" class="mr-3" />
               <span>Página web o Landing page premium</span>
             </label>
-            <label class="option-label">
+            <label class="option-label" data-service-item="seo_geo">
               <input type="checkbox" name="services" value="seo_geo" class="mr-3" />
               <span>Posicionamiento en Google y motores de IA</span>
             </label>
-            <label class="option-label">
+            <label class="option-label" data-service-item="agents">
               <input type="checkbox" name="services" value="agents" class="mr-3" />
               <span>Automatizaciones o agentes de IA</span>
             </label>
-            <label class="option-label">
+            <label class="option-label" data-service-item="webapps">
               <input type="checkbox" name="services" value="webapps" class="mr-3" />
               <span>Plataforma o software web a medida</span>
             </label>
-            <label class="option-label">
+            <label class="option-label" data-service-item="marketing">
               <input type="checkbox" name="services" value="marketing" class="mr-3" />
               <span>Campañas de marketing asistidas por IA</span>
             </label>
-            <label class="option-label">
+            <label class="option-label" data-service-item="avatars">
               <input type="checkbox" name="services" value="avatars" class="mr-3" />
               <span>Avatares IA o videos automatizados</span>
             </label>
@@ -579,6 +658,31 @@ const wid = wizardId;
       web: 'web',
     };
 
+    const PRIMARY_GOAL_SERVICES = {
+      launch_presence: ['web'],
+      get_found_google: ['web', 'seo_geo'],
+      ai_visibility: ['seo_geo'],
+      automate_leads: ['agents', 'marketing'],
+      not_sure: ['web', 'seo_geo'],
+    };
+
+    const PRIMARY_GOAL_FILTER = {
+      launch_presence: ['web', 'marketing', 'seo_geo', 'avatars'],
+      get_found_google: ['web', 'seo_geo', 'marketing'],
+      ai_visibility: ['seo_geo', 'web', 'marketing'],
+      automate_leads: ['agents', 'marketing', 'webapps', 'web'],
+      not_sure: null,
+    };
+
+    const OBSTACLE_SERVICE_ORDER = {
+      invisibility: ['seo_geo', 'web', 'marketing', 'agents', 'webapps', 'avatars'],
+      conversion: ['web', 'marketing', 'seo_geo', 'agents', 'webapps', 'avatars'],
+      trust: ['web', 'seo_geo', 'marketing', 'agents', 'webapps', 'avatars'],
+      tech: ['seo_geo', 'agents', 'web', 'marketing', 'webapps', 'avatars'],
+    };
+
+    const ALL_SERVICES = ['web', 'seo_geo', 'agents', 'webapps', 'marketing', 'avatars'];
+
     const setFieldError = (field, hasError) => {
       if (!field) return;
       if (hasError) {
@@ -669,20 +773,118 @@ const wid = wizardId;
       };
 
       const toggleWebsiteUrl = (value) => {
-        const otherDiv = document.getElementById(`${wizardId}-website-url`);
-        const input = otherDiv?.querySelector('input');
+        const urlDiv = document.getElementById(`${wizardId}-website-url`);
+        const input = urlDiv?.querySelector('input');
 
-        if (value === 'yes') {
-          otherDiv?.classList.remove('hidden');
-          input?.setAttribute('required', '');
+        if (value === 'yes' || value === 'old') {
+          urlDiv?.classList.remove('hidden');
+          urlDiv?.classList.add('animate-sweep');
+          if (value === 'yes') {
+            input?.setAttribute('required', '');
+          } else {
+            input?.removeAttribute('required');
+          }
         } else {
-          otherDiv?.classList.add('hidden');
+          urlDiv?.classList.add('hidden');
           if (input) {
             input.removeAttribute('required');
             input.value = '';
             setFieldError(input, false);
           }
         }
+      };
+
+      const clearTileGroup = (name) => {
+        const hiddenInput = qs(`input[name="${name}"]`);
+        if (hiddenInput) hiddenInput.value = '';
+        root.querySelectorAll(`.tile-option[data-tile-name="${name}"]`).forEach((t) => {
+          t.classList.remove('border-gold/50', 'bg-gold/5', 'shadow-lg', 'shadow-gold/2');
+          t.classList.add('border-white/5', 'bg-matte/45');
+        });
+        qs(`[data-wizard-${name}-error]`)?.classList.add('hidden');
+        qs(`[data-wizard-${name}-group]`)?.classList.remove('services-group--error');
+      };
+
+      const toggleBranchBlocks = (value) => {
+        const primaryBlock = qs('[data-wizard-primary-goal-block]');
+        const obstacleBlock = qs('[data-wizard-obstacle-block]');
+
+        if (value === 'no') {
+          primaryBlock?.classList.remove('hidden');
+          primaryBlock?.classList.add('animate-sweep');
+          obstacleBlock?.classList.add('hidden');
+          clearTileGroup('obstacle');
+        } else if (value === 'yes' || value === 'old') {
+          primaryBlock?.classList.add('hidden');
+          obstacleBlock?.classList.remove('hidden');
+          obstacleBlock?.classList.add('animate-sweep');
+          clearTileGroup('primary_goal');
+        } else {
+          primaryBlock?.classList.add('hidden');
+          obstacleBlock?.classList.add('hidden');
+        }
+
+        toggleWebsiteUrl(value);
+      };
+
+      const applyServiceRecommendations = (options = {}) => {
+        const { preserveChecked = false } = options;
+        const hasWebsite = qs('input[name="has_website"]')?.value;
+        const primaryGoal = qs('input[name="primary_goal"]')?.value;
+        const obstacle = qs('input[name="obstacle"]')?.value;
+        const grid = qs('[data-wizard-services-grid]');
+        const hint = qs('[data-wizard-services-hint]');
+
+        if (!grid) return;
+
+        let visibleServices = ALL_SERVICES;
+        let preselect = [];
+        let order = ALL_SERVICES;
+
+        if (hasWebsite === 'no' && primaryGoal) {
+          preselect = PRIMARY_GOAL_SERVICES[primaryGoal] || [];
+          const filter = PRIMARY_GOAL_FILTER[primaryGoal];
+          visibleServices = filter || ALL_SERVICES;
+          if (hint) {
+            hint.textContent = primaryGoal === 'not_sure'
+              ? 'Te sugerimos opciones según tu diagnóstico. Puedes ajustar la selección.'
+              : 'Opciones sugeridas según tu objetivo. Puedes seleccionar varias.';
+          }
+        } else if ((hasWebsite === 'yes' || hasWebsite === 'old') && obstacle) {
+          order = OBSTACLE_SERVICE_ORDER[obstacle] || ALL_SERVICES;
+          preselect = [order[0]].filter(Boolean);
+          visibleServices = ALL_SERVICES;
+          if (hint) hint.textContent = 'Opciones ordenadas según tu obstáculo. Puedes seleccionar varias.';
+        } else if (hint) {
+          hint.textContent = 'Puedes seleccionar varias opciones.';
+        }
+
+        ALL_SERVICES.forEach((service) => {
+          const item = grid.querySelector(`[data-service-item="${service}"]`);
+          if (item) {
+            item.classList.toggle('hidden', !visibleServices.includes(service));
+          }
+        });
+
+        order.forEach((service) => {
+          const item = grid.querySelector(`[data-service-item="${service}"]`);
+          if (item) grid.appendChild(item);
+        });
+
+        if (!preserveChecked) {
+          root.querySelectorAll('input[name="services"]').forEach((cb) => {
+            cb.checked = preselect.includes(cb.value);
+          });
+        } else {
+          preselect.forEach((val) => {
+            const cb = root.querySelector(`input[name="services"][value="${val}"]`);
+            if (cb && !root.querySelectorAll('input[name="services"]:checked').length) {
+              cb.checked = true;
+            }
+          });
+        }
+
+        validateServices();
       };
 
       // Handle interactive tile option clicks
@@ -714,7 +916,12 @@ const wid = wizardId;
           tile.classList.add('border-gold/50', 'bg-gold/5', 'shadow-lg', 'shadow-gold/2');
           
           if (name === 'has_website') {
-            toggleWebsiteUrl(value);
+            toggleBranchBlocks(value);
+            applyServiceRecommendations({ preserveChecked: true });
+          }
+
+          if (name === 'primary_goal' || name === 'obstacle') {
+            applyServiceRecommendations({ preserveChecked: true });
           }
         });
       });
@@ -763,36 +970,71 @@ const wid = wizardId;
           if (!fieldValid) isValid = false;
         });
 
-        // Hidden input validations for our option tiles
+        // Hidden input validations for step 1 router
         if (step === 1) {
-          const obstacleInput = qs('input[name="obstacle"]');
-          const obstacleValid = obstacleInput && obstacleInput.value !== '';
-          const group = qs('[data-wizard-obstacle-group]');
-          const errEl = qs('[data-wizard-obstacle-error]');
-          if (!obstacleValid) {
+          const hasWebInput = qs('input[name="has_website"]');
+          const hasWebValue = hasWebInput?.value || '';
+          const hasWebValid = hasWebValue !== '';
+          const hasWebGroup = qs('[data-wizard-has_website-group]');
+          const hasWebErr = qs('[data-wizard-has_website-error]');
+
+          if (!hasWebValid) {
             isValid = false;
-            group?.classList.add('services-group--error');
-            if (errEl) {
-              errEl.textContent = 'Seleccione una de las opciones.';
-              errEl.classList.remove('hidden');
+            hasWebGroup?.classList.add('services-group--error');
+            if (hasWebErr) {
+              hasWebErr.textContent = 'Seleccione una opción sobre su web.';
+              hasWebErr.classList.remove('hidden');
             }
+          } else {
+            hasWebGroup?.classList.remove('services-group--error');
+            hasWebErr?.classList.add('hidden');
+          }
+
+          if (hasWebValue === 'no') {
+            const goalInput = qs('input[name="primary_goal"]');
+            const goalValid = goalInput && goalInput.value !== '';
+            const goalGroup = qs('[data-wizard-primary_goal-group]');
+            const goalErr = qs('[data-wizard-primary_goal-error]');
+            if (!goalValid) {
+              isValid = false;
+              goalGroup?.classList.add('services-group--error');
+              if (goalErr) {
+                goalErr.textContent = 'Seleccione qué quiere lograr primero.';
+                goalErr.classList.remove('hidden');
+              }
+            } else {
+              goalGroup?.classList.remove('services-group--error');
+              goalErr?.classList.add('hidden');
+            }
+          }
+
+          if (hasWebValue === 'yes' || hasWebValue === 'old') {
+            const obstacleInput = qs('input[name="obstacle"]');
+            const obstacleValid = obstacleInput && obstacleInput.value !== '';
+            const obstacleGroup = qs('[data-wizard-obstacle-group]');
+            const obstacleErr = qs('[data-wizard-obstacle-error]');
+            if (!obstacleValid) {
+              isValid = false;
+              obstacleGroup?.classList.add('services-group--error');
+              if (obstacleErr) {
+                obstacleErr.textContent = 'Seleccione una de las opciones.';
+                obstacleErr.classList.remove('hidden');
+              }
+            } else {
+              obstacleGroup?.classList.remove('services-group--error');
+              obstacleErr?.classList.add('hidden');
+            }
+          }
+
+          const urlInput = qs('input[name="current_website"]');
+          if (hasWebValue === 'yes' && urlInput) {
+            const urlValid = urlInput.value.trim() !== '' && urlInput.checkValidity();
+            setFieldError(urlInput, !urlValid);
+            if (!urlValid) isValid = false;
           }
         }
 
         if (step === 2) {
-          const hasWebInput = qs('input[name="has_website"]');
-          const hasWebValid = hasWebInput && hasWebInput.value !== '';
-          const group = qs('[data-wizard-has_website-group]');
-          const errEl = qs('[data-wizard-has_website-error]');
-          if (!hasWebValid) {
-            isValid = false;
-            group?.classList.add('services-group--error');
-            if (errEl) {
-              errEl.textContent = 'Seleccione una de las opciones sobre su web.';
-              errEl.classList.remove('hidden');
-            }
-          }
-          
           if (!validateServices()) isValid = false;
         }
 
@@ -829,6 +1071,10 @@ const wid = wizardId;
 
       qs('[data-wizard-next]')?.addEventListener('click', () => {
         if (validateStep(currentStep) && currentStep < totalSteps) {
+          if (currentStep === 1) {
+            const hasExistingServices = root.querySelectorAll('input[name="services"]:checked').length > 0;
+            applyServiceRecommendations({ preserveChecked: hasExistingServices });
+          }
           currentStep++;
           updateUI(true);
         } else if (!validateStep(currentStep)) {
@@ -860,7 +1106,8 @@ const wid = wizardId;
           company: formData.get('company'),
           role: formData.get('role') || 'No especificado',
           phone: formData.get('phone') || '',
-          obstacle: formData.get('obstacle'),
+          obstacle: formData.get('obstacle') || '',
+          primary_goal: formData.get('primary_goal') || '',
           value_prop: formData.get('value_prop') || '',
           has_website: formData.get('has_website'),
           current_website: formData.get('current_website') || '',
@@ -923,6 +1170,8 @@ const wid = wizardId;
 
       const problemParam = urlParams.get('problem') || getAttr('problem');
       if (problemParam) {
+        const hasWebTile = root.querySelector('.tile-option[data-tile-name="has_website"][data-tile-value="yes"]');
+        if (hasWebTile && !qs('input[name="has_website"]')?.value) hasWebTile.click();
         const tile = root.querySelector(`.tile-option[data-tile-name="obstacle"][data-tile-value="${problemParam}"]`);
         if (tile) tile.click();
       }

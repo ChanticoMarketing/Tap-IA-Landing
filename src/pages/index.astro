@@ -11,6 +11,9 @@ const plan = url.searchParams.get('plan') ?? '';
 const problem = url.searchParams.get('problem') ?? '';
 const servicio = url.searchParams.get('servicio') ?? '';
 const demo = url.searchParams.get('demo') ?? '';
+
+const heroWaMessage = '¡Hola Tap-IA! Vi tu web y quiero implementar Marketing e IA en mi negocio. ¿Me atienden ahora?';
+const heroWaHref = `https://wa.me/5213324239103?text=${encodeURIComponent(heroWaMessage)}`;
 ---
 
 <Layout 
@@ -46,7 +49,7 @@ const demo = url.searchParams.get('demo') ?? '';
                     Es claridad para decidir, ejecutar y mejorar.
                 </p>
                 <div class="hero-item hero-cta-priority relative z-50">
-                    <CtaWhatsApp align="start" text="Solicitar diagnóstico" microcopy="En 5 minutos definimos si necesitas estrategia o implementación." href="#diagnostico" />
+                    <CtaWhatsApp align="start" text="Quiero Marketing e IA ahora" microcopy="Respuesta directa por WhatsApp · sin formularios." href={heroWaHref} />
                 </div>
             </div>
 

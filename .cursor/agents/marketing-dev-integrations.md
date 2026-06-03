@@ -12,14 +12,16 @@ Conectar el sitio con **stack de marketing ops** de forma segura: validación se
 ## Proceso
 
 1. Mapear flujo: formulario → API → webhook/CRM → notificación.
-2. Listar env vars y fallbacks si faltan (ej. WhatsApp si n8n no está).
+2. Listar env vars y fallbacks si faltan (ej. WhatsApp si Resend no está configurado).
 3. Revisar rate limiting, validación, sanitización, CORS si aplica.
 4. Coordinar banner cookies / consent antes de tags no esenciales.
 
 ## Tap-IA
 
-- `src/pages/api/submit.ts` + `N8N_WEBHOOK_URL` (Fase 6).
-- Sin webhook: documentar 500 o desactivar submit con mensaje claro.
+- `src/pages/api/submit.ts` → `src/lib/lead-email.ts` (Resend).
+- Obligatorio en producción: `RESEND_API_KEY`, `RESEND_FROM_EMAIL` (dominio verificado).
+- Destino fijo de leads: `emmanuel@tap-ia.tech` (constante en código).
+- Sin `RESEND_API_KEY`: el endpoint devuelve 500.
 
 ## Formato de informe al Director
 
