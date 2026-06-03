@@ -103,6 +103,15 @@ function label(map: Record<string, string>, key: string): string {
   return map[key] || key || '—';
 }
 
+function formatPriorityList(raw: string): string {
+  if (!raw?.trim()) return '—';
+  return raw
+    .split(',')
+    .map((key) => label(PRIORITY_LABELS, key.trim()))
+    .filter((text) => text && text !== '—')
+    .join(' · ');
+}
+
 function row(labelText: string, value: string): string {
   const safe = escapeHtml(value || '—');
   return `<tr><td style="padding:8px 12px;color:#888;width:38%;vertical-align:top">${escapeHtml(labelText)}</td><td style="padding:8px 12px;color:#f5f5f5">${safe}</td></tr>`;
@@ -126,9 +135,7 @@ export function buildLeadEmailContent(payload: LeadPayload): { subject: string; 
       ${row('Correo', payload.email)}
       ${row('Cargo', payload.role)}
       ${row('WhatsApp', payload.phone || 'No indicado')}
-      ${row('Prioridad / reto', label(PRIORITY_LABELS, payload.obstacle || payload.primary_goal))}
-      ${row('Obstáculo (detalle)', label(OBSTACLE_LABELS, payload.obstacle))}
-      ${row('Objetivo principal (detalle)', label(PRIMARY_GOAL_LABELS, payload.primary_goal))}
+      ${row('Prioridades / retos', formatPriorityList(payload.obstacle || payload.primary_goal))}
       ${row('Propuesta de valor', payload.value_prop || '—')}
       ${row('Sitio web', label(WEBSITE_LABELS, payload.has_website))}
       ${row('URL actual', payload.current_website || '—')}
@@ -154,8 +161,7 @@ export function buildLeadEmailContent(payload: LeadPayload): { subject: string; 
     `Correo: ${payload.email}`,
     `Cargo: ${payload.role}`,
     `WhatsApp: ${payload.phone || 'No indicado'}`,
-    `Obstáculo: ${label(OBSTACLE_LABELS, payload.obstacle)}`,
-    `Objetivo principal: ${label(PRIMARY_GOAL_LABELS, payload.primary_goal)}`,
+    `Prioridades: ${formatPriorityList(payload.obstacle || payload.primary_goal)}`,
     `Propuesta de valor: ${payload.value_prop || '—'}`,
     `Web: ${label(WEBSITE_LABELS, payload.has_website)}`,
     `URL: ${payload.current_website || '—'}`,

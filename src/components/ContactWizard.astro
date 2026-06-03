@@ -138,17 +138,22 @@ const wid = wizardId;
           <input type="hidden" name="obstacle" id={`${wid}-field-obstacle`} />
           <div data-wizard-priority-group>
             <label class="block ui-caption mb-2 text-gold font-jakarta">
-              ¿Qué quieres resolver o mejorar primero? <span class="text-gold">*</span>
+              ¿Qué quieres resolver o mejorar? <span class="text-gold">*</span>
             </label>
             <p class="text-subtle text-xs mb-3 font-jakarta">
-              No solo páginas web: elige lo más cercano a tu reto (visibilidad, marketing, IA, automatización, etc.).
+              Puedes seleccionar una o más opciones. No solo páginas web: visibilidad, marketing, IA, automatización, etc.
             </p>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 font-jakarta text-sm">
+            <div
+              class="grid grid-cols-1 sm:grid-cols-2 gap-4 font-jakarta text-sm"
+              role="group"
+              aria-label="Prioridades a resolver"
+            >
               <button
                 type="button"
                 data-tile-name="priority"
                 data-tile-value="diagnostic"
+                aria-pressed="false"
                 class="tile-option p-4 rounded-xl border border-white/5 bg-matte/45 text-left hover:border-gold/30 hover:bg-gold/5 transition-all focus:outline-none flex items-start gap-4"
               >
                 <i class="fa-solid fa-magnifying-glass-chart text-gold text-lg mt-0.5" aria-hidden="true"></i>
@@ -162,6 +167,7 @@ const wid = wizardId;
                 type="button"
                 data-tile-name="priority"
                 data-tile-value="visibility"
+                aria-pressed="false"
                 class="tile-option p-4 rounded-xl border border-white/5 bg-matte/45 text-left hover:border-gold/30 hover:bg-gold/5 transition-all focus:outline-none flex items-start gap-4"
               >
                 <i class="fa-solid fa-wand-magic-sparkles text-gold text-lg mt-0.5" aria-hidden="true"></i>
@@ -871,24 +877,53 @@ const wid = wizardId;
 
       const getHasWebsite = () => qs('input[name="has_website"]')?.value || '';
 
-      const getPriorityValue = () => {
+      const getPriorityValues = () => {
         const hasWebsite = getHasWebsite();
-        if (hasWebsite === 'no') return qs('input[name="primary_goal"]')?.value || '';
-        if (hasWebsite === 'yes' || hasWebsite === 'old') return qs('input[name="obstacle"]')?.value || '';
-        return '';
+        let raw = '';
+        if (hasWebsite === 'no') raw = qs('input[name="primary_goal"]')?.value || '';
+        else if (hasWebsite === 'yes' || hasWebsite === 'old') raw = qs('input[name="obstacle"]')?.value || '';
+        return raw
+          .split(',')
+          .map((s) => s.trim())
+          .filter(Boolean);
       };
 
-      const setPriorityValue = (value) => {
+      const setPriorityValues = (values) => {
+        const joined = [...new Set(values)].join(',');
         const goalInput = qs('input[name="primary_goal"]');
         const obstacleInput = qs('input[name="obstacle"]');
         const hasWebsite = getHasWebsite();
         if (hasWebsite === 'no') {
-          if (goalInput) goalInput.value = value;
+          if (goalInput) goalInput.value = joined;
           if (obstacleInput) obstacleInput.value = '';
         } else if (hasWebsite === 'yes' || hasWebsite === 'old') {
-          if (obstacleInput) obstacleInput.value = value;
+          if (obstacleInput) obstacleInput.value = joined;
           if (goalInput) goalInput.value = '';
         }
+      };
+
+      const syncPriorityTileStyles = () => {
+        const selected = new Set(getPriorityValues());
+        root.querySelectorAll('.tile-option[data-tile-name="priority"]').forEach((tile) => {
+          const value = tile.getAttribute('data-tile-value');
+          const isOn = value && selected.has(value);
+          tile.classList.toggle('border-gold/50', isOn);
+          tile.classList.toggle('bg-gold/5', isOn);
+          tile.classList.toggle('shadow-lg', isOn);
+          tile.classList.toggle('shadow-gold/2', isOn);
+          tile.classList.toggle('border-white/5', !isOn);
+          tile.classList.toggle('bg-matte/45', !isOn);
+          tile.setAttribute('aria-pressed', isOn ? 'true' : 'false');
+        });
+      };
+
+      const togglePriorityValue = (value) => {
+        const selected = getPriorityValues();
+        const idx = selected.indexOf(value);
+        if (idx >= 0) selected.splice(idx, 1);
+        else selected.push(value);
+        setPriorityValues(selected);
+        syncPriorityTileStyles();
       };
 
       const syncPriorityTilesVisibility = () => {
@@ -899,11 +934,8 @@ const wid = wizardId;
       };
 
       const clearPrioritySelection = () => {
-        setPriorityValue('');
-        root.querySelectorAll('.tile-option[data-tile-name="priority"]').forEach((t) => {
-          t.classList.remove('border-gold/50', 'bg-gold/5', 'shadow-lg', 'shadow-gold/2');
-          t.classList.add('border-white/5', 'bg-matte/45');
-        });
+        setPriorityValues([]);
+        syncPriorityTileStyles();
         qs('[data-wizard-priority-error]')?.classList.add('hidden');
         qs('[data-wizard-priority-group]')?.classList.remove('services-group--error');
       };
@@ -927,7 +959,7 @@ const wid = wizardId;
 
       const applyServiceRecommendations = (options = {}) => {
         const { preserveChecked = false } = options;
-        const priorityKey = getPriorityValue();
+        const priorityKeys = getPriorityValues();
         const grid = qs('[data-wizard-services-grid]');
         const hint = qs('[data-wizard-services-hint]');
 
@@ -937,15 +969,27 @@ const wid = wizardId;
         let preselect = [];
         let order = ALL_SERVICES;
 
-        if (priorityKey && PRIORITY_CONFIG[priorityKey]) {
-          const cfg = PRIORITY_CONFIG[priorityKey];
-          preselect = cfg.preselect || [];
-          visibleServices = cfg.filter || ALL_SERVICES;
+        if (priorityKeys.length > 0) {
+          const preselectSet = new Set();
+          let showAll = false;
+          const visibleSet = new Set();
+
+          priorityKeys.forEach((key) => {
+            const cfg = PRIORITY_CONFIG[key];
+            if (!cfg) return;
+            cfg.preselect.forEach((s) => preselectSet.add(s));
+            if (cfg.filter === null) showAll = true;
+            else cfg.filter.forEach((s) => visibleSet.add(s));
+          });
+
+          preselect = [...preselectSet];
+          visibleServices = showAll ? ALL_SERVICES : [...visibleSet];
           order = [...preselect, ...ALL_SERVICES.filter((s) => !preselect.includes(s))];
+
           if (hint) {
             hint.textContent =
-              priorityKey === 'not_sure'
-                ? 'Te sugerimos opciones según tu diagnóstico. Puedes ajustar la selección.'
+              priorityKeys.includes('not_sure') || priorityKeys.length > 1
+                ? 'Servicios sugeridos según tus prioridades. Puedes ajustar la selección.'
                 : 'Servicios sugeridos según tu prioridad. Puedes seleccionar varias.';
           }
         } else if (hint) {
@@ -986,36 +1030,35 @@ const wid = wizardId;
           e.preventDefault();
           const name = tile.getAttribute('data-tile-name');
           const value = tile.getAttribute('data-tile-value');
-          
-          const hiddenInput = qs(`input[name="${name}"]`);
-          if (hiddenInput) {
-            hiddenInput.value = value;
-            setFieldError(hiddenInput, false);
-            
-            // Clean custom error if set
-            const errEl = qs(`[data-wizard-${name}-error]`);
-            if (errEl) errEl.classList.add('hidden');
-            const group = qs(`[data-wizard-${name}-group]`);
-            if (group) group.classList.remove('services-group--error');
-          }
-          
-          // Style state management
-          root.querySelectorAll(`.tile-option[data-tile-name="${name}"]`).forEach(t => {
-            t.classList.remove('border-gold/50', 'bg-gold/5', 'shadow-lg', 'shadow-gold/2');
-            t.classList.add('border-white/5', 'bg-matte/45');
-          });
-          
-          tile.classList.remove('border-white/5', 'bg-matte/45');
-          tile.classList.add('border-gold/50', 'bg-gold/5', 'shadow-lg', 'shadow-gold/2');
-          
-          if (name === 'priority') {
-            setPriorityValue(value);
+
+          if (name === 'priority' && value) {
+            togglePriorityValue(value);
             setFieldError(qs('input[name="primary_goal"]'), false);
             setFieldError(qs('input[name="obstacle"]'), false);
             qs('[data-wizard-priority-error]')?.classList.add('hidden');
             qs('[data-wizard-priority-group]')?.classList.remove('services-group--error');
             applyServiceRecommendations({ preserveChecked: true });
+            return;
           }
+
+          const hiddenInput = qs(`input[name="${name}"]`);
+          if (hiddenInput) {
+            hiddenInput.value = value;
+            setFieldError(hiddenInput, false);
+
+            const errEl = qs(`[data-wizard-${name}-error]`);
+            if (errEl) errEl.classList.add('hidden');
+            const group = qs(`[data-wizard-${name}-group]`);
+            if (group) group.classList.remove('services-group--error');
+          }
+
+          root.querySelectorAll(`.tile-option[data-tile-name="${name}"]`).forEach(t => {
+            t.classList.remove('border-gold/50', 'bg-gold/5', 'shadow-lg', 'shadow-gold/2');
+            t.classList.add('border-white/5', 'bg-matte/45');
+          });
+
+          tile.classList.remove('border-white/5', 'bg-matte/45');
+          tile.classList.add('border-gold/50', 'bg-gold/5', 'shadow-lg', 'shadow-gold/2');
 
           if (name === 'has_website') {
             toggleBranchBlocks(value);
@@ -1088,14 +1131,14 @@ const wid = wizardId;
             hasWebErr?.classList.add('hidden');
           }
 
-          const priorityValid = getPriorityValue() !== '';
+          const priorityValid = getPriorityValues().length > 0;
           const priorityGroup = qs('[data-wizard-priority-group]');
           const priorityErr = qs('[data-wizard-priority-error]');
           if (hasWebValue && !priorityValid) {
             isValid = false;
             priorityGroup?.classList.add('services-group--error');
             if (priorityErr) {
-              priorityErr.textContent = 'Seleccione qué quiere resolver o mejorar primero.';
+              priorityErr.textContent = 'Seleccione al menos una prioridad.';
               priorityErr.classList.remove('hidden');
             }
           } else {
@@ -1270,10 +1313,10 @@ const wid = wizardId;
         const mappedPriority = LEGACY_PRIORITY_MAP[problemParam] || problemParam;
         const hasWebTile = root.querySelector('.tile-option[data-tile-name="has_website"][data-tile-value="yes"]');
         if (hasWebTile && !qs('input[name="has_website"]')?.value) hasWebTile.click();
-        const tile = root.querySelector(
-          `.tile-option[data-tile-name="priority"][data-tile-value="${mappedPriority}"]`
-        );
-        if (tile) tile.click();
+        if (!getPriorityValues().includes(mappedPriority)) {
+          togglePriorityValue(mappedPriority);
+        }
+        applyServiceRecommendations({ preserveChecked: true });
       }
 
       const planParam = urlParams.get('plan') || getAttr('plan');
