@@ -47,6 +47,8 @@ Asegúrese de configurar las siguientes variables en su proveedor de alojamiento
 
 POST `/api/submit` envía un correo vía **Resend** a **`emmanuel@tap-ia.tech`** (destino fijo en `src/lib/lead-email.ts`). Sin `RESEND_API_KEY` el endpoint devuelve error 500. El remitente (`RESEND_FROM_EMAIL`) debe pertenecer a un dominio verificado en Resend. El campo `replyTo` es el correo del lead.
 
+**Hostinger:** define `RESEND_API_KEY` y `RESEND_FROM_EMAIL` en las variables de entorno de la app Node y **reinicia o redeploy** tras guardarlas. El código lee `process.env` en runtime (no solo en build).
+
 ## 5. Pruebas de Humo (Smoke Test) Post-Deploy
 
 Una vez que el proyecto esté en vivo bajo `https://tap-ia.tech` ejecute la siguiente matriz de pruebas para validar el lanzamiento.

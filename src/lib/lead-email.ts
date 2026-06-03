@@ -157,14 +157,22 @@ export function buildLeadEmailContent(payload: LeadPayload): { subject: string; 
   return { subject, html, text };
 }
 
+function readServerEnv(name: string): string | undefined {
+  // Hostinger/PaaS inyectan secretos en runtime (process.env), no en build.
+  const runtime = typeof process !== 'undefined' ? process.env[name] : undefined;
+  const built = (import.meta.env as Record<string, string | undefined>)[name];
+  const value = runtime ?? built;
+  return value?.trim() || undefined;
+}
+
 export async function sendLeadNotificationEmail(payload: LeadPayload): Promise<{ id: string }> {
-  const apiKey = import.meta.env.RESEND_API_KEY;
+  const apiKey = readServerEnv('RESEND_API_KEY');
   if (!apiKey) {
     throw new Error('RESEND_API_KEY no configurada');
   }
 
   const from =
-    import.meta.env.RESEND_FROM_EMAIL || 'Tap-IA Contacto <contacto@tap-ia.tech>';
+    readServerEnv('RESEND_FROM_EMAIL') || 'Tap-IA Contacto <contacto@tap-ia.tech>';
 
   const resend = new Resend(apiKey);
   const { subject, html, text } = buildLeadEmailContent(payload);
