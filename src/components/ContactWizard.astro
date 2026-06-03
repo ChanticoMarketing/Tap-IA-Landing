@@ -27,7 +27,7 @@ const wid = wizardId;
 
   <div class="bg-transparent p-0">
     <!-- Progress Indicator -->
-    <div class="mb-6 md:mb-8" aria-label="Progreso del formulario">
+    <div class="mb-6 md:mb-8" aria-label="Progreso del formulario" data-wizard-scroll-anchor>
       <div class="flex justify-between ui-caption mb-3">
         <span data-wizard-step-indicator>Paso 1 de 4</span>
         <span data-wizard-progress-percent class="text-gold font-semibold">0%</span>
@@ -635,6 +635,28 @@ const wid = wizardId;
   .tile-option:active {
     transform: translateY(0) scale(0.98);
   }
+
+  /* Revelado hacia abajo (evita sensación de contenido que “sube”) */
+  .contact-wizard .animate-sweep {
+    animation: wizardRevealDown 0.25s ease-out;
+  }
+
+  @keyframes wizardRevealDown {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .contact-wizard .animate-sweep {
+      animation: none;
+    }
+  }
 </style>
 
 <script>
@@ -726,11 +748,20 @@ const wid = wizardId;
         if (el) el.classList.add('hidden');
       };
 
+      const scrollWizardIntoView = () => {
+        const anchor = qs('[data-wizard-scroll-anchor]') || root;
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        anchor.scrollIntoView({
+          behavior: prefersReducedMotion ? 'auto' : 'smooth',
+          block: 'start',
+        });
+      };
+
       const focusStepTitle = () => {
         const title = qs(`[data-wizard-step-title="${currentStep}"]`);
         if (title) {
           title.setAttribute('tabindex', '-1');
-          title.focus();
+          title.focus({ preventScroll: true });
         }
       };
 
@@ -769,7 +800,21 @@ const wid = wizardId;
         if (indicator) indicator.textContent = `Paso ${currentStep} de ${totalSteps}`;
         if (track) track.setAttribute('aria-valuenow', String(progress));
 
-        if (shouldFocus) focusStepTitle();
+        if (shouldFocus) {
+          scrollWizardIntoView();
+          requestAnimationFrame(() => focusStepTitle());
+        }
+      };
+
+      const scrollBranchBlockIntoView = (block) => {
+        if (!block || block.classList.contains('hidden')) return;
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        requestAnimationFrame(() => {
+          block.scrollIntoView({
+            behavior: prefersReducedMotion ? 'auto' : 'smooth',
+            block: 'nearest',
+          });
+        });
       };
 
       const toggleWebsiteUrl = (value) => {
@@ -779,6 +824,7 @@ const wid = wizardId;
         if (value === 'yes' || value === 'old') {
           urlDiv?.classList.remove('hidden');
           urlDiv?.classList.add('animate-sweep');
+          scrollBranchBlockIntoView(urlDiv);
           if (value === 'yes') {
             input?.setAttribute('required', '');
           } else {
@@ -814,11 +860,13 @@ const wid = wizardId;
           primaryBlock?.classList.add('animate-sweep');
           obstacleBlock?.classList.add('hidden');
           clearTileGroup('obstacle');
+          scrollBranchBlockIntoView(primaryBlock);
         } else if (value === 'yes' || value === 'old') {
           primaryBlock?.classList.add('hidden');
           obstacleBlock?.classList.remove('hidden');
           obstacleBlock?.classList.add('animate-sweep');
           clearTileGroup('primary_goal');
+          scrollBranchBlockIntoView(obstacleBlock);
         } else {
           primaryBlock?.classList.add('hidden');
           obstacleBlock?.classList.add('hidden');
