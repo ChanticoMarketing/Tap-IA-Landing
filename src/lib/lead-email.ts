@@ -29,20 +29,30 @@ export type LeadPayload = {
   referrer: string;
 };
 
-const OBSTACLE_LABELS: Record<string, string> = {
-  invisibility: 'No aparecemos en Google (SEO / visitas)',
-  conversion: 'Visitas sin contactos ni ventas',
-  trust: 'Web desactualizada frente a la competencia',
-  tech: 'La IA no recomienda nuestro negocio (GEO)',
+const PRIORITY_LABELS: Record<string, string> = {
+  diagnostic: 'Diagnóstico y prioridades (auditoría SEO/GEO + marketing IA)',
+  visibility: 'Visibilidad en Google y en IA (SEO/GEO)',
+  conversion_leads: 'Más leads y conversiones (web / marketing)',
+  marketing_ai: 'Marketing digital con IA',
+  automation: 'Automatizar con agentes IA',
+  custom_platform: 'Plataforma o software a medida (WebApps)',
+  video_avatar: 'Escalar contenido en video (avatares IA)',
+  strategy: 'Consultoría estratégica en IA',
+  web_launch: 'Lanzar presencia digital (web / landing)',
+  not_sure: 'No estoy seguro, necesita orientación',
+  // Valores legacy (formularios antiguos)
+  invisibility: 'Visibilidad en Google y en IA (legacy)',
+  conversion: 'Más leads y conversiones (legacy)',
+  trust: 'Más leads y conversiones / web (legacy)',
+  tech: 'Visibilidad en Google y en IA (legacy)',
+  launch_presence: 'Lanzar presencia digital (legacy)',
+  get_found_google: 'Visibilidad en Google (legacy)',
+  ai_visibility: 'Visibilidad en IA (legacy)',
+  automate_leads: 'Automatizar con agentes IA (legacy)',
 };
 
-const PRIMARY_GOAL_LABELS: Record<string, string> = {
-  launch_presence: 'Lanzar mi presencia online',
-  get_found_google: 'Que me encuentren en Google',
-  ai_visibility: 'Aparecer en respuestas de IA',
-  automate_leads: 'Automatizar atención o ventas con IA',
-  not_sure: 'No estoy seguro, necesito un diagnóstico',
-};
+const OBSTACLE_LABELS = PRIORITY_LABELS;
+const PRIMARY_GOAL_LABELS = PRIORITY_LABELS;
 
 const WEBSITE_LABELS: Record<string, string> = {
   yes: 'Sí, web activa',
@@ -57,6 +67,8 @@ const SERVICE_LABELS: Record<string, string> = {
   webapps: 'Plataforma o software a medida',
   marketing: 'Marketing asistido por IA',
   avatars: 'Avatares IA o videos automatizados',
+  consultoria: 'Consultoría estratégica en IA',
+  audit: 'Auditoría AI Marketing + SEO/GEO',
 };
 
 const URGENCY_LABELS: Record<string, string> = {
@@ -114,8 +126,9 @@ export function buildLeadEmailContent(payload: LeadPayload): { subject: string; 
       ${row('Correo', payload.email)}
       ${row('Cargo', payload.role)}
       ${row('WhatsApp', payload.phone || 'No indicado')}
-      ${row('Obstáculo', label(OBSTACLE_LABELS, payload.obstacle))}
-      ${row('Objetivo principal', label(PRIMARY_GOAL_LABELS, payload.primary_goal))}
+      ${row('Prioridad / reto', label(PRIORITY_LABELS, payload.obstacle || payload.primary_goal))}
+      ${row('Obstáculo (detalle)', label(OBSTACLE_LABELS, payload.obstacle))}
+      ${row('Objetivo principal (detalle)', label(PRIMARY_GOAL_LABELS, payload.primary_goal))}
       ${row('Propuesta de valor', payload.value_prop || '—')}
       ${row('Sitio web', label(WEBSITE_LABELS, payload.has_website))}
       ${row('URL actual', payload.current_website || '—')}
