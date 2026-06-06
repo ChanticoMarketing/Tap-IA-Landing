@@ -1,4 +1,4 @@
-import { Resend } from 'resend';
+// Integración con Webhook para envío de leads.
 
 /** Único destinatario de notificaciones del formulario de contacto. */
 const LEAD_NOTIFY_TO = 'emmanuel@tap-ia.tech';
@@ -184,35 +184,40 @@ function readServerEnv(name: string): string | undefined {
   return value?.trim() || undefined;
 }
 
-export async function sendLeadNotificationEmail(payload: LeadPayload): Promise<{ id: string }> {
-  const apiKey = readServerEnv('RESEND_API_KEY');
-  if (!apiKey) {
-    throw new Error('RESEND_API_KEY no configurada');
+export async function sendLeadToWebhook(payload: LeadPayload): Promise<{ success: boolean }> {
+  const webhookUrl =
+    readServerEnv('MAKE_WEBHOOK_URL') || 'https://hook.us2.make.com/px6jolmk7ekqxg5lyq9bq4x0l5uaj0ja';
+
+  const structuredData = {
+    "Nombre": payload.name,
+    "Correo profesional": payload.email,
+    "Puesto/cargo": payload.role || 'No especificado',
+    "Nombre Empresa": payload.company,
+    "Número WhatsApp": payload.phone || 'No indicado',
+    "Web Activa": label(WEBSITE_LABELS, payload.has_website),
+    "Problema a resolver": payload.problem || '—',
+    "URL Página Web": payload.current_website || '—',
+    "PVU": payload.value_prop || '—',
+    "Tiempo de Inversión": label(URGENCY_LABELS, payload.urgency),
+    "Escala operacional": label(BUDGET_LABELS, payload.budget)
+  };
+
+  try {
+    const response = await fetch(webhookUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(structuredData),
+    });
+
+    if (!response.ok) {
+      throw new Error(`Webhook de Make respondió con estado ${response.status}: ${response.statusText}`);
+    }
+
+    return { success: true };
+  } catch (error: any) {
+    console.error('Error enviando lead al webhook de Make:', error);
+    throw new Error(error.message || 'Error desconocido al enviar al webhook');
   }
-
-  const from =
-    readServerEnv('RESEND_FROM_EMAIL') || 'Tap-IA Contacto <contacto@tap-ia.tech>';
-
-  const resend = new Resend(apiKey);
-  const { subject, html, text } = buildLeadEmailContent(payload);
-
-  const { data, error } = await resend.emails.send({
-    from,
-    to: [LEAD_NOTIFY_TO],
-    replyTo: payload.email,
-    subject,
-    html,
-    text,
-    tags: [{ name: 'source', value: 'contact-form' }],
-  });
-
-  if (error) {
-    throw new Error(error.message);
-  }
-
-  if (!data?.id) {
-    throw new Error('Resend no devolvió ID de envío');
-  }
-
-  return { id: data.id };
 }

@@ -39,15 +39,16 @@ Asegúrese de configurar las siguientes variables en su proveedor de alojamiento
 | :--- | :--- | :--- |
 | `PORT` | Puerto en el que la aplicación escuchará | Generalmente el PaaS inyecta esta variable (ej. 80 o 443). Por defecto Astro usa el `4321`. |
 | `HOST` | Interfaces de red a escuchar | Usualmente `0.0.0.0` para despliegues VPS o Docker. |
-| `RESEND_API_KEY` | API key de Resend para enviar notificaciones de lead | **Obligatoria** para que el formulario envíe correo. |
-| `RESEND_FROM_EMAIL` | Remitente verificado en Resend (dominio `tap-ia.tech`) | Ej. `Tap-IA Contacto <contacto@tap-ia.tech>` |
+| `MAKE_WEBHOOK_URL` | URL del Webhook de Make para recibir leads | **Obligatoria** (o usa el fallback por defecto en el código). |
+| `RESEND_API_KEY` | *(Deprecada)* API key de Resend | Ya no se utiliza tras la migración a Make. |
+| `RESEND_FROM_EMAIL` | *(Deprecada)* Remitente de Resend | Ya no se utiliza tras la migración a Make. |
 | `PUBLIC_GOOGLE_SITE_VERIFICATION` | Token de verificación para Google Search Console (propiedad **Prefijo de URL**) | Acepta solo el token (`Unvz...`) o el formato completo (`google-site-verification=Unvz...`). Se renderiza en `<meta name="google-site-verification" content="...">` vía `Layout.astro`. Si no se define, el build usa el valor por defecto del repo. |
 
 ## 4. Formulario de contacto
 
-POST `/api/submit` envía un correo vía **Resend** a **`emmanuel@tap-ia.tech`** (destino fijo en `src/lib/lead-email.ts`). Sin `RESEND_API_KEY` el endpoint devuelve error 500. El remitente (`RESEND_FROM_EMAIL`) debe pertenecer a un dominio verificado en Resend. El campo `replyTo` es el correo del lead.
+POST `/api/submit` envía el lead de manera estructurada al Webhook de **Make** (configurado en `src/lib/lead-email.ts`). Si el Webhook falla o no está disponible, el endpoint devuelve un error 500.
 
-**Hostinger:** define `RESEND_API_KEY` y `RESEND_FROM_EMAIL` en las variables de entorno de la app Node y **reinicia o redeploy** tras guardarlas. El código lee `process.env` en runtime (no solo en build).
+**Hostinger:** define `MAKE_WEBHOOK_URL` en las variables de entorno de la app Node y **reinicia o redeploy** tras guardarla. El código lee `process.env` en runtime (no solo en build).
 
 ## 5. Pruebas de Humo (Smoke Test) Post-Deploy
 
@@ -144,12 +145,11 @@ Para cerrar avisos de *subdomains don't support HSTS* y reforzar HTTPS:
 
 #### 3. Variables de Entorno en hPanel
 En el menú de administración de la aplicación web en hPanel, navega a la sección de **Variables de Entorno** (Environment Variables) y añade:
-* `RESEND_API_KEY` = `<tu-api-key-de-resend>`
-* `RESEND_FROM_EMAIL` = `Tap-IA Contacto <contacto@tap-ia.tech>` (o el remitente verificado en Resend)
+* `MAKE_WEBHOOK_URL` = `https://hook.us2.make.com/px6jolmk7ekqxg5lyq9bq4x0l5uaj0ja`
 * `HOST` = `0.0.0.0`
 * `PUBLIC_GOOGLE_SITE_VERIFICATION` = `UnvzIf5Fe7a61U4AM2dLWfY3khV_64_mMUlG7OCBa0o` (opcional si ya está el valor por defecto en el build desplegado)
 
-Los leads del formulario llegan siempre a **emmanuel@tap-ia.tech**; no uses `LEAD_NOTIFY_EMAIL` ni `N8N_WEBHOOK_URL`.
+Los leads del formulario se envían al webhook de Make especificado. Las variables legacy de Resend ya no son requeridas.
 
 #### 4. Resolución del error "403 Forbidden" (.htaccess generado por Hostinger)
 Si tras desplegar la aplicación al ingresar a `https://tap-ia.tech` obtienes un error **403 Forbidden**, revisa primero que el sitio esté configurado como **Node.js Web App** y no como despliegue estático en `public_html`.

@@ -1,5 +1,5 @@
 import type { APIRoute } from 'astro';
-import { sendLeadNotificationEmail, type LeadPayload } from '../../lib/lead-email';
+import { sendLeadToWebhook, type LeadPayload } from '../../lib/lead-email';
 
 export const prerender = false;
 
@@ -71,7 +71,7 @@ export const POST: APIRoute = async ({ request }) => {
       referrer: data.referrer || '',
     };
 
-    await sendLeadNotificationEmail(payload);
+    await sendLeadToWebhook(payload);
 
     return new Response(
       JSON.stringify({
