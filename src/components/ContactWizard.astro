@@ -26,6 +26,56 @@ const wid = wizardId;
 <div class="contact-wizard" data-contact-wizard={wid} id={`contact-wizard-${wid}`}>
 
   <div class="bg-transparent p-0">
+    <!-- Success State (Inline Thank You Card) -->
+    <div
+      data-wizard-success-state
+      aria-labelledby={`wizard-success-heading-${wid}`}
+      class="hidden animate-sweep text-center py-12 px-6 md:py-16 md:px-10 rounded-2xl border border-white/5 bg-matte/60 backdrop-blur-md max-w-xl mx-auto shadow-2xl focus:outline-none focus:ring-2 focus:ring-gold"
+      role="status"
+      aria-live="polite"
+      tabindex="-1"
+    >
+      <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gold/10 border border-gold/30 text-gold mb-6 shadow-[0_0_30px_rgba(212,175,55,0.15)] animate-pulse-slow">
+        <i class="fa-solid fa-check text-4xl" aria-hidden="true"></i>
+      </div>
+
+      <h3 id={`wizard-success-heading-${wid}`} class="font-playfair text-3xl md:text-4xl text-offwhite font-bold mb-4 tracking-wide">
+        ¡Solicitud Recibida!
+      </h3>
+
+      <p class="font-jakarta text-subtle text-base md:text-lg mb-8 leading-relaxed">
+        Gracias, <span data-user-name-placeholder class="text-gold font-semibold"></span>. Tu diagnóstico de encaje está en revisión.
+      </p>
+
+      <p class="text-subtle text-sm mb-10 max-w-md mx-auto leading-relaxed">
+        Revisamos tu caso y te contactamos en <strong class="text-offwhite">1 día hábil</strong> con el siguiente paso.
+        Si tu proyecto es urgente, puedes escribirnos directamente por WhatsApp.
+      </p>
+
+      <div class="gold-rule my-6 opacity-30"></div>
+
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center font-jakarta">
+        <a
+          href={waHref}
+          target="_blank"
+          rel="noopener noreferrer"
+          data-wizard-success-wa-link
+          class="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-[#25D366] hover:bg-[#20ba5a] text-white px-8 py-3.5 rounded-full font-bold transition-all duration-300 shadow-[0_4px_15px_rgba(37,211,102,0.2)] hover:shadow-[0_6px_20px_rgba(37,211,102,0.3)] active:scale-95 text-xs uppercase tracking-wider min-h-[44px]"
+        >
+          <i class="fa-brands fa-whatsapp text-lg" aria-hidden="true"></i>
+          Acelerar por WhatsApp
+        </a>
+        
+        <a
+          href="/"
+          class="w-full sm:w-auto inline-flex items-center justify-center gap-2 border border-white/10 hover:border-gold/30 bg-matte/45 hover:bg-gold/5 text-offwhite hover:text-gold px-8 py-3.5 rounded-full font-bold transition-all duration-300 active:scale-95 text-xs uppercase tracking-wider min-h-[44px]"
+        >
+          <i class="fa-solid fa-house text-sm" aria-hidden="true"></i>
+          Volver al Inicio
+        </a>
+      </div>
+    </div>
+
     <!-- Progress Indicator -->
     <div class="mb-6 md:mb-8" aria-label="Progreso del formulario" data-wizard-scroll-anchor>
       <div class="flex justify-between ui-caption mb-3">
@@ -132,22 +182,22 @@ const wid = wizardId;
           <p data-wizard-has_website-error class="field-error hidden" role="alert"></p>
         </div>
 
-        <!-- Prioridad alineada a servicios Tap-IA (con o sin web) -->
+        <!-- Prioridades por problema (mapeo interno a servicios Tap-IA) -->
         <div class="mb-6 hidden" data-wizard-priority-block>
           <input type="hidden" name="primary_goal" id={`${wid}-field-primary_goal`} />
           <input type="hidden" name="obstacle" id={`${wid}-field-obstacle`} />
           <div data-wizard-priority-group>
             <label class="block ui-caption mb-2 text-gold font-jakarta">
-              ¿Qué quieres resolver o mejorar? <span class="text-gold">*</span>
+              ¿Con qué situación te identificas hoy? <span class="text-gold">*</span>
             </label>
             <p class="text-subtle text-xs mb-3 font-jakarta">
-              Puedes seleccionar una o más opciones. No solo páginas web: visibilidad, marketing, IA, automatización, etc.
+              Puedes marcar varias. No necesitas saber el servicio: eso lo aterrizamos contigo en la sesión.
             </p>
 
             <div
               class="grid grid-cols-1 sm:grid-cols-2 gap-4 font-jakarta text-sm"
               role="group"
-              aria-label="Prioridades a resolver"
+              aria-label="Problemas o situaciones actuales"
             >
               <button
                 type="button"
@@ -158,8 +208,8 @@ const wid = wizardId;
               >
                 <i class="fa-solid fa-magnifying-glass-chart text-gold text-lg mt-0.5" aria-hidden="true"></i>
                 <div>
-                  <span class="font-bold text-offwhite block">Diagnóstico y prioridades</span>
-                  <span class="text-xs text-subtle mt-1 block leading-normal">Auditoría SEO/GEO + marketing con IA.</span>
+                  <span class="font-bold text-offwhite block">No sé por dónde empezar</span>
+                  <span class="text-xs text-subtle mt-1 block leading-normal">Invierto en digital, pero sin un plan claro ni prioridades.</span>
                 </div>
               </button>
 
@@ -172,8 +222,8 @@ const wid = wizardId;
               >
                 <i class="fa-solid fa-wand-magic-sparkles text-gold text-lg mt-0.5" aria-hidden="true"></i>
                 <div>
-                  <span class="font-bold text-offwhite block">Visibilidad en Google y en IA</span>
-                  <span class="text-xs text-subtle mt-1 block leading-normal">SEO/GEO y citabilidad en motores generativos.</span>
+                  <span class="font-bold text-offwhite block">Casi nadie nos encuentra</span>
+                  <span class="text-xs text-subtle mt-1 block leading-normal">Poca presencia en Google y la IA no nos recomienda.</span>
                 </div>
               </button>
 
@@ -185,8 +235,8 @@ const wid = wizardId;
               >
                 <i class="fa-solid fa-funnel-dollar text-gold text-lg mt-0.5" aria-hidden="true"></i>
                 <div>
-                  <span class="font-bold text-offwhite block">Más leads y conversiones</span>
-                  <span class="text-xs text-subtle mt-1 block leading-normal">Web, landing o embudo que convierta mejor.</span>
+                  <span class="font-bold text-offwhite block">Hay tráfico, pero no vendemos</span>
+                  <span class="text-xs text-subtle mt-1 block leading-normal">Visitas o contactos que no se convierten en clientes.</span>
                 </div>
               </button>
 
@@ -198,8 +248,8 @@ const wid = wizardId;
               >
                 <i class="fa-solid fa-bullseye text-gold text-lg mt-0.5" aria-hidden="true"></i>
                 <div>
-                  <span class="font-bold text-offwhite block">Marketing digital con IA</span>
-                  <span class="text-xs text-subtle mt-1 block leading-normal">Campañas, contenido y operación comercial asistida.</span>
+                  <span class="font-bold text-offwhite block">Marketing sin resultados claros</span>
+                  <span class="text-xs text-subtle mt-1 block leading-normal">Mucho esfuerzo publicando o pautando; poco retorno medible.</span>
                 </div>
               </button>
 
@@ -211,8 +261,8 @@ const wid = wizardId;
               >
                 <i class="fa-solid fa-gears text-gold text-lg mt-0.5" aria-hidden="true"></i>
                 <div>
-                  <span class="font-bold text-offwhite block">Automatizar con agentes IA</span>
-                  <span class="text-xs text-subtle mt-1 block leading-normal">Atención, ventas u operación 24/7.</span>
+                  <span class="font-bold text-offwhite block">Perdemos tiempo en lo repetitivo</span>
+                  <span class="text-xs text-subtle mt-1 block leading-normal">Seguimiento, respuestas o procesos que deberían ser automáticos.</span>
                 </div>
               </button>
 
@@ -224,8 +274,8 @@ const wid = wizardId;
               >
                 <i class="fa-solid fa-code text-gold text-lg mt-0.5" aria-hidden="true"></i>
                 <div>
-                  <span class="font-bold text-offwhite block">Plataforma o software a medida</span>
-                  <span class="text-xs text-subtle mt-1 block leading-normal">WebApp, dashboard o producto digital propio.</span>
+                  <span class="font-bold text-offwhite block">Necesitamos algo que no existe listo</span>
+                  <span class="text-xs text-subtle mt-1 block leading-normal">Excel, WhatsApp o herramientas sueltas ya no nos alcanzan.</span>
                 </div>
               </button>
 
@@ -237,8 +287,8 @@ const wid = wizardId;
               >
                 <i class="fa-solid fa-user-astronaut text-gold text-lg mt-0.5" aria-hidden="true"></i>
                 <div>
-                  <span class="font-bold text-offwhite block">Escalar contenido en video</span>
-                  <span class="text-xs text-subtle mt-1 block leading-normal">Avatares IA y piezas automatizadas.</span>
+                  <span class="font-bold text-offwhite block">No damos abasto con video</span>
+                  <span class="text-xs text-subtle mt-1 block leading-normal">Queremos presencia en video sin grabar y editar todo a mano.</span>
                 </div>
               </button>
 
@@ -250,8 +300,8 @@ const wid = wizardId;
               >
                 <i class="fa-solid fa-chess-knight text-gold text-lg mt-0.5" aria-hidden="true"></i>
                 <div>
-                  <span class="font-bold text-offwhite block">Consultoría estratégica en IA</span>
-                  <span class="text-xs text-subtle mt-1 block leading-normal">Roadmap y criterio antes de ejecutar.</span>
+                  <span class="font-bold text-offwhite block">Quiero usar IA, pero con criterio</span>
+                  <span class="text-xs text-subtle mt-1 block leading-normal">Miedo a invertir mal o elegir herramientas al azar.</span>
                 </div>
               </button>
 
@@ -264,8 +314,8 @@ const wid = wizardId;
               >
                 <i class="fa-solid fa-rocket text-gold text-lg mt-0.5" aria-hidden="true"></i>
                 <div>
-                  <span class="font-bold text-offwhite block">Lanzar presencia digital</span>
-                  <span class="text-xs text-subtle mt-1 block leading-normal">Web o landing desde cero.</span>
+                  <span class="font-bold text-offwhite block">Aún no existimos en digital</span>
+                  <span class="text-xs text-subtle mt-1 block leading-normal">No tenemos web o canal serio que nos represente.</span>
                 </div>
               </button>
 
@@ -277,8 +327,8 @@ const wid = wizardId;
               >
                 <i class="fa-solid fa-compass text-subtle text-lg mt-0.5" aria-hidden="true"></i>
                 <div>
-                  <span class="font-bold text-offwhite block">No estoy seguro, necesito orientación</span>
-                  <span class="text-xs text-subtle mt-1 block leading-normal">Sesión de diagnóstico para definir el mejor camino.</span>
+                  <span class="font-bold text-offwhite block">No identifico el problema exacto</span>
+                  <span class="text-xs text-subtle mt-1 block leading-normal">Necesito ayuda para priorizar antes de invertir.</span>
                 </div>
               </button>
             </div>
@@ -989,8 +1039,8 @@ const wid = wizardId;
           if (hint) {
             hint.textContent =
               priorityKeys.includes('not_sure') || priorityKeys.length > 1
-                ? 'Servicios sugeridos según tus prioridades. Puedes ajustar la selección.'
-                : 'Servicios sugeridos según tu prioridad. Puedes seleccionar varias.';
+                ? 'Servicios sugeridos según lo que nos contaste. Puedes ajustar la selección.'
+                : 'Servicios sugeridos según tu situación. Puedes seleccionar varias.';
           }
         } else if (hint) {
           hint.textContent = 'Puedes seleccionar varias opciones.';
@@ -1138,7 +1188,7 @@ const wid = wizardId;
             isValid = false;
             priorityGroup?.classList.add('services-group--error');
             if (priorityErr) {
-              priorityErr.textContent = 'Seleccione al menos una prioridad.';
+              priorityErr.textContent = 'Selecciona al menos una situación.';
               priorityErr.classList.remove('hidden');
             }
           } else {
@@ -1273,12 +1323,44 @@ const wid = wizardId;
 
           if (response.ok) {
             submitSucceeded = true;
-            sessionStorage.setItem('tap_contact_name', String(data.name || ''));
             submitBtn.innerHTML =
               '<i class="fa-solid fa-check text-base" aria-hidden="true"></i> Recibido';
+            
+            // Dispatch conversion custom event for analytics tracking
+            window.dispatchEvent(new CustomEvent('lead_converted', { detail: { company: data.company || '' } }));
+
             setTimeout(() => {
-              window.location.href = '/contacto/gracias';
-            }, 600);
+              const form = qs('[data-wizard-form]');
+              const progressTrack = qs('[data-wizard-scroll-anchor]');
+              const successState = qs('[data-wizard-success-state]');
+              
+              if (form) form.classList.add('hidden');
+              if (progressTrack) progressTrack.classList.add('hidden');
+              
+              if (successState) {
+                const namePlaceholder = successState.querySelector('[data-user-name-placeholder]');
+                if (namePlaceholder) {
+                  namePlaceholder.textContent = String(data.name || 'Invitado').trim();
+                }
+                
+                const waLink = successState.querySelector('[data-wizard-success-wa-link]');
+                if (waLink) {
+                  const userName = String(data.name || '').trim();
+                  const waBase = 'https://wa.me/5213324239103';
+                  const greetingMsg = userName ? `, me llamo ${userName} y acabo de` : ' y acabo de';
+                  const waText = encodeURIComponent(
+                    `¡Hola Tap-IA! Acabo de enviar mi diagnóstico por la web${greetingMsg} enviar mi diagnóstico. Si andas por ahí, me gustaría que empecemos a rebotar ideas por aquí de una vez. ¡Gracias!`
+                  );
+                  waLink.href = `${waBase}?text=${waText}`;
+                }
+                
+                successState.classList.remove('hidden');
+                successState.focus();
+              }
+              
+              scrollWizardIntoView();
+            }, 400);
+            
             return;
           }
 

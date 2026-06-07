@@ -12,6 +12,7 @@
     "prod:clean": "node scripts/restart-prod.mjs",
     "preview": "astro preview",
     "favicon": "node scripts/build-favicon.mjs",
+    "verify:resend": "node scripts/verify-resend.mjs",
     "astro": "astro"
   },
   "dependencies": {

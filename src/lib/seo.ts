@@ -40,7 +40,6 @@ export const INDEXABLE_ROUTES = [
 ] as const;
 
 export const NOINDEX_ROUTES = new Set([
-  '/contacto/gracias',
   '/legal',
   '/soluciones/ai-marketing',
   '/soluciones/agentes-ia',
@@ -105,7 +104,6 @@ const DEFAULT_DESCRIPTIONS: Record<string, string> = {
   '/recursos/megaprompts-b2b-marketing': 'Biblioteca de 5 megaprompts premium de Claude y ChatGPT para marketing de contenidos B2B, copywriting y playbooks de objeciones.',
   '/sobre': 'Conoce la visión, experiencia y enfoque de TAP-IA para construir autoridad digital con IA.',
   '/contacto': 'Contacta a TAP-IA para evaluar tu caso de negocio y definir el siguiente paso con criterio.',
-  '/contacto/gracias': 'Tu solicitud de diagnóstico fue recibida. TAP-IA te contactará en 1 día hábil.',
   '/legal': 'Aviso legal, privacidad y políticas de uso responsable de TAP-IA.',
   '/novedades-ia/noticia-mock': 'Análisis de Google, AI Overviews y GEO para entender cómo cambia la visibilidad en búsquedas generativas.',
 };

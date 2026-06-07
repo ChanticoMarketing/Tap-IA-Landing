@@ -30,16 +30,16 @@ export type LeadPayload = {
 };
 
 const PRIORITY_LABELS: Record<string, string> = {
-  diagnostic: 'Diagnóstico y prioridades (auditoría SEO/GEO + marketing IA)',
-  visibility: 'Visibilidad en Google y en IA (SEO/GEO)',
-  conversion_leads: 'Más leads y conversiones (web / marketing)',
-  marketing_ai: 'Marketing digital con IA',
-  automation: 'Automatizar con agentes IA',
-  custom_platform: 'Plataforma o software a medida (WebApps)',
-  video_avatar: 'Escalar contenido en video (avatares IA)',
-  strategy: 'Consultoría estratégica en IA',
-  web_launch: 'Lanzar presencia digital (web / landing)',
-  not_sure: 'No estoy seguro, necesita orientación',
+  diagnostic: 'No sé por dónde empezar',
+  visibility: 'Casi nadie nos encuentra (Google / IA)',
+  conversion_leads: 'Hay tráfico, pero no vendemos',
+  marketing_ai: 'Marketing sin resultados claros',
+  automation: 'Perdemos tiempo en lo repetitivo',
+  custom_platform: 'Necesitamos algo que no existe listo',
+  video_avatar: 'No damos abasto con video',
+  strategy: 'Quiero usar IA, pero con criterio',
+  web_launch: 'Aún no existimos en digital',
+  not_sure: 'No identifico el problema exacto',
   // Valores legacy (formularios antiguos)
   invisibility: 'Visibilidad en Google y en IA (legacy)',
   conversion: 'Más leads y conversiones (legacy)',
@@ -135,7 +135,7 @@ export function buildLeadEmailContent(payload: LeadPayload): { subject: string; 
       ${row('Correo', payload.email)}
       ${row('Cargo', payload.role)}
       ${row('WhatsApp', payload.phone || 'No indicado')}
-      ${row('Prioridades / retos', formatPriorityList(payload.obstacle || payload.primary_goal))}
+      ${row('Situaciones que reportó', formatPriorityList(payload.obstacle || payload.primary_goal))}
       ${row('Propuesta de valor', payload.value_prop || '—')}
       ${row('Sitio web', label(WEBSITE_LABELS, payload.has_website))}
       ${row('URL actual', payload.current_website || '—')}
@@ -161,7 +161,7 @@ export function buildLeadEmailContent(payload: LeadPayload): { subject: string; 
     `Correo: ${payload.email}`,
     `Cargo: ${payload.role}`,
     `WhatsApp: ${payload.phone || 'No indicado'}`,
-    `Prioridades: ${formatPriorityList(payload.obstacle || payload.primary_goal)}`,
+    `Situaciones: ${formatPriorityList(payload.obstacle || payload.primary_goal)}`,
     `Propuesta de valor: ${payload.value_prop || '—'}`,
     `Web: ${label(WEBSITE_LABELS, payload.has_website)}`,
     `URL: ${payload.current_website || '—'}`,

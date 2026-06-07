@@ -332,8 +332,9 @@ const heroWaHref = `https://wa.me/5213324239103?text=${encodeURIComponent(heroWa
                             </li>
                         </ul>
                     </div>
-                    <div class="vp-card relative z-10 rounded-2xl border border-white/10 bg-[#16191f]/80 backdrop-blur-xl p-3 md:p-4 shadow-[0_24px_48px_rgba(0,0,0,0.45)]">
-                        <figure class="vp-visual relative m-0 aspect-square w-full overflow-hidden rounded-xl bg-[#0a0b0e]">
+                    <!-- Remoción del marco vp-card para integración fluida de la ilustración -->
+                    <div class="relative z-10 w-full max-w-[450px] mx-auto md:ml-auto md:mr-0 flex items-center justify-center">
+                        <figure class="vp-visual relative m-0 aspect-square w-full overflow-hidden rounded-xl bg-transparent">
                             <img
                                 src="/tap-ia-filtro-criterio-ia-marketing.png"
                                 alt="Ilustración Tap-IA: filtro que transforma complejidad dispersa en implementación clara y accionable para marketing con criterio."
@@ -469,7 +470,7 @@ const heroWaHref = `https://wa.me/5213324239103?text=${encodeURIComponent(heroWa
 
                 <!-- Tarjeta 2: Sistema Web Inteligente -->
                 <div class="pricing-card card-glow p-8 relative transform md:-translate-y-6 shadow-[0_0_60px_rgba(212,175,55,0.12)] flex flex-col justify-between h-full min-h-[474px]" style="border-color: rgba(212,175,55,0.3)">
-                    <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gold text-white ui-caption py-1.5 px-4 rounded-full shadow-lg">Más Popular</div>
+                    <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gold ui-caption py-1.5 px-4 rounded-full shadow-lg font-bold" style="color: var(--color-charcoal);">Más Popular</div>
                     <div>
                         <h3 class="mb-2 text-white">Sistema Web Inteligente</h3>
                         <p class="ui-caption text-gold mb-8">WEB + SEO/GEO + ROADMAP IA</p>
@@ -781,11 +782,22 @@ const heroWaHref = `https://wa.me/5213324239103?text=${encodeURIComponent(heroWa
         const vpContent = document.getElementById('value-prop-content');
 
         if (vpBase && vpAccent && vpContent) {
-            if (!prefersReducedMotion) {
+            const vpTextCol = vpContent.querySelector('.text-subtle');
+            const vpVisualContainer = vpContent.querySelector('.vp-visual');
+
+            if (!prefersReducedMotion && vpTextCol && vpVisualContainer) {
                 const decodeTargets = vpContent.querySelectorAll('.decode-target');
                 
                 // Ocultar textos INICIALMENTE para que no se lean antes del efecto
                 gsap.set([vpBase, vpAccent, ...decodeTargets], { opacity: 0 });
+
+                // Configurar estados iniciales de las columnas individuales
+                gsap.set(vpTextCol, { opacity: 0, y: 30 });
+                gsap.set(vpVisualContainer, { 
+                    opacity: 0, 
+                    scale: 1.08, 
+                    filter: isMobileViewport ? "none" : "blur(12px)" 
+                });
 
                 // Guardar texto original
                 vpBase.dataset.text = vpBase.innerText;
@@ -808,28 +820,46 @@ const heroWaHref = `https://wa.me/5213324239103?text=${encodeURIComponent(heroWa
                             gsap.set(vpAccent, { opacity: 1 });
                             scrambleText(vpAccent, vpAccent.dataset.text, 1200);
                         })
+                        // Revelar el contenedor padre inmediatamente sin transiciones pesadas de golpe
                         .to(vpContent, {
                             opacity: 1,
                             y: 0,
-                            filter: isMobileViewport ? "none" : "blur(0px)",
+                            filter: "none",
+                            duration: 0.1
+                        }, "+=1.2")
+                        // Animar la columna de texto hacia arriba
+                        .to(vpTextCol, {
+                            opacity: 1,
+                            y: 0,
                             duration: isMobileViewport ? 0.5 : 0.8,
                             ease: "power2.out"
-                        }, "+=1.2")
+                        })
                         .call(() => {
-                            // Decodificar el contenido en cascada una vez que el contenedor es visible
+                            // Decodificar el contenido en cascada una vez que el texto está visible
                             decodeTargets.forEach((el, index) => {
                                 setTimeout(() => {
                                     gsap.set(el, { opacity: 1 });
                                     scrambleText(el, el.dataset.text, 1000);
                                 }, index * 100);
                             });
-                        });
+                        })
+                        // Animar la imagen con un ligero retraso, zoom-out y desenfoque
+                        .to(vpVisualContainer, {
+                            opacity: 1,
+                            scale: 1,
+                            filter: "blur(0px)",
+                            duration: isMobileViewport ? 0.5 : 1.2,
+                            ease: "power3.out"
+                        }, "-=0.4");
                     }
                 });
             } else {
                 // Fallback
                 gsap.set([vpBase, vpAccent, ...vpContent.querySelectorAll('.decode-target')], { opacity: 1 });
                 gsap.set(vpContent, { opacity: 1, y: 0, filter: "none" });
+                if (vpTextCol && vpVisualContainer) {
+                    gsap.set([vpTextCol, vpVisualContainer], { opacity: 1, y: 0, scale: 1, filter: "none" });
+                }
             }
         }
 
@@ -1095,24 +1125,26 @@ const heroWaHref = `https://wa.me/5213324239103?text=${encodeURIComponent(heroWa
         }
     }
 
-    /* Value prop — imagen con bordes difuminados hacia Matte */
-    .vp-visual-img {
-        -webkit-mask-image: radial-gradient(ellipse 88% 88% at 50% 50%, #000 58%, transparent 100%);
-        mask-image: radial-gradient(ellipse 88% 88% at 50% 50%, #000 58%, transparent 100%);
+    /* Propuesta de valor: Máscara de transparencia pura optimizada para hardware */
+    .vp-visual {
+        transform: translate3d(0, 0, 0);
+        will-change: mask-image;
     }
 
-    .vp-visual::after {
-        content: '';
-        position: absolute;
-        inset: 0;
-        pointer-events: none;
-        border-radius: inherit;
-        background: radial-gradient(
-            ellipse 95% 95% at 50% 50%,
-            transparent 42%,
-            rgba(22, 25, 31, 0.35) 68%,
-            rgba(22, 25, 31, 0.85) 88%,
-            rgb(22, 25, 31) 100%
-        );
+    .vp-visual-img {
+        -webkit-mask-image: radial-gradient(ellipse 85% 85% at 50% 50%, #000000 50%, transparent 100%);
+        mask-image: radial-gradient(ellipse 85% 85% at 50% 50%, #000000 50%, transparent 100%);
+        
+        -webkit-mask-size: cover;
+        mask-size: cover;
+        
+        -webkit-mask-repeat: no-repeat;
+        mask-repeat: no-repeat;
+        
+        -webkit-mask-position: center;
+        mask-position: center;
+        
+        /* Promoción a capa de hardware (GPU) */
+        transform: translate3d(0, 0, 0);
     }
 </style>

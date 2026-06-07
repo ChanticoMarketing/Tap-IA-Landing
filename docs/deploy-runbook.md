@@ -50,6 +50,12 @@ POST `/api/submit` envía el lead de manera estructurada al Webhook de **Make** 
 
 **Hostinger:** define `MAKE_WEBHOOK_URL` en las variables de entorno de la app Node y **reinicia o redeploy** tras guardarla. El código lee `process.env` en runtime (no solo en build).
 
+**Verificación rápida:**
+
+1. Local (con la misma API key que producción): `npm run verify:resend`
+2. Producción: `POST https://tap-ia.tech/api/submit` con JSON válido (consent + servicios) → debe responder **200**; sin `RESEND_API_KEY` responde **500**.
+3. Resend Dashboard → **Logs**: estado `delivered` o mensaje de error (dominio/remitente).
+
 ## 5. Pruebas de Humo (Smoke Test) Post-Deploy
 
 Una vez que el proyecto esté en vivo bajo `https://tap-ia.tech` ejecute la siguiente matriz de pruebas para validar el lanzamiento.
