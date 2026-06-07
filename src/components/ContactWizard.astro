@@ -1305,9 +1305,11 @@ const wid = wizardId;
         submitBtn.disabled = true;
         hideFormStatus();
 
+        const MAKE_WEBHOOK_URL = 'https://hook.us2.make.com/px6jolmk7ekqxg5lyq9bq4x0l5uaj0ja';
         let submitSucceeded = false;
 
         try {
+          // Paso 1: validar datos en el servidor
           const response = await fetch('/api/submit', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -1321,58 +1323,72 @@ const wid = wizardId;
             /* respuesta no JSON */
           }
 
-          if (response.ok) {
-            submitSucceeded = true;
-            submitBtn.innerHTML =
-              '<i class="fa-solid fa-check text-base" aria-hidden="true"></i> Recibido';
-            
-            // Dispatch conversion custom event for analytics tracking
-            window.dispatchEvent(new CustomEvent('lead_converted', { detail: { company: data.company || '' } }));
-
-            setTimeout(() => {
-              const form = qs('[data-wizard-form]');
-              const progressTrack = qs('[data-wizard-scroll-anchor]');
-              const successState = qs('[data-wizard-success-state]');
-              
-              if (form) form.classList.add('hidden');
-              if (progressTrack) progressTrack.classList.add('hidden');
-              
-              if (successState) {
-                const namePlaceholder = successState.querySelector('[data-user-name-placeholder]');
-                if (namePlaceholder) {
-                  namePlaceholder.textContent = String(data.name || 'Invitado').trim();
-                }
-                
-                const waLink = successState.querySelector('[data-wizard-success-wa-link]');
-                if (waLink) {
-                  const userName = String(data.name || '').trim();
-                  const waBase = 'https://wa.me/5213324239103';
-                  const greetingMsg = userName ? `, me llamo ${userName} y acabo de` : ' y acabo de';
-                  const waText = encodeURIComponent(
-                    `¡Hola Tap-IA! Acabo de enviar mi diagnóstico por la web${greetingMsg} enviar mi diagnóstico. Si andas por ahí, me gustaría que empecemos a rebotar ideas por aquí de una vez. ¡Gracias!`
-                  );
-                  waLink.href = `${waBase}?text=${waText}`;
-                }
-                
-                successState.classList.remove('hidden');
-                successState.focus();
-              }
-              
-              scrollWizardIntoView();
-            }, 400);
-            
+          if (!response.ok) {
+            const serverMsg =
+              typeof result.error === 'string' && result.error.trim()
+                ? result.error.trim()
+                : 'Hubo un problema al enviar. Intenta de nuevo o escríbeme por WhatsApp.';
+            showFormStatus(serverMsg, 'error');
             return;
           }
 
-          const serverMsg =
-            typeof result.error === 'string' && result.error.trim()
-              ? result.error.trim()
-              : '';
-          showFormStatus(
-            serverMsg ||
+          // Paso 2: enviar el payload estructurado al webhook de Make directamente desde el browser
+          const webhookPayload = result.webhookPayload || {};
+          const makeResponse = await fetch(MAKE_WEBHOOK_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(webhookPayload),
+          });
+
+          if (!makeResponse.ok) {
+            console.error('Make webhook error:', makeResponse.status);
+            showFormStatus(
               'Hubo un problema al enviar. Intenta de nuevo o escríbeme por WhatsApp.',
-            'error'
-          );
+              'error'
+            );
+            return;
+          }
+
+          // Éxito total
+          submitSucceeded = true;
+          submitBtn.innerHTML =
+            '<i class="fa-solid fa-check text-base" aria-hidden="true"></i> Recibido';
+
+          // Dispatch conversion custom event for analytics tracking
+          window.dispatchEvent(new CustomEvent('lead_converted', { detail: { company: data.company || '' } }));
+
+          setTimeout(() => {
+            const form = qs('[data-wizard-form]');
+            const progressTrack = qs('[data-wizard-scroll-anchor]');
+            const successState = qs('[data-wizard-success-state]');
+
+            if (form) form.classList.add('hidden');
+            if (progressTrack) progressTrack.classList.add('hidden');
+
+            if (successState) {
+              const namePlaceholder = successState.querySelector('[data-user-name-placeholder]');
+              if (namePlaceholder) {
+                namePlaceholder.textContent = String(data.name || 'Invitado').trim();
+              }
+
+              const waLink = successState.querySelector('[data-wizard-success-wa-link]');
+              if (waLink) {
+                const userName = String(data.name || '').trim();
+                const waBase = 'https://wa.me/5213324239103';
+                const greetingMsg = userName ? `, me llamo ${userName} y acabo de` : ' y acabo de';
+                const waText = encodeURIComponent(
+                  `¡Hola Tap-IA! Acabo de enviar mi diagnóstico por la web${greetingMsg} enviar mi diagnóstico. Si andas por ahí, me gustaría que empecemos a rebotar ideas por aquí de una vez. ¡Gracias!`
+                );
+                waLink.href = `${waBase}?text=${waText}`;
+              }
+
+              successState.classList.remove('hidden');
+              successState.focus();
+            }
+
+            scrollWizardIntoView();
+          }, 400);
+
         } catch (err) {
           console.error(err);
           showFormStatus(

@@ -184,11 +184,9 @@ function readServerEnv(name: string): string | undefined {
   return value?.trim() || undefined;
 }
 
-export async function sendLeadToWebhook(payload: LeadPayload): Promise<{ success: boolean }> {
-  const webhookUrl =
-    readServerEnv('MAKE_WEBHOOK_URL') || 'https://hook.us2.make.com/px6jolmk7ekqxg5lyq9bq4x0l5uaj0ja';
-
-  const structuredData = {
+/** Construye el payload estructurado que Make espera recibir. */
+export function buildWebhookPayload(payload: LeadPayload): Record<string, string> {
+  return {
     "Nombre": payload.name,
     "Correo profesional": payload.email,
     "Puesto/cargo": payload.role || 'No especificado',
@@ -199,25 +197,6 @@ export async function sendLeadToWebhook(payload: LeadPayload): Promise<{ success
     "URL Página Web": payload.current_website || '—',
     "PVU": payload.value_prop || '—',
     "Tiempo de Inversión": label(URGENCY_LABELS, payload.urgency),
-    "Escala operacional": label(BUDGET_LABELS, payload.budget)
+    "Escala operacional": label(BUDGET_LABELS, payload.budget),
   };
-
-  try {
-    const response = await fetch(webhookUrl, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(structuredData),
-    });
-
-    if (!response.ok) {
-      throw new Error(`Webhook de Make respondió con estado ${response.status}: ${response.statusText}`);
-    }
-
-    return { success: true };
-  } catch (error: any) {
-    console.error('Error enviando lead al webhook de Make:', error);
-    throw new Error(error.message || 'Error desconocido al enviar al webhook');
-  }
 }

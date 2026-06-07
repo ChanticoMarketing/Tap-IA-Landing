@@ -1,5 +1,5 @@
 import type { APIRoute } from 'astro';
-import { sendLeadToWebhook, type LeadPayload } from '../../lib/lead-email';
+import { buildWebhookPayload, type LeadPayload } from '../../lib/lead-email';
 
 export const prerender = false;
 
@@ -71,12 +71,14 @@ export const POST: APIRoute = async ({ request }) => {
       referrer: data.referrer || '',
     };
 
-    await sendLeadToWebhook(payload);
+    // Devuelve el payload estructurado para que el browser lo envíe al webhook de Make.
+    // Esto evita depender de la red saliente del servidor (Hostinger).
+    const webhookPayload = buildWebhookPayload(payload);
 
     return new Response(
       JSON.stringify({
         success: true,
-        message: 'Solicitud recibida. Te contactaremos en 1 día hábil.',
+        webhookPayload,
       }),
       {
         status: 200,
@@ -84,7 +86,7 @@ export const POST: APIRoute = async ({ request }) => {
       }
     );
   } catch (err: unknown) {
-    console.error('[SSR Error] Envío de lead fallido:', err);
+    console.error('[SSR Error] Validación de lead fallida:', err);
     return new Response(
       JSON.stringify({ error: 'No se pudo procesar la solicitud en este momento.' }),
       {
