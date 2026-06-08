@@ -40,8 +40,8 @@ const heroWaHref = `https://wa.me/5213324239103?text=${encodeURIComponent(heroWa
                     id="hero-title"
                     aria-label="La IA no hace marketing por ti. Te obliga a hacerlo mejor."
                 >
-                    <span id="typewriter-base"></span><span id="cursor-base" class="inline-block w-[3px] md:w-[4px] h-[0.9em] bg-gold ml-1 align-middle opacity-0" aria-hidden="true"></span> <br class="hidden md:block">
-                    <span id="typewriter-accent" class="text-white/80"></span><span id="cursor-accent" class="inline-block w-[3px] md:w-[4px] h-[0.9em] bg-gold ml-1 align-middle opacity-0" aria-hidden="true"></span>
+                    <span id="typewriter-base">La IA no hace marketing por ti.</span><span id="cursor-base" class="inline-block w-[3px] md:w-[4px] h-[0.9em] bg-gold ml-1 align-middle opacity-0" aria-hidden="true"></span> <br class="hidden md:block">
+                    <span id="typewriter-accent" class="text-white/80">Te obliga a hacerlo mejor.</span><span id="cursor-accent" class="inline-block w-[3px] md:w-[4px] h-[0.9em] bg-gold ml-1 align-middle opacity-0" aria-hidden="true"></span>
                 </h1>
                 <div class="hero-item gold-rule mb-5"></div>
                 <p class="hero-item text-subtle max-w-xl mb-6 text-xl font-light">
@@ -166,13 +166,13 @@ const heroWaHref = `https://wa.me/5213324239103?text=${encodeURIComponent(heroWa
             />
             
             <!-- Efecto Wow: Kinetic Flex Accordion -->
-            <div class="accordion-container w-full h-auto md:h-[75vh] md:min-h-[500px] flex flex-col md:flex-row gap-3 md:gap-2 mt-12 overflow-hidden rounded-[2rem] md:rounded-[3rem] border border-white/5 bg-[#0a0b0e]/20 p-2">
+            <div class="accordion-container w-full h-auto md:h-[75vh] md:min-h-[500px] flex flex-col md:flex-row gap-0 mt-12 bg-transparent relative overflow-hidden">
                 
                 <!-- Tarjeta 1: Consultoría IA -->
-                <a href="/consultoria-inteligencia-artificial" class="accordion-item group relative rounded-[1.5rem] md:rounded-[2.5rem] overflow-hidden border border-white/5 bg-gradient-to-b from-[#161922] to-[#0a0b0e] hover:border-gold/30">
+                <a href="/consultoria-inteligencia-artificial" class="accordion-item group relative overflow-hidden md:border-r border-white/10 last:border-0 bg-gradient-to-b from-[#161922]/85 to-[#0a0b0e]/95 backdrop-blur-md hover:from-gold/[0.05] hover:to-[#0a0b0e]/95">
                     <div class="absolute inset-0 bg-noise opacity-[0.03]"></div>
-                    <div class="absolute -right-40 -top-40 w-96 h-96 bg-gold/10 rounded-full blur-[120px] pointer-events-none accordion-glow opacity-0 transition-opacity duration-700"></div>
-                    <div class="absolute right-0 bottom-0 opacity-20 accordion-3d mix-blend-lighten pointer-events-none w-[200px] h-full md:w-1/2" style="mask-image: linear-gradient(to left, black 50%, transparent 100%); -webkit-mask-image: linear-gradient(to left, black 50%, transparent 100%);">
+                    <div class="absolute -right-40 -top-40 w-96 h-96 bg-gold/10 rounded-full blur-[120px] pointer-events-none accordion-glow opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                    <div class="absolute right-0 bottom-0 opacity-20 group-hover:opacity-40 group-hover:scale-[1.04] transition-all duration-700 accordion-3d mix-blend-lighten pointer-events-none w-[200px] h-full md:w-1/2" style="mask-image: linear-gradient(to left, black 50%, transparent 100%); -webkit-mask-image: linear-gradient(to left, black 50%, transparent 100%);">
                         <img src="/images/tactile_compass_asset_1778874318798.png" alt="" class="w-full h-full object-cover object-left" loading="lazy" decoding="async" />
                     </div>
                     
@@ -187,17 +187,17 @@ const heroWaHref = `https://wa.me/5213324239103?text=${encodeURIComponent(heroWa
                         <div class="mt-auto accordion-content-wrapper flex flex-col items-start w-full relative z-10">
                             <h3 class="accordion-title text-2xl md:text-4xl text-white font-light tracking-tight origin-bottom-left transition-all duration-700 text-wrap md:whitespace-nowrap mb-2 md:mb-0 group-hover:md:mb-4">Consultoría <span class="italic text-gold">IA</span></h3>
                             <div class="accordion-details opacity-0 max-h-0 overflow-hidden transition-all duration-700 translate-y-4">
-                                <p class="text-subtle text-sm md:text-base font-light leading-relaxed line-clamp-2 md:line-clamp-none">Diagnóstico y roadmap para empresas que necesitan claridad, estrategia y resultados reales con IA. No más humo, solo impacto operativo.</p>
+                                <p class="text-subtle text-sm md:text-base font-light leading-relaxed line-clamp-2 md:line-clamp-none">Diagnóstico y roadmap para empresas que necesitan claridad, estrategia and resultados reales con IA. No más humo, solo impacto operativo.</p>
                             </div>
                         </div>
                     </div>
                 </a>
 
                 <!-- Tarjeta 2: SEO-GEO -->
-                <a href="/soluciones/seo-geo" class="accordion-item group relative rounded-[1.5rem] md:rounded-[2.5rem] overflow-hidden border border-white/5 bg-gradient-to-b from-[#1a1d24] to-[#0c0e12] hover:border-royal/30">
+                <a href="/soluciones/seo-geo" class="accordion-item group relative overflow-hidden md:border-r border-white/10 last:border-0 bg-gradient-to-b from-[#1a1d24]/85 to-[#0c0e12]/95 backdrop-blur-md hover:from-royal/[0.05] hover:to-[#0c0e12]/95">
                     <div class="absolute inset-0 bg-noise opacity-[0.03]"></div>
-                    <div class="absolute -left-40 -bottom-40 w-96 h-96 bg-royal/10 rounded-full blur-[120px] pointer-events-none accordion-glow opacity-0 transition-opacity duration-700"></div>
-                    <div class="absolute right-0 bottom-0 opacity-20 accordion-3d mix-blend-lighten pointer-events-none w-[200px] h-full md:w-1/2" style="mask-image: linear-gradient(to left, black 50%, transparent 100%); -webkit-mask-image: linear-gradient(to left, black 50%, transparent 100%);">
+                    <div class="absolute -left-40 -bottom-40 w-96 h-96 bg-royal/10 rounded-full blur-[120px] pointer-events-none accordion-glow opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                    <div class="absolute right-0 bottom-0 opacity-20 group-hover:opacity-40 group-hover:scale-[1.04] transition-all duration-700 accordion-3d mix-blend-lighten pointer-events-none w-[200px] h-full md:w-1/2" style="mask-image: linear-gradient(to left, black 50%, transparent 100%); -webkit-mask-image: linear-gradient(to left, black 50%, transparent 100%);">
                         <img src="/images/tactile_magnifier_asset_1778874333562.png" alt="" class="w-full h-full object-cover object-left" loading="lazy" decoding="async" />
                     </div>
 
@@ -219,10 +219,10 @@ const heroWaHref = `https://wa.me/5213324239103?text=${encodeURIComponent(heroWa
                 </a>
 
                 <!-- Tarjeta 3: Agentes IA -->
-                <a href="/agentes-ia-a-medida" class="accordion-item group relative rounded-[1.5rem] md:rounded-[2.5rem] overflow-hidden border border-white/5 bg-gradient-to-b from-[#1b1820] to-[#0d0c11] hover:border-white/30">
+                <a href="/agentes-ia-a-medida" class="accordion-item group relative overflow-hidden md:border-r border-white/10 last:border-0 bg-gradient-to-b from-[#1b1820]/85 to-[#0d0c11]/95 backdrop-blur-md hover:from-white/[0.04] hover:to-[#0d0c11]/95">
                     <div class="absolute inset-0 bg-noise opacity-[0.03]"></div>
-                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-white/5 rounded-full blur-[120px] pointer-events-none accordion-glow opacity-0 transition-opacity duration-700"></div>
-                    <div class="absolute right-0 bottom-0 opacity-20 accordion-3d mix-blend-lighten pointer-events-none w-[200px] h-full md:w-1/2" style="mask-image: linear-gradient(to left, black 50%, transparent 100%); -webkit-mask-image: linear-gradient(to left, black 50%, transparent 100%);">
+                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-white/5 rounded-full blur-[120px] pointer-events-none accordion-glow opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                    <div class="absolute right-0 bottom-0 opacity-20 group-hover:opacity-40 group-hover:scale-[1.04] transition-all duration-700 accordion-3d mix-blend-lighten pointer-events-none w-[200px] h-full md:w-1/2" style="mask-image: linear-gradient(to left, black 50%, transparent 100%); -webkit-mask-image: linear-gradient(to left, black 50%, transparent 100%);">
                         <img src="/images/tactile_gears_asset_1778874347609.png" alt="" class="w-full h-full object-cover object-left" loading="lazy" decoding="async" />
                     </div>
 
@@ -244,10 +244,10 @@ const heroWaHref = `https://wa.me/5213324239103?text=${encodeURIComponent(heroWa
                 </a>
 
                 <!-- Tarjeta 4: WebApps -->
-                <a href="/webapps-ia-a-medida" class="accordion-item group relative rounded-[1.5rem] md:rounded-[2.5rem] overflow-hidden border border-white/5 bg-gradient-to-b from-[#13151a] to-[#090a0d] hover:border-gray-400/30">
+                <a href="/webapps-ia-a-medida" class="accordion-item group relative overflow-hidden md:border-r border-white/10 last:border-0 bg-gradient-to-b from-[#13151a]/85 to-[#090a0d]/95 backdrop-blur-md hover:from-gray-400/[0.04] hover:to-[#090a0d]/95">
                     <div class="absolute inset-0 bg-noise opacity-[0.03]"></div>
-                    <div class="absolute -right-20 bottom-0 w-96 h-96 bg-gray-500/10 rounded-full blur-[120px] pointer-events-none accordion-glow opacity-0 transition-opacity duration-700"></div>
-                    <div class="absolute right-0 bottom-0 opacity-20 accordion-3d mix-blend-lighten pointer-events-none w-[200px] h-full md:w-1/2" style="mask-image: linear-gradient(to left, black 50%, transparent 100%); -webkit-mask-image: linear-gradient(to left, black 50%, transparent 100%);">
+                    <div class="absolute -right-20 bottom-0 w-96 h-96 bg-gray-500/10 rounded-full blur-[120px] pointer-events-none accordion-glow opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                    <div class="absolute right-0 bottom-0 opacity-20 group-hover:opacity-40 group-hover:scale-[1.04] transition-all duration-700 accordion-3d mix-blend-lighten pointer-events-none w-[200px] h-full md:w-1/2" style="mask-image: linear-gradient(to left, black 50%, transparent 100%); -webkit-mask-image: linear-gradient(to left, black 50%, transparent 100%);">
                         <img src="/images/tactile_switches_asset_1778874359436.png" alt="" class="w-full h-full object-cover object-left" loading="lazy" decoding="async" />
                     </div>
 
@@ -269,10 +269,10 @@ const heroWaHref = `https://wa.me/5213324239103?text=${encodeURIComponent(heroWa
                 </a>
 
                 <!-- Tarjeta 5: AI Marketing -->
-                <a href="/ai-marketing" class="accordion-item group relative rounded-[1.5rem] md:rounded-[2.5rem] overflow-hidden border border-white/5 bg-gradient-to-b from-[#1a160a] to-[#0d0a04] hover:border-gold/30">
+                <a href="/ai-marketing" class="accordion-item group relative overflow-hidden md:border-r border-white/10 last:border-0 bg-gradient-to-b from-[#1a160a]/85 to-[#0d0a04]/95 backdrop-blur-md hover:from-gold/[0.06] hover:to-[#0d0a04]/95">
                     <div class="absolute inset-0 bg-noise opacity-[0.03]"></div>
-                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gold/15 rounded-full blur-[150px] pointer-events-none accordion-glow opacity-0 transition-opacity duration-700"></div>
-                    <div class="absolute right-0 bottom-0 opacity-20 accordion-3d mix-blend-lighten pointer-events-none w-[200px] h-full md:w-1/2" style="mask-image: linear-gradient(to left, black 50%, transparent 100%); -webkit-mask-image: linear-gradient(to left, black 50%, transparent 100%);">
+                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gold/15 rounded-full blur-[150px] pointer-events-none accordion-glow opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                    <div class="absolute right-0 bottom-0 opacity-20 group-hover:opacity-40 group-hover:scale-[1.04] transition-all duration-700 accordion-3d mix-blend-lighten pointer-events-none w-[200px] h-full md:w-1/2" style="mask-image: linear-gradient(to left, black 50%, transparent 100%); -webkit-mask-image: linear-gradient(to left, black 50%, transparent 100%);">
                         <img src="/images/tactile_dial_asset_1778874373212.png" alt="" class="w-full h-full object-cover object-left" loading="lazy" decoding="async" />
                     </div>
 
@@ -469,10 +469,17 @@ const heroWaHref = `https://wa.me/5213324239103?text=${encodeURIComponent(heroWa
                 </div>
 
                 <!-- Tarjeta 2: Sistema Web Inteligente -->
-                <div class="pricing-card card-glow p-8 relative transform md:-translate-y-6 shadow-[0_0_60px_rgba(212,175,55,0.12)] flex flex-col justify-between h-full min-h-[474px]" style="border-color: rgba(212,175,55,0.3)">
-                    <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gold ui-caption py-1.5 px-4 rounded-full shadow-lg font-bold" style="color: var(--color-charcoal);">Más Popular</div>
+                <div class="pricing-card card-glow p-8 relative transform md:-translate-y-6 shadow-[0_0_60px] shadow-gold/12 border border-gold/30 flex flex-col justify-between h-full min-h-[474px]">
                     <div>
-                        <h3 class="mb-2 text-white">Sistema Web Inteligente</h3>
+                        <!-- Etiqueta Editorial Borderless -->
+                        <div class="mb-4 flex items-center gap-2 select-none" aria-hidden="true">
+                            <span class="w-1.5 h-1.5 rounded-full bg-gold animate-pulse"></span>
+                            <span class="editorial-label text-[10px] tracking-[0.25em] font-extrabold text-gold">SISTEMA RECOMENDADO</span>
+                        </div>
+                        <h3 class="mb-2 text-white">
+                            Sistema Web Inteligente
+                            <span class="sr-only">(Sistema Recomendado)</span>
+                        </h3>
                         <p class="ui-caption text-gold mb-8">WEB + SEO/GEO + ROADMAP IA</p>
                         <div class="text-4xl font-light mb-8 text-white">$15,900 <span class="text-sm text-subtle">MXN</span></div>
                         <p class="text-sm text-offwhite mb-6 min-h-[48px]">El estándar para empresas que exigen una web corporativa, visibilidad orgánica y estrategia de IA.</p>
@@ -527,12 +534,12 @@ const heroWaHref = `https://wa.me/5213324239103?text=${encodeURIComponent(heroWa
                     <div class="absolute inset-0 -z-10 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 ease-out pointer-events-none bg-[radial-gradient(circle_at_50%_40%,rgba(212,175,55,0.04)_0%,transparent_70%)]" aria-hidden="true"></div>
                     
                     <!-- Header Step: Number & Icon & Separator Line -->
-                    <div class="w-full flex items-center justify-between pb-4 mb-6 border-b border-white/5 group-hover:border-gold/20 transition-colors duration-500 ease-out">
+                    <div class="w-full flex items-center justify-between pb-4 mb-6 border-b border-white/10 group-hover:border-gold/30 transition-colors duration-500 ease-out">
                         <!-- Número en Serif Premium -->
-                        <span class="font-playfair text-6xl font-light text-subtle/30 group-hover:text-gold group-hover:[text-shadow:0_0_15px_rgba(212,175,55,0.25)] transition-all duration-500 ease-out select-none">01</span>
+                        <span class="font-playfair text-6xl font-light text-subtle/60 group-hover:text-gold group-hover:[text-shadow:0_0_15px_rgba(212,175,55,0.25)] transition-all duration-500 ease-out select-none">01</span>
                         
                         <!-- Ícono Suspendido Reactivo -->
-                        <div class="text-gold/50 group-hover:text-gold group-hover:scale-110 group-hover:-translate-y-1 transition-all duration-500 ease-out" aria-hidden="true">
+                        <div class="text-gold/80 group-hover:text-gold group-hover:scale-110 group-hover:-translate-y-1 transition-all duration-500 ease-out" aria-hidden="true">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6">
                                 <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35M11 8v6M8 11h6"/>
                             </svg>
@@ -540,8 +547,8 @@ const heroWaHref = `https://wa.me/5213324239103?text=${encodeURIComponent(heroWa
                     </div>
 
                     <!-- Contenido Editorial -->
-                    <h4 class="font-playfair text-2xl font-light text-offwhite/90 group-hover:text-offwhite group-hover:translate-x-1 transition-all duration-500 ease-out mb-4">Diagnóstico</h4>
-                    <p class="font-jakarta text-sm text-subtle/70 group-hover:text-subtle transition-all duration-500 ease-out leading-relaxed max-w-[280px]">Detectamos cuellos de botella y oportunidades reales de IA en tu operación actual.</p>
+                    <h4 class="font-playfair text-2xl font-light text-offwhite group-hover:text-offwhite group-hover:translate-x-1 transition-all duration-500 ease-out mb-4">Diagnóstico</h4>
+                    <p class="font-jakarta text-sm text-subtle/95 group-hover:text-subtle transition-all duration-500 ease-out leading-relaxed max-w-[280px]">Detectamos cuellos de botella y oportunidades reales de IA en tu operación actual.</p>
                 </li>
                 <!-- Paso 2 (Sprint Base - Destacado Implícitamente) -->
                 <li class="methodology-step group relative py-10 px-4 md:px-6 flex flex-col items-start transition-all duration-500 ease-out select-none will-change-transform">
@@ -549,9 +556,9 @@ const heroWaHref = `https://wa.me/5213324239103?text=${encodeURIComponent(heroWa
                     <div class="absolute inset-0 -z-10 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 ease-out pointer-events-none bg-[radial-gradient(circle_at_50%_40%,rgba(212,175,55,0.06)_0%,transparent_70%)]" aria-hidden="true"></div>
                     
                     <!-- Header Step: Number & Icon & Separator Line (Dorado permanente para destaque) -->
-                    <div class="w-full flex items-center justify-between pb-4 mb-6 border-b border-gold/20 group-hover:border-gold/45 transition-colors duration-500 ease-out">
-                        <!-- Número en Serif Premium (Opacidad base de 40% para destaque) -->
-                        <span class="font-playfair text-6xl font-light text-gold/40 group-hover:text-gold group-hover:[text-shadow:0_0_15px_rgba(212,175,55,0.3)] transition-all duration-500 ease-out select-none">02</span>
+                    <div class="w-full flex items-center justify-between pb-4 mb-6 border-b border-gold/40 group-hover:border-gold/60 transition-colors duration-500 ease-out">
+                        <!-- Número en Serif Premium (Opacidad base de 70% para destaque) -->
+                        <span class="font-playfair text-6xl font-light text-gold/70 group-hover:text-gold group-hover:[text-shadow:0_0_15px_rgba(212,175,55,0.3)] transition-all duration-500 ease-out select-none">02</span>
                         
                         <!-- Ícono Suspendido Reactivo -->
                         <div class="text-gold group-hover:scale-110 group-hover:-translate-y-1 transition-all duration-500 ease-out" aria-hidden="true">
@@ -562,8 +569,8 @@ const heroWaHref = `https://wa.me/5213324239103?text=${encodeURIComponent(heroWa
                     </div>
 
                     <!-- Contenido Editorial -->
-                    <h4 class="font-playfair text-2xl font-light text-offwhite group-hover:text-offwhite group-hover:translate-x-1 transition-all duration-500 ease-out mb-4">Sprint Base</h4>
-                    <p class="font-jakarta text-sm text-subtle/70 group-hover:text-subtle transition-all duration-500 ease-out leading-relaxed max-w-[280px]">Definimos el frente correcto y bajamos la solución a un entregable concreto y medible.</p>
+                    <h4 class="font-playfair text-2xl font-light text-white group-hover:text-white group-hover:translate-x-1 transition-all duration-500 ease-out mb-4">Sprint Base</h4>
+                    <p class="font-jakarta text-sm text-subtle/95 group-hover:text-subtle transition-all duration-500 ease-out leading-relaxed max-w-[280px]">Definimos el frente correcto y bajamos la solución a un entregable concreto y medible.</p>
                 </li>
                 <!-- Paso 3 -->
                 <li class="methodology-step group relative py-10 px-4 md:px-6 flex flex-col items-start transition-all duration-500 ease-out select-none will-change-transform">
@@ -571,12 +578,12 @@ const heroWaHref = `https://wa.me/5213324239103?text=${encodeURIComponent(heroWa
                     <div class="absolute inset-0 -z-10 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 ease-out pointer-events-none bg-[radial-gradient(circle_at_50%_40%,rgba(212,175,55,0.04)_0%,transparent_70%)]" aria-hidden="true"></div>
                     
                     <!-- Header Step: Number & Icon & Separator Line -->
-                    <div class="w-full flex items-center justify-between pb-4 mb-6 border-b border-white/5 group-hover:border-gold/20 transition-colors duration-500 ease-out">
+                    <div class="w-full flex items-center justify-between pb-4 mb-6 border-b border-white/10 group-hover:border-gold/30 transition-colors duration-500 ease-out">
                         <!-- Número en Serif Premium -->
-                        <span class="font-playfair text-6xl font-light text-subtle/30 group-hover:text-gold group-hover:[text-shadow:0_0_15px_rgba(212,175,55,0.25)] transition-all duration-500 ease-out select-none">03</span>
+                        <span class="font-playfair text-6xl font-light text-subtle/60 group-hover:text-gold group-hover:[text-shadow:0_0_15px_rgba(212,175,55,0.25)] transition-all duration-500 ease-out select-none">03</span>
                         
                         <!-- Ícono Suspendido Reactivo -->
-                        <div class="text-gold/50 group-hover:text-gold group-hover:scale-110 group-hover:-translate-y-1 transition-all duration-500 ease-out" aria-hidden="true">
+                        <div class="text-gold/80 group-hover:text-gold group-hover:scale-110 group-hover:-translate-y-1 transition-all duration-500 ease-out" aria-hidden="true">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6">
                                 <path d="M20 6 9 17l-5-5"/>
                             </svg>
@@ -584,11 +591,11 @@ const heroWaHref = `https://wa.me/5213324239103?text=${encodeURIComponent(heroWa
                     </div>
 
                     <!-- Contenido Editorial -->
-                    <h4 class="font-playfair text-2xl font-light text-offwhite/90 group-hover:text-offwhite group-hover:translate-x-1 transition-all duration-500 ease-out mb-4">Entrega</h4>
-                    <p class="font-jakarta text-sm text-subtle/70 group-hover:text-subtle transition-all duration-500 ease-out leading-relaxed max-w-[280px]">Implementamos y nos aseguramos de que tu equipo adopte el sistema sin fricción.</p>
+                    <h4 class="font-playfair text-2xl font-light text-offwhite group-hover:text-offwhite group-hover:translate-x-1 transition-all duration-500 ease-out mb-4">Entrega</h4>
+                    <p class="font-jakarta text-sm text-subtle/95 group-hover:text-subtle transition-all duration-500 ease-out leading-relaxed max-w-[280px]">Implementamos y nos aseguramos de que tu equipo adopte el sistema sin fricción.</p>
                 </li>
             </ol>
-            
+
             <div class="mt-16">
                 <CtaWhatsApp text="Agendar diagnóstico" href="#diagnostico" />
             </div>
@@ -713,6 +720,9 @@ const heroWaHref = `https://wa.me/5213324239103?text=${encodeURIComponent(heroWa
             const tl = gsap.timeline();
 
             if (!skipHeroMotion && titleBase && titleAccent && cursorBase && cursorAccent) {
+                titleBase.textContent = "";
+                titleAccent.textContent = "";
+                
                 tl.set(cursorBase, { opacity: 1 })
                   .to(titleBase, {
                       text: textBase,

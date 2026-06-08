@@ -1,0 +1,18 @@
+{
+  "name": "[Smoke Test] Tap-IA",
+  "email": "smoke-test@tap-ia.tech",
+  "company": "Verificación Resend",
+  "role": "QA automatizado",
+  "phone": "",
+  "has_website": "yes",
+  "obstacle": "visibility,not_sure",
+  "value_prop": "Prueba de integración Resend — ignorar si no es producción.",
+  "current_website": "https://tap-ia.tech",
+  "services": ["seo_geo"],
+  "urgency": "info",
+  "budget": "evaluar",
+  "tool": "none",
+  "consent": true,
+  "source_page": "/contacto",
+  "bot_field": ""
+}

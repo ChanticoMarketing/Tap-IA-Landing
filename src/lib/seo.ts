@@ -35,7 +35,9 @@ export const INDEXABLE_ROUTES = [
   '/recursos',
   '/recursos/calculadora-roi-ia',
   '/recursos/megaprompts-b2b-marketing',
+  '/recursos/glosario',
   '/sobre',
+  '/sobre/emmanuel-tapia',
   '/contacto',
 ] as const;
 
@@ -86,7 +88,7 @@ const DEFAULT_DESCRIPTIONS: Record<string, string> = {
   '/auditoria-ia-marketing-seo-geo': 'Auditoría integral de IA, marketing y SEO/GEO para detectar fricciones y oportunidades de mejora.',
   '/infraestructura-digital': 'No tengas solo una página web. Diseña una infraestructura digital premium que atraiga clientes, califique leads en piloto automático y te posicione en la era de la inteligencia artificial.',
   '/ai-marketing': 'AI Marketing para aplicar inteligencia artificial a estrategia, contenido y análisis de campañas.',
-  '/agentes-ia-a-medida': 'Desarrollo de agentes IA a medida para automatizar procesos reales y mejorar la operación.',
+  '/agentes-ia-a-medida': 'Desarrollo de agentes IA a medida para automatizar procesos reales y mejorar la operation.',
   '/webapps-ia-a-medida': 'Desarrollo de WebApps con IA integrada para sistemas internos, portales y herramientas a medida.',
   '/portafolio': 'Demos y entregables de TAP-IA para ver metodología, arquitectura y calidad de ejecución en distintos frentes de IA.',
   '/portafolio/sitios-web': 'Demos de sitios web pensadas para explicar arquitectura, velocidad y conversión.',
@@ -102,7 +104,9 @@ const DEFAULT_DESCRIPTIONS: Record<string, string> = {
   '/recursos': 'Plantillas, playbooks y guías operativas para equipos que quieren aplicar IA con criterio.',
   '/recursos/calculadora-roi-ia': 'Calculadora de ROI interactiva para estimar el ahorro operativo y el retorno de inversión de Agentes de IA conversacionales en ventas y soporte B2B.',
   '/recursos/megaprompts-b2b-marketing': 'Biblioteca de 5 megaprompts premium de Claude y ChatGPT para marketing de contenidos B2B, copywriting y playbooks de objeciones.',
+  '/recursos/glosario': 'Glosario de Inteligencia Artificial aplicada a negocios. Definiciones concisas, claras y estratégicas de términos como GEO, RAG y LLMs.',
   '/sobre': 'Conoce la visión, experiencia y enfoque de TAP-IA para construir autoridad digital con IA.',
+  '/sobre/emmanuel-tapia': 'Biografía profesional y enfoque técnico de Emmanuel Tapia, fundador de TAP-IA y estratega en inteligencia artificial y marketing digital.',
   '/contacto': 'Contacta a TAP-IA para evaluar tu caso de negocio y definir el siguiente paso con criterio.',
   '/legal': 'Aviso legal, privacidad y políticas de uso responsable de TAP-IA.',
   '/novedades-ia/noticia-mock': 'Análisis de Google, AI Overviews y GEO para entender cómo cambia la visibilidad en búsquedas generativas.',

@@ -30,14 +30,21 @@ const wid = wizardId;
     <div
       data-wizard-success-state
       aria-labelledby={`wizard-success-heading-${wid}`}
-      class="hidden animate-sweep text-center py-12 px-6 md:py-16 md:px-10 rounded-2xl border border-white/5 bg-matte/60 backdrop-blur-md max-w-xl mx-auto shadow-2xl focus:outline-none focus:ring-2 focus:ring-gold"
+      class="hidden animate-sweep text-center py-10 px-4 max-w-xl mx-auto focus:outline-none"
       role="status"
       aria-live="polite"
       tabindex="-1"
     >
-      <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gold/10 border border-gold/30 text-gold mb-6 shadow-[0_0_30px_rgba(212,175,55,0.15)] animate-pulse-slow">
-        <i class="fa-solid fa-check text-4xl" aria-hidden="true"></i>
+      <div class="flex items-center justify-center mb-6">
+        <div class="relative">
+          <div class="absolute inset-0 bg-gold/15 rounded-full blur-xl animate-pulse-slow"></div>
+          <div class="relative z-10 inline-flex items-center justify-center w-16 h-16 rounded-full bg-gold/10 border border-gold/20 text-gold shadow-[0_0_25px_rgba(212,175,55,0.15)] animate-pulse-slow">
+            <i class="fa-solid fa-check text-2xl" aria-hidden="true"></i>
+          </div>
+        </div>
       </div>
+
+      <span class="editorial-label block mb-3 text-center">Diagnóstico en Proceso</span>
 
       <h3 id={`wizard-success-heading-${wid}`} class="font-playfair text-3xl md:text-4xl text-offwhite font-bold mb-4 tracking-wide">
         ¡Solicitud Recibida!
@@ -47,12 +54,35 @@ const wid = wizardId;
         Gracias, <span data-user-name-placeholder class="text-gold font-semibold"></span>. Tu diagnóstico de encaje está en revisión.
       </p>
 
-      <p class="text-subtle text-sm mb-10 max-w-md mx-auto leading-relaxed">
-        Revisamos tu caso y te contactamos en <strong class="text-offwhite">1 día hábil</strong> con el siguiente paso.
-        Si tu proyecto es urgente, puedes escribirnos directamente por WhatsApp.
-      </p>
+      <!-- Horizontal line separator -->
+      <div class="gold-rule my-8 opacity-30"></div>
 
-      <div class="gold-rule my-6 opacity-30"></div>
+      <!-- Roadmap / Next Steps Timeline -->
+      <div class="my-10 max-w-md mx-auto text-left border-l border-gold/20 pl-6 space-y-6">
+        <div class="relative">
+          <div class="absolute -left-[29px] top-1.5 w-1.5 h-1.5 rounded-full bg-gold shadow-[0_0_8px_var(--color-gold)]"></div>
+          <h4 class="font-jakarta font-semibold text-offwhite text-sm uppercase tracking-wider mb-1">1. Análisis Técnico Detallado</h4>
+          <p class="text-subtle text-xs leading-relaxed">
+            Revisamos tu sitio actual, presencia en buscadores y competencia para mapear tus oportunidades de crecimiento.
+          </p>
+        </div>
+        <div class="relative">
+          <div class="absolute -left-[29px] top-1.5 w-1.5 h-1.5 rounded-full bg-white/30"></div>
+          <h4 class="font-jakarta font-semibold text-offwhite text-sm uppercase tracking-wider mb-1">2. Contacto Directo (1 Día Hábil)</h4>
+          <p class="text-subtle text-xs leading-relaxed">
+            Te contactaremos para agendar tu sesión de diagnóstico 1-a-1 de 30 minutos sin costo.
+          </p>
+        </div>
+        <div class="relative">
+          <div class="absolute -left-[29px] top-1.5 w-1.5 h-1.5 rounded-full bg-white/30"></div>
+          <h4 class="font-jakarta font-semibold text-offwhite text-sm uppercase tracking-wider mb-1">3. Sesión Estratégica</h4>
+          <p class="text-subtle text-xs leading-relaxed">
+            Co-crearemos la hoja de ruta para integrar automatizaciones de IA y optimizar tu captación digital.
+          </p>
+        </div>
+      </div>
+
+      <div class="gold-rule my-8 opacity-30"></div>
 
       <div class="flex flex-col sm:flex-row gap-4 justify-center items-center font-jakarta">
         <a
@@ -60,7 +90,7 @@ const wid = wizardId;
           target="_blank"
           rel="noopener noreferrer"
           data-wizard-success-wa-link
-          class="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-[#25D366] hover:bg-[#20ba5a] text-white px-8 py-3.5 rounded-full font-bold transition-all duration-300 shadow-[0_4px_15px_rgba(37,211,102,0.2)] hover:shadow-[0_6px_20px_rgba(37,211,102,0.3)] active:scale-95 text-xs uppercase tracking-wider min-h-[44px]"
+          class="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-[#25D366] hover:bg-[#20ba5a] text-white px-8 py-3.5 rounded-full font-bold transition-all duration-300 shadow-[0_4px_20px_rgba(37,211,102,0.25)] hover:shadow-[0_6px_25px_rgba(37,211,102,0.4)] hover:scale-[1.02] active:scale-95 text-xs uppercase tracking-wider min-h-[44px]"
         >
           <i class="fa-brands fa-whatsapp text-lg" aria-hidden="true"></i>
           Acelerar por WhatsApp

@@ -138,14 +138,31 @@ Configura:
 
 Para cerrar avisos de *subdomains don't support HSTS* y reforzar HTTPS:
 
-1. En **Cloudflare** (si el DNS pasa por ahí): SSL/TLS → *Full (strict)*; activar **Always Use HTTPS** y **HSTS** (max-age ≥ 31536000; incluir subdominios si aplica).
-2. En **Hostinger hPanel**: confirma certificado Let's Encrypt en apex y `www`; la redirección 301 de `www` → apex debe ser HTTPS→HTTPS.
-3. Tras activar HSTS, valida con:
+1. **A nivel de Aplicación:** Ya se ha implementado en `src/middleware.ts` la inyección de la cabecera `Strict-Transport-Security` en todas las respuestas del servidor.
+2. **A nivel de Cloudflare** (si el DNS pasa por ahí): SSL/TLS → *Full (strict)*; activar **Always Use HTTPS** y **HSTS** (max-age ≥ 31536000; incluir subdominios si aplica).
+3. **A nivel de Hostinger hPanel**: confirma certificado Let's Encrypt en apex y `www`; la redirección 301 de `www` → apex debe ser HTTPS→HTTPS.
+4. Tras activar HSTS, valida con:
    ```bash
    curl.exe -sI https://tap-ia.tech/ | findstr /i "strict-transport"
    curl.exe -sI https://www.tap-ia.tech/ | findstr /i "strict-transport location"
    ```
-4. No fuerces HSTS desde `src/middleware.ts` hasta tener redirects estables; un HSTS mal configurado puede bloquear usuarios si el certificado falla.
+
+#### 2.3. Caché del Navegador para Recursos Estáticos (auditorías Semrush / performance)
+
+Para resolver las advertencias sobre recursos estáticos no cacheados (JavaScript, CSS, imágenes y tipografías):
+
+1. **A nivel de Aplicación:** Astro compila activos con un hash único (ej: `index.C1a2b3c4.js`). Se ha configurado `src/middleware.ts` para enviar cabeceras `Cache-Control: public, max-age=31536000, immutable` para todas las rutas que coincidan con `/_astro/`, `/images/` o extensiones estáticas comunes.
+2. **A nivel de Nginx (si usas VPS KVM):** En tu bloque de servidor, puedes forzar que Nginx sirva los archivos estáticos directamente y les inyecte la cabecera de caché adecuada:
+   ```nginx
+   location ~* \.(?:css|js|jpg|jpeg|gif|png|ico|xml|webp|woff2?|otf|ttf)$ {
+       expires 1y;
+       access_log off;
+       add_header Cache-Control "public, no-transform";
+   }
+   ```
+3. **A nivel de Hostinger CDN / Cloudflare:**
+   - En **Cloudflare**: Navega a *Caching* → *Configuration* → *Browser Cache TTL* y configúralo en "Respect Existing Headers" (para heredar el `Cache-Control` del middleware de Astro) o establécelo en "1 year" para recursos estáticos.
+   - En **Hostinger hPanel**: En la sección de *Administración de Sitios Web* → *Rendimiento* → *Control de Caché* (o Cloudflare Integration), activa el almacenamiento en caché del navegador para archivos estáticos de forma global.
 
 **Post-deploy SEO:** tras publicar cambios de `llms.txt`, sitemap y cache, re-ejecuta *Site Audit* en Semrush (48–72 h) y comprueba que `/llms.txt` responde **200**.
 

@@ -19,7 +19,7 @@ const {
   url,
   datePublished,
   dateModified,
-  author = 'TAP-IA',
+  author = 'Emmanuel Tapia',
   image = `${SITE_URL}/logo.png`,
   articleSection = 'Novedades IA',
   type = 'NewsArticle',
@@ -38,7 +38,12 @@ const articleUrl = new URL(url, SITE_URL).href;
   "image": [image],
   "datePublished": datePublished,
   "dateModified": dateModified ?? datePublished,
-  "author": {
+  "author": author === 'Emmanuel Tapia' ? {
+    "@type": "Person",
+    "@id": "https://tap-ia.tech/sobre/emmanuel-tapia#person",
+    "name": "Emmanuel Tapia",
+    "url": "https://tap-ia.tech/sobre/emmanuel-tapia"
+  } : {
     "@type": "Organization",
     "@id": "https://tap-ia.tech/#organization",
     "name": author,

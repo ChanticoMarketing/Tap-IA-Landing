@@ -1,4 +1,4 @@
-import { existsSync, readFileSync, writeFileSync } from 'node:fs';
+import { existsSync, writeFileSync } from 'node:fs';
 import sharp from 'sharp';
 import toIco from 'to-ico';
 
@@ -6,42 +6,55 @@ const sourcePath = 'public/Logo-Favicon.source.png';
 
 if (!existsSync(sourcePath)) {
   console.error(
-    'Falta public/Logo-Favicon.source.png. Restáuralo con:\n' +
-      '  git show HEAD:public/Logo-Favicon.png > public/Logo-Favicon.source.png',
+    `Error: Falta el archivo de origen "${sourcePath}".\n` +
+    `Por favor, asegúrate de que Logo-Favicon.source.png esté en la carpeta public/`
   );
   process.exit(1);
 }
 
-const source = readFileSync(sourcePath);
-const black = { r: 0, g: 0, b: 0 };
+// Factor de redondeo (18% es el estándar moderno similar al de iOS/macOS)
+const CORNER_RADIUS_FACTOR = 0.18;
 
-function resizeIcon(size) {
-  return sharp(source)
+async function generateRoundedIcon(size) {
+  const radius = Math.round(size * CORNER_RADIUS_FACTOR);
+  
+  // Creamos la máscara SVG con esquinas redondeadas
+  const mask = Buffer.from(
+    `<svg width="${size}" height="${size}">
+      <rect x="0" y="0" width="${size}" height="${size}" rx="${radius}" ry="${radius}" fill="#ffffff" />
+    </svg>`
+  );
+
+  return sharp(sourcePath)
     .resize(size, size, {
-      fit: 'contain',
-      background: { ...black, alpha: 1 },
-      kernel: sharp.kernel.lanczos3,
+      fit: 'cover',
+      kernel: sharp.kernel.lanczos3
     })
-    .flatten({ background: black })
-    .png()
+    .composite([{
+      input: mask,
+      blend: 'dest-in'
+    }])
+    .png({ compressionLevel: 9 })
     .toBuffer();
 }
 
-const logoFaviconPng = await sharp(source)
-  .resize(128, 128, {
-    fit: 'contain',
-    background: { ...black, alpha: 1 },
-    kernel: sharp.kernel.lanczos3,
-  })
-  .png({ compressionLevel: 9 })
-  .toBuffer();
+try {
+  console.log(`Generando favicon con esquinas redondeadas (radio: ${CORNER_RADIUS_FACTOR * 100}%)...`);
 
-writeFileSync('public/Logo-Favicon.png', logoFaviconPng);
+  // 1. Generar Logo-Favicon.png (128x128)
+  const logoFaviconPng = await generateRoundedIcon(128);
+  writeFileSync('public/Logo-Favicon.png', logoFaviconPng);
+  console.log(`✓ Generado: public/Logo-Favicon.png (128x128) - ${logoFaviconPng.length} bytes`);
 
-const icoSizes = [16, 32, 48];
-const icoBuffers = await Promise.all(icoSizes.map((size) => resizeIcon(size)));
-writeFileSync('public/favicon.ico', await toIco(icoBuffers));
+  // 2. Generar favicon.ico con múltiples tamaños (16, 32, 48)
+  const icoSizes = [16, 32, 48];
+  const icoBuffers = await Promise.all(icoSizes.map(size => generateRoundedIcon(size)));
+  const icoData = await toIco(icoBuffers);
+  writeFileSync('public/favicon.ico', icoData);
+  console.log(`✓ Generado: public/favicon.ico (tamaños: ${icoSizes.join(', ')}) - ${icoData.length} bytes`);
 
-console.log(
-  `OK: Logo-Favicon.png ${logoFaviconPng.length} bytes (128×128) | favicon.ico ${icoSizes.join('/')}px`,
-);
+  console.log('¡Favicons generados con éxito con esquinas redondeadas y transparencia!');
+} catch (error) {
+  console.error('Error al generar los favicons:', error);
+  process.exit(1);
+}

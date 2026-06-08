@@ -15,5 +15,8 @@ export const onRequest = defineMiddleware(async (context, next) => {
     response.headers.set('Cache-Control', LONG_CACHE);
   }
 
+  // HSTS Security Header
+  response.headers.set('Strict-Transport-Security', 'max-age=31536000; includeSubDomains; preload');
+
   return response;
 });
