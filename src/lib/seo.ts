@@ -32,6 +32,7 @@ export const INDEXABLE_ROUTES = [
   '/novedades-ia',
   '/novedades-ia/agentes-ia-marketing-2026-openclaw-manus-era-agentica',
   '/novedades-ia/claude-mythos-proyecto-glasswing-2026',
+  '/novedades-ia/gpt-5-6-no-lanzamiento-techo-ia-comercial-2026',
   '/recursos',
   '/recursos/calculadora-roi-ia',
   '/recursos/megaprompts-b2b-marketing',
@@ -101,6 +102,8 @@ const DEFAULT_DESCRIPTIONS: Record<string, string> = {
   '/novedades-ia/agentes-ia-marketing-2026-openclaw-manus-era-agentica': 'Análisis de la transición de chatbots a agentes autónomos en la operativa real de negocio.',
   '/novedades-ia/claude-mythos-proyecto-glasswing-2026':
     'Claude Mythos Preview y Project Glasswing: análisis de Anthropic, acceso restringido e implicaciones para ciberseguridad, marketing y SEO/GEO en 2026.',
+  '/novedades-ia/gpt-5-6-no-lanzamiento-techo-ia-comercial-2026':
+    'Análisis del lanzamiento restringido de GPT-5.6 Sol y la limitación de Fable 5. ¿Hemos tocado techo en el acceso comercial a la IA más potente?',
   '/recursos': 'Plantillas, playbooks y guías operativas para equipos que quieren aplicar IA con criterio.',
   '/recursos/calculadora-roi-ia': 'Calculadora de ROI interactiva para estimar el ahorro operativo y el retorno de inversión de Agentes de IA conversacionales en ventas y soporte B2B.',
   '/recursos/megaprompts-b2b-marketing': 'Biblioteca de 5 megaprompts premium de Claude y ChatGPT para marketing de contenidos B2B, copywriting y playbooks de objeciones.',
