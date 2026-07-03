@@ -72,8 +72,8 @@ const faqItems = [
     })}
   />
 
-  <section class="min-h-[50vh] pt-36 pb-16 px-6 relative border-b border-white/5 bg-charcoal">
-    <div class="absolute top-20 right-1/4 w-[400px] h-[400px] bg-gold/5 rounded-full blur-[80px] pointer-events-none -z-10"></div>
+  <section class="min-h-[50vh] pt-36 pb-16 px-6 relative bg-charcoal">
+    <div class="absolute top-20 right-1/4 w-[400px] h-[400px] bg-gold/5 rounded-full blur-[100px] pointer-events-none -z-10 animate-pulse-slow"></div>
 
     <div class="max-w-4xl mx-auto">
       <a
@@ -96,11 +96,11 @@ const faqItems = [
       </h1>
       <p class="text-sm text-subtle mb-8">Por TAP-IA · 1 julio 2026 · Análisis Modelos / GEO</p>
 
-      <div class="bg-white/5 border border-white/10 p-6 md:p-8 rounded-2xl mb-8">
-        <h2 class="text-xl font-serif text-gold mb-3 flex items-center gap-2">
-          <i class="fa-solid fa-bolt"></i> Resumen Ejecutivo (ES)
+      <div class="bg-white/[0.015] border-l-2 border-l-gold/45 p-6 md:p-8 rounded-r-2xl mb-8 backdrop-blur-sm">
+        <h2 class="text-xl font-playfair text-gold mb-3 flex items-center gap-2">
+          <i class="fa-solid fa-bolt text-gold animate-pulse-slow"></i> Resumen Ejecutivo (ES)
         </h2>
-        <p class="text-offwhite/90 leading-relaxed text-sm md:text-base">
+        <p class="text-offwhite/95 leading-relaxed text-sm md:text-base font-jakarta">
           La presentación de la familia GPT-5.6 (encabezada por <strong>Sol</strong>) el 26 de junio de 2026 y la accidentada trayectoria de Fable 5 de Anthropic confirman un cambio de paradigma: el acceso público e irrestricto a los modelos más potentes del mundo se ha cerrado. Los gobiernos y las propias tecnológicas están limitando, bloqueando o redirigiendo el uso de sus modelos de frontera, estableciendo un "techo comercial" artificial para los usuarios y las empresas comunes.
         </p>
       </div>
@@ -108,7 +108,7 @@ const faqItems = [
       <img
         src="/images/blog/hero-gpt-5-6-restringido.png"
         alt="Visualización abstracta de seguridad de IA restringida con un escudo y patrones de datos oscuros y dorados"
-        class="w-full h-auto rounded-3xl border border-white/10 shadow-2xl"
+        class="w-full h-auto rounded-3xl shadow-[0_25px_60px_rgba(0,0,0,0.85)] border border-white/5"
         width="1600"
         height="900"
         loading="eager"
@@ -138,37 +138,50 @@ const faqItems = [
 
       <h2 class="font-serif text-3xl mb-6 text-white">Comparativa de contención: GPT-5.6 vs. Claude Fable 5</h2>
       <div class="overflow-x-auto mb-12">
-        <table class="w-full border-collapse border border-white/10 text-sm">
+        <table class="w-full text-sm text-left">
           <thead>
-            <tr class="bg-white/5">
-              <th scope="col" class="border border-white/10 p-3 text-left">Dimensión</th>
-              <th scope="col" class="border border-white/10 p-3 text-left">Claude Fable 5 (Anthropic)</th>
-              <th scope="col" class="border border-white/10 p-3 text-left">GPT-5.6 Sol (OpenAI)</th>
+            <tr class="border-b border-white/10 text-white font-semibold">
+              <th scope="col" class="pb-4 pt-2 pr-4">Dimensión</th>
+              <th scope="col" class="pb-4 pt-2 px-4">Claude Fable 5 (Anthropic)</th>
+              <th scope="col" class="pb-4 pt-2 pl-4">GPT-5.6 Sol (OpenAI)</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <td class="border border-white/10 p-3 font-semibold">Estrategia de contención</td>
-              <td class="border border-white/10 p-3">Redireccionamiento e Intervención: Relanzado tras suspensión, pero derivando desarrollo pesado a Opus 4.8.</td>
-              <td class="border border-white/10 p-3">Lanzamiento preventivo restringido: Retenido voluntariamente en fase preview coordinada con el gobierno.</td>
+          <tbody class="divide-y divide-white/5">
+            <tr class="hover:bg-white/[0.01] transition-colors">
+              <td class="py-4 pr-4 font-semibold text-offwhite">Estrategia de contención</td>
+              <td class="py-4 px-4 text-subtle">Redireccionamiento e Intervención: Relanzado tras suspensión, pero derivando desarrollo pesado a Opus 4.8.</td>
+              <td class="py-4 pl-4 text-subtle">Lanzamiento preventivo restringido: Retenido voluntariamente en fase preview coordinada con el gobierno.</td>
             </tr>
-            <tr>
-              <td class="border border-white/10 p-3 font-semibold">Modelos base</td>
-              <td class="border border-white/10 p-3">Claude Mythos / Fable 5</td>
-              <td class="border border-white/10 p-3">GPT-5.6 Sol (y su modo Ultra)</td>
+            <tr class="hover:bg-white/[0.01] transition-colors">
+              <td class="py-4 pr-4 font-semibold text-offwhite">Modelos base</td>
+              <td class="py-4 px-4 text-subtle">Claude Mythos / Fable 5</td>
+              <td class="py-4 pl-4 text-subtle">GPT-5.6 Sol (y su modo Ultra)</td>
             </tr>
-            <tr>
-              <td class="border border-white/10 p-3 font-semibold">Acceso general</td>
-              <td class="border border-white/10 p-3">Versión de consumo general capada por redireccionamiento.</td>
-              <td class="border border-white/10 p-3">Preview cerrado para socios de infraestructura y agencias.</td>
+            <tr class="hover:bg-white/[0.01] transition-colors">
+              <td class="py-4 pr-4 font-semibold text-offwhite">Acceso general</td>
+              <td class="py-4 px-4 text-subtle">Versión de consumo general capada por redireccionamiento.</td>
+              <td class="py-4 pl-4 text-subtle">Preview cerrado para socios de infraestructura y agencias.</td>
             </tr>
-            <tr>
-              <td class="border border-white/10 p-3 font-semibold">Riesgo justificado</td>
-              <td class="border border-white/10 p-3">Ciberseguridad ofensiva, exploits y evasión de directivas.</td>
-              <td class="border border-white/10 p-3">Intrusión cibernética avanzada y bio-ciberseguridad.</td>
+            <tr class="hover:bg-white/[0.01] transition-colors">
+              <td class="py-4 pr-4 font-semibold text-offwhite">Riesgo justificado</td>
+              <td class="py-4 px-4 text-subtle">Ciberseguridad ofensiva, exploits y evasión de directivas.</td>
+              <td class="py-4 pl-4 text-subtle">Intrusión cibernética avanzada y bio-ciberseguridad.</td>
             </tr>
           </tbody>
         </table>
+      </div>
+
+      <div class="mb-16 mt-8">
+        <h3 class="text-xl font-playfair text-white mb-4">Visualización del flujo: La Era de la IA Restringida</h3>
+        <img
+          src="/images/blog/infografia-gpt-5-6-restriccion.png"
+          alt="Infografía que muestra el flujo de desvío y restricción de la Era de la IA Restringida: GPT-5.6 Sol / Fable 5 hacia filtros gubernamentales y desvío de Fable 5 a Opus 4.8"
+          class="w-full h-auto rounded-2xl shadow-[0_15px_45px_rgba(0,0,0,0.7)] border border-white/5"
+          width="1600"
+          height="900"
+          loading="lazy"
+        />
+        <p class="text-xs text-subtle/60 mt-3 text-center italic">Esquema conceptual de la redirección comercial y las compuertas de seguridad estatal.</p>
       </div>
 
       <h2 class="font-serif text-3xl mb-6 text-white">Análisis situacional: El futuro del acceso tecnológico</h2>
@@ -232,9 +245,9 @@ const faqItems = [
         <p class="text-right font-serif text-gold mt-4">— Tap-IA</p>
       </div>
 
-      <h2 class="font-serif text-3xl mb-6 text-white">Recomendaciones de implementación editorial (SEO/GEO)</h2>
-      <div class="matte-card border border-gold/20 p-6 rounded-xl mb-12">
-        <ul class="list-disc pl-6 space-y-2 text-sm md:text-base">
+      <h2 class="font-playfair text-3xl mb-6 text-white">Recomendaciones de implementación editorial (SEO/GEO)</h2>
+      <div class="bg-white/[0.01] border-l border-l-gold/30 p-6 rounded-r-xl mb-12 backdrop-blur-sm">
+        <ul class="list-disc pl-6 space-y-2 text-sm md:text-base text-subtle">
           <li><strong>Definición semántica clara:</strong> Colocar el conflicto de acceso comercial en el primer bloque del artículo para capturar la respuesta directa en búsquedas generativas.</li>
           <li><strong>Tabla de equivalencias y desvíos:</strong> Una estructura comparativa que explique a qué modelo se desvía cada tarea ayuda a posicionar la pieza.</li>
           <li><strong>FAQs BOFU:</strong> Responder de forma directa sobre cómo afecta esto al desarrollo de software y por qué empresas B2B necesitan consultores.</li>
@@ -266,6 +279,17 @@ const faqItems = [
         <p class="text-sm text-subtle leading-relaxed">
           <strong>GPT-5.6 Sol</strong> (OpenAI) and <strong>Claude Fable 5</strong> (Anthropic) mark the beginning of the "Restricted AI Era." Public access to top-tier frontier models is being limited by government regulators and safety audits. In a significant shift, Anthropic is redirecting heavy coding tasks from Fable 5 to the older Opus 4.8. For B2B organizations, this creates a <strong>commercial accessibility ceiling</strong>. The strategic implication is clear: companies must stop waiting for next-gen models and start maximizing the efficiency of current-gen systems (like GPT-5.5 and Claude Sonnet 5) through robust orchestration and local agent architectures.
         </p>
+      </div>
+
+      <div class="mb-16 mt-12">
+        <img
+          src="/images/blog/decorativa-gpt-5-6-restringido.png"
+          alt="Cápsula de servidor de datos abstracta y blindada: representación conceptual de almacenamiento seguro de modelos de frontera"
+          class="w-full h-auto rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.8)] border border-white/5"
+          width="1600"
+          height="900"
+          loading="lazy"
+        />
       </div>
 
       <h2 class="font-serif text-3xl mb-4 text-white">Fuentes</h2>

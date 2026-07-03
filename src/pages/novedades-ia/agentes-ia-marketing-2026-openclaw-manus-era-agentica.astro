@@ -33,8 +33,8 @@ const metadata = {
         url={`${SITE_URL}${metadata.slug}`}
     />
 
-    <section class="min-h-[50vh] pt-36 pb-16 px-6 relative border-b border-white/5">
-        <div class="absolute top-20 right-1/4 w-[400px] h-[400px] bg-forest/10 rounded-full blur-[80px] pointer-events-none -z-10"></div>
+    <section class="min-h-[50vh] pt-36 pb-16 px-6 relative bg-charcoal">
+        <div class="absolute top-20 right-1/4 w-[400px] h-[400px] bg-forest/10 rounded-full blur-[100px] pointer-events-none -z-10 animate-pulse-slow"></div>
         
         <div class="max-w-4xl mx-auto">
             <a href="/novedades-ia" class="text-subtle text-sm hover:text-white transition-colors mb-6 inline-block">
@@ -52,15 +52,15 @@ const metadata = {
             <img 
                 src="/images/blog/hero-era-agentes.png" 
                 alt="La Era de los Agentes de IA en Marketing" 
-                class="w-full h-auto rounded-3xl border border-white/10 shadow-2xl mb-12"
+                class="w-full h-auto rounded-3xl shadow-[0_25px_60px_rgba(0,0,0,0.85)] border border-white/5 mb-12"
             />
 
             <!-- Resumen Ejecutivo -->
-            <div class="bg-white/5 border border-white/10 p-6 md:p-8 rounded-2xl mb-12">
-                <h2 class="text-xl font-serif text-forest mb-3 flex items-center gap-2">
-                    <i class="fa-solid fa-bolt"></i> Resumen Ejecutivo (ES)
+            <div class="bg-white/[0.015] border-l-2 border-l-forest/45 p-6 md:p-8 rounded-r-2xl mb-12 backdrop-blur-sm">
+                <h2 class="text-xl font-playfair text-forest mb-3 flex items-center gap-2">
+                    <i class="fa-solid fa-bolt text-forest animate-pulse-slow"></i> Resumen Ejecutivo (ES)
                 </h2>
-                <p class="text-offwhite/90 leading-relaxed text-sm md:text-base">
+                <p class="text-offwhite/95 leading-relaxed text-sm md:text-base font-jakarta">
                     Los agentes de IA en marketing definen la productividad en 2026 porque han pasado del lenguaje a la acción. Analizamos OpenClaw, Manus, GenSpark y MiniMax Agent: qué son, cómo se usan en marketing y qué diferencia a un agente autónomo de un chatbot.
                 </p>
             </div>
@@ -95,29 +95,29 @@ const metadata = {
 
             <h2 class="font-serif text-3xl mb-6 text-white">La diferencia real entre chatbots y agentes de IA</h2>
             <div class="overflow-x-auto mb-12">
-                <table class="w-full border-collapse border border-white/10 text-sm">
+                <table class="w-full text-sm text-left">
                     <thead>
-                        <tr class="bg-white/5">
-                            <th class="border border-white/10 p-3 text-left">Dimensión</th>
-                            <th class="border border-white/10 p-3 text-left">Chatbot tradicional</th>
-                            <th class="border border-white/10 p-3 text-left">Agente de IA</th>
+                        <tr class="border-b border-white/10 text-white font-semibold">
+                            <th scope="col" class="pb-4 pt-2 pr-4">Dimensión</th>
+                            <th scope="col" class="pb-4 pt-2 px-4">Chatbot tradicional</th>
+                            <th scope="col" class="pb-4 pt-2 pl-4">Agente de IA</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td class="border border-white/10 p-3 font-semibold">Orientación</td>
-                            <td class="border border-white/10 p-3 text-subtle">Responde preguntas</td>
-                            <td class="border border-white/10 p-3">Completa objetivos</td>
+                    <tbody class="divide-y divide-white/5">
+                        <tr class="hover:bg-white/[0.01] transition-colors">
+                            <td class="py-4 pr-4 font-semibold text-offwhite">Orientación</td>
+                            <td class="py-4 px-4 text-subtle">Responde preguntas</td>
+                            <td class="py-4 pl-4 text-subtle">Completa objetivos</td>
                         </tr>
-                        <tr>
-                            <td class="border border-white/10 p-3 font-semibold">Uso de herramientas</td>
-                            <td class="border border-white/10 p-3 text-subtle">Ninguno o muy limitado</td>
-                            <td class="border border-white/10 p-3">Navegador, APIs, CRM, código</td>
+                        <tr class="hover:bg-white/[0.01] transition-colors">
+                            <td class="py-4 pr-4 font-semibold text-offwhite">Uso de herramientas</td>
+                            <td class="py-4 px-4 text-subtle">Ninguno o muy limitado</td>
+                            <td class="py-4 pl-4 text-subtle">Navegador, APIs, CRM, código</td>
                         </tr>
-                        <tr>
-                            <td class="border border-white/10 p-3 font-semibold">Planificación</td>
-                            <td class="border border-white/10 p-3 text-subtle">No planifica</td>
-                            <td class="border border-white/10 p-3">Descompone en sub-pasos</td>
+                        <tr class="hover:bg-white/[0.01] transition-colors">
+                            <td class="py-4 pr-4 font-semibold text-offwhite">Planificación</td>
+                            <td class="py-4 px-4 text-subtle">No planifica</td>
+                            <td class="py-4 pl-4 text-subtle">Descompone en sub-pasos</td>
                         </tr>
                     </tbody>
                 </table>
@@ -133,19 +133,19 @@ const metadata = {
                 <strong>Manus</strong>, recientemente adquirido por Meta, se integra en las plataformas de anuncios para optimizar creatividades. <strong>GenSpark</strong> ofrece una entrada no-code accesible con más de 80 herramientas integradas, mientras que <strong>MiniMax Agent</strong> destaca en la orquestación multi-agente para investigaciones profundas.
             </p>
 
-            <div class="bg-charcoal border border-forest/20 p-8 rounded-xl my-12">
-                <h3 class="font-serif text-2xl mb-4 text-white">El marketer de 2026</h3>
-                <p class="italic text-lg">
+            <div class="bg-white/[0.01] border-l border-l-forest/30 p-8 rounded-r-xl my-12 backdrop-blur-sm">
+                <h3 class="font-playfair text-2xl mb-4 text-white">El marketer de 2026</h3>
+                <p class="italic text-lg text-offwhite/95">
                     "Los mejores marketers de 2026 no ejecutan campañas. Diseñan los agentes que las ejecutan por ellos — y tienen el criterio para saber cuándo corregirlos."
                 </p>
-                <p class="text-right font-serif text-forest mt-4">— Tap-IA</p>
+                <p class="text-right font-playfair text-forest mt-4">— Tap-IA</p>
             </div>
 
             <hr class="border-white/10 my-16">
             
             <h2 class="font-serif text-3xl mb-6 text-subtle text-center">English Version Summary (EN)</h2>
-            <div class="bg-white/5 p-6 border border-white/5 rounded-xl">
-                <p class="mb-4 text-sm text-subtle">
+            <div class="bg-white/[0.015] p-6 border-l border-l-white/10 rounded-r-xl">
+                <p class="mb-4 text-sm text-subtle font-jakarta">
                     <strong>Summary:</strong> The industry is shifting from conversational AI (LLMs) to Action-oriented AI (LAMs). Autonomous agents like Open Claw and Manus are now capable of executing end-to-end workflows within enterprise software ecosystems.
                 </p>
             </div>

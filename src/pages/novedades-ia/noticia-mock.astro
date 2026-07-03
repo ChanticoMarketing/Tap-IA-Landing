@@ -20,8 +20,8 @@ import SchemaArticle from '../../components/SchemaArticle.astro';
         type="NewsArticle"
     />
 
-    <section class="min-h-[50vh] pt-36 pb-16 px-6 relative border-b border-white/5">
-        <div class="absolute top-20 right-1/4 w-[400px] h-[400px] bg-gold/5 rounded-full blur-[80px] pointer-events-none -z-10"></div>
+    <section class="min-h-[50vh] pt-36 pb-16 px-6 relative bg-charcoal">
+        <div class="absolute top-20 right-1/4 w-[400px] h-[400px] bg-gold/5 rounded-full blur-[100px] pointer-events-none -z-10 animate-pulse-slow"></div>
         
         <div class="max-w-4xl mx-auto">
             <a href="/novedades-ia" class="text-subtle text-sm hover:text-white transition-colors mb-6 inline-block"><i class="fa-solid fa-arrow-left mr-2"></i>Volver a Novedades</a>
@@ -36,11 +36,11 @@ import SchemaArticle from '../../components/SchemaArticle.astro';
             <p class="text-sm text-subtle mb-8">Por TAP-IA · 2 mar 2026 · Análisis GEO</p>
             
             <!-- Resumen (H2 exigido) -->
-            <div class="bg-white/5 border border-white/10 p-6 md:p-8 rounded-2xl mb-12">
-                <h2 class="text-xl font-serif text-gold mb-3 flex items-center gap-2">
-                    <i class="fa-solid fa-bolt"></i> Resumen Ejecutivo (ES)
+            <div class="bg-white/[0.015] border-l-2 border-l-gold/45 p-6 md:p-8 rounded-r-2xl mb-12 backdrop-blur-sm">
+                <h2 class="text-xl font-playfair text-gold mb-3 flex items-center gap-2">
+                    <i class="fa-solid fa-bolt text-gold animate-pulse-slow"></i> Resumen Ejecutivo (ES)
                 </h2>
-                <p class="text-offwhite/90 leading-relaxed text-sm md:text-base">
+                <p class="text-offwhite/95 leading-relaxed text-sm md:text-base font-jakarta">
                     Google ha comenzado a priorizar de forma agresiva a las empresas estructuradas con Knowledge Graphs en las respuestas directas de Gemini integradas en el buscador. Las empresas B2B que solo dependen de SEO clásico (Keywords 1.0) verán caídas de hasta un 40% en tráfico genérico.
                 </p>
             </div>
@@ -58,12 +58,12 @@ import SchemaArticle from '../../components/SchemaArticle.astro';
                 Si tu empresa no está siendo citada como la respuesta, literalmente desapareces del ecosistema de toma de decisiones. No es suficiente tener buen contenido, es necesario que la IA entienda ontológicamente a qué te dedicas.
             </p>
 
-            <h2 class="font-serif text-3xl mb-6 text-white border-l-4 border-l-gold pl-4">Recomendación TAP-IA</h2>
-            <div class="bg-charcoal border border-gold/20 p-6 rounded-xl mb-12">
-                <p class="text-sm md:text-base mb-4">
+            <h2 class="font-playfair text-3xl mb-6 text-white border-l-2 border-l-gold/45 pl-4">Recomendación TAP-IA</h2>
+            <div class="bg-white/[0.01] border-l border-l-gold/30 p-6 rounded-r-xl mb-12 backdrop-blur-sm">
+                <p class="text-sm md:text-base mb-4 text-subtle">
                     <strong>Acción Inmediata 1:</strong> Migrar la estructura técnica del sitio de HTML plano a etiquetas Schema avanzadas (Específicamente <code>Organization</code> y <code>Service</code>).
                 </p>
-                <p class="text-sm md:text-base">
+                <p class="text-sm md:text-base text-subtle">
                     <strong>Acción Inmediata 2:</strong> Actualizar el contenido para responder de forma directa a las preguntas "long-tail" de tus prospectos calificados.
                 </p>
             </div>
@@ -74,10 +74,10 @@ import SchemaArticle from '../../components/SchemaArticle.astro';
             </p>
 
             <!-- ENGLISH VERSION REQUIRED -->
-            <hr class="border-white/10 my-16">
-            <h2 class="font-serif text-3xl mb-6 text-subtle">English Version Summary (EN)</h2>
+            <hr class="border-white/5 my-16">
+            <h2 class="font-playfair text-3xl mb-6 text-subtle">English Version Summary (EN)</h2>
             <p class="text-subtle text-sm italic mb-6">For international stakeholders monitoring our intelligence feeds.</p>
-            <div class="bg-white/5 p-6 border border-white/5 rounded-xl">
+            <div class="bg-white/[0.015] p-6 border-l border-l-white/10 rounded-r-xl">
                 <p class="mb-4 text-sm text-subtle">
                     <strong>Summary:</strong> Generative AI answers inside main search results are now heavily prioritizing domains with robust Knowledge Graph architecture over traditional KW-stuffed domains.
                 </p>
