@@ -40,16 +40,13 @@ import SchemaItemList from '../../components/SchemaItemList.astro';
     <section class="py-8 px-6 bg-charcoal">
         <div class="max-w-7xl mx-auto">
             <h2 class="sr-only">Categorías</h2>
-            <div class="flex flex-wrap gap-3 text-sm" role="list" aria-label="Categorías editoriales">
-                <span role="listitem" class="px-4 py-2 bg-gold/10 text-gold border border-gold/20 rounded-full font-medium transition-all duration-300">Top semanal</span>
-                <span role="listitem" class="px-4 py-2 border border-white/5 text-subtle/40 rounded-full text-sm cursor-not-allowed select-none" aria-disabled="true" title="Próximamente">Modelos</span>
-                <span role="listitem" class="px-4 py-2 border border-white/5 text-subtle/40 rounded-full text-sm cursor-not-allowed select-none" aria-disabled="true" title="Próximamente">Herramientas</span>
-                <span role="listitem" class="px-4 py-2 border border-white/5 text-subtle/40 rounded-full text-sm cursor-not-allowed select-none" aria-disabled="true" title="Próximamente">Agentes</span>
-                <span role="listitem" class="px-4 py-2 border border-white/5 text-subtle/40 rounded-full text-sm cursor-not-allowed select-none" aria-disabled="true" title="Próximamente">IA en Marketing</span>
+            <div class="flex flex-wrap gap-x-8 gap-y-3 text-sm font-medium tracking-wide text-subtle/50" role="list" aria-label="Categorías editoriales">
+                <span role="listitem" class="text-gold relative pb-1 after:absolute after:bottom-0 after:left-0 after:w-4 after:h-0.5 after:bg-gold transition-all duration-300">Top semanal</span>
+                <span role="listitem" class="text-subtle/30 cursor-not-allowed select-none pb-1" aria-disabled="true" title="Próximamente">Modelos</span>
+                <span role="listitem" class="text-subtle/30 cursor-not-allowed select-none pb-1" aria-disabled="true" title="Próximamente">Herramientas</span>
+                <span role="listitem" class="text-subtle/30 cursor-not-allowed select-none pb-1" aria-disabled="true" title="Próximamente">Agentes</span>
+                <span role="listitem" class="text-subtle/30 cursor-not-allowed select-none pb-1" aria-disabled="true" title="Próximamente">IA en Marketing</span>
             </div>
-        </div>
-        <div class="max-w-7xl mx-auto mt-6">
-            <div class="gold-rule"></div>
         </div>
     </section>
 
@@ -61,7 +58,7 @@ import SchemaItemList from '../../components/SchemaItemList.astro';
             </h2>
 
             <!-- FEATURED POST (Asimétrico, widescreen) -->
-            <article id="gpt-5-6-no-lanzamiento" class="group relative block mb-20 pb-20 border-b border-white/5">
+            <article id="gpt-5-6-no-lanzamiento" class="group relative block mb-24 pb-12">
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
                     <div class="lg:col-span-7 space-y-4">
                         <div class="flex items-center gap-3 text-xs font-semibold uppercase tracking-wider">
@@ -74,27 +71,27 @@ import SchemaItemList from '../../components/SchemaItemList.astro';
                                 El no-lanzamiento de GPT-5.6 y el techo de la IA comercial: ¿Se acabó el acceso libre al estado del arte?
                             </a>
                         </h3>
-                        <p class="text-subtle text-base md:text-lg mb-6 leading-relaxed">
+                        <p class="text-subtle text-base md:text-lg mb-6 leading-relaxed font-jakarta">
                             OpenAI limita el acceso a GPT-5.6 Sol en coordinación con el gobierno. Análisis sobre el techo de acceso comercial a la IA de frontera.
                         </p>
                         <div class="flex flex-wrap items-center justify-between gap-4 pt-2">
                             <div class="flex items-center gap-2 text-xs text-subtle/60">
                                 <i class="fa-solid fa-cube"></i> Fuente: <strong>OpenAI / Anthropic</strong>
                             </div>
-                            <a href="/novedades-ia/gpt-5-6-no-lanzamiento-techo-ia-comercial-2026" class="inline-flex items-center gap-2 text-white text-sm font-medium transition-all duration-300 group-hover:text-gold border-b border-transparent hover:border-gold pb-0.5">
-                                Leer Análisis <i class="fa-solid fa-arrow-right text-gold transition-transform duration-300 group-hover:translate-x-1.5"></i>
+                            <a href="/novedades-ia/gpt-5-6-no-lanzamiento-techo-ia-comercial-2026" class="inline-flex items-center gap-2 text-white/90 text-sm font-medium transition-all duration-300 group-hover:text-gold">
+                                Leer Análisis <i class="fa-solid fa-arrow-right text-gold transition-transform duration-300 group-hover:translate-x-1"></i>
                             </a>
                         </div>
                     </div>
                     <div class="lg:col-span-5">
-                        <a href="/novedades-ia/gpt-5-6-no-lanzamiento-techo-ia-comercial-2026" class="block relative overflow-hidden rounded-2xl aspect-video border border-white/5 bg-matte shadow-2xl group/img">
-                            <div class="absolute inset-0 bg-gradient-to-t from-[#0a0b0e]/80 via-transparent to-transparent opacity-60 z-10 transition-opacity duration-300 group-hover/img:opacity-40"></div>
+                        <a href="/novedades-ia/gpt-5-6-no-lanzamiento-techo-ia-comercial-2026" class="block relative overflow-hidden rounded-2xl aspect-video group/img">
+                            <div class="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-transparent to-transparent opacity-60 z-10 transition-opacity duration-300 group-hover/img:opacity-40"></div>
                             <!-- Ambient Glow behind the image -->
                             <div class="absolute -inset-4 bg-gold/5 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none -z-10"></div>
                             <img 
                                 src="/images/blog/hero-gpt-5-6-restringido.png" 
                                 alt="El no-lanzamiento de GPT-5.6 y el techo de la IA comercial" 
-                                class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover/img:scale-102"
+                                class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover/img:scale-103"
                                 loading="eager"
                             />
                         </a>
@@ -107,13 +104,13 @@ import SchemaItemList from '../../components/SchemaItemList.astro';
                 <!-- Claude Mythos -->
                 <article id="claude-mythos" class="group flex flex-col justify-between h-full relative">
                     <div>
-                        <a href="/novedades-ia/claude-mythos-proyecto-glasswing-2026" class="block relative overflow-hidden rounded-xl aspect-video mb-6 border border-white/5 bg-matte shadow-lg group/img">
-                            <div class="absolute inset-0 bg-gradient-to-t from-[#0a0b0e]/80 via-transparent to-transparent opacity-60 z-10 transition-opacity duration-300 group-hover/img:opacity-40"></div>
+                        <a href="/novedades-ia/claude-mythos-proyecto-glasswing-2026" class="block relative overflow-hidden rounded-xl aspect-video mb-6 group/img">
+                            <div class="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-transparent to-transparent opacity-60 z-10 transition-opacity duration-300 group-hover/img:opacity-40"></div>
                             <div class="absolute -inset-4 bg-gold/5 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none -z-10"></div>
                             <img 
                                 src="/images/blog/hero-claude-mythos-glasswing.png" 
                                 alt="Claude Mythos y Project Glasswing" 
-                                class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover/img:scale-102"
+                                class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover/img:scale-103"
                                 loading="lazy"
                             />
                         </a>
@@ -127,16 +124,16 @@ import SchemaItemList from '../../components/SchemaItemList.astro';
                                 Claude Mythos y Project Glasswing: qué cambia en ciberseguridad, IA y marketing (2026)
                             </a>
                         </h3>
-                        <p class="text-subtle text-sm mb-6 leading-relaxed line-clamp-2">
+                        <p class="text-subtle text-sm mb-6 leading-relaxed line-clamp-2 font-jakarta">
                             Anthropic retiene su modelo frontier más potente para defensa. Análisis para marketing, negocio y visibilidad GEO.
                         </p>
                     </div>
-                    <div class="flex items-center justify-between gap-4 pt-2 border-t border-white/5 mt-auto">
+                    <div class="flex items-center justify-between gap-4 pt-4 mt-auto">
                         <div class="flex items-center gap-2 text-xs text-subtle/60">
                             <i class="fa-solid fa-cube"></i> Fuente: <strong>Anthropic</strong>
                         </div>
-                        <a href="/novedades-ia/claude-mythos-proyecto-glasswing-2026" class="inline-flex items-center gap-2 text-white text-sm font-medium transition-all duration-300 group-hover:text-gold border-b border-transparent hover:border-gold pb-0.5">
-                            Leer Análisis <i class="fa-solid fa-arrow-right text-gold transition-transform duration-300 group-hover:translate-x-1.5"></i>
+                        <a href="/novedades-ia/claude-mythos-proyecto-glasswing-2026" class="inline-flex items-center gap-2 text-white/90 text-sm font-medium transition-all duration-300 group-hover:text-gold">
+                            Leer Análisis <i class="fa-solid fa-arrow-right text-gold transition-transform duration-300 group-hover:translate-x-1"></i>
                         </a>
                     </div>
                 </article>
@@ -144,13 +141,13 @@ import SchemaItemList from '../../components/SchemaItemList.astro';
                 <!-- Agentes Autónomos -->
                 <article id="agentes-autonomos" class="group flex flex-col justify-between h-full relative">
                     <div>
-                        <a href="/novedades-ia/agentes-ia-marketing-2026-openclaw-manus-era-agentica" class="block relative overflow-hidden rounded-xl aspect-video mb-6 border border-white/5 bg-matte shadow-lg group/img">
-                            <div class="absolute inset-0 bg-gradient-to-t from-[#0a0b0e]/80 via-transparent to-transparent opacity-60 z-10 transition-opacity duration-300 group-hover/img:opacity-40"></div>
+                        <a href="/novedades-ia/agentes-ia-marketing-2026-openclaw-manus-era-agentica" class="block relative overflow-hidden rounded-xl aspect-video mb-6 group/img">
+                            <div class="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-transparent to-transparent opacity-60 z-10 transition-opacity duration-300 group-hover/img:opacity-40"></div>
                             <div class="absolute -inset-4 bg-forest/10 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none -z-10"></div>
                             <img 
                                 src="/images/blog/hero-era-agentes.png" 
                                 alt="Agentes de IA en Marketing 2026" 
-                                class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover/img:scale-102"
+                                class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover/img:scale-103"
                                 loading="lazy"
                             />
                         </a>
@@ -164,16 +161,16 @@ import SchemaItemList from '../../components/SchemaItemList.astro';
                                 Agentes de IA en Marketing 2026: OpenClaw, Manus y la Era de la Ejecución Autónoma
                             </a>
                         </h3>
-                        <p class="text-subtle text-sm mb-6 leading-relaxed line-clamp-2">
+                        <p class="text-subtle text-sm mb-6 leading-relaxed line-clamp-2 font-jakarta">
                             Los agentes de IA en marketing definen la productividad en 2026 porque han pasado del lenguaje a la acción. Descubre cómo OpenClaw y Manus están redefiniendo la productividad empresarial.
                         </p>
                     </div>
-                    <div class="flex items-center justify-between gap-4 pt-2 border-t border-white/5 mt-auto">
+                    <div class="flex items-center justify-between gap-4 pt-4 mt-auto">
                         <div class="flex items-center gap-2 text-xs text-subtle/60">
                             <i class="fa-solid fa-cube"></i> Fuente: <strong>Tap-IA</strong>
                         </div>
-                        <a href="/novedades-ia/agentes-ia-marketing-2026-openclaw-manus-era-agentica" class="inline-flex items-center gap-2 text-white text-sm font-medium transition-all duration-300 group-hover:text-forest border-b border-transparent hover:border-forest pb-0.5">
-                            Leer Análisis <i class="fa-solid fa-arrow-right text-forest transition-transform duration-300 group-hover:translate-x-1.5"></i>
+                        <a href="/novedades-ia/agentes-ia-marketing-2026-openclaw-manus-era-agentica" class="inline-flex items-center gap-2 text-white/90 text-sm font-medium transition-all duration-300 group-hover:text-forest">
+                            Leer Análisis <i class="fa-solid fa-arrow-right text-forest transition-transform duration-300 group-hover:translate-x-1"></i>
                         </a>
                     </div>
                 </article>

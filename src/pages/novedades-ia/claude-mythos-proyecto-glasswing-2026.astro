@@ -101,7 +101,7 @@ const faqItems = [
       </h1>
       <p class="text-sm text-subtle mb-8">Por TAP-IA · 17 mayo 2026 · Análisis Modelos / GEO</p>
 
-      <div class="bg-white/[0.015] border-l-2 border-l-gold/45 p-6 md:p-8 rounded-r-2xl mb-8 backdrop-blur-sm">
+      <div class="bg-gradient-to-br from-white/[0.01] to-transparent p-6 md:p-8 rounded-2xl mb-8 backdrop-blur-sm">
         <h2 class="text-xl font-playfair text-gold mb-3 flex items-center gap-2">
           <i class="fa-solid fa-bolt text-gold animate-pulse-slow"></i> Resumen Ejecutivo (ES)
         </h2>
@@ -113,7 +113,7 @@ const faqItems = [
       <img
         src="/images/blog/hero-claude-mythos-glasswing.png"
         alt="Domo sonar de cristal dorado sobre panel negro: metáfora visual de escaneo defensivo Project Glasswing"
-        class="w-full h-auto rounded-3xl shadow-[0_25px_60px_rgba(0,0,0,0.85)] border border-white/5"
+        class="w-full h-auto rounded-3xl shadow-[0_25px_60px_rgba(0,0,0,0.85)] border-none"
         width="1600"
         height="900"
         loading="eager"
@@ -124,25 +124,24 @@ const faqItems = [
 
   <article class="py-16 px-6 max-w-3xl mx-auto text-offwhite/90">
     <div class="prose prose-invert prose-gold max-w-none">
-      <blockquote class="border-l-gold">
-        <strong>Definición rápida:</strong> Claude Mythos Preview es el modelo frontier más potente que
-        Anthropic ha entrenado. No está disponible al público: se despliega de forma controlada dentro
-        de <strong>Project Glasswing</strong>, una iniciativa defensiva con 12 socios de lanzamiento y
-        más de 40 organizaciones adicionales.
+      <blockquote class="relative border-none py-6 my-10 text-center font-serif text-lg md:text-xl text-offwhite/95 max-w-2xl mx-auto italic leading-relaxed">
+        <span class="absolute top-0 left-1/2 -translate-x-1/2 text-white/[0.03] text-8xl font-serif select-none pointer-events-none" aria-hidden="true">“</span>
+        <strong class="font-semibold block mb-2 not-italic text-sm uppercase tracking-widest text-gold/80 font-jakarta text-center">Definición rápida</strong>
+        Claude Mythos Preview es el modelo frontier más potente que Anthropic ha entrenado. No está disponible al público: se despliega de forma controlada dentro de <strong>Project Glasswing</strong>, una iniciativa defensiva con 12 socios de lanzamiento y más de 40 organizaciones adicionales.
       </blockquote>
 
-      <hr class="border-white/5 my-12" />
+      <div class="my-20"></div>
 
       <h2 class="font-serif text-3xl mb-6 text-white">Cronología: de filtración accidental a anuncio oficial</h2>
       <div class="overflow-x-auto mb-12">
-        <table class="w-full text-sm text-left">
+        <table class="w-full text-sm text-left border-collapse">
           <thead>
-            <tr class="border-b border-white/10 text-white font-semibold">
+            <tr class="border-b border-white/[0.08] text-white font-semibold">
               <th scope="col" class="pb-4 pt-2 pr-4">Fecha</th>
               <th scope="col" class="pb-4 pt-2 pl-4">Hito</th>
             </tr>
           </thead>
-          <tbody class="divide-y divide-white/5">
+          <tbody class="divide-y divide-white/[0.03]">
             <tr class="hover:bg-white/[0.01] transition-colors">
               <td class="py-4 pr-4 font-semibold text-offwhite">Finales marzo 2026</td>
               <td class="py-4 pl-4 text-subtle">Filtración por misconfiguración de CMS; borradores y referencias a Mythos expuestos</td>
@@ -204,34 +203,34 @@ const faqItems = [
 
       <h2 class="font-serif text-3xl mb-6 text-white">Mythos vs Opus 4.6</h2>
       <div class="overflow-x-auto mb-8">
-        <table class="w-full border-collapse border border-white/10 text-sm">
+        <table class="w-full border-collapse text-sm text-left">
           <thead>
-            <tr class="bg-white/5">
-              <th scope="col" class="border border-white/10 p-3 text-left">Dimensión</th>
-              <th scope="col" class="border border-white/10 p-3 text-left">Opus 4.6</th>
-              <th scope="col" class="border border-white/10 p-3 text-left">Mythos Preview</th>
+            <tr class="border-b border-white/[0.08] text-white font-semibold">
+              <th scope="col" class="pb-3 pt-2 pr-4">Dimensión</th>
+              <th scope="col" class="pb-3 pt-2 px-4">Opus 4.6</th>
+              <th scope="col" class="pb-3 pt-2 pl-4">Mythos Preview</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <td class="border border-white/10 p-3 font-semibold">Disponibilidad</td>
-              <td class="border border-white/10 p-3">API y productos Claude</td>
-              <td class="border border-white/10 p-3">Acceso restringido (Glasswing)</td>
+          <tbody class="divide-y divide-white/[0.03]">
+            <tr class="hover:bg-white/[0.01] transition-colors">
+              <td class="py-4 pr-4 font-semibold text-offwhite">Disponibilidad</td>
+              <td class="py-4 px-4 text-subtle font-jakarta leading-relaxed">API y productos Claude</td>
+              <td class="py-4 pl-4 text-subtle font-jakarta leading-relaxed">Acceso restringido (Glasswing)</td>
             </tr>
-            <tr>
-              <td class="border border-white/10 p-3 font-semibold">SWE-bench Verified</td>
-              <td class="border border-white/10 p-3">~81%</td>
-              <td class="border border-white/10 p-3">~94%</td>
+            <tr class="hover:bg-white/[0.01] transition-colors">
+              <td class="py-4 pr-4 font-semibold text-offwhite">SWE-bench Verified</td>
+              <td class="py-4 px-4 text-subtle font-jakarta leading-relaxed">~81%</td>
+              <td class="py-4 pl-4 text-subtle font-jakarta leading-relaxed">~94%</td>
             </tr>
-            <tr>
-              <td class="border border-white/10 p-3 font-semibold">USAMO 2026</td>
-              <td class="border border-white/10 p-3">~42%</td>
-              <td class="border border-white/10 p-3">~98%</td>
+            <tr class="hover:bg-white/[0.01] transition-colors">
+              <td class="py-4 pr-4 font-semibold text-offwhite">USAMO 2026</td>
+              <td class="py-4 px-4 text-subtle font-jakarta leading-relaxed">~42%</td>
+              <td class="py-4 pl-4 text-subtle font-jakarta leading-relaxed">~98%</td>
             </tr>
-            <tr>
-              <td class="border border-white/10 p-3 font-semibold">Ciberseguridad</td>
-              <td class="border border-white/10 p-3">Competente</td>
-              <td class="border border-white/10 p-3">Zero-days autónomos</td>
+            <tr class="hover:bg-white/[0.01] transition-colors">
+              <td class="py-4 pr-4 font-semibold text-offwhite">Ciberseguridad</td>
+              <td class="py-4 px-4 text-subtle font-jakarta leading-relaxed">Competente</td>
+              <td class="py-4 pl-4 text-subtle font-jakarta leading-relaxed">Zero-days autónomos</td>
             </tr>
           </tbody>
         </table>
@@ -241,13 +240,13 @@ const faqItems = [
         <img
           src="/images/blog/infografia-mythos-vs-opus-benchmarks.png"
           alt="Dos manómetros analógicos dorados: aguja baja frente a aguja al máximo, comparación visual Mythos vs Opus"
-          class="w-full h-auto rounded-2xl border border-white/10"
+          class="w-full h-auto rounded-2xl border-none shadow-[0_20px_50px_rgba(0,0,0,0.5)]"
           width="1600"
           height="1200"
           loading="lazy"
           decoding="async"
         />
-        <figcaption class="text-xs text-subtle mt-3 text-center">
+        <figcaption class="text-xs text-subtle mt-3 text-center italic font-jakarta">
           Lectura visual: capacidad frontier retenida (derecha) frente al tope público actual (izquierda).
           Cifras exactas en tabla.
         </figcaption>
@@ -261,7 +260,7 @@ const faqItems = [
         <li><strong>Posicionamiento</strong> como activo defensivo con socios y reguladores.</li>
       </ol>
 
-      <h2 class="font-serif text-3xl mb-6 text-white border-l-4 border-l-gold pl-4">
+      <h2 class="font-serif text-3xl mb-6 text-white">
         Implicaciones para empresas y marketing
       </h2>
       <p class="mb-6 leading-relaxed">
@@ -271,18 +270,18 @@ const faqItems = [
         > separa asistentes conversacionales de sistemas que actúan con human-in-the-loop.
       </p>
 
-      <div class="bg-charcoal border border-gold/20 p-8 rounded-xl my-12">
-        <p class="italic text-lg text-offwhite/95">
+      <div class="bg-gradient-to-br from-white/[0.015] to-transparent p-8 rounded-2xl my-12 backdrop-blur-sm">
+        <p class="italic text-lg text-offwhite/95 leading-relaxed font-serif">
           “Mythos no es una amenaza a tu blog; es la señal de que la superficie de ataque acelerada por
           IA ya es real. La oportunidad está en traducir el cambio en decisiones de negocio y
           visibilidad con rigor.”
         </p>
-        <p class="text-right font-serif text-gold mt-4">— Tap-IA</p>
+        <p class="text-right font-serif text-gold mt-4 font-medium">— Tap-IA</p>
       </div>
 
       <h2 class="font-playfair text-3xl mb-6 text-white">Qué NO decir</h2>
-      <div class="bg-white/[0.01] border-l border-l-gold/30 p-6 rounded-r-xl mb-12 backdrop-blur-sm">
-        <ul class="list-disc pl-6 space-y-2 text-sm md:text-base text-subtle">
+      <div class="bg-gradient-to-r from-white/[0.01] to-transparent p-6 rounded-2xl mb-12 backdrop-blur-sm">
+        <ul class="list-disc pl-6 space-y-2 text-sm md:text-base text-subtle font-jakarta">
           <li>“Mythos ya está en Claude para todos” — <strong>falso</strong> en mayo 2026.</li>
           <li>“Tu empresa necesita Mythos para hacer SEO” — confunde capas.</li>
           <li>Cifras ~10T parámetros como hecho oficial — son estimaciones de terceros.</li>
@@ -291,14 +290,14 @@ const faqItems = [
 
       <h2 class="font-playfair text-3xl mb-6 text-white">Recomendaciones accionables</h2>
       <div class="overflow-x-auto mb-12">
-        <table class="w-full text-sm text-left">
+        <table class="w-full text-sm text-left border-collapse">
           <thead>
-            <tr class="border-b border-white/10 text-white font-semibold">
+            <tr class="border-b border-white/[0.08] text-white font-semibold">
               <th scope="col" class="pb-4 pt-2 pr-4">Prioridad</th>
               <th scope="col" class="pb-4 pt-2 pl-4">Acción</th>
             </tr>
           </thead>
-          <tbody class="divide-y divide-white/5">
+          <tbody class="divide-y divide-white/[0.03]">
             <tr class="hover:bg-white/[0.01] transition-colors">
               <td class="py-4 pr-4 font-semibold text-gold">P1</td>
               <td class="py-4 pl-4 text-subtle">Auditar postura de seguridad (APIs, CI/CD, dependencias)</td>
@@ -337,11 +336,11 @@ const faqItems = [
         >
       </p>
 
-      <hr class="border-white/10 my-16" />
+      <div class="my-20"></div>
       <h2 class="font-serif text-3xl mb-6 text-subtle">English Version Summary (EN)</h2>
-      <p class="text-subtle text-sm italic mb-4">For international stakeholders monitoring our intelligence feeds.</p>
-      <div class="bg-white/5 p-6 border border-white/5 rounded-xl mb-8">
-        <p class="text-sm text-subtle leading-relaxed">
+      <p class="text-subtle text-sm italic mb-4 font-jakarta">For international stakeholders monitoring our intelligence feeds.</p>
+      <div class="bg-gradient-to-br from-white/[0.01] to-transparent p-6 rounded-2xl mb-8 backdrop-blur-sm">
+        <p class="text-sm text-subtle leading-relaxed font-jakarta">
           <strong>Claude Mythos Preview</strong> is Anthropic's unreleased frontier model, deployed through
           <strong>Project Glasswing</strong> for defensive cybersecurity with major tech and financial
           partners. It leads on vulnerability discovery and software engineering benchmarks but is withheld
@@ -370,9 +369,10 @@ const faqItems = [
       </ul>
     </div>
 
-    <div class="mt-20 pt-16 border-t border-white/10 text-center">
-      <p class="text-xs text-subtle uppercase tracking-widest mb-4">Publicado por Tap-IA · Mayo 2026 · Jalisco, México</p>
-      <p class="text-sm text-subtle mb-6 max-w-lg mx-auto">
+    <div class="mt-24 pt-16 text-center relative">
+      <div class="absolute top-0 left-1/2 -translate-x-1/2 w-48 h-px bg-gradient-to-r from-transparent via-white/[0.08] to-transparent"></div>
+      <p class="text-xs text-subtle uppercase tracking-widest mb-4 font-jakarta">Publicado por Tap-IA · Mayo 2026 · Jalisco, México</p>
+      <p class="text-sm text-subtle mb-6 max-w-lg mx-auto font-jakarta">
         ¿Quieres saber cómo este tipo de avances afecta tu estrategia de IA o visibilidad?
         <a href="/auditoria-ia-marketing-seo-geo" class="text-gold hover:underline">Solicita una auditoría</a> o escríbeme.
       </p>

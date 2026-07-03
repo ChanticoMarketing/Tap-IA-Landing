@@ -36,7 +36,7 @@ import SchemaArticle from '../../components/SchemaArticle.astro';
             <p class="text-sm text-subtle mb-8">Por TAP-IA · 2 mar 2026 · Análisis GEO</p>
             
             <!-- Resumen (H2 exigido) -->
-            <div class="bg-white/[0.015] border-l-2 border-l-gold/45 p-6 md:p-8 rounded-r-2xl mb-12 backdrop-blur-sm">
+            <div class="bg-gradient-to-br from-white/[0.01] to-transparent p-6 md:p-8 rounded-2xl mb-12 backdrop-blur-sm">
                 <h2 class="text-xl font-playfair text-gold mb-3 flex items-center gap-2">
                     <i class="fa-solid fa-bolt text-gold animate-pulse-slow"></i> Resumen Ejecutivo (ES)
                 </h2>
@@ -58,12 +58,12 @@ import SchemaArticle from '../../components/SchemaArticle.astro';
                 Si tu empresa no está siendo citada como la respuesta, literalmente desapareces del ecosistema de toma de decisiones. No es suficiente tener buen contenido, es necesario que la IA entienda ontológicamente a qué te dedicas.
             </p>
 
-            <h2 class="font-playfair text-3xl mb-6 text-white border-l-2 border-l-gold/45 pl-4">Recomendación TAP-IA</h2>
-            <div class="bg-white/[0.01] border-l border-l-gold/30 p-6 rounded-r-xl mb-12 backdrop-blur-sm">
-                <p class="text-sm md:text-base mb-4 text-subtle">
+            <h2 class="font-playfair text-3xl mb-6 text-white">Recomendación TAP-IA</h2>
+            <div class="bg-gradient-to-r from-white/[0.01] to-transparent p-6 rounded-2xl mb-12 backdrop-blur-sm">
+                <p class="text-sm md:text-base mb-4 text-subtle font-jakarta leading-relaxed">
                     <strong>Acción Inmediata 1:</strong> Migrar la estructura técnica del sitio de HTML plano a etiquetas Schema avanzadas (Específicamente <code>Organization</code> y <code>Service</code>).
                 </p>
-                <p class="text-sm md:text-base text-subtle">
+                <p class="text-sm md:text-base text-subtle font-jakarta leading-relaxed">
                     <strong>Acción Inmediata 2:</strong> Actualizar el contenido para responder de forma directa a las preguntas "long-tail" de tus prospectos calificados.
                 </p>
             </div>
@@ -74,21 +74,22 @@ import SchemaArticle from '../../components/SchemaArticle.astro';
             </p>
 
             <!-- ENGLISH VERSION REQUIRED -->
-            <hr class="border-white/5 my-16">
+            <div class="my-20"></div>
             <h2 class="font-playfair text-3xl mb-6 text-subtle">English Version Summary (EN)</h2>
-            <p class="text-subtle text-sm italic mb-6">For international stakeholders monitoring our intelligence feeds.</p>
-            <div class="bg-white/[0.015] p-6 border-l border-l-white/10 rounded-r-xl">
-                <p class="mb-4 text-sm text-subtle">
+            <p class="text-subtle text-sm italic mb-6 font-jakarta">For international stakeholders monitoring our intelligence feeds.</p>
+            <div class="bg-gradient-to-br from-white/[0.01] to-transparent p-6 rounded-2xl backdrop-blur-sm">
+                <p class="mb-4 text-sm text-subtle font-jakarta leading-relaxed">
                     <strong>Summary:</strong> Generative AI answers inside main search results are now heavily prioritizing domains with robust Knowledge Graph architecture over traditional KW-stuffed domains.
                 </p>
-                <p class="text-sm text-subtle">
+                <p class="text-sm text-subtle font-jakarta leading-relaxed">
                     <strong>Marketing Impact:</strong> B2B Brands strictly relying on legacy SEO face immediate visibility drops for high-intent queries unless GEO (Generative Engine Optimization) protocols are implemented.
                 </p>
             </div>
         </div>
 
-        <div class="mt-20 pt-16 border-t border-white/10 text-center">
-            <p class="text-lg text-white mb-6">¿Preparado para adaptar la infraestructura de tu negocio?</p>
+        <div class="mt-24 pt-16 text-center relative">
+            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-48 h-px bg-gradient-to-r from-transparent via-white/[0.08] to-transparent"></div>
+            <p class="text-lg text-white mb-6 font-jakarta">¿Preparado para adaptar la infraestructura de tu negocio?</p>
             <CtaWhatsApp text="Evaluar la arquitectura de mi sitio" />
         </div>
     </article>
