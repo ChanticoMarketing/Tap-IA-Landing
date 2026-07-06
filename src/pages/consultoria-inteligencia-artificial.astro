@@ -18,18 +18,40 @@ import SchemaService from '../components/SchemaService.astro';
         serviceType="AI Consulting"
     />
 
-    <section class="relative min-h-[60vh] pt-36 pb-10 px-6 flex flex-col items-center justify-center overflow-hidden">
-        <div class="absolute top-20 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-gold/5 rounded-full blur-[120px] pointer-events-none -z-10"></div>
+    <section class="relative min-h-0 md:min-h-[70vh] flex flex-col justify-center pt-36 pb-16 px-6 overflow-hidden">
+        <!-- Background Orb decoration -->
+        <div class="absolute top-20 right-0 w-[600px] h-[600px] bg-gold/5 rounded-full blur-[120px] pointer-events-none -z-10"></div>
         
-        <div class="max-w-4xl mx-auto text-center relative z-10">
-            <span class="editorial-label text-gold mb-6 block">Consultoría Estratégica</span>
-            <h1 class="font-serif text-4xl md:text-6xl mb-6 text-white leading-tight">
-                No necesitas más herramientas de IA. <span class="italic font-light text-white/60">Necesitas criterio de negocio.</span>
-            </h1>
-            <h2 class="text-xl text-subtle font-light max-w-2xl mx-auto mb-10 leading-relaxed">
-                Ayudamos a empresas a detectar dónde la IA es una ventaja competitiva y dónde es solo ruido. Diagnóstico, estrategia y acompañamiento técnico para una implementación con pies y cabeza.
-            </h2>
-            <CtaWhatsApp text="Solicitar diagnóstico estratégico" microcopy="Hablamos de tu negocio, no solo de tecnología." />
+        <div class="max-w-7xl mx-auto w-full relative z-10 flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-8">
+            <!-- Text Column (Left) -->
+            <div class="w-full lg:w-[58%] flex flex-col items-start text-left relative">
+                <span class="editorial-label text-gold mb-4 block">Consultoría Estratégica</span>
+                <h1 class="font-playfair text-3xl md:text-4xl lg:text-5xl mb-5 text-offwhite leading-[1.1]">
+                    No necesitas más herramientas de IA. <span class="italic font-light text-white/60 block mt-2">Necesitas criterio de negocio.</span>
+                </h1>
+                <div class="gold-rule mb-6"></div>
+                <p class="text-base md:text-lg text-subtle font-light max-w-xl mb-8 leading-relaxed">
+                    Ayudamos a empresas a detectar dónde la IA es una ventaja competitiva y dónde es solo ruido. Diagnóstico, estrategia y acompañamiento técnico para una implementación con pies y cabeza.
+                </p>
+                <CtaWhatsApp align="start" text="Solicitar diagnóstico estratégico" microcopy="Hablamos de tu negocio, no solo de tecnología." />
+            </div>
+
+            <!-- Visual Column (Right) -->
+            <div class="w-full lg:w-[38%] flex justify-center lg:justify-end items-center">
+                <div class="relative w-full max-w-[360px] md:max-w-[400px]">
+                    <div class="absolute inset-0 bg-gold/10 rounded-full blur-[80px] pointer-events-none -z-10"></div>
+                    <img
+                        src="/images/soluciones/consultoria-ia.webp"
+                        alt="Consultoría de Inteligencia Artificial"
+                        class="relative z-10 block w-full h-auto object-contain drop-shadow-[0_0_50px_rgba(212,175,55,0.15)] animate-float"
+                        width="500"
+                        height="500"
+                        fetchpriority="high"
+                        loading="eager"
+                        decoding="async"
+                    />
+                </div>
+            </div>
         </div>
     </section>
 

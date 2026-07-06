@@ -503,15 +503,6 @@ import ContactWizard from '../../components/ContactWizard.astro';
 
     <!-- CTA FINAL DIAGNÓSTICO WIZARD -->
     <section id="diagnostico" class="py-16 md:py-20 px-6 relative overflow-hidden z-10 scroll-mt-28">
-        <div class="absolute inset-0 w-full h-full pointer-events-none -z-10 overflow-hidden">
-            <img
-                src="/images/abstract_data_node_2.webp"
-                alt=""
-                aria-hidden="true"
-                class="absolute inset-0 w-full h-full object-cover object-center opacity-[0.05] mix-blend-screen scale-110"
-                loading="lazy"
-            />
-        </div>
         <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-gold/10 rounded-full blur-[90px] pointer-events-none"></div>
 
         <div class="max-w-3xl mx-auto relative z-10 reveal-item">
@@ -692,13 +683,7 @@ import ContactWizard from '../../components/ContactWizard.astro';
                 return stickyTop + visualizerPanel.offsetHeight / 2;
             };
 
-            const getModuleSnapPosition = (module) => {
-                const rect = module.getBoundingClientRect();
-                const absoluteCenter = window.scrollY + rect.top + rect.height / 2;
-                return absoluteCenter - getPanelCenterOffset();
-            };
 
-            const getSnapPositions = () => modules.map(getModuleSnapPosition);
 
             const findNearestModuleIndex = (scrollPosition, positions) => {
                 return positions.reduce((nearestIndex, position, index) => {
@@ -708,94 +693,29 @@ import ContactWizard from '../../components/ContactWizard.astro';
                 }, 0);
             };
 
-            const activeStateTrigger = ScrollTrigger.create({
-                trigger: modules[0],
-                start: () => getModuleSnapPosition(modules[0]),
-                end: () => getModuleSnapPosition(modules[modules.length - 1]),
-                invalidateOnRefresh: true,
-                onUpdate: () => {
-                    const positions = getSnapPositions();
-                    const nearestIndex = findNearestModuleIndex(window.scrollY, positions);
-                    setActiveModule(modules[nearestIndex]);
-                }
-            });
+            let snapPositions = [];
 
-            let scrollTween = null;
-            let wheelDelta = 0;
-            let wheelResetTimer = null;
-
-            const animateToModule = (targetIndex) => {
-                const positions = getSnapPositions();
-                const targetPosition = positions[targetIndex];
-                const scrollState = { y: window.scrollY };
-
-                setActiveModule(modules[targetIndex]);
-                scrollTween?.kill();
-                scrollTween = gsap.to(scrollState, {
-                    y: targetPosition,
-                    duration: 0.28,
-                    ease: "power2.out",
-                    overwrite: true,
-                    onUpdate: () => window.scrollTo(0, scrollState.y),
-                    onComplete: () => {
-                        scrollTween = null;
-                    }
+            const calculateSnapPositions = () => {
+                snapPositions = modules.map((module) => {
+                    const rect = module.getBoundingClientRect();
+                    const absoluteCenter = window.scrollY + rect.top + module.offsetHeight / 2;
+                    return absoluteCenter - getPanelCenterOffset();
                 });
             };
 
-            const handleServiceWheel = (event) => {
-                const positions = getSnapPositions();
-                const firstPosition = positions[0];
-                const lastPosition = positions[positions.length - 1];
-                const entryMargin = window.innerHeight * 0.12;
-                const currentScroll = window.scrollY;
-
-                if (
-                    currentScroll < firstPosition - entryMargin ||
-                    currentScroll > lastPosition + entryMargin
-                ) {
-                    return;
+            const activeStateTrigger = ScrollTrigger.create({
+                trigger: modules[0],
+                start: () => {
+                    calculateSnapPositions();
+                    return snapPositions[0];
+                },
+                end: () => snapPositions[snapPositions.length - 1],
+                invalidateOnRefresh: true,
+                onUpdate: () => {
+                    const nearestIndex = findNearestModuleIndex(window.scrollY, snapPositions);
+                    setActiveModule(modules[nearestIndex]);
                 }
-
-                if (
-                    (currentScroll <= firstPosition && event.deltaY < 0) ||
-                    (currentScroll >= lastPosition && event.deltaY > 0)
-                ) {
-                    return;
-                }
-
-                event.preventDefault();
-                if (scrollTween) return;
-
-                wheelDelta += event.deltaY;
-                window.clearTimeout(wheelResetTimer);
-                wheelResetTimer = window.setTimeout(() => {
-                    wheelDelta = 0;
-                }, 120);
-
-                if (Math.abs(wheelDelta) < 4) return;
-
-                const direction = wheelDelta > 0 ? 1 : -1;
-                const nearestIndex = findNearestModuleIndex(currentScroll, positions);
-                let targetIndex;
-
-                if (currentScroll < firstPosition) {
-                    targetIndex = 0;
-                } else if (currentScroll > lastPosition) {
-                    targetIndex = positions.length - 1;
-                } else {
-                    targetIndex = gsap.utils.clamp(
-                        0,
-                        positions.length - 1,
-                        nearestIndex + direction
-                    );
-                }
-
-                wheelDelta = 0;
-                animateToModule(targetIndex);
-            };
-
-            window.addEventListener('wheel', handleServiceWheel, { passive: false });
+            });
 
             const refreshAfterAssetsLoad = () => ScrollTrigger.refresh();
             window.addEventListener('load', refreshAfterAssetsLoad, { once: true });
@@ -805,9 +725,6 @@ import ContactWizard from '../../components/ContactWizard.astro';
 
             return () => {
                 activeStateTrigger.kill();
-                scrollTween?.kill();
-                window.clearTimeout(wheelResetTimer);
-                window.removeEventListener('wheel', handleServiceWheel);
                 window.removeEventListener('load', refreshAfterAssetsLoad);
             };
         });

@@ -19,18 +19,40 @@ import SchemaService from '../components/SchemaService.astro';
         serviceType="AI, Marketing and SEO/GEO Audit"
     />
 
-    <section class="relative min-h-[60vh] pt-36 pb-10 px-6 flex flex-col items-center justify-center overflow-hidden">
-        <div class="absolute top-20 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-red-500/5 rounded-full blur-[120px] pointer-events-none -z-10"></div>
+    <section class="relative min-h-0 md:min-h-[70vh] flex flex-col justify-center pt-36 pb-16 px-6 overflow-hidden">
+        <!-- Background Orb decoration -->
+        <div class="absolute top-20 right-0 w-[600px] h-[600px] bg-gold/5 rounded-full blur-[120px] pointer-events-none -z-10"></div>
         
-        <div class="max-w-4xl mx-auto text-center relative z-10">
-            <span class="editorial-label text-gold mb-6 block">Lead Magnet / Auditoría</span>
-            <h1 class="font-serif text-4xl md:text-6xl mb-6 text-white leading-tight">
-                ¿Qué tan <span class="italic font-light text-white/60">visible e inteligente</span> es tu presencia digital hoy?
-            </h1>
-            <p class="text-xl text-subtle font-light max-w-2xl mx-auto mb-10 leading-relaxed">
-                No es una auditoría automática de un bot. Es un diagnóstico profundo realizado por un estratega técnico para detectar fugas de conversión y oportunidades de IA.
-            </p>
-            <CtaWhatsApp text="Solicitar Auditoría Gratuita" microcopy="Cupos limitados por semana para asegurar calidad." />
+        <div class="max-w-7xl mx-auto w-full relative z-10 flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-8">
+            <!-- Text Column (Left) -->
+            <div class="w-full lg:w-[58%] flex flex-col items-start text-left relative">
+                <span class="editorial-label text-gold mb-4 block">Lead Magnet / Auditoría</span>
+                <h1 class="font-playfair text-3xl md:text-4xl lg:text-5xl mb-5 text-offwhite leading-[1.1]">
+                    ¿Qué tan <span class="italic font-light text-white/60 block mt-2">visible e inteligente</span> es tu presencia digital hoy?
+                </h1>
+                <div class="gold-rule mb-6"></div>
+                <p class="text-base md:text-lg text-subtle font-light max-w-xl mb-8 leading-relaxed">
+                    No es una auditoría automática de un bot. Es un diagnóstico profundo realizado por un estratega técnico para detectar fugas de conversión y oportunidades de IA.
+                </p>
+                <CtaWhatsApp align="start" text="Solicitar Auditoría Gratuita" microcopy="Cupos limitados por semana para asegurar calidad." />
+            </div>
+
+            <!-- Visual Column (Right) -->
+            <div class="w-full lg:w-[38%] flex justify-center lg:justify-end items-center">
+                <div class="relative w-full max-w-[360px] md:max-w-[400px]">
+                    <div class="absolute inset-0 bg-[#2a5a8c]/10 rounded-full blur-[80px] pointer-events-none -z-10"></div>
+                    <img
+                        src="/images/holograma_datos_premium.webp"
+                        alt="Auditoría IA y SEO/GEO"
+                        class="relative z-10 block w-full h-auto object-contain drop-shadow-[0_0_50px_rgba(212,175,55,0.15)] animate-float"
+                        width="500"
+                        height="500"
+                        fetchpriority="high"
+                        loading="eager"
+                        decoding="async"
+                    />
+                </div>
+            </div>
         </div>
     </section>
 
