@@ -5,7 +5,6 @@ import Footer from '../components/Footer.astro';
 import CtaWhatsApp from '../components/CtaWhatsApp.astro';
 import ContactWizard from '../components/ContactWizard.astro';
 import PremiumSectionHeader from '../components/PremiumSectionHeader.astro';
-import KeyTakeaways from '../components/KeyTakeaways.astro';
 import ShareButton from '../components/ShareButton.astro';
 
 const url = Astro.url;
@@ -48,21 +47,9 @@ const heroWaHref = `https://wa.me/5213324239103?text=${encodeURIComponent(heroWa
                 <div class="hero-item gold-rule mb-5"></div>
                 
                 <!-- Respuesta Inmediata a la Intención de Búsqueda -->
-                <p class="hero-item text-offwhite/90 max-w-xl mb-4 text-base md:text-lg font-light leading-relaxed">
+                <p class="hero-item text-offwhite/90 max-w-xl mb-8 text-base md:text-lg font-light leading-relaxed">
                     Ayudamos a líderes, empresas y equipos de marketing a traducir la inteligencia artificial en ventaja operativa: diagnóstico de madurez, agentes autónomos, posicionamiento SEO/GEO y automatización de procesos con retorno de inversión comprobable.
                 </p>
-
-                <!-- Resumen TL;DR / 5 Puntos Clave -->
-                <KeyTakeaways 
-                    points={[
-                        "Diagnóstico Estratégico: Evaluamos viabilidad técnica y retorno financiero antes de escribir código o contratar software.",
-                        "SEO y GEO (Citabilidad): Posicionamos tu marca en Google y la hacemos comprensible y citable por ChatGPT, Claude y Perplexity.",
-                        "Agentes IA Autónomos: Diseñamos sistemas con memoria y APIs para precalificar leads y operar 24/7 en WhatsApp y CRM.",
-                        "WebApps con IA a Medida: Construimos herramientas internas y portales de datos cuando los SaaS estándar quedan cortos.",
-                        "Acompañamiento Técnico Supervisado: Te guiamos de inicio a fin para evitar costos ocultos y garantizar adopción real."
-                    ]} 
-                    class="hero-item w-full max-w-xl my-4"
-                />
 
                 <!-- CTA Inmediato -->
                 <div class="hero-item hero-cta-priority relative z-50 w-full flex flex-col sm:flex-row items-start sm:items-center gap-4 mt-2">
@@ -620,43 +607,108 @@ const heroWaHref = `https://wa.me/5213324239103?text=${encodeURIComponent(heroWa
         </div>
     </section>
 
-    <!-- NOVEDADES (TOP SEMANAL) -->
-    <section id="novedades-ia" class="py-20 px-6">
-        <div class="max-w-7xl mx-auto">
+    <!-- NOVEDADES (TOP SEMANAL / INTELLIGENCE FEED) -->
+    <section id="novedades-ia" class="py-24 px-6 relative">
+        <div class="max-w-5xl mx-auto">
             <PremiumSectionHeader 
-                label="Novedades IA" 
+                label="Intelligence Feed" 
                 title="Lo que sí importa en marketing" 
                 subtitle="No más noticias bonitas que nadie aterriza. Aquí cada novedad se traduce a impacto real para marketing, contenido, visibilidad y automatización."
                 centered={true}
             />
 
-            <div class="space-y-4 max-w-4xl mx-auto">
-                <a href="/blog/claude-mythos-proyecto-glasswing-2026" class="matte-card p-6 rounded-xl flex flex-col md:flex-row gap-6 items-center hover:border-gold/30 transition-colors group">
-                    <div class="text-gold/50 text-sm font-medium w-full md:w-24 shrink-0 text-center md:text-left">17 Mayo 2026</div>
-                    <div class="flex-grow text-center md:text-left">
-                        <h3 class="text-white text-lg font-medium mb-1 group-hover:text-gold transition-colors">Claude Mythos y Project Glasswing: qué cambia en ciberseguridad, IA y marketing (2026)</h3>
-                        <p class="text-sm text-subtle">Análisis de Claude Mythos Preview y Project Glasswing de Anthropic: benchmarks, acceso restringido e implicaciones para empresas, SEO/GEO y contenido citable por IA.</p>
+            <!-- Borderless Editorial Stream -->
+            <div class="divide-y divide-white/[0.06] border-y border-white/[0.06] mt-12 editorial-stream">
+                <a 
+                    href="/blog/gpt-5-6-no-lanzamiento-techo-ia-comercial-2026" 
+                    class="editorial-row group relative py-8 px-4 sm:px-6 -mx-4 sm:-mx-6 rounded-2xl flex flex-col md:flex-row md:items-baseline justify-between gap-4 md:gap-8 transition-all duration-300 hover:bg-white/[0.02] block select-none"
+                >
+                    <div class="flex flex-col md:flex-row md:items-baseline gap-3 md:gap-10 flex-grow">
+                        <div class="shrink-0 w-full md:w-32">
+                            <span class="ui-caption text-gold/70 group-hover:text-gold text-xs tracking-wider transition-colors">01 Jul 2026</span>
+                        </div>
+                        <div class="space-y-2 flex-grow max-w-2xl">
+                            <h3 class="font-playfair text-xl md:text-2xl text-offwhite group-hover:text-gold transition-colors duration-300 font-normal leading-snug">
+                                El no-lanzamiento de GPT-5.6 y el techo de la IA comercial: ¿Se acabó el acceso libre al estado del arte?
+                            </h3>
+                            <p class="font-jakarta text-sm text-subtle/80 group-hover:text-subtle transition-colors duration-300 leading-relaxed font-light">
+                                Análisis del lanzamiento restringido de GPT-5.6 Sol y la limitación de Fable 5. Implicaciones de negocio, costos y estrategia operativa en IA.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="hidden md:flex items-center gap-2 text-subtle/50 group-hover:text-gold shrink-0 transition-all duration-300 text-sm font-medium self-center pl-4">
+                        <span class="opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-300 text-xs tracking-wide">Leer</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="transform transition-transform duration-300 group-hover:translate-x-1">
+                            <path d="M5 12h14"></path>
+                            <path d="m12 5 7 7-7 7"></path>
+                        </svg>
                     </div>
                 </a>
-                <a href="/blog/agentes-ia-marketing-2026-openclaw-manus-era-agentica" class="matte-card p-6 rounded-xl flex flex-col md:flex-row gap-6 items-center hover:border-gold/30 transition-colors group">
-                    <div class="text-gold/50 text-sm font-medium w-full md:w-24 shrink-0 text-center md:text-left">11 Mayo 2026</div>
-                    <div class="flex-grow text-center md:text-left">
-                        <h3 class="text-white text-lg font-medium mb-1 group-hover:text-gold transition-colors">Agentes de IA en Marketing 2026: OpenClaw, Manus y la Era de la Ejecución Autónoma</h3>
-                        <p class="text-sm text-subtle">Los agentes de IA en marketing definen la productividad en 2026 porque han pasado del lenguaje a la acción. OpenClaw, Manus y la diferencia entre agente autónomo y chatbot.</p>
+
+                <a 
+                    href="/blog/claude-mythos-proyecto-glasswing-2026" 
+                    class="editorial-row group relative py-8 px-4 sm:px-6 -mx-4 sm:-mx-6 rounded-2xl flex flex-col md:flex-row md:items-baseline justify-between gap-4 md:gap-8 transition-all duration-300 hover:bg-white/[0.02] block select-none"
+                >
+                    <div class="flex flex-col md:flex-row md:items-baseline gap-3 md:gap-10 flex-grow">
+                        <div class="shrink-0 w-full md:w-32">
+                            <span class="ui-caption text-gold/70 group-hover:text-gold text-xs tracking-wider transition-colors">17 May 2026</span>
+                        </div>
+                        <div class="space-y-2 flex-grow max-w-2xl">
+                            <h3 class="font-playfair text-xl md:text-2xl text-offwhite group-hover:text-gold transition-colors duration-300 font-normal leading-snug">
+                                Claude Mythos y Project Glasswing: qué cambia en ciberseguridad, IA y marketing (2026)
+                            </h3>
+                            <p class="font-jakarta text-sm text-subtle/80 group-hover:text-subtle transition-colors duration-300 leading-relaxed font-light">
+                                Análisis de Claude Mythos Preview y Project Glasswing de Anthropic: benchmarks, acceso restringido e implicaciones para empresas, SEO/GEO y contenido citable por IA.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="hidden md:flex items-center gap-2 text-subtle/50 group-hover:text-gold shrink-0 transition-all duration-300 text-sm font-medium self-center pl-4">
+                        <span class="opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-300 text-xs tracking-wide">Leer</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="transform transition-transform duration-300 group-hover:translate-x-1">
+                            <path d="M5 12h14"></path>
+                            <path d="m12 5 7 7-7 7"></path>
+                        </svg>
                     </div>
                 </a>
-                <a href="/blog" class="matte-card p-6 rounded-xl flex flex-col md:flex-row gap-6 items-center hover:border-gold/30 transition-colors group">
-                    <div class="text-gold/50 text-sm font-medium w-full md:w-24 shrink-0 text-center md:text-left">Ver todo</div>
-                    <div class="flex-grow text-center md:text-left">
-                        <h3 class="text-white text-lg font-medium mb-1 group-hover:text-gold transition-colors">Archivo completo de análisis</h3>
-                        <p class="text-sm text-subtle">Explora todas las novedades de IA y su impacto real en marketing y negocios.</p>
+
+                <a 
+                    href="/blog/agentes-ia-marketing-2026-openclaw-manus-era-agentica" 
+                    class="editorial-row group relative py-8 px-4 sm:px-6 -mx-4 sm:-mx-6 rounded-2xl flex flex-col md:flex-row md:items-baseline justify-between gap-4 md:gap-8 transition-all duration-300 hover:bg-white/[0.02] block select-none"
+                >
+                    <div class="flex flex-col md:flex-row md:items-baseline gap-3 md:gap-10 flex-grow">
+                        <div class="shrink-0 w-full md:w-32">
+                            <span class="ui-caption text-gold/70 group-hover:text-gold text-xs tracking-wider transition-colors">11 May 2026</span>
+                        </div>
+                        <div class="space-y-2 flex-grow max-w-2xl">
+                            <h3 class="font-playfair text-xl md:text-2xl text-offwhite group-hover:text-gold transition-colors duration-300 font-normal leading-snug">
+                                Agentes de IA en Marketing 2026: OpenClaw, Manus y la Era de la Ejecución Autónoma
+                            </h3>
+                            <p class="font-jakarta text-sm text-subtle/80 group-hover:text-subtle transition-colors duration-300 leading-relaxed font-light">
+                                Los agentes de IA en marketing definen la productividad en 2026 porque han pasado del lenguaje a la acción. OpenClaw, Manus y la diferencia entre agente autónomo y chatbot.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="hidden md:flex items-center gap-2 text-subtle/50 group-hover:text-gold shrink-0 transition-all duration-300 text-sm font-medium self-center pl-4">
+                        <span class="opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-300 text-xs tracking-wide">Leer</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="transform transition-transform duration-300 group-hover:translate-x-1">
+                            <path d="M5 12h14"></path>
+                            <path d="m12 5 7 7-7 7"></path>
+                        </svg>
                     </div>
                 </a>
             </div>
 
-            <div class="text-center mt-10">
-                <a href="/blog" class="text-gold hover:text-white transition-colors text-sm font-medium">
-                    Ver el archivo completo <i class="fa-solid fa-arrow-right ml-1"></i>
+            <!-- Footer Link -->
+            <div class="text-center mt-12">
+                <a href="/blog" class="inline-flex items-center gap-2 text-gold hover:text-white transition-colors text-sm font-medium group">
+                    <span>Explorar todo el archivo de análisis</span>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="transform transition-transform duration-300 group-hover:translate-x-1">
+                        <path d="M5 12h14"></path>
+                        <path d="m12 5 7 7-7 7"></path>
+                    </svg>
                 </a>
             </div>
         </div>
@@ -1104,6 +1156,21 @@ const heroWaHref = `https://wa.me/5213324239103?text=${encodeURIComponent(heroWa
                 scrollTrigger: { trigger: ".pricing-section", start: "top 80%", once: true }
             }
         );
+
+        // Intelligence Feed / Editorial Rows
+        const editorialRows = gsap.utils.toArray('.editorial-row');
+        if (editorialRows.length > 0) {
+            gsap.fromTo(editorialRows,
+                { y: prefersReducedMotion ? 0 : 35, opacity: prefersReducedMotion ? 1 : 0 },
+                {
+                    y: 0, opacity: 1,
+                    duration: prefersReducedMotion ? 0 : 1,
+                    stagger: prefersReducedMotion ? 0 : 0.12,
+                    ease: "expo.out",
+                    scrollTrigger: { trigger: "#novedades-ia", start: "top 80%", once: true }
+                }
+            );
+        }
 
         // 3D Tilt Effect for Hero Image
         const heroContainer = document.querySelector('.hero-container');
