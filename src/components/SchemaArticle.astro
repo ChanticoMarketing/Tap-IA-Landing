@@ -11,6 +11,10 @@ interface Props {
   image?: string;
   articleSection?: string;
   type?: 'Article' | 'NewsArticle' | 'BlogPosting';
+  keywords?: string[];
+  citation?: string[];
+  wordCount?: number;
+  imageAlt?: string;
 }
 
 const {
@@ -23,6 +27,10 @@ const {
   image = `${SITE_URL}/logo.png`,
   articleSection = 'Novedades IA',
   type = 'NewsArticle',
+  keywords = [],
+  citation = [],
+  wordCount,
+  imageAlt = headline,
 } = Astro.props;
 
 const articleUrl = new URL(url, SITE_URL).href;
@@ -35,14 +43,19 @@ const articleUrl = new URL(url, SITE_URL).href;
   "headline": headline,
   "description": description,
   "url": articleUrl,
-  "image": [image],
+  "image": [{
+    "@type": "ImageObject",
+    "url": image,
+    "contentUrl": image,
+    "caption": imageAlt,
+  }],
   "datePublished": datePublished,
   "dateModified": dateModified ?? datePublished,
   "author": author === 'Emmanuel Tapia' ? {
     "@type": "Person",
-    "@id": "https://tap-ia.tech/sobre/emmanuel-tapia#person",
+    "@id": "https://tap-ia.tech/nosotros/emmanuel-tapia#person",
     "name": "Emmanuel Tapia",
-    "url": "https://tap-ia.tech/sobre/emmanuel-tapia"
+    "url": "https://tap-ia.tech/nosotros/emmanuel-tapia"
   } : {
     "@type": "Organization",
     "@id": "https://tap-ia.tech/#organization",
@@ -62,6 +75,14 @@ const articleUrl = new URL(url, SITE_URL).href;
     "@id": articleUrl
   },
   "articleSection": articleSection,
+  "keywords": keywords,
+  "citation": citation,
+  ...(wordCount ? { "wordCount": wordCount } : {}),
+  "isPartOf": {
+    "@type": "WebSite",
+    "@id": "https://tap-ia.tech/#website",
+    "url": "https://tap-ia.tech",
+    "name": "TAP-IA"
+  },
   "isAccessibleForFree": true
 })} />
-

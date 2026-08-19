@@ -2,9 +2,14 @@
 import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
+import KeyTakeaways from '../../components/KeyTakeaways.astro';
+import ShareButton from '../../components/ShareButton.astro';
 ---
 
-<Layout title="Calculadora de ROI para Agentes de Venta IA | TAP-IA" description="Calcula el retorno de inversión y el ahorro operativo al automatizar el primer contacto y la calificación de leads B2B con agentes de IA autónomos.">
+<Layout 
+    title="Calculadora de ROI de Agentes IA para Ventas B2B | TAP-IA" 
+    description="Calcula el retorno de inversión y el ahorro operativo al automatizar el primer contacto y la calificación de leads B2B con agentes de IA autónomos."
+>
     <Header />
 
     <main class="pt-32 pb-24 px-4 sm:px-6 lg:px-8 bg-charcoal relative min-h-screen">
@@ -14,15 +19,31 @@ import Footer from '../../components/Footer.astro';
 
         <div class="max-w-7xl mx-auto">
             <!-- Encabezado Editorial -->
-            <div class="text-center max-w-3xl mx-auto mb-16">
+            <div class="text-center max-w-3xl mx-auto mb-12">
                 <span class="editorial-label block mb-3">Analítica Financiera & Negocio</span>
                 <h1 class="font-serif text-4xl sm:text-5xl md:text-6xl text-offwhite mb-6 leading-tight">
-                    Calculadora de ROI:<br />Agentes de Ventas IA
+                    Calculadora de ROI: Agentes de Ventas e Inteligencia Artificial
                 </h1>
                 <p class="text-subtle text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
-                    Compara de forma matemática el costo y rendimiento de tu operación de seguimiento actual frente a un Agente IA Autónomo 24/7 optimizado para calificar leads en segundos.
+                    Estima de forma matemática el ahorro en costos de nómina, la reducción en costo por lead calificado (CPL) y el incremento de conversiones al implementar un Agente IA autónomo en tu embudo comercial.
                 </p>
-                <div class="gold-rule mx-auto mt-6"></div>
+
+                <div class="max-w-2xl mx-auto text-left my-6">
+                    <KeyTakeaways 
+                        points={[
+                            "Inmediatez (&lt; 30s): Contactar a los prospectos al instante aumenta hasta un +40% la tasa de conversión.",
+                            "Liberación de Tiempo: El 70% de las tareas repetitivas de prospección y filtrado quedan automatizadas.",
+                            "Reducción de CPL: Menor costo operativo por lead calificado frente a estructuras de SDR tradicionales.",
+                            "Atención Ininterrumpida: Cobertura total 24/7 sin descansos de fin de semana ni feriados.",
+                            "Decisión Financiera: Conoce el retorno neto proyectado antes de iniciar cualquier desarrollo técnico."
+                        ]}
+                    />
+                </div>
+
+                <div class="flex justify-center mb-6">
+                    <ShareButton title="Calculadora de ROI de Agentes IA para Ventas" text="Calcula el ahorro de implementar Agentes IA en tu empresa con esta herramienta de Tap-IA:" url="https://tap-ia.tech/recursos/calculadora-roi-ia" />
+                </div>
+                <div class="gold-rule mx-auto mt-4"></div>
             </div>
 
             <!-- Contenedor de Consola de Dos Columnas -->

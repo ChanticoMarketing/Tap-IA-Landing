@@ -4,6 +4,7 @@ import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import CtaWhatsApp from '../../components/CtaWhatsApp.astro';
 import SchemaArticle from '../../components/SchemaArticle.astro';
+import SchemaBreadcrumbList from '../../components/SchemaBreadcrumbList.astro';
 import { SITE_URL } from '../../lib/seo';
 
 const metadata = {
@@ -11,7 +12,7 @@ const metadata = {
   headline: 'El no-lanzamiento de GPT-5.6 y el techo de la IA comercial: ¿Se acabó el acceso libre al estado del arte?',
   description:
     'Análisis del lanzamiento restringido de GPT-5.6 Sol y la limitación de Fable 5. ¿Hemos tocado techo en el acceso comercial a la IA más potente? Implicaciones de negocio.',
-  slug: '/novedades-ia/gpt-5-6-no-lanzamiento-techo-ia-comercial-2026',
+  slug: '/blog/gpt-5-6-no-lanzamiento-techo-ia-comercial-2026',
   datePublished: '2026-07-01',
   dateModified: '2026-07-01',
   heroImage: `${SITE_URL}/images/blog/hero-gpt-5-6-restringido.webp`,
@@ -41,7 +42,14 @@ const faqItems = [
 ];
 ---
 
-<Layout title={metadata.title} description={metadata.description}>
+<Layout
+  title={metadata.title}
+  description={metadata.description}
+  ogImage={metadata.heroImage}
+  ogType="article"
+  articlePublishedTime={metadata.datePublished}
+  articleModifiedTime={metadata.dateModified}
+>
   <Header />
   <SchemaArticle
     headline={metadata.title}
@@ -53,6 +61,14 @@ const faqItems = [
     image={metadata.heroImage}
     articleSection="Modelos"
     type="NewsArticle"
+  />
+  <SchemaBreadcrumbList
+    items={[
+      { name: 'Inicio', url: '/' },
+      { name: 'Blog', url: '/blog' },
+      { name: 'Modelos', url: '/blog' },
+      { name: metadata.headline, url: metadata.slug },
+    ]}
   />
 
   <script
@@ -77,7 +93,7 @@ const faqItems = [
 
     <div class="max-w-4xl mx-auto">
       <a
-        href="/novedades-ia"
+        href="/blog"
         class="text-subtle text-sm hover:text-white transition-colors mb-6 inline-block"
       >
         <i class="fa-solid fa-arrow-left mr-2"></i>Volver a Novedades
@@ -267,7 +283,7 @@ const faqItems = [
       </section>
 
       <p class="mb-6 leading-relaxed">
-        <a href="/novedades-ia/claude-mythos-proyecto-glasswing-2026" class="text-gold hover:underline"
+        <a href="/blog/claude-mythos-proyecto-glasswing-2026" class="text-gold hover:underline"
           >Leer también: Claude Mythos y Project Glasswing (2026)</a
         >
       </p>

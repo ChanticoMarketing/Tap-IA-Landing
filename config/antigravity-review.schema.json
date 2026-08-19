@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["decision", "previewUrl", "filesModified", "checks"],
+  "properties": {
+    "decision": {
+      "type": "string",
+      "enum": ["approved", "rejected"]
+    },
+    "previewUrl": {
+      "type": "string",
+      "format": "uri"
+    },
+    "filesModified": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "checks": {
+      "type": "object",
+      "additionalProperties": {
+        "type": ["boolean", "string", "number"]
+      }
+    }
+  }
+}

@@ -5,6 +5,7 @@ import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import CtaWhatsApp from '../../components/CtaWhatsApp.astro';
 import SchemaArticle from '../../components/SchemaArticle.astro';
+import SchemaBreadcrumbList from '../../components/SchemaBreadcrumbList.astro';
 import { SITE_URL } from '../../lib/seo';
 
 // Metadatos (Backend-only usage of "Intelligence Hub" if needed, but for SEO we use the user's keywords)
@@ -12,7 +13,7 @@ const metadata = {
   title: "Agentes IA en Marketing 2026 | TAP-IA",
   headline: "OpenClaw, Manus y la era de la ejecución autónoma",
   description: "Los agentes de IA en marketing definen la productividad en 2026 porque han pasado del lenguaje a la acción. Analizamos OpenClaw, Manus, GenSpark y MiniMax Agent.",
-  slug: "/novedades-ia/agentes-ia-marketing-2026-openclaw-manus-era-agentica",
+  slug: "/blog/agentes-ia-marketing-2026-openclaw-manus-era-agentica",
   datePublished: "2026-05-11",
   dateModified: "2026-05-11",
   heroImage: `${SITE_URL}/images/blog/hero-era-agentes.webp`,
@@ -21,7 +22,14 @@ const metadata = {
 };
 ---
 
-<Layout title={metadata.title} description={metadata.description} ogImage={metadata.heroImage}>
+<Layout
+    title={metadata.title}
+    description={metadata.description}
+    ogImage={metadata.heroImage}
+    ogType="article"
+    articlePublishedTime={metadata.datePublished}
+    articleModifiedTime={metadata.dateModified}
+>
     <Header />
     <SchemaArticle
         headline={metadata.title}
@@ -32,12 +40,20 @@ const metadata = {
         image={metadata.heroImage}
         url={`${SITE_URL}${metadata.slug}`}
     />
+    <SchemaBreadcrumbList
+        items={[
+            { name: 'Inicio', url: '/' },
+            { name: 'Blog', url: '/blog' },
+            { name: 'Marketing Digital', url: '/blog' },
+            { name: metadata.headline, url: metadata.slug },
+        ]}
+    />
 
     <section class="min-h-[50vh] pt-36 pb-16 px-6 relative bg-charcoal">
         <div class="absolute top-20 right-1/4 w-[400px] h-[400px] bg-forest/10 rounded-full blur-[100px] pointer-events-none -z-10 animate-pulse-slow"></div>
         
         <div class="max-w-4xl mx-auto">
-            <a href="/novedades-ia" class="text-subtle text-sm hover:text-white transition-colors mb-6 inline-block">
+            <a href="/blog" class="text-subtle text-sm hover:text-white transition-colors mb-6 inline-block">
                 <i class="fa-solid fa-arrow-left mr-2"></i>Volver a Novedades
             </a>
             

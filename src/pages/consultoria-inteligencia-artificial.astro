@@ -4,11 +4,13 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import CtaWhatsApp from '../components/CtaWhatsApp.astro';
 import SchemaService from '../components/SchemaService.astro';
+import KeyTakeaways from '../components/KeyTakeaways.astro';
+import ShareButton from '../components/ShareButton.astro';
 ---
 
 <Layout 
-    title="Consultoría IA B2B | Estrategia | TAP-IA"
-    description="Consultoría de IA para empresas. Diagnóstico de madurez, roadmap de implementación y estrategia con criterio de negocio."
+    title="Consultoría de Inteligencia Artificial para Empresas | TAP-IA"
+    description="Consultoría de IA para empresas. Diagnóstico de madurez tecnológica, roadmap de implementación y evaluación de ROI con criterio estratégico."
 >
     <Header />
     <SchemaService 
@@ -27,13 +29,32 @@ import SchemaService from '../components/SchemaService.astro';
             <div class="w-full lg:w-[58%] flex flex-col items-start text-left relative">
                 <span class="editorial-label text-gold mb-4 block">Consultoría Estratégica</span>
                 <h1 class="font-playfair text-3xl md:text-4xl lg:text-5xl mb-5 text-offwhite leading-[1.1]">
-                    No necesitas más herramientas de IA. <span class="italic font-light text-white/60 block mt-2">Necesitas criterio de negocio.</span>
+                    Consultoría de inteligencia artificial para empresas que necesitan claridad, estrategia y resultados
                 </h1>
                 <div class="gold-rule mb-6"></div>
-                <p class="text-base md:text-lg text-subtle font-light max-w-xl mb-8 leading-relaxed">
-                    Ayudamos a empresas a detectar dónde la IA es una ventaja competitiva y dónde es solo ruido. Diagnóstico, estrategia y acompañamiento técnico para una implementación con pies y cabeza.
+
+                <!-- Respuesta Directa a la Intención de Búsqueda -->
+                <p class="text-base md:text-lg text-offwhite/90 font-light max-w-xl mb-4 leading-relaxed">
+                    La consultoría de IA de Tap-IA es un acompañamiento estratégico y técnico integral que ayuda a directores y equipos B2B a identificar cuellos de botella operativos, priorizar casos de uso viables y desplegar sistemas con retorno de inversión medible, evitando el gasto improductivo en herramientas aisladas.
                 </p>
-                <CtaWhatsApp align="start" text="Solicitar diagnóstico estratégico" microcopy="Hablamos de tu negocio, no solo de tecnología." />
+
+                <!-- Resumen TL;DR / 5 Puntos Clave -->
+                <KeyTakeaways 
+                    points={[
+                        "Diagnóstico de Madurez: Analizamos tus procesos y calidad de datos antes de recomendar cualquier desarrollo.",
+                        "Roadmap Priorizado: Diseñamos un plan de ejecución por fases enfocado en impacto financiero y facilidad de adopción.",
+                        "Selección de Stack: Elegimos modelos (OpenAI, Anthropic, Gemini, OSS) y arquitecturas (RAG, agentes) adecuadas a tu caso.",
+                        "Gobernanza y Privacidad: Garantizamos que tus datos confidenciales no se usen para entrenar modelos públicos.",
+                        "Acompañamiento en Producción: Supervisamos el despliegue técnico y capacitamos a tu equipo operativo."
+                    ]}
+                    class="w-full max-w-xl my-4"
+                />
+
+                <!-- CTA Inmediato -->
+                <div class="w-full flex flex-col sm:flex-row items-start sm:items-center gap-4 mt-2">
+                    <CtaWhatsApp align="start" text="Solicitar diagnóstico estratégico" microcopy="Hablamos de tu negocio, no solo de tecnología." />
+                    <ShareButton title="Consultoría de Inteligencia Artificial para Empresas" text="Estrategia y roadmap de IA con criterio de negocio por Tap-IA:" url="https://tap-ia.tech/consultoria-inteligencia-artificial" />
+                </div>
             </div>
 
             <!-- Visual Column (Right) -->
@@ -42,7 +63,7 @@ import SchemaService from '../components/SchemaService.astro';
                     <div class="absolute inset-0 bg-gold/10 rounded-full blur-[80px] pointer-events-none -z-10"></div>
                     <img
                         src="/images/soluciones/consultoria-ia.webp"
-                        alt="Consultoría de Inteligencia Artificial"
+                        alt="Consultoría de Inteligencia Artificial para empresas B2B y directivos"
                         class="relative z-10 block w-full h-auto object-contain drop-shadow-[0_0_50px_rgba(212,175,55,0.15)] animate-float"
                         width="500"
                         height="500"
@@ -60,28 +81,28 @@ import SchemaService from '../components/SchemaService.astro';
         <div class="max-w-5xl mx-auto">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
                 <div>
-                    <h3 class="text-3xl md:text-4xl text-white font-light mb-8">El problema no es la tecnología, es el <span class="text-gold italic">roadmap</span>.</h3>
-                    <p class="text-subtle mb-6 leading-relaxed">La mayoría de las empresas están "probando" IA de forma aislada: un chatbot por aquí, un generador de imágenes por allá. El resultado suele ser frustración, falta de retorno de inversión y equipos confundidos.</p>
-                    <p class="text-subtle mb-8 leading-relaxed">Nuestra consultoría se enfoca en integrar la IA en el núcleo de tu operación y marketing para resolver problemas reales: eficiencia, escalabilidad y toma de decisiones basada en datos.</p>
+                    <h2 class="text-3xl md:text-4xl text-white font-light mb-8">El problema no es la tecnología, es el <span class="text-gold italic">roadmap</span>.</h2>
+                    <p class="text-subtle mb-6 leading-relaxed">La mayoría de las empresas están probando IA de forma fragmentada: licencias de ChatGPT sin protocolo, chatbots rígidos o herramientas de generación de contenido sin estrategia. El resultado es frustración, costos dispersos y nula tracción comercial.</p>
+                    <p class="text-subtle mb-8 leading-relaxed">Nuestra consultoría conecta la IA con el núcleo de tu operación, marketing y <a href="/servicios/seo-geo" class="text-gold hover:underline">posicionamiento SEO/GEO</a> para resolver fricciones reales: velocidad de respuesta, calidad analítica y escalabilidad.</p>
                 </div>
                 <div class="matte-card p-10 rounded-2xl border border-gold/10">
-                    <h4 class="text-xl text-white mb-6 font-medium">Lo que resolvemos:</h4>
+                    <h3 class="text-xl text-white mb-6 font-medium">Fricciones críticas que eliminamos:</h3>
                     <ul class="space-y-4 text-subtle">
                         <li class="flex items-start gap-3">
                             <span class="text-gold mt-1">◆</span>
-                            <span>Falta de claridad sobre qué procesos automatizar primero.</span>
+                            <span>Incertidumbre sobre qué proceso automatizar primero con mayor retorno.</span>
                         </li>
                         <li class="flex items-start gap-3">
                             <span class="text-gold mt-1">◆</span>
-                            <span>Inversión en herramientas que nadie usa en el equipo.</span>
+                            <span>Gasto en suscripciones y licencias SaaS que nadie en el equipo utiliza.</span>
                         </li>
                         <li class="flex items-start gap-3">
                             <span class="text-gold mt-1">◆</span>
-                            <span>Miedo a la seguridad de datos y privacidad con IA.</span>
+                            <span>Riesgos de seguridad, fuga de datos corporativos o alucinaciones en clientes.</span>
                         </li>
                         <li class="flex items-start gap-3">
                             <span class="text-gold mt-1">◆</span>
-                            <span>Brecha de conocimiento técnico para supervisar implementaciones.</span>
+                            <span>Falta de liderazgo técnico para auditar proveedores o agencias externas.</span>
                         </li>
                     </ul>
                 </div>
@@ -89,19 +110,47 @@ import SchemaService from '../components/SchemaService.astro';
         </div>
     </section>
 
-    <!-- VALOR ESTRATÉGICO -->
-    <section class="py-20 px-6 relative border-t border-white/5 bg-charcoal">
-        <div class="max-w-4xl mx-auto">
-            <h3 class="font-serif text-2xl md:text-3xl text-white mb-8 text-center">IA orientada a resultados financieros</h3>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-subtle text-sm leading-relaxed">
-                <div>
-                    <h4 class="text-white font-medium mb-2"><i class="fa-solid fa-scale-balanced text-gold mr-2"></i>Evaluación Real del ROI</h4>
-                    <p>Cada propuesta de automatización o implementación es evaluada financieramente antes de escribir una sola línea de código. Medimos el ahorro de horas de tu equipo, la reducción de errores operativos y el impacto directo en la velocidad de atención para garantizar un retorno de inversión saludable.</p>
-                </div>
-                <div>
-                    <h4 class="text-white font-medium mb-2"><i class="fa-solid fa-shield-halved text-gold mr-2"></i>Mitigación de Riesgos y Seguridad</h4>
-                    <p>La adopción de modelos de lenguaje e integraciones requiere un manejo estricto de la privacidad de los datos. Diseñamos directrices operativas seguras, seleccionamos proveedores que cumplan con estándares empresariales de protección, y evitamos que tu data propietaria sea utilizada para entrenar modelos públicos.</p>
-                </div>
+    <!-- TABLA COMPARATIVA: Consultoría Tradicional vs Tap-IA -->
+    <section class="py-20 px-6 relative border-t border-white/5 bg-[#0a0b0e]/70">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-12">
+                <span class="editorial-label block mb-3">Comparativa de Enfoque</span>
+                <div class="gold-rule mx-auto mb-6"></div>
+                <h2 class="text-3xl text-white">Consultoría Tradicional vs Enfoque Tap-IA</h2>
+            </div>
+
+            <div class="overflow-x-auto">
+                <table class="w-full text-left text-sm text-subtle border-collapse border border-white/10 rounded-xl overflow-hidden matte-card">
+                    <thead class="bg-white/5 text-offwhite uppercase tracking-wider font-mono text-xs">
+                        <tr>
+                            <th class="p-4 border-b border-white/10">Criterio</th>
+                            <th class="p-4 border-b border-white/10">Consultora Genérica</th>
+                            <th class="p-4 border-b border-white/10 text-gold font-bold">Tap-IA Estratega Técnico</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-white/5">
+                        <tr>
+                            <td class="p-4 font-medium text-white">Entregables</td>
+                            <td class="p-4">Presentaciones teóricas y reportes PDF estáticos.</td>
+                            <td class="p-4 text-offwhite font-medium">Roadmaps operables, prototipos MVP y arquitecturas listas para desplegar.</td>
+                        </tr>
+                        <tr>
+                            <td class="p-4 font-medium text-white">Evaluación de ROI</td>
+                            <td class="p-4">Estimaciones genéricas sin validación de costos de cómputo.</td>
+                            <td class="p-4 text-offwhite font-medium">Cálculo de ahorro de horas, costo por token y <a href="/recursos/calculadora-roi-ia" class="text-gold hover:underline">ROI financiero proyectado</a>.</td>
+                        </tr>
+                        <tr>
+                            <td class="p-4 font-medium text-white">Integración Técnica</td>
+                            <td class="p-4">Subcontratan o delegan la programación sin supervisión.</td>
+                            <td class="p-4 text-offwhite font-medium">Diseño de APIs, arquitectura RAG y conexión directa a tu CRM/ERP.</td>
+                        </tr>
+                        <tr>
+                            <td class="p-4 font-medium text-white">Seguridad de Datos</td>
+                            <td class="p-4">Uso de interfaces públicas sin auditoría de privacidad.</td>
+                            <td class="p-4 text-offwhite font-medium">Entornos empresariales con acuerdos de no entrenamiento de modelos.</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </section>
@@ -112,7 +161,7 @@ import SchemaService from '../components/SchemaService.astro';
             <div class="text-center mb-16">
                 <span class="editorial-label block mb-3">Entregables</span>
                 <div class="gold-rule mx-auto mb-6"></div>
-                <h3 class="text-3xl text-white">Nuestro modelo de acompañamiento</h3>
+                <h2 class="text-3xl text-white">Nuestro modelo de acompañamiento</h2>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -120,23 +169,76 @@ import SchemaService from '../components/SchemaService.astro';
                     <div class="w-12 h-12 rounded-lg bg-gold/10 border border-gold/20 flex items-center justify-center mb-6 group-hover:bg-gold/20 transition-colors">
                         <i class="fa-solid fa-clipboard-check text-gold"></i>
                     </div>
-                    <h4 class="text-white text-xl mb-4 font-light">1. Auditoría Operativa</h4>
-                    <p class="text-subtle text-sm leading-relaxed">Mapeamos tus flujos actuales para identificar fricciones que la IA puede eliminar hoy mismo.</p>
+                    <h3 class="text-white text-xl mb-4 font-light">1. Auditoría de Madurez</h3>
+                    <p class="text-subtle text-sm leading-relaxed">Mapeamos tus flujos de marketing y operaciones para identificar cuellos de botella y verificar la salud de tus datos.</p>
                 </div>
                 <div class="p-8 rounded-2xl border border-white/5 bg-[#0a0b0e] hover:border-gold/30 transition-all group">
                     <div class="w-12 h-12 rounded-lg bg-gold/10 border border-gold/20 flex items-center justify-center mb-6 group-hover:bg-gold/20 transition-colors">
                         <i class="fa-solid fa-map-location-dot text-gold"></i>
                     </div>
-                    <h4 class="text-white text-xl mb-4 font-light">2. Roadmap de IA</h4>
-                    <p class="text-subtle text-sm leading-relaxed">Un plan paso a paso, priorizado por impacto y facilidad de implementación, para tu equipo.</p>
+                    <h3 class="text-white text-xl mb-4 font-light">2. Roadmap de IA</h3>
+                    <p class="text-subtle text-sm leading-relaxed">Un plan paso a paso con priorización clara, estimación de presupuestos y definición de arquitecturas recomendadas.</p>
                 </div>
                 <div class="p-8 rounded-2xl border border-white/5 bg-[#0a0b0e] hover:border-gold/30 transition-all group">
                     <div class="w-12 h-12 rounded-lg bg-gold/10 border border-gold/20 flex items-center justify-center mb-6 group-hover:bg-gold/20 transition-colors">
                         <i class="fa-solid fa-user-gear text-gold"></i>
                     </div>
-                    <h4 class="text-white text-xl mb-4 font-light">3. Acompañamiento Técnico</h4>
-                    <p class="text-subtle text-sm leading-relaxed">No te dejamos solo con el plan. Supervisamos que la tecnología se instale y se use correctamente.</p>
+                    <h3 class="text-white text-xl mb-4 font-light">3. Acompañamiento Técnico</h3>
+                    <p class="text-subtle text-sm leading-relaxed">Supervisamos la integración de <a href="/agentes-ia-a-medida" class="text-gold hover:underline">agentes IA</a> y <a href="/webapps-ia-a-medida" class="text-gold hover:underline">WebApps personalizadas</a> para asegurar su adopción efectiva.</p>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PREGUNTAS FRECUENTES (FAQ) -->
+    <section class="py-20 px-6 relative border-t border-white/5 bg-charcoal">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-12">
+                <span class="editorial-label block mb-3">FAQ</span>
+                <div class="gold-rule mx-auto mb-6"></div>
+                <h2 class="text-3xl text-white">Preguntas Frecuentes sobre Consultoría IA</h2>
+            </div>
+
+            <div class="space-y-4">
+                <details class="matte-card p-6 rounded-2xl border border-white/5 group cursor-pointer">
+                    <summary class="flex justify-between items-center text-white font-medium text-lg list-none select-none">
+                        <span>¿Qué es exactamente una consultoría en Inteligencia Artificial?</span>
+                        <i class="fa-solid fa-chevron-down text-gold group-open:rotate-180 transition-transform text-sm"></i>
+                    </summary>
+                    <p class="mt-4 text-subtle text-sm md:text-base leading-relaxed font-light">
+                        Es un servicio de asesoramiento estratégico y técnico donde diagnosticamos tus operaciones, identificamos oportunidades reales de automatización y diseñamos la arquitectura técnica para integrar IA con retorno de inversión comprobable.
+                    </p>
+                </details>
+
+                <details class="matte-card p-6 rounded-2xl border border-white/5 group cursor-pointer">
+                    <summary class="flex justify-between items-center text-white font-medium text-lg list-none select-none">
+                        <span>¿Cuánto tarda un proceso de diagnóstico y roadmap de IA?</span>
+                        <i class="fa-solid fa-chevron-down text-gold group-open:rotate-180 transition-transform text-sm"></i>
+                    </summary>
+                    <p class="mt-4 text-subtle text-sm md:text-base leading-relaxed font-light">
+                        El diagnóstico de madurez y diseño de roadmap inicial toma entre 1 y 3 semanas. La implementación de un Producto Mínimo Viable (MVP) se ejecuta habitualmente en menos de 30 días.
+                    </p>
+                </details>
+
+                <details class="matte-card p-6 rounded-2xl border border-white/5 group cursor-pointer">
+                    <summary class="flex justify-between items-center text-white font-medium text-lg list-none select-none">
+                        <span>¿Necesito un equipo técnico interno para adoptar IA en mi empresa?</span>
+                        <i class="fa-solid fa-chevron-down text-gold group-open:rotate-180 transition-transform text-sm"></i>
+                    </summary>
+                    <p class="mt-4 text-subtle text-sm md:text-base leading-relaxed font-light">
+                        No. Ofrecemos modalidades llave en mano (Done-For-You) donde desarrollamos la infraestructura y capacitamos a tu equipo comercial y operativo en el uso de los sistemas.
+                    </p>
+                </details>
+
+                <details class="matte-card p-6 rounded-2xl border border-white/5 group cursor-pointer">
+                    <summary class="flex justify-between items-center text-white font-medium text-lg list-none select-none">
+                        <span>¿Cómo garantizan la privacidad y confidencialidad de nuestros datos?</span>
+                        <i class="fa-solid fa-chevron-down text-gold group-open:rotate-180 transition-transform text-sm"></i>
+                    </summary>
+                    <p class="mt-4 text-subtle text-sm md:text-base leading-relaxed font-light">
+                        Firmamos acuerdos de confidencialidad (NDA) e implementamos modelos a través de endpoints empresariales (Enterprise API) donde los proveedores garantizan por contrato que los datos no son utilizados para entrenamiento.
+                    </p>
+                </details>
             </div>
         </div>
     </section>
@@ -144,7 +246,7 @@ import SchemaService from '../components/SchemaService.astro';
     <!-- ÚLTIMO CTA -->
     <section class="py-24 px-6 relative border-t border-white/5 bg-[#0a0b0e]">
         <div class="max-w-4xl mx-auto text-center">
-            <h3 class="mb-8 text-white font-light text-3xl">Deja de adivinar y empieza a implementar con <span class="text-gold italic">estrategia</span>.</h3>
+            <h2 class="mb-8 text-white font-light text-3xl">Deja de adivinar y empieza a implementar con <span class="text-gold italic">estrategia</span>.</h2>
             <p class="text-xl text-subtle mb-12">Agenda una sesión de 30 minutos para evaluar tu situación actual y definir el primer paso de tu transformación con IA.</p>
             <CtaWhatsApp text="Agendar Sesión Estratégica" />
         </div>
@@ -157,26 +259,34 @@ import SchemaService from '../components/SchemaService.astro';
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "¿Qué es una consultoría en Inteligencia Artificial?",
+          "name": "¿Qué es exactamente una consultoría en Inteligencia Artificial?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Es un servicio de acompañamiento experto donde analizamos tu empresa, identificamos cuellos de botella y diseñamos un mapa de ruta técnico para integrar soluciones de IA que generen un retorno de inversión real, evitando gastos innecesarios en software genérico."
+            "text": "Es un servicio de asesoramiento estratégico y técnico donde diagnosticamos tus operaciones, identificamos oportunidades reales de automatización y diseñamos la arquitectura técnica para integrar IA con retorno de inversión comprobable."
           }
         },
         {
           "@type": "Question",
-          "name": "¿Cuánto tarda un proceso de consultoría e implementación?",
+          "name": "¿Cuánto tarda un proceso de diagnóstico y roadmap de IA?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "El diagnóstico de madurez y diseño de solución inicial toma entre 1 a 3 semanas. La implementación técnica depende de la complejidad de la arquitectura, pero nos enfocamos en entregar un MVP funcional (Producto Mínimo Viable) en menos de 30 días para iterar rápido."
+            "text": "El diagnóstico de madurez y diseño de roadmap inicial toma entre 1 y 3 semanas. La implementación de un Producto Mínimo Viable (MVP) se ejecuta habitualmente en menos de 30 días."
           }
         },
         {
           "@type": "Question",
-          "name": "¿Necesito un equipo técnico interno para adoptar IA?",
+          "name": "¿Necesito un equipo técnico interno para adoptar IA en mi empresa?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "No. Nuestro servicio 'Done For You' incluye el desarrollo técnico, despliegue y mantenimiento de los sistemas. Te entregamos la solución lista para operar y capacitamos a tu equipo en el uso final de las herramientas."
+            "text": "No. Ofrecemos modalidades llave en mano (Done-For-You) donde desarrollamos la infraestructura y capacitamos a tu equipo comercial y operativo en el uso de los sistemas."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cómo garantizan la privacidad y confidencialidad de nuestros datos?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Firmamos acuerdos de confidencialidad (NDA) e implementamos modelos a través de endpoints empresariales (Enterprise API) donde los proveedores garantizan por contrato que los datos no son utilizados para entrenamiento."
           }
         }
       ]
@@ -184,4 +294,3 @@ import SchemaService from '../components/SchemaService.astro';
 
     <Footer />
 </Layout>
-

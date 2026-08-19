@@ -4,13 +4,14 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import CtaWhatsApp from '../components/CtaWhatsApp.astro';
 import SchemaService from '../components/SchemaService.astro';
+import KeyTakeaways from '../components/KeyTakeaways.astro';
+import ShareButton from '../components/ShareButton.astro';
 ---
 
 <Layout 
-    title="WebApps con IA | Software a Medida | TAP-IA"
-    description="Desarrollo de aplicaciones web con IA integrada. Sistemas internos, portales y herramientas a medida para resolver fricciones de negocio."
+    title="WebApps con IA a Medida | Software y Portales Inteligentes | TAP-IA"
+    description="Desarrollo de aplicaciones web con IA integrada: procesamiento documental, portales analíticos y software a medida para empresas B2B."
 >
-
     <Header />
     <SchemaService 
         name="WebApps con IA a Medida"
@@ -28,13 +29,32 @@ import SchemaService from '../components/SchemaService.astro';
             <div class="w-full lg:w-[58%] flex flex-col items-start text-left relative">
                 <span class="editorial-label text-gold mb-4 block">Sistemas Personalizados</span>
                 <h1 class="font-playfair text-3xl md:text-4xl lg:text-5xl mb-5 text-offwhite leading-[1.1]">
-                    Software con cerebro. <span class="italic font-light text-white/60 block mt-2">Soluciones para procesos complejos.</span>
+                    WebApps con IA a medida para convertir procesos complejos en sistemas operables
                 </h1>
                 <div class="gold-rule mb-6"></div>
-                <p class="text-base md:text-lg text-subtle font-light max-w-xl mb-8 leading-relaxed">
-                    Cuando el software comercial (SaaS) se queda corto, construimos aplicaciones web a medida potenciadas con IA para resolver procesos específicos de tu negocio.
+
+                <!-- Respuesta Directa a la Intención de Búsqueda -->
+                <p class="text-base md:text-lg text-offwhite/90 font-light max-w-xl mb-4 leading-relaxed">
+                    Las WebApps con IA son aplicaciones web empresariales a medida que integran modelos de lenguaje y visión computacional para automatizar tareas cognitivas repetitivas: extracción de datos de contratos o facturas, asistentes analíticos sobre bases de datos propietarias y paneles interactivos de toma de decisiones.
                 </p>
-                <CtaWhatsApp align="start" text="Consultar por mi proyecto" microcopy="Evaluamos la viabilidad técnica de tu idea en 48h." />
+
+                <!-- Resumen TL;DR / 5 Puntos Clave -->
+                <KeyTakeaways 
+                    points={[
+                        "Software Propietario: Creas un activo tecnológico exclusivo sin depender de limitaciones de plataformas SaaS genéricas.",
+                        "Procesamiento Documental: Extrae datos clave de facturas, PDFs y contratos en segundos sin digitación manual.",
+                        "Asistentes Analíticos RAG: Tu equipo puede consultar datos confidenciales en lenguaje natural con total seguridad.",
+                        "Integración con tu Stack: Conexión nativa con tus bases de datos SQL, ERPs y flujos de trabajo existentes.",
+                        "Escalabilidad y Seguridad: Arquitecturas en la nube optimizadas para bajo consumo de cómputo y alta privacidad."
+                    ]}
+                    class="w-full max-w-xl my-4"
+                />
+
+                <!-- CTA Inmediato -->
+                <div class="w-full flex flex-col sm:flex-row items-start sm:items-center gap-4 mt-2">
+                    <CtaWhatsApp align="start" text="Consultar por mi proyecto" microcopy="Evaluamos la viabilidad técnica de tu idea en 48h." />
+                    <ShareButton title="WebApps con IA a Medida" text="Conoce el desarrollo de software y portales web con IA de Tap-IA:" url="https://tap-ia.tech/webapps-ia-a-medida" />
+                </div>
             </div>
 
             <!-- Visual Column (Right) -->
@@ -43,7 +63,7 @@ import SchemaService from '../components/SchemaService.astro';
                     <div class="absolute inset-0 bg-gold/10 rounded-full blur-[80px] pointer-events-none -z-10"></div>
                     <img
                         src="/images/soluciones/webapps-ia.webp"
-                        alt="WebApps con Inteligencia Artificial"
+                        alt="Desarrollo de WebApps y Software con Inteligencia Artificial a medida"
                         class="relative z-10 block w-full h-auto object-contain drop-shadow-[0_0_50px_rgba(212,175,55,0.15)] animate-float"
                         width="500"
                         height="500"
@@ -61,83 +81,137 @@ import SchemaService from '../components/SchemaService.astro';
         <div class="max-w-5xl mx-auto">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
                 <div>
-                    <h2 class="text-3xl md:text-4xl text-white font-light mb-8">No es solo una web. <span class="text-gold italic">Es una herramienta de trabajo.</span></h2>
-                    <p class="text-subtle mb-6 leading-relaxed">Las WebApps con IA permiten procesar grandes volúmenes de información, generar reportes automáticos, predecir tendencias o crear interfaces inteligentes que guían al usuario en tareas complejas.</p>
-                    <p class="text-subtle mb-8 leading-relaxed">Desde dashboards internos hasta portales de clientes que utilizan LLMs para el análisis de datos, creamos la infraestructura que tu operación necesita para escalar.</p>
+                    <h2 class="text-3xl md:text-4xl text-white font-light mb-8">No es solo una web. <span class="text-gold italic">Es un centro operativo con inteligencia.</span></h2>
+                    <p class="text-subtle mb-6 leading-relaxed">Cuando las herramientas estándar del mercado obligan a tu equipo a hacer malabares con hojas de cálculo y copiar datos manualmente entre sistemas, una aplicación web personalizada resuelve la raíz del problema.</p>
+                    <p class="text-subtle mb-8 leading-relaxed">Diseñamos interfaces web intuitivas que combinan modelos fundacionales con tus bases de datos, permitiendo a tus colaboradores ejecutar en minutos lo que antes tomaba días.</p>
                 </div>
                 <div class="grid grid-cols-2 gap-4">
                     <div class="p-6 rounded-xl border border-white/5 bg-[#0a0b0e] flex flex-col items-center text-center">
                         <i class="fa-solid fa-database text-gold mb-4 text-2xl"></i>
-                        <span class="text-xs text-subtle uppercase">Análisis de Datos</span>
+                        <span class="text-xs text-subtle uppercase">Análisis de Datos RAG</span>
                     </div>
                     <div class="p-6 rounded-xl border border-white/5 bg-[#0a0b0e] flex flex-col items-center text-center">
                         <i class="fa-solid fa-wand-magic-sparkles text-gold mb-4 text-2xl"></i>
-                        <span class="text-xs text-subtle uppercase">Generación de Contenido</span>
+                        <span class="text-xs text-subtle uppercase">Extracción Documental</span>
                     </div>
                     <div class="p-6 rounded-xl border border-white/5 bg-[#0a0b0e] flex flex-col items-center text-center">
                         <i class="fa-solid fa-chart-line text-gold mb-4 text-2xl"></i>
-                        <span class="text-xs text-subtle uppercase">Predicción B2B</span>
+                        <span class="text-xs text-subtle uppercase">Dashboards B2B</span>
                     </div>
                     <div class="p-6 rounded-xl border border-white/5 bg-[#0a0b0e] flex flex-col items-center text-center">
                         <i class="fa-solid fa-shield-halved text-gold mb-4 text-2xl"></i>
-                        <span class="text-xs text-subtle uppercase">Seguridad & Privacidad</span>
+                        <span class="text-xs text-subtle uppercase">Seguridad Corporativa</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CASOS DE USO / ENFOQUE -->
+    <!-- CASOS DE USO Y CAPACIDADES -->
     <section class="py-20 px-6 relative border-t border-white/5 bg-charcoal">
         <div class="max-w-4xl mx-auto">
-            <h3 class="font-serif text-2xl md:text-3xl text-white mb-8 text-center">Soluciones reales para tu operación</h3>
+            <div class="text-center mb-12">
+                <span class="editorial-label block mb-3">Casos de Uso</span>
+                <div class="gold-rule mx-auto mb-6"></div>
+                <h2 class="text-3xl text-white">Soluciones reales para tu operativa empresarial</h2>
+            </div>
+
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-subtle text-sm leading-relaxed">
-                <div>
-                    <h4 class="text-white font-medium mb-2"><i class="fa-solid fa-file-contract text-gold mr-2"></i>Procesamiento Documental Automático</h4>
-                    <p>Desarrollamos sistemas capaces de leer, clasificar y extraer información estructurada de contratos, facturas, cotizaciones o correos electrónicos. Tu equipo ya no pasará horas copiando datos manualmente; el sistema los procesa en segundos y los inyecta en tus bases de datos.</p>
+                <div class="matte-card p-8 rounded-2xl border border-white/5">
+                    <h3 class="text-white font-medium mb-3 text-lg"><i class="fa-solid fa-file-contract text-gold mr-2"></i>1. Procesamiento Documental Inteligente</h3>
+                    <p>Lectura, clasificación y estructuración automática de cotizaciones, facturas, expedientes o contratos. Los datos se convierten en JSON estructurado y se sincronizan con tus sistemas de gestión interna.</p>
                 </div>
-                <div>
-                    <h4 class="text-white font-medium mb-2"><i class="fa-solid fa-chart-pie text-gold mr-2"></i>Asistentes Analíticos Internos</h4>
-                    <p>Creamos portales web privados donde tu equipo puede conversar directamente con tus datos de negocio. Utilizando arquitecturas RAG seguras, tus líderes pueden hacer preguntas complejas sobre ventas, inventarios o productividad y recibir respuestas analíticas inmediatas.</p>
+                <div class="matte-card p-8 rounded-2xl border border-white/5">
+                    <h3 class="text-white font-medium mb-3 text-lg"><i class="fa-solid fa-chart-pie text-gold mr-2"></i>2. Asistentes Analíticos Privados</h3>
+                    <p>Portales seguros donde tus directivos conversan con los datos financieros y comerciales en lenguaje natural, obteniendo resúmenes y gráficos inmediatos basados en nuestra arquitectura de <a href="/consultoria-inteligencia-artificial" class="text-gold hover:underline">consultoría estratégica</a>.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CAPACIDADES -->
-    <section class="py-24 px-6 relative border-t border-white/5">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16">
-                <span class="editorial-label block mb-3">Capacidades Técnicas</span>
+    <!-- PREGUNTAS FRECUENTES (FAQ) -->
+    <section class="py-20 px-6 relative border-t border-white/5 bg-[#0a0b0e]">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-12">
+                <span class="editorial-label block mb-3">FAQ</span>
                 <div class="gold-rule mx-auto mb-6"></div>
-                <h2 class="text-white">Lo que podemos construir juntos</h2>
+                <h2 class="text-3xl text-white">Preguntas Frecuentes sobre WebApps con IA</h2>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="p-8 rounded-2xl border border-white/5 bg-[#0a0b0e] group hover:border-gold/20 transition-all">
-                    <h4 class="text-white text-lg mb-3">Dashboards Inteligentes</h4>
-                    <p class="text-subtle text-sm">Visualización de datos que no solo muestra gráficos, sino que te explica qué significan mediante lenguaje natural.</p>
-                </div>
-                <div class="p-8 rounded-2xl border border-white/5 bg-[#0a0b0e] group hover:border-gold/20 transition-all">
-                    <h4 class="text-white text-lg mb-3">Herramientas de Autor</h4>
-                    <p class="text-subtle text-sm">Software que ayuda a tus expertos a crear contenido técnico, legal o comercial siguiendo tus propios estándares de calidad.</p>
-                </div>
-                <div class="p-8 rounded-2xl border border-white/5 bg-[#0a0b0e] group hover:border-gold/20 transition-all">
-                    <h4 class="text-white text-lg mb-3">Sistemas de Recomendación</h4>
-                    <p class="text-subtle text-sm">Motores que analizan el comportamiento de tus usuarios para ofrecerles exactamente lo que necesitan en el momento preciso.</p>
-                </div>
+            <div class="space-y-4">
+                <details class="matte-card p-6 rounded-2xl border border-white/5 group cursor-pointer">
+                    <summary class="flex justify-between items-center text-white font-medium text-lg list-none select-none">
+                        <span>¿Cuál es la diferencia entre una página web y una WebApp con IA?</span>
+                        <i class="fa-solid fa-chevron-down text-gold group-open:rotate-180 transition-transform text-sm"></i>
+                    </summary>
+                    <p class="mt-4 text-subtle text-sm md:text-base leading-relaxed font-light">
+                        Una página web presenta información al público. Una WebApp con IA es un software interactivo con autenticación de usuarios, bases de datos y lógica avanzada que procesa datos, genera análisis y automatiza tareas operativas internas.
+                    </p>
+                </details>
+
+                <details class="matte-card p-6 rounded-2xl border border-white/5 group cursor-pointer">
+                    <summary class="flex justify-between items-center text-white font-medium text-lg list-none select-none">
+                        <span>¿Quién es el dueño del código y de los datos?</span>
+                        <i class="fa-solid fa-chevron-down text-gold group-open:rotate-180 transition-transform text-sm"></i>
+                    </summary>
+                    <p class="mt-4 text-subtle text-sm md:text-base leading-relaxed font-light">
+                        El cliente es el propietario absoluto del código fuente desarrollado y de toda la información procesada. No cobramos rentas abusivas por usuario ni bloqueamos el acceso a tu infraestructura.
+                    </p>
+                </details>
+
+                <details class="matte-card p-6 rounded-2xl border border-white/5 group cursor-pointer">
+                    <summary class="flex justify-between items-center text-white font-medium text-lg list-none select-none">
+                        <span>¿Cuánto cuesta operar una WebApp con IA en la nube?</span>
+                        <i class="fa-solid fa-chevron-down text-gold group-open:rotate-180 transition-transform text-sm"></i>
+                    </summary>
+                    <p class="mt-4 text-subtle text-sm md:text-base leading-relaxed font-light">
+                        Diseñamos la arquitectura con tecnologías serverless y optimización de tokens para mantener los costos fijos al mínimo posible, pagando únicamente por el consumo real de las APIs de IA.
+                    </p>
+                </details>
             </div>
         </div>
     </section>
 
     <!-- ÚLTIMO CTA -->
-    <section class="py-24 px-6 relative border-t border-white/5 bg-[#0a0b0e]">
+    <section class="py-24 px-6 relative border-t border-white/5 bg-charcoal">
         <div class="max-w-4xl mx-auto text-center">
-            <h2 class="mb-8 text-white font-light">Tu visión, <span class="text-gold italic">nuestra ejecución técnica.</span></h2>
+            <h2 class="mb-8 text-white font-light text-3xl">Tu visión, <span class="text-gold italic">nuestra ejecución técnica.</span></h2>
             <p class="text-xl text-subtle mb-12">Hablemos sobre ese proceso que hoy es manual o ineficiente. Lo transformamos en una ventaja competitiva con software a medida.</p>
             <CtaWhatsApp text="Solicitar Cotización de Proyecto" />
         </div>
     </section>
+
+    <!-- Schema FAQPage para Answer Engine Optimization -->
+    <script type="application/ld+json" is:inline set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "¿Cuál es la diferencia entre una página web y una WebApp con IA?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Una página web presenta información al público. Una WebApp con IA es un software interactivo con autenticación de usuarios, bases de datos y lógica avanzada que procesa datos, genera análisis y automatiza tareas operativas internas."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Quién es el dueño del código y de los datos?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "El cliente es el propietario absoluto del código fuente desarrollado y de toda la información procesada. No cobramos rentas abusivas por usuario ni bloqueamos el acceso a tu infraestructura."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cuánto cuesta operar una WebApp con IA en la nube?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Diseñamos la arquitectura con tecnologías serverless y optimización de tokens para mantener los costos fijos al mínimo posible, pagando únicamente por el consumo real de las APIs de IA."
+          }
+        }
+      ]
+    })} />
 
     <Footer />
 </Layout>

@@ -4,16 +4,18 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import CtaWhatsApp from '../components/CtaWhatsApp.astro';
 import SchemaService from '../components/SchemaService.astro';
+import KeyTakeaways from '../components/KeyTakeaways.astro';
+import ShareButton from '../components/ShareButton.astro';
 ---
 
 <Layout 
-    title="AI Marketing | Estrategia de Crecimiento con IA | TAP-IA"
-    description="AI Marketing: inteligencia artificial aplicada a estrategia, contenido, análisis de campañas y crecimiento B2B."
+    title="AI Marketing B2B | Estrategia y Automatización | TAP-IA"
+    description="AI Marketing: inteligencia artificial aplicada a estrategia, contenidos predictivos, calificación de leads y optimización de campañas B2B con ROI medible."
 >
     <Header />
     <SchemaService 
-        name="AI Marketing"
-        description="AI Marketing: inteligencia artificial aplicada a estrategia, contenido, análisis de campañas y crecimiento B2B."
+        name="AI Marketing B2B"
+        description="AI Marketing: inteligencia artificial aplicada a estrategia, contenidos predictivos, calificación de leads y optimización de campañas B2B."
         url="/ai-marketing"
         serviceType="AI Marketing Strategy"
     />
@@ -27,13 +29,32 @@ import SchemaService from '../components/SchemaService.astro';
             <div class="w-full lg:w-[58%] flex flex-col items-start text-left relative">
                 <span class="editorial-label text-gold mb-4 block">Estrategia de Crecimiento</span>
                 <h1 class="font-playfair text-3xl md:text-4xl lg:text-5xl mb-5 text-offwhite leading-[1.1]">
-                    AI Marketing: Escala tu impacto <span class="italic font-light text-white/60 block mt-2">sin escalar tu carga operativa.</span>
+                    AI Marketing: inteligencia artificial aplicada a estrategia, contenido, análisis y crecimiento
                 </h1>
                 <div class="gold-rule mb-6"></div>
-                <p class="text-base md:text-lg text-subtle font-light max-w-xl mb-8 leading-relaxed">
-                    Integramos inteligencia artificial en tu funnel de ventas para automatizar la captación, cualificación y nutrición de leads. No es magia, es arquitectura de datos aplicada al marketing.
+
+                <!-- Respuesta Directa a la Intención de Búsqueda -->
+                <p class="text-base md:text-lg text-offwhite/90 font-light max-w-xl mb-4 leading-relaxed">
+                    AI Marketing es la integración de modelos de lenguaje (LLMs), machine learning y analítica predictiva en los embudos comerciales para automatizar la prospección, personalizar mensajes a escala y precalificar leads en tiempo real sin inflar los costos de nómina.
                 </p>
-                <CtaWhatsApp align="start" text="Solicitar Plan de AI Marketing" microcopy="Descubre cómo la IA puede optimizar tu presupuesto hoy." />
+
+                <!-- Resumen TL;DR / 5 Puntos Clave -->
+                <KeyTakeaways 
+                    points={[
+                        "Precalificación Inteligente: Los prospectos son atendidos y evaluados al instante sin demoras humanas.",
+                        "Contenido Predictivo: Diseñamos activos de información basados en intención de búsqueda y señales de demanda.",
+                        "Personalización a Escala: Adaptamos mensajes comerciales por industria y avatar sin redactar manualmente cada uno.",
+                        "Optimización de Funnels: Conectamos analítica de atribución con modelos para ajustar campañas automáticamente.",
+                        "Sinergia con SEO/GEO: Preparamos tus páginas para ganar visibilidad en Google y citabilidad en ChatGPT y Perplexity."
+                    ]}
+                    class="w-full max-w-xl my-4"
+                />
+
+                <!-- CTA Inmediato -->
+                <div class="w-full flex flex-col sm:flex-row items-start sm:items-center gap-4 mt-2">
+                    <CtaWhatsApp align="start" text="Solicitar Plan de AI Marketing" microcopy="Descubre cómo la IA puede optimizar tu presupuesto hoy." />
+                    <ShareButton title="AI Marketing B2B: Estrategia y Automatización" text="Descubre el enfoque de AI Marketing aplicado a negocios de Tap-IA:" url="https://tap-ia.tech/ai-marketing" />
+                </div>
             </div>
 
             <!-- Visual Column (Right) -->
@@ -42,7 +63,7 @@ import SchemaService from '../components/SchemaService.astro';
                     <div class="absolute inset-0 bg-gold/10 rounded-full blur-[80px] pointer-events-none -z-10"></div>
                     <img
                         src="/images/soluciones/ai-marketing.webp"
-                        alt="AI Marketing"
+                        alt="Estrategia de AI Marketing para empresas B2B y directores de crecimiento"
                         class="relative z-10 block w-full h-auto object-contain drop-shadow-[0_0_50px_rgba(212,175,55,0.15)] animate-float"
                         width="500"
                         height="500"
@@ -62,39 +83,39 @@ import SchemaService from '../components/SchemaService.astro';
                 <div class="order-2 md:order-1">
                     <div class="bg-[#16191f]/50 p-10 rounded-2xl border border-white/5 relative">
                         <div class="absolute -top-6 -left-6 w-24 h-24 bg-gold/10 rounded-full blur-2xl -z-10"></div>
-                        <h3 class="text-2xl text-white mb-8 font-light italic">¿En qué se diferencia el AI Marketing?</h3>
+                        <h2 class="text-2xl text-white mb-8 font-light italic">¿En qué se diferencia el AI Marketing?</h2>
                         <ul class="space-y-6 text-subtle">
                             <li class="flex gap-4">
                                 <span class="w-8 h-8 rounded-full bg-gold/10 text-gold flex items-center justify-center shrink-0 text-xs font-bold">1</span>
                                 <div>
-                                    <h4 class="text-white font-medium mb-1">Cualificación Automatizada</h4>
-                                    <p class="text-sm">Tus leads ya no esperan a un humano. Un agente IA los pre-califica en tiempo real.</p>
+                                    <h3 class="text-white font-medium mb-1">Cualificación Automatizada 24/7</h3>
+                                    <p class="text-sm">Tus prospectos no esperan horas por una llamada. Un <a href="/agentes-ia-a-medida" class="text-gold hover:underline">agente de IA</a> analiza su necesidad y los agenda en tiempo real.</p>
                                 </div>
                             </li>
                             <li class="flex gap-4">
                                 <span class="w-8 h-8 rounded-full bg-gold/10 text-gold flex items-center justify-center shrink-0 text-xs font-bold">2</span>
                                 <div>
-                                    <h4 class="text-white font-medium mb-1">Contenido Predictivo</h4>
-                                    <p class="text-sm">Analizamos datos para saber exactamente qué contenido necesita tu cliente para avanzar en el funnel.</p>
+                                    <h3 class="text-white font-medium mb-1">Estrategia Basada en Citabilidad (GEO)</h3>
+                                    <p class="text-sm">Creamos activos citables que no solo rankean en Google, sino que alimentan las respuestas de ChatGPT y Perplexity con nuestra metodología <a href="/servicios/seo-geo" class="text-gold hover:underline">SEO/GEO</a>.</p>
                                 </div>
                             </li>
                             <li class="flex gap-4">
                                 <span class="w-8 h-8 rounded-full bg-gold/10 text-gold flex items-center justify-center shrink-0 text-xs font-bold">3</span>
                                 <div>
-                                    <h4 class="text-white font-medium mb-1">Personalización a Escala</h4>
-                                    <p class="text-sm">Cada lead recibe una experiencia única basada en sus necesidades, sin intervención manual constante.</p>
+                                    <h3 class="text-white font-medium mb-1">Personalización a Escala B2B</h3>
+                                    <p class="text-sm">Cada prospecto recibe una propuesta orientada a su dolor específico, utilizando bibliotecas de <a href="/recursos/megaprompts-b2b-marketing" class="text-gold hover:underline">megaprompts B2B</a> especializados.</p>
                                 </div>
                             </li>
                         </ul>
                     </div>
                 </div>
                 <div class="order-1 md:order-2">
-                    <h3 class="text-3xl md:text-4xl text-white font-light mb-8">El fin del marketing genérico.</h3>
-                    <p class="text-subtle mb-6 leading-relaxed">El marketing tradicional se basa en promedios. El AI Marketing se basa en individuos. Al utilizar LLMs y modelos de análisis de datos, podemos entregar el mensaje correcto a la persona correcta en el momento exacto.</p>
-                    <p class="text-subtle mb-8 leading-relaxed">No solo te ayudamos a usar herramientas; te ayudamos a construir un ecosistema de marketing que aprende y se optimiza solo.</p>
+                    <h2 class="text-3xl md:text-4xl text-white font-light mb-8">El fin del marketing genérico y masivo.</h2>
+                    <p class="text-subtle mb-6 leading-relaxed">El marketing tradicional se apoya en promedios y suposiciones. El AI Marketing opera sobre datos precisos e intención contextual. Mediante modelos fundacionales y pipelines automatizados, conectamos la oferta correcta con el tomador de decisiones ideal en el instante oportuno.</p>
+                    <p class="text-subtle mb-8 leading-relaxed">No te enseñamos solo a escribir prompts; construimos un motor de marketing digital integrado con tu CRM que aprende y mejora continuamente.</p>
                     <div class="flex flex-wrap gap-4">
-                        <span class="px-4 py-2 rounded-full border border-white/10 text-xs text-subtle bg-white/5 uppercase tracking-widest">Lead Scoring</span>
-                        <span class="px-4 py-2 rounded-full border border-white/10 text-xs text-subtle bg-white/5 uppercase tracking-widest">Growth Hacking IA</span>
+                        <span class="px-4 py-2 rounded-full border border-white/10 text-xs text-subtle bg-white/5 uppercase tracking-widest">Lead Scoring IA</span>
+                        <span class="px-4 py-2 rounded-full border border-white/10 text-xs text-subtle bg-white/5 uppercase tracking-widest">GEO & Search IA</span>
                         <span class="px-4 py-2 rounded-full border border-white/10 text-xs text-subtle bg-white/5 uppercase tracking-widest">Funnel Optimization</span>
                     </div>
                 </div>
@@ -102,29 +123,112 @@ import SchemaService from '../components/SchemaService.astro';
         </div>
     </section>
 
+    <!-- COMPARATIVA DE IMPACTO -->
+    <section class="py-20 px-6 relative border-t border-white/5 bg-[#0a0b0e]/70">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-12">
+                <span class="editorial-label block mb-3">Rendimiento Operativo</span>
+                <div class="gold-rule mx-auto mb-6"></div>
+                <h2 class="text-3xl text-white">Marketing Tradicional vs AI Marketing</h2>
+            </div>
+
+            <div class="overflow-x-auto">
+                <table class="w-full text-left text-sm text-subtle border-collapse border border-white/10 rounded-xl overflow-hidden matte-card">
+                    <thead class="bg-white/5 text-offwhite uppercase tracking-wider font-mono text-xs">
+                        <tr>
+                            <th class="p-4 border-b border-white/10">Área del Funnel</th>
+                            <th class="p-4 border-b border-white/10">Flujo Tradicional</th>
+                            <th class="p-4 border-b border-white/10 text-gold font-bold">Flujo AI Marketing Tap-IA</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-white/5">
+                        <tr>
+                            <td class="p-4 font-medium text-white">Tiempo de Respuesta</td>
+                            <td class="p-4">6 a 24 horas por SDR humano.</td>
+                            <td class="p-4 text-offwhite font-medium">Inmediato (&lt; 30 segundos) vía agente IA en WhatsApp o web.</td>
+                        </tr>
+                        <tr>
+                            <td class="p-4 font-medium text-white">Producción Editorial</td>
+                            <td class="p-4">Volumen genérico sin optimización semántica.</td>
+                            <td class="p-4 text-offwhite font-medium">Contenido citable estructurado para Google y LLMs (ChatGPT/Perplexity).</td>
+                        </tr>
+                        <tr>
+                            <td class="p-4 font-medium text-white">Nutrición de Leads</td>
+                            <td class="p-4">Secuencias de email estáticas e idénticas para todos.</td>
+                            <td class="p-4 text-offwhite font-medium">Respuestas contextualizadas según industria, presupuesto y objeciones.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
     <!-- METODOLOGÍA -->
     <section class="py-24 px-6 relative border-t border-white/5 bg-white/[0.01]">
         <div class="max-w-5xl mx-auto text-center">
-            <h3 class="text-3xl text-white mb-16">Nuestros Playbooks de Marketing</h3>
+            <h2 class="text-3xl text-white mb-16">Nuestros Playbooks de Marketing</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
                 <div class="matte-card p-10 rounded-2xl border border-white/5 hover:border-gold/20 transition-colors">
-                    <h4 class="text-gold font-serif italic text-xl mb-4">Captación de Alto Impacto</h4>
-                    <p class="text-subtle text-sm leading-relaxed mb-6">Sistemas de prospección y anuncios optimizados por IA que aprenden qué creatividades y copies funcionan mejor para tu nicho.</p>
+                    <h3 class="text-gold font-serif italic text-xl mb-4">1. Captación de Alto Impacto</h3>
+                    <p class="text-subtle text-sm leading-relaxed mb-6">Sistemas de prospección y contenidos optimizados que analizan qué ángulos y mensajes resuenan con tus tomadores de decisión.</p>
                     <ul class="text-xs text-subtle/80 space-y-2">
-                        <li>• Copywriting generativo por avatar</li>
-                        <li>• A/B testing automatizado</li>
-                        <li>• Análisis de sentimiento del mercado</li>
+                        <li>• Copywriting generativo por perfil de cliente</li>
+                        <li>• A/B testing estructurado con LLMs</li>
+                        <li>• Análisis de intención de búsqueda GEO</li>
                     </ul>
                 </div>
                 <div class="matte-card p-10 rounded-2xl border border-white/5 hover:border-gold/20 transition-colors">
-                    <h4 class="text-gold font-serif italic text-xl mb-4">Nutrición & Conversión</h4>
-                    <p class="text-subtle text-sm leading-relaxed mb-6">Workflows complejos que mueven al lead desde el interés inicial hasta la llamada de ventas sin fricción humana innecesaria.</p>
+                    <h3 class="text-gold font-serif italic text-xl mb-4">2. Nutrición & Conversión Continua</h3>
+                    <p class="text-subtle text-sm leading-relaxed mb-6">Workflows inteligentes que acompañan al prospecto desde la primera consulta hasta la reunión de ventas sin fricción operativa.</p>
                     <ul class="text-xs text-subtle/80 space-y-2">
-                        <li>• Agentes de pre-cualificación</li>
-                        <li>• Email marketing hiper-personalizado</li>
-                        <li>• CRM con inteligencia de intención</li>
+                        <li>• Agentes de pre-cualificación en tiempo real</li>
+                        <li>• Email marketing personalizado por etapa de compra</li>
+                        <li>• Sincronización bidireccional con CRM</li>
                     </ul>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PREGUNTAS FRECUENTES (FAQ) -->
+    <section class="py-20 px-6 relative border-t border-white/5 bg-charcoal">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-12">
+                <span class="editorial-label block mb-3">FAQ</span>
+                <div class="gold-rule mx-auto mb-6"></div>
+                <h2 class="text-3xl text-white">Preguntas Frecuentes sobre AI Marketing</h2>
+            </div>
+
+            <div class="space-y-4">
+                <details class="matte-card p-6 rounded-2xl border border-white/5 group cursor-pointer">
+                    <summary class="flex justify-between items-center text-white font-medium text-lg list-none select-none">
+                        <span>¿Qué es exactamente el AI Marketing?</span>
+                        <i class="fa-solid fa-chevron-down text-gold group-open:rotate-180 transition-transform text-sm"></i>
+                    </summary>
+                    <p class="mt-4 text-subtle text-sm md:text-base leading-relaxed font-light">
+                        El AI Marketing es el uso de modelos de lenguaje, automatización de datos y algoritmos predictivos para optimizar la toma de decisiones, escalar la creación de activos citables y atender leads en tiempo real con mayor precisión y menor costo.
+                    </p>
+                </details>
+
+                <details class="matte-card p-6 rounded-2xl border border-white/5 group cursor-pointer">
+                    <summary class="flex justify-between items-center text-white font-medium text-lg list-none select-none">
+                        <span>¿La inteligencia artificial reemplazará a mi equipo de marketing?</span>
+                        <i class="fa-solid fa-chevron-down text-gold group-open:rotate-180 transition-transform text-sm"></i>
+                    </summary>
+                    <p class="mt-4 text-subtle text-sm md:text-base leading-relaxed font-light">
+                        No. La IA funciona como un exoesqueleto multiplicador: automatiza tareas mecánicas y repetitivas para que tus creativos y estrategas se enfoquen en la propuesta de valor, la dirección de marca y la relación con clientes clave.
+                    </p>
+                </details>
+
+                <details class="matte-card p-6 rounded-2xl border border-white/5 group cursor-pointer">
+                    <summary class="flex justify-between items-center text-white font-medium text-lg list-none select-none">
+                        <span>¿Cómo se conecta el AI Marketing con SEO y GEO?</span>
+                        <i class="fa-solid fa-chevron-down text-gold group-open:rotate-180 transition-transform text-sm"></i>
+                    </summary>
+                    <p class="mt-4 text-subtle text-sm md:text-base leading-relaxed font-light">
+                        Generamos activos de contenido enriquecidos con datos estructurados y respuestas directas que permiten a tu web posicionar en los resultados orgánicos de Google y ser citada por motores generativos como ChatGPT Search y Perplexity.
+                    </p>
+                </details>
             </div>
         </div>
     </section>
@@ -132,7 +236,7 @@ import SchemaService from '../components/SchemaService.astro';
     <!-- ÚLTIMO CTA -->
     <section class="py-24 px-6 relative border-t border-white/5 bg-[#0a0b0e]">
         <div class="max-w-4xl mx-auto text-center">
-            <h3 class="mb-8 text-white font-light text-3xl">Transforma tu marketing de <span class="italic text-white/60">reactivo</span> a <span class="text-gold italic">predictivo</span>.</h3>
+            <h2 class="mb-8 text-white font-light text-3xl">Transforma tu marketing de <span class="italic text-white/60">reactivo</span> a <span class="text-gold italic">predictivo</span>.</h2>
             <p class="text-xl text-subtle mb-12">¿Listo para dejar de adivinar qué funciona? Implementamos el primer sprint de AI Marketing en 15 días.</p>
             <CtaWhatsApp text="Solicitar Auditoría de Funnel" />
         </div>
@@ -145,10 +249,10 @@ import SchemaService from '../components/SchemaService.astro';
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "¿Qué es el AI Marketing?",
+          "name": "¿Qué es exactamente el AI Marketing?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "El AI Marketing (Marketing con Inteligencia Artificial) es el uso de modelos de lenguaje (LLMs), machine learning y automatización para optimizar la toma de decisiones, escalar la creación de contenido, personalizar la experiencia del usuario y analizar grandes volúmenes de datos de campañas en tiempo real."
+            "text": "El AI Marketing es el uso de modelos de lenguaje, automatización de datos y algoritmos predictivos para optimizar la toma de decisiones, escalar la creación de activos citables y atender leads en tiempo real con mayor precisión y menor costo."
           }
         },
         {
@@ -156,7 +260,15 @@ import SchemaService from '../components/SchemaService.astro';
           "name": "¿La inteligencia artificial reemplazará a mi equipo de marketing?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "No. La IA actúa como un exoesqueleto que potencia a tu equipo, eliminando las tareas repetitivas (como el reporte manual o el formateo de bases de datos) para que los especialistas humanos puedan enfocarse 100% en la estrategia creativa, la conexión con la audiencia y la dirección del negocio."
+            "text": "No. La IA funciona como un exoesqueleto multiplicador: automatiza tareas mecánicas y repetitivas para que tus creativos y estrategas se enfoquen en la propuesta de valor, la dirección de marca y la relación con clientes clave."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cómo se conecta el AI Marketing con SEO y GEO?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Generamos activos de contenido enriquecidos con datos estructurados y respuestas directas que permiten a tu web posicionar en los resultados orgánicos de Google y ser citada por motores generativos como ChatGPT Search y Perplexity."
           }
         }
       ]
@@ -164,4 +276,3 @@ import SchemaService from '../components/SchemaService.astro';
 
     <Footer />
 </Layout>
-

@@ -1,0 +1,41 @@
+---
+// src/components/KeyTakeaways.astro
+// Bloque "TL;DR: 5 Puntos Clave" / "Resumen Ejecutivo" para responder
+// de forma inmediata a la intención de búsqueda y facilitar la citabilidad GEO.
+
+interface Props {
+  title?: string;
+  points: string[];
+  class?: string;
+}
+
+const {
+  title = "TL;DR: 5 Puntos Clave",
+  points = [],
+  class: className = ""
+} = Astro.props;
+---
+
+<div class={`matte-card p-6 md:p-8 rounded-2xl border border-gold/20 my-8 shadow-[0_8px_30px_rgba(0,0,0,0.5)] ${className}`} role="region" aria-label={title}>
+  <div class="flex items-center gap-3 mb-5">
+    <div class="w-8 h-8 rounded-lg bg-gold/10 border border-gold/30 flex items-center justify-center text-gold text-sm font-bold">
+      <i class="fa-solid fa-bolt" aria-hidden="true"></i>
+    </div>
+    <div>
+      <span class="editorial-label text-[11px] block">{title}</span>
+      <h3 class="font-playfair text-lg md:text-xl text-offwhite font-medium m-0 leading-tight">Lo esencial que debes saber</h3>
+    </div>
+  </div>
+
+  <ul class="space-y-3 text-subtle text-sm md:text-base leading-relaxed">
+    {points.slice(0, 5).map((point, index) => (
+      <li class="flex items-start gap-3">
+        <span class="text-gold mt-1 shrink-0 text-xs">◆</span>
+        <span>
+          <strong class="text-offwhite">{point.includes(':') ? point.split(':')[0] + ':' : `Punto ${index + 1}:`}</strong>
+          {point.includes(':') ? point.split(':').slice(1).join(':') : ` ${point}`}
+        </span>
+      </li>
+    ))}
+  </ul>
+</div>

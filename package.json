@@ -11,6 +11,10 @@
     "prod": "npm run build && node ./dist/server/entry.mjs",
     "prod:clean": "node scripts/restart-prod.mjs",
     "preview": "astro preview",
+    "validate:editorial-plan": "node scripts/validate-editorial-plan.mjs",
+    "validate:blog": "node scripts/validate-blog-run.mjs",
+    "promote:blog-run": "node scripts/promote-blog-run.mjs",
+    "review:antigravity": "node scripts/run-antigravity-review.mjs",
     "favicon": "node scripts/build-favicon.mjs",
     "verify:resend": "node scripts/verify-resend.mjs",
     "astro": "astro"

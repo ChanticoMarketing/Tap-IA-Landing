@@ -1,0 +1,49 @@
+---
+// src/components/MobileStickyBar.astro
+// Barra de acción fija flotante en la parte inferior de pantallas móviles.
+// Ofrece llamada directa y botón de WhatsApp de alta conversión.
+
+interface Props {
+  phoneNumber?: string;
+  phoneDisplay?: string;
+  waMessage?: string;
+}
+
+const {
+  phoneNumber = "+523324239103",
+  phoneDisplay = "Llamar",
+  waMessage = "¡Hola Tap-IA! Quiero agendar un diagnóstico o cotizar un servicio de IA para mi empresa. ¿Platicamos?"
+} = Astro.props;
+
+const cleanPhone = phoneNumber.replace(/[^0-9+]/g, '');
+const waHref = `https://wa.me/5213324239103?text=${encodeURIComponent(waMessage)}`;
+---
+
+<aside 
+  class="fixed bottom-0 left-0 right-0 z-[990] md:hidden bg-[#0a0b0e]/95 backdrop-blur-xl border-t border-gold/20 px-4 py-3 shadow-[0_-10px_30px_rgba(0,0,0,0.8)] pb-[calc(0.75rem+env(safe-area-inset-bottom))]"
+  aria-label="Acciones directas de contacto rápido"
+>
+  <div class="flex items-center justify-between gap-3 max-w-md mx-auto">
+    <!-- Botón de Llamada Directa -->
+    <a
+      href={`tel:${cleanPhone}`}
+      class="flex-1 flex items-center justify-center gap-2 bg-[#161922] hover:bg-[#1f2330] active:scale-95 text-offwhite border border-white/10 px-3 py-2.5 rounded-xl text-xs font-semibold tracking-wide transition-all shadow-md"
+      aria-label={`Llamar por teléfono a Tap-IA al ${phoneNumber}`}
+    >
+      <i class="fa-solid fa-phone text-gold text-sm" aria-hidden="true"></i>
+      <span>{phoneDisplay}</span>
+    </a>
+
+    <!-- Botón de WhatsApp / Diagnóstico -->
+    <a
+      href={waHref}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="flex-1 flex items-center justify-center gap-2 bg-gold hover:bg-gold/90 active:scale-95 text-charcoal font-bold px-3 py-2.5 rounded-xl text-xs tracking-wide transition-all shadow-[0_0_20px_rgba(212,175,55,0.25)]"
+      aria-label="Escribir por WhatsApp a Tap-IA"
+    >
+      <i class="fa-brands fa-whatsapp text-charcoal text-base" aria-hidden="true"></i>
+      <span>WhatsApp</span>
+    </a>
+  </div>
+</aside>

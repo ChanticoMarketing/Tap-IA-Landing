@@ -3,11 +3,13 @@ import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import SchemaPerson from '../../components/SchemaPerson.astro';
+import KeyTakeaways from '../../components/KeyTakeaways.astro';
+import ShareButton from '../../components/ShareButton.astro';
 ---
 
 <Layout
-    title="Emmanuel Tapia | Fundador y Estratega Técnico en IA | Tap-IA"
-    description="Biografía profesional, enfoque y credenciales de Emmanuel Tapia, especialista en IA aplicada a negocios y optimización en motores generativos (GEO)."
+    title="Emmanuel Tapia | Fundador y Estratega Técnico en IA | TAP-IA"
+    description="Biografía profesional, trayectoria y credenciales de Emmanuel Tapia, fundador de TAP-IA y especialista en IA aplicada a negocios y optimización GEO."
 >
     <Header />
     <SchemaPerson />
@@ -27,7 +29,7 @@ import SchemaPerson from '../../components/SchemaPerson.astro';
                     <li>
                         <div class="flex items-center">
                             <span class="mx-2 text-white/20">/</span>
-                            <a href="/sobre" class="hover:text-gold transition-colors">Sobre</a>
+                            <a href="/nosotros" class="hover:text-gold transition-colors">Sobre</a>
                         </div>
                     </li>
                     <li aria-current="page">
@@ -91,18 +93,29 @@ import SchemaPerson from '../../components/SchemaPerson.astro';
                     <!-- Sobre Mí -->
                     <section aria-labelledby="heading-bio">
                         <h2 id="heading-bio" class="text-xs font-mono tracking-widest uppercase text-gold mb-4 select-none">
-                            Biografía Profesional
+                            Biografía Profesional & E-E-A-T
                         </h2>
                         <div class="space-y-6 text-lg text-subtle font-light leading-relaxed">
                             <p>
-                                Soy un estratega técnico enfocado en la convergencia de la <strong>Inteligencia Artificial aplicada a negocios y el Marketing Digital</strong>. Fundé <a href="/" class="text-gold hover:underline font-normal">Tap-IA</a> bajo una tesis fundamental: las empresas actuales no sufren por falta de acceso a la tecnología, sino por falta de criterio estratégico para integrarla a sus operaciones.
+                                Soy un estratega técnico enfocado en la convergencia de la <strong>Inteligencia Artificial aplicada a negocios y el Marketing Digital B2B</strong>. Fundé <a href="/" class="text-gold hover:underline font-normal">Tap-IA</a> bajo una tesis fundamental: las empresas actuales no sufren por falta de acceso a la tecnología, sino por falta de criterio estratégico para integrarla a sus operaciones.
                             </p>
                             <p>
                                 A lo largo de mi trayectoria profesional, me he especializado en transformar arquitecturas de información y procesos de adquisición B2B. Trabajo directamente con directores generales, CMOs y líderes de tecnología para diseñar hojas de ruta (roadmaps) claras de adopción de IA, eliminando la moda tecnológica para priorizar el retorno de inversión y la eficiencia de los márgenes.
                             </p>
-                            <p>
-                                Mi enfoque combina el análisis cuantitativo de datos con el desarrollo de software a medida. Considero que las interfaces modernas no solo deben ser rápidas, sino que deben estar estructuradas semánticamente para ser "legibles" por los grandes modelos de lenguaje (LLMs). Esta visión me ha permitido liderar el diseño de infraestructuras digitales premium y optimizaciones avanzadas de posicionamiento (GEO/AEO) que preparan a las empresas para competir con éxito en la nueva era de las respuestas generativas de IA.
-                            </p>
+
+                            <KeyTakeaways 
+                                points={[
+                                    "Especialidad: Consultoría estratégica de IA, desarrollo de agentes y optimización SEO/GEO.",
+                                    "Metodología: Diagnóstico técnico riguroso antes de cualquier implementación de software.",
+                                    "Enfoque GEO: Arquitecturas semánticas que permiten a las marcas ser citadas por ChatGPT, Claude y Perplexity.",
+                                    "Gobernanza: Implementación de directrices de seguridad de datos para empresas B2B consolidadas.",
+                                    "Filosofía: La inteligencia artificial como herramienta de claridad ejecutiva, no de volumen vacío."
+                                ]}
+                            />
+
+                            <div class="pt-4">
+                                <ShareButton title="Emmanuel Tapia — Fundador y Estratega Técnico en IA" text="Conoce el perfil profesional de Emmanuel Tapia, fundador de Tap-IA:" url="https://tap-ia.tech/nosotros/emmanuel-tapia" />
+                            </div>
                         </div>
                     </section>
 

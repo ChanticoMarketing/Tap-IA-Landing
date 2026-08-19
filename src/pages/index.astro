@@ -5,6 +5,8 @@ import Footer from '../components/Footer.astro';
 import CtaWhatsApp from '../components/CtaWhatsApp.astro';
 import ContactWizard from '../components/ContactWizard.astro';
 import PremiumSectionHeader from '../components/PremiumSectionHeader.astro';
+import KeyTakeaways from '../components/KeyTakeaways.astro';
+import ShareButton from '../components/ShareButton.astro';
 
 const url = Astro.url;
 const plan = url.searchParams.get('plan') ?? '';
@@ -17,8 +19,8 @@ const heroWaHref = `https://wa.me/5213324239103?text=${encodeURIComponent(heroWa
 ---
 
 <Layout 
-    title="TAP-IA | IA aplicada a negocio y marketing"
-    description="Consultoría e implementación de IA para marketing B2B. SEO/GEO, agentes IA, automatización y estrategia digital con criterio."
+    title="TAP-IA | IA Aplicada a Negocio, Marketing y SEO/GEO"
+    description="Consultoría e implementación de inteligencia artificial para empresas y marketing B2B. SEO/GEO, agentes IA a medida, automatización y estrategia digital."
 >
     <Header />
 
@@ -33,23 +35,39 @@ const heroWaHref = `https://wa.me/5213324239103?text=${encodeURIComponent(heroWa
                 <div class="absolute inset-0 w-full md:w-[150%] md:left-[-25%] h-full bg-gradient-to-r from-[#0a0b0e] via-[#0a0b0e]/70 to-transparent pointer-events-none -z-10 rounded-3xl blur-[40px]"></div>
 
                 <span class="hero-item editorial-label block mb-8">
-                    IA Aplicada a Marketing
+                    IA Aplicada a Negocio y Marketing
                 </span>
                 <h1
-                    class="hero-item mb-5 max-w-4xl hero-text-shadow relative text-4xl md:text-5xl lg:text-[3.5rem] leading-[1.05]"
+                    class="hero-item mb-5 max-w-4xl hero-text-shadow relative text-3xl md:text-5xl lg:text-[3.25rem] leading-[1.05]"
                     id="hero-title"
-                    aria-label="La IA no hace marketing por ti. Te obliga a hacerlo mejor."
+                    aria-label="IA aplicada a negocio y marketing para convertir complejidad técnica en decisiones claras"
                 >
                     <span id="typewriter-base">La IA no hace marketing por ti.</span><span id="cursor-base" class="inline-block w-[3px] md:w-[4px] h-[0.9em] bg-gold ml-1 align-middle opacity-0" aria-hidden="true"></span> <br class="hidden md:block">
                     <span id="typewriter-accent" class="text-white/80">Te obliga a hacerlo mejor.</span><span id="cursor-accent" class="inline-block w-[3px] md:w-[4px] h-[0.9em] bg-gold ml-1 align-middle opacity-0" aria-hidden="true"></span>
                 </h1>
                 <div class="hero-item gold-rule mb-5"></div>
-                <p class="hero-item text-subtle max-w-xl mb-6 text-xl font-light">
-                    No es velocidad sin criterio.<br>
-                    Es claridad para decidir, ejecutar y mejorar.
+                
+                <!-- Respuesta Inmediata a la Intención de Búsqueda -->
+                <p class="hero-item text-offwhite/90 max-w-xl mb-4 text-base md:text-lg font-light leading-relaxed">
+                    Ayudamos a líderes, empresas y equipos de marketing a traducir la inteligencia artificial en ventaja operativa: diagnóstico de madurez, agentes autónomos, posicionamiento SEO/GEO y automatización de procesos con retorno de inversión comprobable.
                 </p>
-                <div class="hero-item hero-cta-priority relative z-50">
-                    <CtaWhatsApp align="start" text="Quiero Marketing e IA ahora" microcopy="Respuesta directa por WhatsApp · sin formularios." href={heroWaHref} />
+
+                <!-- Resumen TL;DR / 5 Puntos Clave -->
+                <KeyTakeaways 
+                    points={[
+                        "Diagnóstico Estratégico: Evaluamos viabilidad técnica y retorno financiero antes de escribir código o contratar software.",
+                        "SEO y GEO (Citabilidad): Posicionamos tu marca en Google y la hacemos comprensible y citable por ChatGPT, Claude y Perplexity.",
+                        "Agentes IA Autónomos: Diseñamos sistemas con memoria y APIs para precalificar leads y operar 24/7 en WhatsApp y CRM.",
+                        "WebApps con IA a Medida: Construimos herramientas internas y portales de datos cuando los SaaS estándar quedan cortos.",
+                        "Acompañamiento Técnico Supervisado: Te guiamos de inicio a fin para evitar costos ocultos y garantizar adopción real."
+                    ]} 
+                    class="hero-item w-full max-w-xl my-4"
+                />
+
+                <!-- CTA Inmediato -->
+                <div class="hero-item hero-cta-priority relative z-50 w-full flex flex-col sm:flex-row items-start sm:items-center gap-4 mt-2">
+                    <CtaWhatsApp align="start" text="Solicitar diagnóstico estratégico" microcopy="Respuesta directa por WhatsApp · Sin formularios largos." href={heroWaHref} />
+                    <ShareButton title="TAP-IA: IA aplicada a negocio y marketing" text="Conoce la estrategia de IA y SEO/GEO de Tap-IA:" url="https://tap-ia.tech" />
                 </div>
             </div>
 
@@ -194,7 +212,7 @@ const heroWaHref = `https://wa.me/5213324239103?text=${encodeURIComponent(heroWa
                 </a>
 
                 <!-- Tarjeta 2: SEO-GEO -->
-                <a href="/soluciones/seo-geo" class="accordion-item group relative overflow-hidden md:border-r border-white/10 last:border-0 bg-gradient-to-b from-[#1a1d24]/85 to-[#0c0e12]/95 backdrop-blur-md hover:from-royal/[0.05] hover:to-[#0c0e12]/95">
+                <a href="/servicios/seo-geo" class="accordion-item group relative overflow-hidden md:border-r border-white/10 last:border-0 bg-gradient-to-b from-[#1a1d24]/85 to-[#0c0e12]/95 backdrop-blur-md hover:from-royal/[0.05] hover:to-[#0c0e12]/95">
                     <div class="absolute inset-0 bg-noise opacity-[0.03]"></div>
                     <div class="absolute -left-40 -bottom-40 w-96 h-96 bg-royal/10 rounded-full blur-[120px] pointer-events-none accordion-glow opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
                     <div class="absolute right-0 bottom-0 opacity-20 group-hover:opacity-40 group-hover:scale-[1.04] transition-all duration-700 accordion-3d mix-blend-lighten pointer-events-none w-[200px] h-full md:w-1/2" style="mask-image: linear-gradient(to left, black 50%, transparent 100%); -webkit-mask-image: linear-gradient(to left, black 50%, transparent 100%);">
@@ -613,21 +631,21 @@ const heroWaHref = `https://wa.me/5213324239103?text=${encodeURIComponent(heroWa
             />
 
             <div class="space-y-4 max-w-4xl mx-auto">
-                <a href="/novedades-ia/claude-mythos-proyecto-glasswing-2026" class="matte-card p-6 rounded-xl flex flex-col md:flex-row gap-6 items-center hover:border-gold/30 transition-colors group">
+                <a href="/blog/claude-mythos-proyecto-glasswing-2026" class="matte-card p-6 rounded-xl flex flex-col md:flex-row gap-6 items-center hover:border-gold/30 transition-colors group">
                     <div class="text-gold/50 text-sm font-medium w-full md:w-24 shrink-0 text-center md:text-left">17 Mayo 2026</div>
                     <div class="flex-grow text-center md:text-left">
                         <h3 class="text-white text-lg font-medium mb-1 group-hover:text-gold transition-colors">Claude Mythos y Project Glasswing: qué cambia en ciberseguridad, IA y marketing (2026)</h3>
                         <p class="text-sm text-subtle">Análisis de Claude Mythos Preview y Project Glasswing de Anthropic: benchmarks, acceso restringido e implicaciones para empresas, SEO/GEO y contenido citable por IA.</p>
                     </div>
                 </a>
-                <a href="/novedades-ia/agentes-ia-marketing-2026-openclaw-manus-era-agentica" class="matte-card p-6 rounded-xl flex flex-col md:flex-row gap-6 items-center hover:border-gold/30 transition-colors group">
+                <a href="/blog/agentes-ia-marketing-2026-openclaw-manus-era-agentica" class="matte-card p-6 rounded-xl flex flex-col md:flex-row gap-6 items-center hover:border-gold/30 transition-colors group">
                     <div class="text-gold/50 text-sm font-medium w-full md:w-24 shrink-0 text-center md:text-left">11 Mayo 2026</div>
                     <div class="flex-grow text-center md:text-left">
                         <h3 class="text-white text-lg font-medium mb-1 group-hover:text-gold transition-colors">Agentes de IA en Marketing 2026: OpenClaw, Manus y la Era de la Ejecución Autónoma</h3>
                         <p class="text-sm text-subtle">Los agentes de IA en marketing definen la productividad en 2026 porque han pasado del lenguaje a la acción. OpenClaw, Manus y la diferencia entre agente autónomo y chatbot.</p>
                     </div>
                 </a>
-                <a href="/novedades-ia" class="matte-card p-6 rounded-xl flex flex-col md:flex-row gap-6 items-center hover:border-gold/30 transition-colors group">
+                <a href="/blog" class="matte-card p-6 rounded-xl flex flex-col md:flex-row gap-6 items-center hover:border-gold/30 transition-colors group">
                     <div class="text-gold/50 text-sm font-medium w-full md:w-24 shrink-0 text-center md:text-left">Ver todo</div>
                     <div class="flex-grow text-center md:text-left">
                         <h3 class="text-white text-lg font-medium mb-1 group-hover:text-gold transition-colors">Archivo completo de análisis</h3>
@@ -637,12 +655,124 @@ const heroWaHref = `https://wa.me/5213324239103?text=${encodeURIComponent(heroWa
             </div>
 
             <div class="text-center mt-10">
-                <a href="/novedades-ia" class="text-gold hover:text-white transition-colors text-sm font-medium">
+                <a href="/blog" class="text-gold hover:text-white transition-colors text-sm font-medium">
                     Ver el archivo completo <i class="fa-solid fa-arrow-right ml-1"></i>
                 </a>
             </div>
         </div>
     </section>
+
+    <!-- PREGUNTAS FRECUENTES (FAQ) -->
+    <section class="py-20 px-6 relative border-t border-white/5 bg-[#0a0b0e]/60" aria-labelledby="faq-home-title">
+        <div class="max-w-4xl mx-auto">
+            <PremiumSectionHeader
+                label="Preguntas Frecuentes"
+                title='Resolviendo dudas sobre <span class="text-gold italic">IA y Negocio</span>'
+                subtitle="Respuestas claras y transparentes sobre nuestro modelo de trabajo, tiempos y entregables."
+                centered={true}
+            />
+
+            <div class="space-y-4 mt-10">
+                <details class="matte-card p-6 rounded-2xl border border-white/5 group cursor-pointer">
+                    <summary class="flex justify-between items-center text-white font-medium text-lg list-none select-none">
+                        <span>¿Qué hace exactamente Tap-IA y cómo ayuda a mi empresa?</span>
+                        <i class="fa-solid fa-chevron-down text-gold group-open:rotate-180 transition-transform text-sm"></i>
+                    </summary>
+                    <p class="mt-4 text-subtle text-sm md:text-base leading-relaxed font-light">
+                        Tap-IA es una consultora y desarrolladora de soluciones de IA aplicada a negocio y marketing B2B. Ayudamos a empresas a evaluar dónde la IA genera verdadero retorno de inversión, creando desde diagnósticos de madurez y posicionamiento SEO/GEO hasta agentes autónomos integrados con CRM y WebApps a medida.
+                    </p>
+                </details>
+
+                <details class="matte-card p-6 rounded-2xl border border-white/5 group cursor-pointer">
+                    <summary class="flex justify-between items-center text-white font-medium text-lg list-none select-none">
+                        <span>¿Cuál es la diferencia entre consultoría IA, AI Marketing y Agentes IA?</span>
+                        <i class="fa-solid fa-chevron-down text-gold group-open:rotate-180 transition-transform text-sm"></i>
+                    </summary>
+                    <p class="mt-4 text-subtle text-sm md:text-base leading-relaxed font-light">
+                        La <strong>Consultoría IA</strong> diseña la estrategia y el roadmap de priorización técnica. El <strong>AI Marketing</strong> optimiza los funnels de venta, creación de contenidos predictivos y analítica. Los <strong>Agentes IA</strong> son sistemas autónomos que ejecutan tareas operativas en tiempo real (calificación de prospectos, atención a dudas técnicas, actualización de bases de datos).
+                    </p>
+                </details>
+
+                <details class="matte-card p-6 rounded-2xl border border-white/5 group cursor-pointer">
+                    <summary class="flex justify-between items-center text-white font-medium text-lg list-none select-none">
+                        <span>¿Cómo funciona la optimización SEO/GEO para aparecer en ChatGPT y Google?</span>
+                        <i class="fa-solid fa-chevron-down text-gold group-open:rotate-180 transition-transform text-sm"></i>
+                    </summary>
+                    <p class="mt-4 text-subtle text-sm md:text-base leading-relaxed font-light">
+                        El SEO tradicional optimiza tu sitio para el algoritmo de enlaces de Google. El GEO (Generative Engine Optimization) estructura tu información técnica, datos de entidad (JSON-LD) y activos fuente (glosarios, tablas, frameworks) para que los modelos de lenguaje (ChatGPT, Gemini, Claude, Perplexity) puedan entenderte y citarte como fuente autorizada.
+                    </p>
+                </details>
+
+                <details class="matte-card p-6 rounded-2xl border border-white/5 group cursor-pointer">
+                    <summary class="flex justify-between items-center text-white font-medium text-lg list-none select-none">
+                        <span>¿Necesito un equipo de ingenieros interno para implementar estas soluciones?</span>
+                        <i class="fa-solid fa-chevron-down text-gold group-open:rotate-180 transition-transform text-sm"></i>
+                    </summary>
+                    <p class="mt-4 text-subtle text-sm md:text-base leading-relaxed font-light">
+                        No. Entregamos soluciones llave en mano (Done-For-You) y acompañamos a tu equipo operativo mediante capacitación práctica. Nos encargamos de la arquitectura técnica, seguridad de datos, integración con APIs y mantenimiento.
+                    </p>
+                </details>
+
+                <details class="matte-card p-6 rounded-2xl border border-white/5 group cursor-pointer">
+                    <summary class="flex justify-between items-center text-white font-medium text-lg list-none select-none">
+                        <span>¿Cuánto tiempo toma ver resultados o tener un sistema en producción?</span>
+                        <i class="fa-solid fa-chevron-down text-gold group-open:rotate-180 transition-transform text-sm"></i>
+                    </summary>
+                    <p class="mt-4 text-subtle text-sm md:text-base leading-relaxed font-light">
+                        Un diagnóstico estratégico toma de 1 a 2 semanas. Un Agente IA o módulo de AI Marketing se despliega en producción controlada (MVP) en un plazo habitual de 15 a 30 días, permitiendo iterar y medir el impacto financiero de inmediato.
+                    </p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- Schema FAQPage para Index -->
+    <script type="application/ld+json" is:inline set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "¿Qué hace exactamente Tap-IA y cómo ayuda a mi empresa?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Tap-IA es una consultora y desarrolladora de soluciones de IA aplicada a negocio y marketing B2B. Ayudamos a empresas a evaluar dónde la IA genera verdadero retorno de inversión, creando desde diagnósticos de madurez y posicionamiento SEO/GEO hasta agentes autónomos integrados con CRM y WebApps a medida."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cuál es la diferencia entre consultoría IA, AI Marketing y Agentes IA?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "La Consultoría IA diseña la estrategia y el roadmap de priorización técnica. El AI Marketing optimiza los funnels de venta, creación de contenidos predictivos y analítica. Los Agentes IA son sistemas autónomos que ejecutan tareas operativas en tiempo real (calificación de prospectos, atención a dudas técnicas, actualización de bases de datos)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cómo funciona la optimización SEO/GEO para aparecer en ChatGPT y Google?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "El SEO tradicional optimiza tu sitio para el algoritmo de enlaces de Google. El GEO (Generative Engine Optimization) estructura tu información técnica, datos de entidad (JSON-LD) y activos fuente (glosarios, tablas, frameworks) para que los modelos de lenguaje (ChatGPT, Gemini, Claude, Perplexity) puedan entenderte y citarte como fuente autorizada."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Necesito un equipo de ingenieros interno para implementar estas soluciones?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Entregamos soluciones llave en mano (Done-For-You) y acompañamos a tu equipo operativo mediante capacitación práctica. Nos encargamos de la arquitectura técnica, seguridad de datos, integración con APIs y mantenimiento."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cuánto tiempo toma ver resultados o tener un sistema en producción?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Un diagnóstico estratégico toma de 1 a 2 semanas. Un Agente IA o módulo de AI Marketing se despliega en producción controlada (MVP) en un plazo habitual de 15 a 30 días, permitiendo iterar y medir el impacto financiero de inmediato."
+          }
+        }
+      ]
+    })} />
 
     <!-- DIAGNÓSTICO / FORMULARIO -->
     <section id="diagnostico" class="py-16 md:py-20 px-4 relative overflow-hidden z-10 scroll-mt-28">

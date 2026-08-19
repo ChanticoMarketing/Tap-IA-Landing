@@ -1,0 +1,194 @@
+---
+import { getEntry, render } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import CtaWhatsApp from '../../components/CtaWhatsApp.astro';
+import SchemaArticle from '../../components/SchemaArticle.astro';
+import SchemaBreadcrumbList from '../../components/SchemaBreadcrumbList.astro';
+import SchemaFAQ from '../../components/SchemaFAQ.astro';
+import SchemaVideo from '../../components/SchemaVideo.astro';
+import { formatBlogDate, getBlogEntryUrl, getPublishedBlogEntries } from '../../lib/blog';
+import { SITE_URL } from '../../lib/seo';
+import ShareButton from '../../components/ShareButton.astro';
+
+export const prerender = false;
+
+const entry = await getEntry('blog', Astro.params.slug ?? '');
+
+if (!entry || !entry.data.published || !entry.data.reviewedByCodex) {
+  return Astro.redirect('/blog');
+}
+
+const { Content } = await render(entry);
+const data = entry.data;
+const articleUrl = getBlogEntryUrl(entry.slug);
+const heroImage = new URL(data.heroImage, SITE_URL).href;
+const publishedDate = formatBlogDate(data.datePublished);
+const publishedEntries = await getPublishedBlogEntries();
+type PublishedEntry = (typeof publishedEntries)[number];
+type Source = PublishedEntry['data']['sources'][number];
+type FaqItem = PublishedEntry['data']['faq'][number];
+const relatedEntries = publishedEntries.filter((related: PublishedEntry) => data.relatedSlugs.includes(related.slug));
+---
+
+<Layout
+  title={`${data.title} | TAP-IA`}
+  description={data.description}
+  ogImage={heroImage}
+  keywords={data.keywords.join(', ')}
+  canonical={articleUrl}
+  ogType="article"
+  articlePublishedTime={data.datePublished}
+  articleModifiedTime={data.dateModified ?? data.datePublished}
+>
+  <Header />
+  <SchemaArticle
+    headline={data.title}
+    description={data.description}
+    url={articleUrl}
+    datePublished={data.datePublished}
+    dateModified={data.dateModified ?? data.datePublished}
+    author={data.author}
+    image={heroImage}
+    imageAlt={data.heroAlt}
+    articleSection={data.articleSection}
+    type={data.schemaType}
+    keywords={data.keywords}
+    citation={data.sources.map((source: Source) => source.url)}
+  />
+  <SchemaBreadcrumbList
+    items={[
+      { name: 'Inicio', url: '/' },
+      { name: 'Blog', url: '/blog' },
+      { name: data.articleSection, url: '/blog' },
+      { name: data.title, url: articleUrl },
+    ]}
+  />
+  <SchemaFAQ items={data.faq} />
+  {data.youtube && (
+    <SchemaVideo
+      videoId={data.youtube.videoId}
+      name={data.youtube.title}
+      description={data.youtube.description}
+      thumbnailUrl={data.youtube.thumbnailUrl}
+      uploadDate={data.datePublished}
+      pageUrl={articleUrl}
+    />
+  )}
+
+  <section class="min-h-[50vh] pt-36 pb-16 px-6 relative bg-charcoal">
+    <div class="absolute top-20 right-1/4 w-[400px] h-[400px] bg-gold/5 rounded-full blur-[100px] pointer-events-none -z-10 animate-pulse-slow"></div>
+    <div class="max-w-4xl mx-auto">
+      <a href="/blog" class="text-subtle text-sm hover:text-white transition-colors mb-6 inline-block">
+        <i class="fa-solid fa-arrow-left mr-2"></i>Volver al blog
+      </a>
+      <div class="flex flex-wrap gap-3 mb-6 text-xs font-semibold uppercase tracking-wider">
+        <span class="text-gold">{data.articleSection}</span>
+        <span class="text-subtle/50">•</span>
+        <span class="text-subtle">Importancia {data.importance}</span>
+        <span class="text-subtle/50">•</span>
+        <time class="text-subtle" datetime={data.datePublished}>{publishedDate}</time>
+      </div>
+      <h1 class="font-serif text-4xl md:text-5xl lg:text-6xl text-white mb-5 leading-tight">{data.title}</h1>
+      <p class="text-sm text-subtle mb-8">Por {data.author} · {publishedDate} · Análisis editorial TAP-IA</p>
+      <p class="text-offwhite/95 leading-relaxed text-base md:text-lg font-jakarta mb-6">{data.description}</p>
+      
+      <div class="mb-10">
+        <ShareButton title={data.title} text={data.description} url={articleUrl} />
+      </div>
+
+      <img
+        src={data.heroImage}
+        alt={data.heroAlt}
+        class="w-full h-auto rounded-3xl shadow-[0_25px_60px_rgba(0,0,0,0.85)] border-none"
+        width="1600"
+        height="900"
+        loading="eager"
+        decoding="async"
+      />
+    </div>
+  </section>
+
+  <article class="py-16 px-6 max-w-3xl mx-auto text-offwhite/90">
+    <div class="prose prose-invert prose-gold max-w-none">
+      <Content />
+
+      {data.infographic && (
+        <figure class="my-12">
+          <img
+            src={data.infographic.src}
+            alt={data.infographic.alt}
+            width={data.infographic.width ?? 1600}
+            height={data.infographic.height ?? 1000}
+            loading="lazy"
+            decoding="async"
+            class="w-full h-auto rounded-2xl border-none shadow-[0_20px_50px_rgba(0,0,0,0.5)]"
+          />
+          {data.infographic.caption && <figcaption class="text-xs text-subtle mt-3 text-center italic">{data.infographic.caption}</figcaption>}
+        </figure>
+      )}
+
+      {data.youtube && (
+        <section class="my-14" aria-labelledby="video-relacionado">
+          <h2 id="video-relacionado" class="font-serif text-3xl mb-5 text-white">Video relacionado</h2>
+          <p class="text-subtle mb-5">{data.youtube.description}</p>
+          <div class="aspect-video overflow-hidden rounded-2xl bg-black">
+            <iframe
+              src={`https://www.youtube.com/embed/${data.youtube.videoId}`}
+              title={data.youtube.title}
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+              class="w-full h-full"
+            ></iframe>
+          </div>
+        </section>
+      )}
+
+      {data.faq.length > 0 && (
+        <section class="my-14" aria-labelledby="preguntas-frecuentes">
+          <h2 id="preguntas-frecuentes" class="font-serif text-3xl mb-6 text-white">Preguntas frecuentes</h2>
+          <div class="space-y-5">
+            {data.faq.map((item: FaqItem) => (
+              <details class="rounded-xl border border-white/10 p-5">
+                <summary class="cursor-pointer font-semibold text-white">{item.question}</summary>
+                <p class="mt-3 text-subtle leading-relaxed">{item.answer}</p>
+              </details>
+            ))}
+          </div>
+        </section>
+      )}
+
+      <section class="my-14 border-t border-white/10 pt-8" aria-labelledby="fuentes-articulo">
+        <h2 id="fuentes-articulo" class="font-serif text-3xl mb-5 text-white">Fuentes verificadas</h2>
+        <ol class="list-decimal pl-6 space-y-3 text-subtle">
+          {data.sources.map((source: Source) => (
+            <li>
+              <a href={source.url} target="_blank" rel="noopener noreferrer" class="text-gold hover:underline">{source.name}</a>
+              {source.publishedAt && <span class="text-subtle/70"> · {source.publishedAt}</span>}
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      {relatedEntries.length > 0 && (
+        <nav class="my-14 border-t border-white/10 pt-8" aria-labelledby="lecturas-relacionadas">
+          <h2 id="lecturas-relacionadas" class="font-serif text-3xl mb-5 text-white">Lecturas relacionadas</h2>
+          <ul class="space-y-3">
+            {relatedEntries.map((related: PublishedEntry) => (
+              <li><a href={`/blog/${related.slug}`} class="text-gold hover:underline">{related.data.title}</a></li>
+            ))}
+          </ul>
+        </nav>
+      )}
+    </div>
+
+    <div class="mt-24 pt-16 text-center relative">
+      <div class="absolute top-0 left-1/2 -translate-x-1/2 w-48 h-px bg-gradient-to-r from-transparent via-white/[0.08] to-transparent"></div>
+      <p class="text-xs text-subtle uppercase tracking-widest mb-4 font-jakarta">Publicado por TAP-IA · México</p>
+      <CtaWhatsApp text="Evaluar una estrategia de IA" />
+    </div>
+  </article>
+  <Footer />
+</Layout>

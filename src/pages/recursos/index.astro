@@ -3,81 +3,66 @@ import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import SchemaItemList from '../../components/SchemaItemList.astro';
+import KeyTakeaways from '../../components/KeyTakeaways.astro';
+import ShareButton from '../../components/ShareButton.astro';
 ---
 
 <Layout 
-    title="Recursos de Inteligencia Artificial para Empresas | TAP-IA"
-    description="Accede a nuestra biblioteca de recursos prácticos de IA B2B: plantillas de auditoría SEO/GEO, playbooks de megaprompts y calculadoras de ROI financiero."
+    title="Recursos de Inteligencia Artificial para Empresas B2B | TAP-IA"
+    description="Accede a herramientas, calculadoras de ROI, glosarios y megaprompts para implementar IA y SEO/GEO con criterio estratégico."
 >
     <Header />
     <SchemaItemList
         name="Recursos TAP-IA"
         description="Plantillas, playbooks y guías para implementar IA con criterio en equipos de marketing y negocio."
         items={[
-            { name: 'Auditoría SEO-GEO (Checklist)', url: '/recursos#auditoria-seo-geo' },
-            { name: 'El Framework de Ventas Zero-JS', url: '/recursos#zero-js' },
             { name: 'Calculadora de ROI: Agentes IA', url: '/recursos/calculadora-roi-ia' },
             { name: 'Megaprompts Canónicos B2B', url: '/recursos/megaprompts-b2b-marketing' },
+            { name: 'Glosario de Inteligencia Artificial y GEO', url: '/recursos/glosario' },
+            { name: 'Auditoría SEO-GEO (Checklist)', url: '/recursos#auditoria-seo-geo' }
         ]}
     />
 
     <section class="min-h-[40vh] pt-36 pb-12 px-6 relative border-b border-white/5 bg-charcoal">
         <div class="absolute top-20 right-1/4 w-[400px] h-[400px] bg-gold/5 rounded-full blur-[80px] pointer-events-none -z-10"></div>
         <div class="max-w-7xl mx-auto text-center">
-            <h1 class="font-serif text-5xl md:text-6xl text-white mb-6">Biblioteca de Recursos</h1>
-            <p class="text-subtle text-lg max-w-2xl mx-auto mb-4">Múltiples plantillas, playbooks y guías para directores y founders que buscan resultados predecibles.</p>
-            <p class="text-subtle/70 text-sm max-w-3xl mx-auto leading-relaxed">
-                Nuestros recursos libres están estructurados bajo un enfoque de ingeniería y conversión comercial. Compartimos nuestras plantillas internas de auditoría de visibilidad, playbooks de prompts avanzados y calculadoras de viabilidad financiera para ayudarte a auditar, justificar y planificar tus implementaciones de inteligencia artificial y optimizaciones SEO/GEO de forma metódica y transparente. Cada recurso incluye instrucciones y está listo para ser aplicado a tus operaciones.
+            <span class="editorial-label block mb-3">Materiales de Trabajo</span>
+            <h1 class="font-serif text-4xl sm:text-5xl md:text-6xl text-white mb-6">
+                Recursos y herramientas de inteligencia artificial para líderes de negocio
+            </h1>
+            <p class="text-subtle text-lg max-w-2xl mx-auto mb-4">
+                Calculadoras financieras, glosarios técnicos y playbooks de prompts para directores y equipos B2B que buscan resultados medibles.
             </p>
-            <p class="text-subtle/70 text-sm max-w-3xl mx-auto leading-relaxed mt-4">
-                Creemos que el acceso a recursos técnicos claros empodera a los fundadores y directivos a tomar decisiones informadas y evitar el sobrecosto de implementaciones ineficientes. Te invitamos a descargar estas herramientas y utilizarlas como guías operativas en tus proyectos internos de automatización y marketing digital. Nuestra biblioteca se actualiza de manera constante para reflejar los cambios en la industria. Explora los recursos, descarga las plantillas y pon a prueba nuestras calculadoras financieras para acelerar tus proyectos de inteligencia artificial con total seguridad.
-            </p>
+
+            <div class="max-w-3xl mx-auto text-left my-8">
+                <KeyTakeaways 
+                    points={[
+                        "Calculadora de ROI: Estima el ahorro operativo mensual al automatizar la calificación de leads con agentes IA.",
+                        "Glosario de IA & GEO: Definiciones claras y prácticas de términos como GEO, RAG, AEO y LLMs.txt.",
+                        "Megaprompts B2B: Instrucciones avanzadas para Claude y ChatGPT calibradas sin clichés corporativos.",
+                        "Enfoque Práctico: Herramientas listas para usar y aplicar en tu estrategia de marketing y operaciones.",
+                        "Acceso Libre: Materiales desarrollados con estándares de ingeniería para consulta abierta."
+                    ]}
+                />
+            </div>
+
+            <div class="flex justify-center mb-6">
+                <ShareButton title="Recursos de Inteligencia Artificial para Empresas B2B" text="Accede a la biblioteca de recursos y calculadoras de IA de Tap-IA:" url="https://tap-ia.tech/recursos" />
+            </div>
+            <div class="gold-rule mx-auto mt-4"></div>
         </div>
     </section>
 
     <section class="py-20 px-6">
         <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl text-white font-serif text-center mb-12">Herramientas y Playbooks Disponibles</h2>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- RECURSO 1 -->
-                <div id="auditoria-seo-geo" class="matte-card rounded-2xl overflow-hidden flex flex-col h-full border border-white/5 hover:border-gold/30 transition-colors">
-                    <div class="bg-matte h-48 border-b border-white/10 flex items-center justify-center relative overflow-hidden">
-                        <i class="fa-solid fa-file-invoice text-6xl text-white/5"></i>
-                        <div class="absolute bottom-4 left-4 bg-charcoal/80 backdrop-blur px-3 py-1 rounded text-xs font-bold uppercase tracking-wider text-gold">Plantilla</div>
-                    </div>
-                    
-                    <div class="p-8 flex flex-col flex-grow">
-                        <h3 class="text-xl text-white font-serif mb-3">Auditoría SEO-GEO (Checklist)</h3>
-                        <p class="text-sm text-subtle mb-8 flex-grow">25 puntos críticos que tu sitio debe cumplir para no desaparecer de Google AI.</p>
-                        
-                        <a href="/contacto" class="w-full text-center py-3 bg-gold text-charcoal rounded text-sm font-bold border border-gold hover:bg-white hover:border-white transition-colors">
-                            Solicitar Acceso
-                        </a>
-                    </div>
-                </div>
-
-                <!-- RECURSO 2 -->
-                <div id="zero-js" class="matte-card rounded-2xl overflow-hidden flex flex-col h-full border border-white/5 hover:border-gold/30 transition-colors">
-                    <div class="bg-matte h-48 border-b border-white/10 flex items-center justify-center relative overflow-hidden">
-                        <i class="fa-solid fa-book-open text-6xl text-white/5"></i>
-                        <div class="absolute bottom-4 left-4 bg-charcoal/80 backdrop-blur px-3 py-1 rounded text-xs font-bold uppercase tracking-wider text-gold">Playbook</div>
-                    </div>
-                    
-                    <div class="p-8 flex flex-col flex-grow">
-                        <h3 class="text-xl text-white font-serif mb-3">El Framework de Ventas Zero-JS</h3>
-                        <p class="text-sm text-subtle mb-8 flex-grow">Por qué Astro está reemplazando a Wordpress en sitios B2B de alto margen operativo.</p>
-                        
-                        <a href="/contacto" class="w-full text-center py-3 bg-gold text-charcoal rounded text-sm font-bold border border-gold hover:bg-white hover:border-white transition-colors">
-                            Solicitar Acceso
-                        </a>
-                    </div>
-                </div>
-
-                <!-- RECURSO 3 -->
+                <!-- RECURSO 1: CALCULADORA ROI -->
                 <div id="calculadora-roi-ia" class="matte-card rounded-2xl overflow-hidden flex flex-col h-full border border-white/5 hover:border-gold/30 transition-colors">
                     <div class="bg-matte h-48 border-b border-white/10 flex items-center justify-center relative overflow-hidden">
                         <i class="fa-solid fa-calculator text-6xl text-white/5"></i>
-                        <div class="absolute bottom-4 left-4 bg-charcoal/80 backdrop-blur px-3 py-1 rounded text-xs font-bold uppercase tracking-wider text-gold">Herramienta</div>
+                        <div class="absolute bottom-4 left-4 bg-charcoal/80 backdrop-blur px-3 py-1 rounded text-xs font-bold uppercase tracking-wider text-gold">Herramienta Interactiva</div>
                     </div>
                     
                     <div class="p-8 flex flex-col flex-grow">
@@ -90,7 +75,7 @@ import SchemaItemList from '../../components/SchemaItemList.astro';
                     </div>
                 </div>
 
-                <!-- RECURSO 4 -->
+                <!-- RECURSO 2: MEGAPROMPTS -->
                 <div id="megaprompts-b2b-marketing" class="matte-card rounded-2xl overflow-hidden flex flex-col h-full border border-white/5 hover:border-gold/30 transition-colors">
                     <div class="bg-matte h-48 border-b border-white/10 flex items-center justify-center relative overflow-hidden">
                         <i class="fa-solid fa-wand-magic-sparkles text-6xl text-white/5"></i>
@@ -107,6 +92,22 @@ import SchemaItemList from '../../components/SchemaItemList.astro';
                     </div>
                 </div>
 
+                <!-- RECURSO 3: GLOSARIO IA & GEO -->
+                <div id="glosario-ia" class="matte-card rounded-2xl overflow-hidden flex flex-col h-full border border-white/5 hover:border-gold/30 transition-colors">
+                    <div class="bg-matte h-48 border-b border-white/10 flex items-center justify-center relative overflow-hidden">
+                        <i class="fa-solid fa-book-bookmark text-6xl text-white/5"></i>
+                        <div class="absolute bottom-4 left-4 bg-charcoal/80 backdrop-blur px-3 py-1 rounded text-xs font-bold uppercase tracking-wider text-gold">Glosario</div>
+                    </div>
+                    
+                    <div class="p-8 flex flex-col flex-grow">
+                        <h3 class="text-xl text-white font-serif mb-3">Glosario de IA y GEO</h3>
+                        <p class="text-sm text-subtle mb-8 flex-grow">Definiciones estratégicas de conceptos como Generative Engine Optimization, RAG, AEO y LLMs.txt.</p>
+                        
+                        <a href="/recursos/glosario" class="w-full text-center py-3 bg-gold text-charcoal rounded text-sm font-bold border border-gold hover:bg-white hover:border-white transition-colors">
+                            Consultar Glosario
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>

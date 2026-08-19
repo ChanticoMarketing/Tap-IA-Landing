@@ -2,6 +2,8 @@
 import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
+import KeyTakeaways from '../../components/KeyTakeaways.astro';
+import ShareButton from '../../components/ShareButton.astro';
 
 const megaprompts = [
     {
@@ -133,7 +135,10 @@ Entrega el artículo optimizado completo, señalando entre corchetes [] qué opt
 ];
 ---
 
-<Layout title="Biblioteca de Megaprompts Canónicos B2B | TAP-IA" description="Colección de 5 megaprompts avanzados para Claude y ChatGPT. Diseñados para potenciar el copywriting B2B, el análisis de clientes y el posicionamiento GEO sin sonar robótico.">
+<Layout 
+    title="Biblioteca de Megaprompts B2B para Marketing y Ventas | TAP-IA" 
+    description="5 megaprompts avanzados para Claude y ChatGPT. Diseñados para potenciar el copywriting B2B, manejo de objeciones y posicionamiento GEO sin clichés."
+>
     <Header />
 
     <main class="pt-32 pb-24 px-4 sm:px-6 lg:px-8 bg-charcoal relative min-h-screen">
@@ -143,15 +148,31 @@ Entrega el artículo optimizado completo, señalando entre corchetes [] qué opt
 
         <div class="max-w-5xl mx-auto">
             <!-- Header Editorial -->
-            <div class="text-center mb-16">
+            <div class="text-center mb-12">
                 <span class="editorial-label block mb-3">Tácticas & Ejecución con IA</span>
                 <h1 class="font-serif text-4xl sm:text-5xl md:text-6xl text-offwhite mb-6 leading-tight">
-                    Biblioteca de Megaprompts<br />B2B Canónicos
+                    Biblioteca de Megaprompts B2B: Instrucciones Avanzadas para IA
                 </h1>
                 <p class="text-subtle text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
-                    Set de 5 megaprompts avanzados para Claude, ChatGPT y Gemini. Formulados con asignación profunda de rol, frameworks de ventas reales y directivas para eliminar la prosa plástica y robótica.
+                    Set de 5 megaprompts formulados con asignación profunda de rol, delimitación de contexto de negocio y restricciones anti-cliché para obtener respuestas de nivel consultor senior en Claude, ChatGPT y Gemini.
                 </p>
-                <div class="gold-rule mx-auto mt-6"></div>
+
+                <div class="max-w-2xl mx-auto text-left my-6">
+                    <KeyTakeaways 
+                        points={[
+                            "Eliminación de Clichés: Instrucciones calibradas para prohibir frases vacías y redactar con tono analítico B2B.",
+                            "Frameworks Probados: Incluye redacción PAS (Problema-Agitación-Solución), simulador de objeciones y auditoría GEO.",
+                            "Compatibilidad Multi-LLM: Funcionan de forma nativa en Claude 3.5 Sonnet, GPT-4o y Gemini Pro.",
+                            "Inyección Rápida: Estructurados con campos entre corchetes [ ] para insertar los datos de tu empresa en 2 minutos.",
+                            "Criterio Estratégico: Permiten delegar tareas de marketing avanzado sin perder la voz ni la calidad de tu marca."
+                        ]}
+                    />
+                </div>
+
+                <div class="flex justify-center mb-6">
+                    <ShareButton title="Biblioteca de Megaprompts B2B para Marketing y Ventas" text="Descarga gratis 5 megaprompts B2B de Tap-IA para Claude y ChatGPT:" url="https://tap-ia.tech/recursos/megaprompts-b2b-marketing" />
+                </div>
+                <div class="gold-rule mx-auto mt-4"></div>
             </div>
 
             <!-- EXPLICACIÓN TÉCNICA DE MEGAPROMPTS -->

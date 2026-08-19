@@ -4,128 +4,347 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import CtaWhatsApp from '../components/CtaWhatsApp.astro';
 import SchemaService from '../components/SchemaService.astro';
+import KeyTakeaways from '../components/KeyTakeaways.astro';
+import ShareButton from '../components/ShareButton.astro';
 ---
 
 <Layout 
-    title="Auditoría IA y SEO/GEO | TAP-IA"
-    description="Auditoría integral de Inteligencia Artificial aplicada a negocio, marketing digital avanzado y estrategias de visibilidad SEO/GEO."
+    title="Auditoría IA, AI Marketing y SEO/GEO | Diagnóstico B2B | TAP-IA"
+    description="Auditoría integral de IA, visibilidad en respuestas de IA (GEO), fugas de conversión (CRO) y madurez tecnológica para empresas B2B."
 >
-
     <Header />
     <SchemaService 
-        name="Auditoría IA, Marketing y SEO/GEO"
-        description="Auditoría integral de Inteligencia Artificial aplicada a negocio, marketing digital avanzado y estrategias de visibilidad SEO/GEO."
+        name="Diagnóstico de Viabilidad Técnica e Infraestructura de IA / SEO / GEO"
+        description="Auditoría técnica avanzada y evaluación de madurez en Inteligencia Artificial y posicionamiento SEO/GEO para empresas B2B."
         url="/auditoria-ia-marketing-seo-geo"
-        serviceType="AI, Marketing and SEO/GEO Audit"
+        serviceType="Strategic IT and Marketing Consulting"
     />
 
-    <section class="relative min-h-0 md:min-h-[70vh] flex flex-col justify-center pt-36 pb-16 px-6 overflow-hidden">
-        <!-- Background Orb decoration -->
-        <div class="absolute top-20 right-0 w-[600px] h-[600px] bg-gold/5 rounded-full blur-[120px] pointer-events-none -z-10"></div>
-        
-        <div class="max-w-7xl mx-auto w-full relative z-10 flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-8">
-            <!-- Text Column (Left) -->
-            <div class="w-full lg:w-[58%] flex flex-col items-start text-left relative">
-                <span class="editorial-label text-gold mb-4 block">Lead Magnet / Auditoría</span>
-                <h1 class="font-playfair text-3xl md:text-4xl lg:text-5xl mb-5 text-offwhite leading-[1.1]">
-                    ¿Qué tan <span class="italic font-light text-white/60 block mt-2">visible e inteligente</span> es tu presencia digital hoy?
+    <!-- HERO SECTION (Editorial, Tipográfico y Etéreo) -->
+    <section class="relative min-h-screen flex flex-col justify-center pt-32 pb-24 px-6 overflow-hidden">
+        <!-- Luces Atmosféricas en lugar de contenedores -->
+        <div class="absolute top-0 right-0 w-full h-[80vh] bg-gradient-to-b from-[#1a2744]/10 to-transparent pointer-events-none -z-10"></div>
+        <div class="absolute top-40 right-[-10%] w-[600px] h-[600px] bg-gold/5 rounded-full blur-[150px] pointer-events-none -z-10 animate-pulse-slow"></div>
+
+        <div class="max-w-7xl mx-auto w-full relative z-10 flex flex-col lg:flex-row items-center justify-between gap-16">
+            <div class="w-full lg:w-[60%] flex flex-col items-start text-left gsap-reveal">
+                <div class="flex items-center gap-4 mb-8">
+                    <div class="w-12 h-px bg-gold/50"></div>
+                    <span class="editorial-label text-gold m-0">DIAGNÓSTICO TÉCNICO</span>
+                </div>
+                
+                <h1 class="font-playfair text-4xl lg:text-6xl mb-6 text-offwhite leading-[1.05] tracking-tight">
+                    Auditoría IA, AI Marketing y SEO/GEO para detectar dónde tu empresa puede ganar claridad, visibilidad y eficiencia
                 </h1>
-                <div class="gold-rule mb-6"></div>
-                <p class="text-base md:text-lg text-subtle font-light max-w-xl mb-8 leading-relaxed">
-                    No es una auditoría automática de un bot. Es un diagnóstico profundo realizado por un estratega técnico para detectar fugas de conversión y oportunidades de IA.
+                
+                <!-- Respuesta Inmediata a la Intención de Búsqueda -->
+                <p class="text-lg md:text-xl text-offwhite/90 font-light max-w-2xl mb-4 leading-relaxed">
+                    Nuestra auditoría técnica es un diagnóstico manual exhaustivo que evalúa tres frentes críticos: citabilidad de tu marca en motores generativos (GEO), fricciones en tus tasas de conversión (CRO) y viabilidad operativa para implementar agentes y automatización con IA.
                 </p>
-                <CtaWhatsApp align="start" text="Solicitar Auditoría Gratuita" microcopy="Cupos limitados por semana para asegurar calidad." />
+
+                <!-- Resumen TL;DR / 5 Puntos Clave -->
+                <KeyTakeaways 
+                    points={[
+                        "Evaluación GEO Real: Comprobamos si tu marca es recuperable por ChatGPT, Claude, Gemini y Perplexity.",
+                        "Auditoría CRO y Fricciones: Detectamos fugas en el embudo comercial que impiden cerrar acuerdos B2B.",
+                        "Madurez Operativa IA: Mapeamos qué flujos pueden automatizarse con alto retorno antes de invertir.",
+                        "Entregable Accionable: Recibes un informe con priorización técnica clara, no teoría genérica.",
+                        "Revisión de Seguridad: Validamos que tus datos propietarios y accesos API estén blindados."
+                    ]}
+                    class="w-full max-w-2xl my-4"
+                />
+                
+                <div class="w-full flex flex-col sm:flex-row items-start sm:items-center gap-4 mt-2">
+                    <CtaWhatsApp align="start" text="Solicitar evaluación de viabilidad" microcopy="Proceso manual. Disponibilidad limitada semanalmente." />
+                    <ShareButton title="Auditoría IA, AI Marketing y SEO/GEO" text="Solicita un diagnóstico técnico de madurez y visibilidad con Tap-IA:" url="https://tap-ia.tech/auditoria-ia-marketing-seo-geo" />
+                </div>
             </div>
 
-            <!-- Visual Column (Right) -->
-            <div class="w-full lg:w-[38%] flex justify-center lg:justify-end items-center">
-                <div class="relative w-full max-w-[360px] md:max-w-[400px]">
-                    <div class="absolute inset-0 bg-[#2a5a8c]/10 rounded-full blur-[80px] pointer-events-none -z-10"></div>
+            <div class="w-full lg:w-[40%] flex justify-center lg:justify-end items-center gsap-reveal">
+                <div class="relative w-full max-w-[400px]">
                     <img
                         src="/images/holograma_datos_premium.webp"
-                        alt="Auditoría IA y SEO/GEO"
-                        class="relative z-10 block w-full h-auto object-contain drop-shadow-[0_0_50px_rgba(212,175,55,0.15)] animate-float"
+                        alt="Estructura técnica de diagnóstico IA, Marketing y SEO/GEO"
+                        class="relative z-10 block w-full h-auto object-contain animate-float opacity-80 mix-blend-screen"
                         width="500"
                         height="500"
                         fetchpriority="high"
-                        loading="eager"
-                        decoding="async"
                     />
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- QUÉ INCLUYE LA AUDITORÍA -->
-    <section class="py-24 px-6 relative border-t border-white/5 bg-white/[0.01]">
-        <div class="max-w-5xl mx-auto">
-            <h2 class="text-3xl text-center mb-16 text-white font-light">Un diagnóstico en <span class="text-gold">3 niveles</span></h2>
+    <!-- PAIN SECTION (Tipografía Monumental) -->
+    <section class="py-32 px-6 relative overflow-hidden">
+        <div class="absolute left-[-20%] top-[20%] text-[400px] font-playfair font-bold text-white/[0.02] leading-none pointer-events-none select-none z-0">
+            FRICCIÓN
+        </div>
+        <div class="max-w-5xl mx-auto relative z-10 gsap-reveal pl-0 md:pl-24">
+            <p class="font-playfair text-3xl md:text-5xl text-offwhite leading-snug mb-8">
+                El mercado B2B de élite no perdona el <span class="text-gold italic">desgaste técnico</span>.
+            </p>
+            <p class="text-subtle text-xl leading-relaxed max-w-3xl">
+                Si los LLMs (ChatGPT, Perplexity) no logran extraer tu valor, si tu navegación bloquea la decisión B2B, o si tu equipo sostiene procesos que un agente podría resolver en segundos, tu escalabilidad está condicionada por el óxido digital. Rediseñar lo visual no corrige lo estructural.
+            </p>
+        </div>
+    </section>
+
+    <!-- CORE MECHANISM (Flujo Vertical Borderless) -->
+    <section class="py-40 px-6 relative">
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-transparent pointer-events-none z-0"></div>
+        <div class="max-w-6xl mx-auto relative z-10">
             
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="matte-card p-10 rounded-2xl border border-white/5 hover:border-gold/20 transition-all">
-                    <span class="text-white/20 text-4xl font-serif italic mb-6 block">01</span>
-                    <h4 class="text-white text-xl mb-4">SEO/GEO Readiness</h4>
-                    <p class="text-subtle text-sm">¿Google te indexa bien? ¿ChatGPT te puede citar? Revisamos tus señales técnicas de autoridad y citalidad.</p>
+            <div class="max-w-3xl mb-32 gsap-reveal">
+                <span class="editorial-label block text-royal mb-4">METODOLOGÍA DE PROFUNDIDAD</span>
+                <h2 class="font-playfair text-4xl md:text-6xl text-offwhite mb-6">Tres vectores de análisis estructural</h2>
+            </div>
+            
+            <div class="space-y-32">
+                <!-- Capa 1 -->
+                <div class="relative flex flex-col md:flex-row gap-8 lg:gap-24 items-start gsap-reveal group">
+                    <div class="w-full md:w-1/3 shrink-0">
+                        <span class="font-serif italic text-7xl text-white/10 group-hover:text-gold transition-colors duration-700 block mb-2 leading-none">01</span>
+                        <h3 class="font-playfair text-3xl text-offwhite group-hover:translate-x-2 transition-transform duration-500">SEO / GEO Readiness</h3>
+                    </div>
+                    <div class="w-full md:w-2/3 pt-4">
+                        <p class="text-subtle text-xl leading-relaxed mb-6 font-light">Auditamos si tu infraestructura técnica facilita el rastreo por motores tradicionales (Googlebot) y comprobamos la fidelidad de tu red semántica (Schema JSON-LD). Si tu contenido no tiene formato citable, los agentes de IA jamás te usarán como fuente primaria de autoridad.</p>
+                        <span class="ui-caption text-white/30 tracking-widest block border-b border-white/5 pb-4">VISIBILIDAD EN LA ERA DE LA IA</span>
+                    </div>
                 </div>
-                <div class="matte-card p-10 rounded-2xl border border-white/5 hover:border-gold/20 transition-all">
-                    <span class="text-white/20 text-4xl font-serif italic mb-6 block">02</span>
-                    <h4 class="text-white text-xl mb-4">CRO & Mensaje</h4>
-                    <p class="text-subtle text-sm">¿Tu propuesta de valor es clara? Detectamos por dónde se están escapando tus leads actuales.</p>
+                
+                <!-- Capa 2 -->
+                <div class="relative flex flex-col md:flex-row gap-8 lg:gap-24 items-start gsap-reveal group">
+                    <div class="w-full md:w-1/3 shrink-0">
+                        <span class="font-serif italic text-7xl text-white/10 group-hover:text-gold transition-colors duration-700 block mb-2 leading-none">02</span>
+                        <h3 class="font-playfair text-3xl text-offwhite group-hover:translate-x-2 transition-transform duration-500">Arquitectura CRO</h3>
+                    </div>
+                    <div class="w-full md:w-2/3 pt-4">
+                        <p class="text-subtle text-xl leading-relaxed mb-6 font-light">Desarmamos tu embudo para encontrar las fugas de decisión. Analizamos la contundencia de tu propuesta de valor y las fricciones micro-cognitivas en tus formularios B2B para entender exactamente por qué el tráfico cualificado abandona tu sitio sin interactuar.</p>
+                        <span class="ui-caption text-white/30 tracking-widest block border-b border-white/5 pb-4">CAPTACIÓN SIN FRICCIONES</span>
+                    </div>
                 </div>
-                <div class="matte-card p-10 rounded-2xl border border-white/5 hover:border-gold/20 transition-all">
-                    <span class="text-white/20 text-4xl font-serif italic mb-6 block">03</span>
-                    <h4 class="text-white text-xl mb-4">IA Opportunity</h4>
-                    <p class="text-subtle text-sm">Identificamos el proceso específico de tu operación que más se beneficiaría de un agente o automatización.</p>
+                
+                <!-- Capa 3 -->
+                <div class="relative flex flex-col md:flex-row gap-8 lg:gap-24 items-start gsap-reveal group">
+                    <div class="w-full md:w-1/3 shrink-0">
+                        <span class="font-serif italic text-7xl text-white/10 group-hover:text-gold transition-colors duration-700 block mb-2 leading-none">03</span>
+                        <h3 class="font-playfair text-3xl text-offwhite group-hover:translate-x-2 transition-transform duration-500">Madurez Operativa IA</h3>
+                    </div>
+                    <div class="w-full md:w-2/3 pt-4">
+                        <p class="text-subtle text-xl leading-relaxed mb-6 font-light">Mapeamos los cuellos de botella en tus procesos de marketing, soporte y ventas. Detectamos con criterio cuáles de estos procesos manuales pueden ser delegados de forma segura a sistemas de inteligencia artificial (agentes o webapps) evitando radicalmente la sobreingeniería.</p>
+                        <span class="ui-caption text-white/30 tracking-widest block border-b border-white/5 pb-4">EFICIENCIA Y ESCALABILIDAD</span>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- DELIVERABLES (Asimétrico y Limpio) -->
+    <section class="py-40 px-6 relative overflow-hidden">
+        <div class="absolute inset-0 bg-black/20 pointer-events-none -z-10"></div>
+        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-gold/[0.03] via-transparent to-transparent pointer-events-none"></div>
+        <div class="max-w-7xl mx-auto flex flex-col lg:flex-row gap-20 items-center relative z-10">
+            
+            <div class="w-full lg:w-1/2 gsap-reveal">
+                <span class="editorial-label block text-white/40 mb-4">LOS ENTREGABLES</span>
+                <h2 class="font-playfair text-4xl md:text-5xl text-offwhite mb-8">Rigor técnico convertido en decisiones.</h2>
+                <p class="text-subtle text-lg mb-12 max-w-lg">El objetivo no es inundarte de métricas de vanidad, sino entregarte un plan de acción quirúrgico para recuperar el dominio de tu infraestructura digital.</p>
+                
+                <div class="space-y-12">
+                    <div class="group">
+                        <strong class="text-offwhite text-xl block mb-2 group-hover:text-gold transition-colors">I. Reporte de Viabilidad</strong>
+                        <p class="text-subtle">Un documento ejecutivo (PDF) detallando los hallazgos críticos de fricción con evidencia visual y técnica de tus sistemas actuales.</p>
+                    </div>
+                    <div class="group">
+                        <strong class="text-offwhite text-xl block mb-2 group-hover:text-gold transition-colors">II. Roadmap Priorizado (P0-P2)</strong>
+                        <p class="text-subtle">Plan de corrección y evolución estructurado, priorizando acciones por impacto directo en tu facturación y esfuerzo de implementación.</p>
+                    </div>
+                    <div class="group">
+                        <strong class="text-offwhite text-xl block mb-2 group-hover:text-gold transition-colors">III. Sesión de Estrategia</strong>
+                        <p class="text-subtle">Reunión de 30 minutos uno a uno con el equipo para exponer los hallazgos, resolver dudas y acordar los pasos lógicos a seguir.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="w-full lg:w-1/2 flex justify-center lg:justify-end gsap-reveal">
+                <!-- Composición abstracta minimalista en lugar de tarjeta -->
+                <div class="relative w-full max-w-md aspect-[4/5]">
+                    <div class="absolute inset-4 border border-white/10 mix-blend-overlay"></div>
+                    <div class="absolute inset-8 border border-white/5"></div>
+                    <div class="absolute inset-12 bg-white/[0.02] backdrop-blur-3xl flex items-center justify-center group">
+                        <i class="fa-solid fa-layer-group text-6xl text-white/20 group-hover:text-gold/50 transition-colors duration-1000"></i>
+                    </div>
+                    <!-- Puntos de anclaje abstractos -->
+                    <div class="absolute top-4 left-4 w-2 h-2 bg-gold/50"></div>
+                    <div class="absolute bottom-4 right-4 w-2 h-2 bg-royal/50"></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- DETALLE DE EVALUACIÓN -->
-    <section class="py-20 px-6 relative border-t border-white/5 bg-charcoal">
-        <div class="max-w-4xl mx-auto">
-            <h3 class="font-serif text-2xl md:text-3xl text-white mb-8 text-center">Frentes de análisis técnico y comercial</h3>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-subtle text-sm leading-relaxed">
-                <div>
-                    <h4 class="text-white font-medium mb-2"><i class="fa-solid fa-code text-gold mr-2"></i>Optimización Técnica Avanzada</h4>
-                    <p>Revisamos la arquitectura del sitio, la validez del marcado de datos estructurados (Schema JSON-LD), la velocidad de carga percibida en dispositivos móviles, y las directivas de rastreo de tu archivo robots.txt para asegurar que los motores tradicionales y los agentes de IA (como ChatGPT-User) puedan acceder sin obstáculos.</p>
+    <!-- PUNTOS CRÍTICOS (Texto enorme, sin cajas) -->
+    <section class="py-32 px-6">
+        <div class="max-w-6xl mx-auto gsap-reveal">
+            <span class="editorial-label block text-white/30 mb-8 text-center">EL COSTO DEL DESCUIDO</span>
+            
+            <div class="space-y-16 mt-20">
+                <div class="flex flex-col md:flex-row gap-8 items-start md:items-center hover:opacity-100 opacity-60 transition-opacity duration-500 cursor-default">
+                    <span class="text-4xl text-royal font-light shrink-0 w-12">01</span>
+                    <div>
+                        <h4 class="text-offwhite font-playfair text-3xl mb-3">Bloqueo absoluto a LLMs</h4>
+                        <p class="text-subtle text-lg max-w-3xl">Directivas heredadas en el <code>robots.txt</code> que prohíben el rastreo a OAI-Searchbot y ClaudeBot, borrando a tu empresa de la memoria de las IA generativas actuales.</p>
+                    </div>
                 </div>
-                <div>
-                    <h4 class="text-white font-medium mb-2"><i class="fa-solid fa-arrow-up-right-dots text-gold mr-2"></i>Estructura de Conversión (CRO)</h4>
-                    <p>Evaluamos la claridad de tu propuesta de valor, la alineación del mensaje B2B, y la fricción técnica de los puntos de contacto. Analizamos si tus llamados a la acción (CTAs) están estratégicamente ubicados para guiar al usuario a través de un customer journey limpio y sin distracciones.</p>
+                
+                <div class="w-full h-px bg-gradient-to-r from-transparent via-white/5 to-transparent"></div>
+                
+                <div class="flex flex-col md:flex-row gap-8 items-start md:items-center hover:opacity-100 opacity-60 transition-opacity duration-500 cursor-default">
+                    <span class="text-4xl text-royal font-light shrink-0 w-12">02</span>
+                    <div>
+                        <h4 class="text-offwhite font-playfair text-3xl mb-3">Ambigüedad Comercial (CRO)</h4>
+                        <p class="text-subtle text-lg max-w-3xl">Decenas de botones inútiles de "Saber más" diseminados por la web, creando fatiga de decisión en prospectos B2B que prefieren ir directamente al valor o agendar una demostración.</p>
+                    </div>
+                </div>
+
+                <div class="w-full h-px bg-gradient-to-r from-transparent via-white/5 to-transparent"></div>
+                
+                <div class="flex flex-col md:flex-row gap-8 items-start md:items-center hover:opacity-100 opacity-60 transition-opacity duration-500 cursor-default">
+                    <span class="text-4xl text-royal font-light shrink-0 w-12">03</span>
+                    <div>
+                        <h4 class="text-offwhite font-playfair text-3xl mb-3">Invisibilidad Semántica</h4>
+                        <p class="text-subtle text-lg max-w-3xl">Contenido extenso pero sin marcado de datos JSON-LD estructurado, forzando a los motores a adivinar tus servicios en lugar de comprenderlos con precisión matemática.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- POR QUÉ AHORA -->
-    <section class="py-24 px-6 relative border-t border-white/5">
-        <div class="max-w-3xl mx-auto text-center">
-            <h2 class="mb-8 text-white font-light">El mercado B2B no perdona la <span class="italic text-white/60">fricción técnica</span>.</h2>
-            <p class="text-subtle mb-12">En un mundo donde la IA responde en segundos, un sitio lento, confuso o invisible es una sentencia de muerte comercial. Obtén claridad sobre tu estado actual.</p>
-            <CtaWhatsApp text="Quiero mi Diagnóstico" />
+    <!-- PROCESO (Fluido) -->
+    <section class="py-40 px-6 relative">
+        <div class="absolute inset-0 bg-black/20 pointer-events-none -z-10"></div>
+        <div class="max-w-7xl mx-auto gsap-reveal">
+            <h2 class="font-playfair text-4xl text-offwhite mb-24 text-center">Así funciona la evaluación</h2>
+            
+            <div class="flex flex-col md:flex-row justify-between gap-12 relative">
+                <!-- Timeline conectora -->
+                <div class="hidden md:block absolute top-8 left-[10%] right-[10%] h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent -z-10"></div>
+                
+                <div class="text-center px-4 flex-1">
+                    <div class="w-16 h-16 bg-[#16191f]/50 backdrop-blur-md rounded-full mx-auto flex items-center justify-center mb-8 border border-white/5">
+                        <span class="font-serif italic text-gold">I</span>
+                    </div>
+                    <h3 class="text-offwhite text-xl mb-4 font-medium">Aplicación</h3>
+                    <p class="text-subtle">Suministras el acceso a tu plataforma y un contexto breve de tu ecosistema actual a través de WhatsApp.</p>
+                </div>
+                
+                <div class="text-center px-4 flex-1">
+                    <div class="w-16 h-16 bg-[#16191f]/50 backdrop-blur-md rounded-full mx-auto flex items-center justify-center mb-8 border border-white/5">
+                        <span class="font-serif italic text-gold">II</span>
+                    </div>
+                    <h3 class="text-offwhite text-xl mb-4 font-medium">Análisis Silencioso</h3>
+                    <p class="text-subtle">Durante 48 horas, nuestro equipo evalúa manualmente tu infraestructura y flujos de decisión sin interrumpir tu operativa.</p>
+                </div>
+                
+                <div class="text-center px-4 flex-1">
+                    <div class="w-16 h-16 bg-[#16191f]/50 backdrop-blur-md rounded-full mx-auto flex items-center justify-center mb-8 border border-white/5">
+                        <span class="font-serif italic text-gold">III</span>
+                    </div>
+                    <h3 class="text-offwhite text-xl mb-4 font-medium">Entrega de Roadmap</h3>
+                    <p class="text-subtle">Presentamos el informe técnico consolidado y delineamos la secuencia exacta para solucionar las fugas.</p>
+                </div>
+            </div>
+            
+            <div class="mt-32 flex justify-center">
+                <CtaWhatsApp text="Agendar Diagnóstico" microcopy="Hablemos de viabilidad técnica, no de magia digital." />
+            </div>
         </div>
     </section>
 
-    <section class="py-20 px-6 border-t border-white/5 bg-white/[0.01]" aria-labelledby="faq-auditoria">
-        <div class="max-w-3xl mx-auto">
-            <h2 id="faq-auditoria" class="font-serif text-3xl text-white mb-10 text-center">Preguntas frecuentes sobre la auditoría</h2>
-            <div class="space-y-8 text-subtle leading-relaxed">
-                <div>
-                    <h3 class="text-white text-lg font-medium mb-2">¿En qué se diferencia de una auditoría SEO automática?</h3>
-                    <p>Combinamos revisión técnica (indexación, canonical, señales GEO), lectura de mensaje y conversión, y un mapa de oportunidades de IA aplicada a tu operación real. No entregamos solo un PDF de Lighthouse.</p>
+    <!-- FAQ -->
+    <section class="py-32 px-6">
+        <div class="max-w-4xl mx-auto gsap-reveal">
+            <span class="editorial-label block text-gold mb-10 text-center">F.A.Q.</span>
+            
+            <div class="space-y-12">
+                <div class="pl-8 border-l border-white/10 hover:border-gold/50 transition-colors">
+                    <h3 class="text-offwhite text-xl font-medium mb-3">¿En qué se diferencia de una auditoría SEO tradicional?</h3>
+                    <p class="text-subtle">Evaluamos posicionamiento técnico tradicional, pero lo cruzamos con inteligencia semántica para Generative Engine Optimization (GEO), optimización neuro-cognitiva B2B (CRO) y un levantamiento de oportunidades reales de automatización con IA.</p>
                 </div>
-                <div>
-                    <h3 class="text-white text-lg font-medium mb-2">¿Qué recibo al final del diagnóstico?</h3>
-                    <p>Un informe accionable con prioridades: qué corregir primero en visibilidad, qué ajustar en captación y qué procesos tienen sentido automatizar con agentes o integraciones.</p>
+                <div class="pl-8 border-l border-white/10 hover:border-gold/50 transition-colors">
+                    <h3 class="text-offwhite text-xl font-medium mb-3">¿Este diagnóstico garantiza aparecer en ChatGPT o Perplexity?</h3>
+                    <p class="text-subtle">Nadie puede garantizar resultados absolutos. Lo que garantizamos es instalar los rieles técnicos, semánticos y estructurales para que tu marca posea la máxima probabilidad técnica de ser extraída, citada y priorizada por los modelos de lenguaje modernos.</p>
                 </div>
-                <div>
-                    <h3 class="text-white text-lg font-medium mb-2">¿La auditoría garantiza posicionamiento en ChatGPT?</h3>
-                    <p>No. Mejoramos estructura, claridad y citabilidad para motores generativos; el posicionamiento depende de autoridad, competencia y consistencia editorial. Ver también nuestra página de <a href="/soluciones/seo-geo" class="text-gold hover:underline">SEO y GEO</a>.</p>
+                <div class="pl-8 border-l border-white/10 hover:border-gold/50 transition-colors">
+                    <h3 class="text-offwhite text-xl font-medium mb-3">¿Para qué perfil de cliente está diseñado este servicio?</h3>
+                    <p class="text-subtle">Exclusivamente para directores (CEO, CMO, CTO) y líderes de operaciones de empresas B2B consolidadas que necesitan un punto de referencia técnico absoluto antes de invertir en rediseños cosméticos o arquitecturas de inteligencia artificial.</p>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- FAQ SCHEMA -->
+    <script type="application/ld+json" is:inline set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "¿En qué se diferencia de una auditoría SEO tradicional?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Evaluamos posicionamiento técnico tradicional, pero lo cruzamos con inteligencia semántica para Generative Engine Optimization (GEO), optimización neuro-cognitiva B2B (CRO) y un levantamiento de oportunidades reales de automatización con IA."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Este diagnóstico garantiza aparecer en ChatGPT o Perplexity?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Nadie puede garantizar resultados absolutos. Lo que garantizamos es instalar los rieles técnicos, semánticos y estructurales para que tu marca posea la máxima probabilidad técnica de ser extraída, citada y priorizada por los modelos de lenguaje modernos."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Para qué perfil de cliente está diseñado este servicio?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Exclusivamente para directores (CEO, CMO, CTO) y líderes de operaciones de empresas B2B consolidadas que necesitan un punto de referencia técnico absoluto antes de invertir en rediseños cosméticos o arquitecturas de inteligencia artificial."
+          }
+        }
+      ]
+    })} />
+
+    <!-- GSAP ANIMATIONS -->
+    <script>
+        import { gsap } from "gsap";
+        import { ScrollTrigger } from "gsap/ScrollTrigger";
+        
+        gsap.registerPlugin(ScrollTrigger);
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            
+            if (!prefersReducedMotion) {
+                gsap.utils.toArray('.gsap-reveal').forEach((elem) => {
+                    gsap.fromTo(elem as Element, 
+                        { y: 40, opacity: 0 }, 
+                        { 
+                            y: 0, opacity: 1, 
+                            duration: 1.4, 
+                            ease: "expo.out",
+                            scrollTrigger: { 
+                                trigger: elem as Element, 
+                                start: "top 85%", 
+                                once: true 
+                            }
+                        }
+                    );
+                });
+            }
+        });
+    </script>
 
     <Footer />
 </Layout>

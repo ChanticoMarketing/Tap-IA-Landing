@@ -3,36 +3,105 @@ import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import SchemaItemList from '../../components/SchemaItemList.astro';
+import KeyTakeaways from '../../components/KeyTakeaways.astro';
+import ShareButton from '../../components/ShareButton.astro';
+import { formatBlogDate, getPublishedBlogEntries, type GeneratedBlogEntry } from '../../lib/blog';
+
+const generatedArticles: GeneratedBlogEntry[] = await getPublishedBlogEntries();
 ---
 
 <Layout
-    title="Novedades IA para Marketing | TAP-IA"
-    description="Noticias y análisis de IA filtrados por impacto real en marketing, visibilidad y automatización."
+    title="Blog de Inteligencia Artificial para Marketing y Negocios B2B | TAP-IA"
+    description="Análisis estratégicos de Inteligencia Artificial, SEO/GEO, agentes autónomos y marketing B2B libres de ruido y hype tecnológico."
 >
     <Header />
     <SchemaItemList
         name="Novedades IA TAP-IA"
         description="Feed editorial con las novedades de IA más relevantes para marketing, visibilidad y automatización."
         items={[
-            { name: 'El no-lanzamiento de GPT-5.6 y el techo de la IA comercial: ¿Se acabó el acceso libre al estado del arte?', url: '/novedades-ia/gpt-5-6-no-lanzamiento-techo-ia-comercial-2026' },
-            { name: 'Claude Mythos y Project Glasswing: qué cambia en ciberseguridad, IA y marketing (2026)', url: '/novedades-ia/claude-mythos-proyecto-glasswing-2026' },
+            { name: 'El no-lanzamiento de GPT-5.6 y el techo de la IA comercial: ¿Se acabó el acceso libre al estado del arte?', url: '/blog/gpt-5-6-no-lanzamiento-techo-ia-comercial-2026' },
+            { name: 'Claude Mythos y Project Glasswing: qué cambia en ciberseguridad, IA y marketing (2026)', url: '/blog/claude-mythos-proyecto-glasswing-2026' },
+            { name: 'Agentes de IA en Marketing 2026: OpenClaw, Manus y la Era de la Ejecución Autónoma', url: '/blog/agentes-ia-marketing-2026-openclaw-manus-era-agentica' },
+            ...generatedArticles.map((article: GeneratedBlogEntry) => ({
+                name: article.data.title,
+                url: `/blog/${article.slug}`,
+                description: article.data.description,
+            })),
         ]}
     />
 
     <section class="pt-36 pb-12 px-6 relative bg-charcoal">
         <div class="absolute top-20 left-1/4 w-[500px] h-[500px] bg-gold/10 rounded-full blur-[130px] pointer-events-none -z-10 animate-pulse-slow"></div>
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-end gap-6 blog-hero-content">
-            <div>
+            <div class="w-full max-w-4xl">
                 <span class="editorial-label mb-3 inline-block">Intelligence Feed</span>
-                <h1 class="font-playfair text-4xl md:text-6xl text-white mb-4 leading-tight">Análisis de IA con impacto en negocio</h1>
-                <p class="text-subtle text-lg max-w-2xl font-jakarta">Noticias de Inteligencia Artificial filtradas exclusivamente por su impacto real en marketing, visibilidad orgánica y optimización de procesos de negocio.</p>
-                <p class="text-subtle/70 text-sm mt-4 max-w-3xl leading-relaxed font-jakarta">
-                    Nuestra misión en Novedades IA es filtrar el ruido del hype tecnológico y ofrecer análisis técnicos de nivel estratégico. No publicamos notas genéricas sobre cada modelo nuevo por moda; nos enfocamos en estudiar la madurez de las APIs, la viabilidad de integraciones autónomas y el impacto de los nuevos algoritmos en el posicionamiento GEO (búsquedas generativas) para entregar claridad operativa a líderes digitales. Cada semana seleccionamos los eventos más relevantes del sector, analizamos su documentación oficial y evaluamos su aplicabilidad práctica en el día a día comercial. Estudia cada análisis con detenimiento para mejorar tu toma de decisiones estratégicas de negocio.
+                <h1 class="font-playfair text-4xl md:text-6xl text-white mb-4 leading-tight">
+                    Análisis de Inteligencia Artificial con impacto real en negocio y marketing
+                </h1>
+                <p class="text-subtle text-lg max-w-2xl font-jakarta">
+                    Noticias y ensayos técnicos sobre IA filtrados exclusivamente por su impacto práctico en marketing, visibilidad orgánica (GEO) y optimización de procesos de negocio.
                 </p>
+
+                <div class="my-6 text-left max-w-2xl">
+                    <KeyTakeaways 
+                        points={[
+                            "Cero Hype: Evaluamos modelos y APIs por su utilidad real, costo y viabilidad en producción.",
+                            "Enfoque GEO: Analizamos cómo evolucionan los motores de búsqueda como ChatGPT y Perplexity.",
+                            "Arquitectura Práctica: Casos de estudio y metodologías aplicables a empresas y agencias B2B.",
+                            "Autonomía y Agentes: Cobertura profunda sobre flujos de trabajo multi-agente y ejecución de tareas.",
+                            "Actualizaciones Frecuentes: Artículos semanales basados en fuentes primarias y experimentación directa."
+                        ]}
+                    />
+                </div>
+
+                <div class="mt-4">
+                    <ShareButton title="Blog de Inteligencia Artificial para Negocios — TAP-IA" text="Lee los análisis técnicos y estratégicos de IA de Tap-IA:" url="https://tap-ia.tech/blog" />
+                </div>
             </div>
             <div class="hidden md:flex md:items-end md:pb-1" aria-hidden="true">
-                <p class="ui-caption text-subtle/40 text-right">3 análisis publicados</p>
+                <p class="ui-caption text-subtle/40 text-right">{3 + generatedArticles.length} análisis publicados</p>
             </div>
+
+            {generatedArticles.length > 0 && (
+                <section class="mt-24 border-t border-white/10 pt-12" aria-labelledby="analisis-generados">
+                    <div class="flex items-end justify-between gap-6 mb-10">
+                        <div>
+                            <span class="editorial-label mb-3 inline-block">Daily Intelligence</span>
+                            <h2 id="analisis-generados" class="font-playfair text-3xl text-white">Análisis de actualidad</h2>
+                        </div>
+                        <span class="ui-caption text-subtle/50">{generatedArticles.length} nuevos</span>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                        {generatedArticles.map((article: GeneratedBlogEntry) => (
+                            <article class="group flex flex-col h-full rounded-2xl border border-white/10 overflow-hidden bg-white/[0.015]">
+                                <a href={`/blog/${article.slug}`} class="block relative overflow-hidden aspect-video">
+                                    <img
+                                        src={article.data.heroImage}
+                                        alt={article.data.heroAlt}
+                                        class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-103"
+                                        loading="lazy"
+                                        decoding="async"
+                                    />
+                                </a>
+                                <div class="p-6 flex flex-col h-full">
+                                    <div class="flex flex-wrap gap-3 mb-3 text-xs font-semibold uppercase tracking-wider">
+                                        <span class="text-gold">{article.data.articleSection}</span>
+                                        <span class="text-subtle/50">•</span>
+                                        <time class="text-subtle" datetime={article.data.datePublished}>{formatBlogDate(article.data.datePublished)}</time>
+                                    </div>
+                                    <h3 class="text-2xl text-white font-playfair mb-3 leading-snug group-hover:text-gold transition-colors duration-300">
+                                        <a href={`/blog/${article.slug}`}>{article.data.title}</a>
+                                    </h3>
+                                    <p class="text-subtle text-sm mb-6 leading-relaxed line-clamp-3 font-jakarta">{article.data.description}</p>
+                                    <a href={`/blog/${article.slug}`} class="mt-auto inline-flex items-center gap-2 text-white/90 text-sm font-medium group-hover:text-gold">
+                                        Leer análisis <i class="fa-solid fa-arrow-right text-gold"></i>
+                                    </a>
+                                </div>
+                            </article>
+                        ))}
+                    </div>
+                </section>
+            )}
         </div>
     </section>
 
@@ -67,7 +136,7 @@ import SchemaItemList from '../../components/SchemaItemList.astro';
                             <span class="text-subtle">1 Julio 2026</span>
                         </div>
                         <h3 class="text-3xl md:text-4xl text-white font-playfair mb-4 leading-tight group-hover:text-gold transition-colors duration-300">
-                            <a href="/novedades-ia/gpt-5-6-no-lanzamiento-techo-ia-comercial-2026" class="block">
+                            <a href="/blog/gpt-5-6-no-lanzamiento-techo-ia-comercial-2026" class="block">
                                 El no-lanzamiento de GPT-5.6 y el techo de la IA comercial: ¿Se acabó el acceso libre al estado del arte?
                             </a>
                         </h3>
@@ -78,13 +147,13 @@ import SchemaItemList from '../../components/SchemaItemList.astro';
                             <div class="flex items-center gap-2 text-xs text-subtle/60">
                                 <i class="fa-solid fa-cube"></i> Fuente: <strong>OpenAI / Anthropic</strong>
                             </div>
-                            <a href="/novedades-ia/gpt-5-6-no-lanzamiento-techo-ia-comercial-2026" class="inline-flex items-center gap-2 text-white/90 text-sm font-medium transition-all duration-300 group-hover:text-gold">
+                            <a href="/blog/gpt-5-6-no-lanzamiento-techo-ia-comercial-2026" class="inline-flex items-center gap-2 text-white/90 text-sm font-medium transition-all duration-300 group-hover:text-gold">
                                 Leer Análisis <i class="fa-solid fa-arrow-right text-gold transition-transform duration-300 group-hover:translate-x-1"></i>
                             </a>
                         </div>
                     </div>
                     <div class="lg:col-span-5">
-                        <a href="/novedades-ia/gpt-5-6-no-lanzamiento-techo-ia-comercial-2026" class="block relative overflow-hidden rounded-2xl aspect-video group/img">
+                        <a href="/blog/gpt-5-6-no-lanzamiento-techo-ia-comercial-2026" class="block relative overflow-hidden rounded-2xl aspect-video group/img">
                             <div class="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-transparent to-transparent opacity-60 z-10 transition-opacity duration-300 group-hover/img:opacity-40"></div>
                             <!-- Ambient Glow behind the image -->
                             <div class="absolute -inset-4 bg-gold/5 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none -z-10"></div>
@@ -104,7 +173,7 @@ import SchemaItemList from '../../components/SchemaItemList.astro';
                 <!-- Claude Mythos -->
                 <article id="claude-mythos" class="group flex flex-col justify-between h-full relative">
                     <div>
-                        <a href="/novedades-ia/claude-mythos-proyecto-glasswing-2026" class="block relative overflow-hidden rounded-xl aspect-video mb-6 group/img">
+                        <a href="/blog/claude-mythos-proyecto-glasswing-2026" class="block relative overflow-hidden rounded-xl aspect-video mb-6 group/img">
                             <div class="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-transparent to-transparent opacity-60 z-10 transition-opacity duration-300 group-hover/img:opacity-40"></div>
                             <div class="absolute -inset-4 bg-gold/5 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none -z-10"></div>
                             <img 
@@ -120,7 +189,7 @@ import SchemaItemList from '../../components/SchemaItemList.astro';
                             <span class="text-subtle">17 Mayo 2026</span>
                         </div>
                         <h3 class="text-2xl text-white font-playfair mb-3 leading-snug group-hover:text-gold transition-colors duration-300">
-                            <a href="/novedades-ia/claude-mythos-proyecto-glasswing-2026">
+                            <a href="/blog/claude-mythos-proyecto-glasswing-2026">
                                 Claude Mythos y Project Glasswing: qué cambia en ciberseguridad, IA y marketing (2026)
                             </a>
                         </h3>
@@ -132,7 +201,7 @@ import SchemaItemList from '../../components/SchemaItemList.astro';
                         <div class="flex items-center gap-2 text-xs text-subtle/60">
                             <i class="fa-solid fa-cube"></i> Fuente: <strong>Anthropic</strong>
                         </div>
-                        <a href="/novedades-ia/claude-mythos-proyecto-glasswing-2026" class="inline-flex items-center gap-2 text-white/90 text-sm font-medium transition-all duration-300 group-hover:text-gold">
+                        <a href="/blog/claude-mythos-proyecto-glasswing-2026" class="inline-flex items-center gap-2 text-white/90 text-sm font-medium transition-all duration-300 group-hover:text-gold">
                             Leer Análisis <i class="fa-solid fa-arrow-right text-gold transition-transform duration-300 group-hover:translate-x-1"></i>
                         </a>
                     </div>
@@ -141,7 +210,7 @@ import SchemaItemList from '../../components/SchemaItemList.astro';
                 <!-- Agentes Autónomos -->
                 <article id="agentes-autonomos" class="group flex flex-col justify-between h-full relative">
                     <div>
-                        <a href="/novedades-ia/agentes-ia-marketing-2026-openclaw-manus-era-agentica" class="block relative overflow-hidden rounded-xl aspect-video mb-6 group/img">
+                        <a href="/blog/agentes-ia-marketing-2026-openclaw-manus-era-agentica" class="block relative overflow-hidden rounded-xl aspect-video mb-6 group/img">
                             <div class="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-transparent to-transparent opacity-60 z-10 transition-opacity duration-300 group-hover/img:opacity-40"></div>
                             <div class="absolute -inset-4 bg-forest/10 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none -z-10"></div>
                             <img 
@@ -157,7 +226,7 @@ import SchemaItemList from '../../components/SchemaItemList.astro';
                             <span class="text-subtle">11 Mayo 2026</span>
                         </div>
                         <h3 class="text-2xl text-white font-playfair mb-3 leading-snug group-hover:text-forest transition-colors duration-300">
-                            <a href="/novedades-ia/agentes-ia-marketing-2026-openclaw-manus-era-agentica">
+                            <a href="/blog/agentes-ia-marketing-2026-openclaw-manus-era-agentica">
                                 Agentes de IA en Marketing 2026: OpenClaw, Manus y la Era de la Ejecución Autónoma
                             </a>
                         </h3>
@@ -169,7 +238,7 @@ import SchemaItemList from '../../components/SchemaItemList.astro';
                         <div class="flex items-center gap-2 text-xs text-subtle/60">
                             <i class="fa-solid fa-cube"></i> Fuente: <strong>Tap-IA</strong>
                         </div>
-                        <a href="/novedades-ia/agentes-ia-marketing-2026-openclaw-manus-era-agentica" class="inline-flex items-center gap-2 text-white/90 text-sm font-medium transition-all duration-300 group-hover:text-forest">
+                        <a href="/blog/agentes-ia-marketing-2026-openclaw-manus-era-agentica" class="inline-flex items-center gap-2 text-white/90 text-sm font-medium transition-all duration-300 group-hover:text-forest">
                             Leer Análisis <i class="fa-solid fa-arrow-right text-forest transition-transform duration-300 group-hover:translate-x-1"></i>
                         </a>
                     </div>

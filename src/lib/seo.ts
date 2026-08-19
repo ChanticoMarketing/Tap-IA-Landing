@@ -18,10 +18,10 @@ const normalizePath = (pathname: string) => {
 
 export const INDEXABLE_ROUTES = [
   '/',
-  '/soluciones',
-  '/soluciones/seo-geo',
-  '/soluciones/web',
-  '/soluciones/avatares-ia',
+  '/servicios',
+  '/servicios/seo-geo',
+  '/servicios/web',
+  '/servicios/avatares-ia',
   '/consultoria-inteligencia-artificial',
   '/auditoria-ia-marketing-seo-geo',
   '/infraestructura-digital',
@@ -29,25 +29,25 @@ export const INDEXABLE_ROUTES = [
   '/agentes-ia-a-medida',
   '/webapps-ia-a-medida',
   '/portafolio',
-  '/novedades-ia',
-  '/novedades-ia/agentes-ia-marketing-2026-openclaw-manus-era-agentica',
-  '/novedades-ia/claude-mythos-proyecto-glasswing-2026',
-  '/novedades-ia/gpt-5-6-no-lanzamiento-techo-ia-comercial-2026',
+  '/blog',
+  '/blog/agentes-ia-marketing-2026-openclaw-manus-era-agentica',
+  '/blog/claude-mythos-proyecto-glasswing-2026',
+  '/blog/gpt-5-6-no-lanzamiento-techo-ia-comercial-2026',
   '/recursos',
   '/recursos/calculadora-roi-ia',
   '/recursos/megaprompts-b2b-marketing',
   '/recursos/glosario',
-  '/sobre',
-  '/sobre/emmanuel-tapia',
+  '/nosotros',
+  '/nosotros/emmanuel-tapia',
   '/contacto',
 ] as const;
 
 export const NOINDEX_ROUTES = new Set([
   '/legal',
-  '/soluciones/ai-marketing',
-  '/soluciones/agentes-ia',
-  '/soluciones/webapps',
-  '/novedades-ia/noticia-mock',
+  '/servicios/ai-marketing',
+  '/servicios/agentes-ia',
+  '/servicios/webapps',
+  '/blog/noticia-mock',
   '/portafolio/sitios-web',
   '/portafolio/seo-geo',
   '/portafolio/agentes-ia',
@@ -62,10 +62,10 @@ export const NOINDEX_ROUTES = new Set([
 ]);
 
 export const CANONICAL_OVERRIDES = new Map<string, string>([
-  ['/soluciones/ai-marketing', '/ai-marketing'],
-  ['/soluciones/agentes-ia', '/agentes-ia-a-medida'],
-  ['/soluciones/webapps', '/webapps-ia-a-medida'],
-  ['/novedades-ia/noticia-mock', '/novedades-ia'],
+  ['/servicios/ai-marketing', '/ai-marketing'],
+  ['/servicios/agentes-ia', '/agentes-ia-a-medida'],
+  ['/servicios/webapps', '/webapps-ia-a-medida'],
+  ['/blog/noticia-mock', '/blog'],
   ['/portafolio/sitios-web', '/portafolio'],
   ['/portafolio/seo-geo', '/portafolio'],
   ['/portafolio/agentes-ia', '/portafolio'],
@@ -81,10 +81,10 @@ export const CANONICAL_OVERRIDES = new Map<string, string>([
 
 const DEFAULT_DESCRIPTIONS: Record<string, string> = {
   '/': 'Consultoría e implementación de IA para marketing B2B. SEO/GEO, agentes IA, automatización y estrategia digital con criterio.',
-  '/soluciones': 'Explora soluciones de IA para convertir visibilidad, automatización y marketing en resultados de negocio.',
-  '/soluciones/seo-geo': 'Servicio de SEO y GEO para hacer tu marca encontrable en Google y citable en respuestas de IA.',
-  '/soluciones/web': 'Sitios web de alto rendimiento para captar, explicar y convertir mejor.',
-  '/soluciones/avatares-ia': 'Avatares IA para escalar video, formación y comunicación con clones digitales realistas.',
+  '/servicios': 'Explora soluciones de IA para convertir visibilidad, automatización y marketing en resultados de negocio.',
+  '/servicios/seo-geo': 'Servicio de SEO y GEO para hacer tu marca encontrable en Google y citable en respuestas de IA.',
+  '/servicios/web': 'Sitios web de alto rendimiento para captar, explicar y convertir mejor.',
+  '/servicios/avatares-ia': 'Avatares IA para escalar video, formación y comunicación con clones digitales realistas.',
   '/consultoria-inteligencia-artificial': 'Consultoría de IA para empresas que necesitan claridad, estrategia y resultados medibles.',
   '/auditoria-ia-marketing-seo-geo': 'Auditoría integral de IA, marketing y SEO/GEO para detectar fricciones y oportunidades de mejora.',
   '/infraestructura-digital': 'No tengas solo una página web. Diseña una infraestructura digital premium que atraiga clientes, califique leads en piloto automático y te posicione en la era de la inteligencia artificial.',
@@ -98,21 +98,21 @@ const DEFAULT_DESCRIPTIONS: Record<string, string> = {
   '/portafolio/webapps': 'Demos de WebApps a medida para procesos internos y plataformas complejas.',
   '/portafolio/ai-marketing': 'Demos de AI Marketing con funnels, analítica y workflows automatizados.',
   '/portafolio/avatares-ia': 'Demos de avatares IA para comunicación audiovisual escalable.',
-  '/novedades-ia': 'Noticias y análisis de IA filtrados por impacto real en marketing, visibilidad y automatización.',
-  '/novedades-ia/agentes-ia-marketing-2026-openclaw-manus-era-agentica': 'Análisis de la transición de chatbots a agentes autónomos en la operativa real de negocio.',
-  '/novedades-ia/claude-mythos-proyecto-glasswing-2026':
+  '/blog': 'Noticias y análisis de IA filtrados por impacto real en marketing, visibilidad y automatización.',
+  '/blog/agentes-ia-marketing-2026-openclaw-manus-era-agentica': 'Análisis de la transición de chatbots a agentes autónomos en la operativa real de negocio.',
+  '/blog/claude-mythos-proyecto-glasswing-2026':
     'Claude Mythos Preview y Project Glasswing: análisis de Anthropic, acceso restringido e implicaciones para ciberseguridad, marketing y SEO/GEO en 2026.',
-  '/novedades-ia/gpt-5-6-no-lanzamiento-techo-ia-comercial-2026':
+  '/blog/gpt-5-6-no-lanzamiento-techo-ia-comercial-2026':
     'Análisis del lanzamiento restringido de GPT-5.6 Sol y la limitación de Fable 5. ¿Hemos tocado techo en el acceso comercial a la IA más potente?',
   '/recursos': 'Plantillas, playbooks y guías operativas para equipos que quieren aplicar IA con criterio.',
   '/recursos/calculadora-roi-ia': 'Calculadora de ROI interactiva para estimar el ahorro operativo y el retorno de inversión de Agentes de IA conversacionales en ventas y soporte B2B.',
   '/recursos/megaprompts-b2b-marketing': 'Biblioteca de 5 megaprompts premium de Claude y ChatGPT para marketing de contenidos B2B, copywriting y playbooks de objeciones.',
   '/recursos/glosario': 'Glosario de Inteligencia Artificial aplicada a negocios. Definiciones concisas, claras y estratégicas de términos como GEO, RAG y LLMs.',
-  '/sobre': 'Conoce la visión, experiencia y enfoque de TAP-IA para construir autoridad digital con IA.',
-  '/sobre/emmanuel-tapia': 'Biografía profesional y enfoque técnico de Emmanuel Tapia, fundador de TAP-IA y estratega en inteligencia artificial y marketing digital.',
+  '/nosotros': 'Conoce la visión, experiencia y enfoque de TAP-IA para construir autoridad digital con IA.',
+  '/nosotros/emmanuel-tapia': 'Biografía profesional y enfoque técnico de Emmanuel Tapia, fundador de TAP-IA y estratega en inteligencia artificial y marketing digital.',
   '/contacto': 'Contacta a TAP-IA para evaluar tu caso de negocio y definir el siguiente paso con criterio.',
   '/legal': 'Aviso legal, privacidad y políticas de uso responsable de TAP-IA.',
-  '/novedades-ia/noticia-mock': 'Análisis de Google, AI Overviews y GEO para entender cómo cambia la visibilidad en búsquedas generativas.',
+  '/blog/noticia-mock': 'Análisis de Google, AI Overviews y GEO para entender cómo cambia la visibilidad en búsquedas generativas.',
 };
 
 export interface SeoDefaults {

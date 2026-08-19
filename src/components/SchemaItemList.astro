@@ -19,8 +19,10 @@ const { name, description, items } = Astro.props;
 <script type="application/ld+json" is:inline set:html={JSON.stringify({
   "@context": "https://schema.org",
   "@type": "ItemList",
+  "@id": "https://tap-ia.tech/blog#itemlist",
   "name": name,
   "description": description,
+  "numberOfItems": items.length,
   "itemListElement": items.map((item: Item, index: number) => ({
     "@type": "ListItem",
     "position": index + 1,
@@ -29,4 +31,3 @@ const { name, description, items } = Astro.props;
     "description": item.description,
   }))
 })} />
-

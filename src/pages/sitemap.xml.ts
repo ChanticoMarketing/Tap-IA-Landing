@@ -1,10 +1,19 @@
 import type { APIRoute } from 'astro';
+import { getPublishedBlogEntries } from '../lib/blog';
 import { INDEXABLE_ROUTES, SITE_URL } from '../lib/seo';
 
-export const GET: APIRoute = () => {
-  const currentDate = new Date().toISOString().split('T')[0];
+const escapeXml = (value: string) =>
+  value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&apos;');
 
-  const urls = INDEXABLE_ROUTES.map((pathname) => {
+export const GET: APIRoute = async () => {
+  const currentDate = new Date().toISOString().split('T')[0];
+  const generatedEntries = await getPublishedBlogEntries();
+  const routes = [...new Set([
+    ...INDEXABLE_ROUTES,
+    ...generatedEntries.map((entry) => `/blog/${entry.slug}`),
+  ])];
+
+  const urls = routes.map((pathname) => {
     const loc = new URL(pathname, SITE_URL).href;
     
     // Determinamos prioridades básicas por tipo de página
@@ -14,10 +23,10 @@ export const GET: APIRoute = () => {
     if (pathname === '/') {
       priority = '1.0';
       changefreq = 'weekly';
-    } else if (pathname.startsWith('/soluciones') || pathname === '/consultoria-inteligencia-artificial' || pathname === '/ai-marketing' || pathname === '/agentes-ia-a-medida' || pathname === '/webapps-ia-a-medida') {
+    } else if (pathname.startsWith('/servicios') || pathname === '/consultoria-inteligencia-artificial' || pathname === '/ai-marketing' || pathname === '/agentes-ia-a-medida' || pathname === '/webapps-ia-a-medida') {
       priority = '0.8';
       changefreq = 'weekly';
-    } else if (pathname.startsWith('/novedades-ia')) {
+    } else if (pathname.startsWith('/blog')) {
       priority = '0.7';
       changefreq = 'weekly';
     } else if (pathname.startsWith('/recursos')) {
@@ -25,10 +34,15 @@ export const GET: APIRoute = () => {
       changefreq = 'weekly';
     }
 
+    const generatedEntry = generatedEntries.find((entry) => `/blog/${entry.slug}` === pathname);
+    const lastmod = generatedEntry
+      ? new Date(generatedEntry.data.dateModified ?? generatedEntry.data.datePublished).toISOString().split('T')[0]
+      : currentDate;
+
     return [
       '  <url>',
-      `    <loc>${loc}</loc>`,
-      `    <lastmod>${currentDate}</lastmod>`,
+      `    <loc>${escapeXml(loc)}</loc>`,
+      `    <lastmod>${lastmod}</lastmod>`,
       `    <changefreq>${changefreq}</changefreq>`,
       `    <priority>${priority}</priority>`,
       '  </url>'
@@ -44,4 +58,3 @@ export const GET: APIRoute = () => {
     }
   );
 };
-

@@ -1,11 +1,12 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import ContactWizard from '../components/ContactWizard.astro';
-
+import KeyTakeaways from '../components/KeyTakeaways.astro';
+import ShareButton from '../components/ShareButton.astro';
 
 // Metadatos optimizados para B2B
-const title = "Infraestructura Digital con IA | TAP-IA";
-const description = "No tengas solo una página web. Diseña una infraestructura digital premium que atraiga clientes, califique leads en piloto automático y te posicione en la era de la inteligencia artificial.";
+const title = "Infraestructura Digital con IA para Empresas B2B | TAP-IA";
+const description = "Diseña una infraestructura digital premium con IA que atraiga clientes, califique leads en piloto automático y te posicione en la era de la inteligencia artificial.";
 ---
 
 <Layout title={title} description={description}>
@@ -40,27 +41,35 @@ const description = "No tengas solo una página web. Diseña una infraestructura
         <span class="editorial-label text-xs md:text-sm inline-block mb-6 animate-pulse-slow">
           Exclusivo para Líderes de Negocio y CEOs B2B
         </span>
-        <h1 class="font-playfair text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-offwhite leading-[1.1] tracking-tight" id="hero-title">
-          <span id="typewriter-base"></span><span id="cursor-base" class="inline-block w-[3px] md:w-[4px] h-[0.9em] bg-gold ml-1 align-middle opacity-0" aria-hidden="true"></span><br />
-          <span id="typewriter-accent" class="text-transparent bg-clip-text bg-gradient-to-r from-gold via-gold/80 to-white"></span><span id="cursor-accent" class="inline-block w-[3px] md:w-[4px] h-[0.9em] bg-gold ml-1 align-middle opacity-0" aria-hidden="true"></span>
+        <h1 class="font-playfair text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-offwhite leading-[1.1] tracking-tight" id="hero-title" aria-label="Infraestructura digital con inteligencia artificial para convertir visitas en clientes calificados">
+          <span id="typewriter-base">No tengas solo una web.</span><span id="cursor-base" class="inline-block w-[3px] md:w-[4px] h-[0.9em] bg-gold ml-1 align-middle opacity-0" aria-hidden="true"></span><br />
+          <span id="typewriter-accent" class="text-transparent bg-clip-text bg-gradient-to-r from-gold via-gold/80 to-white">Crea una Infraestructura Digital.</span><span id="cursor-accent" class="inline-block w-[3px] md:w-[4px] h-[0.9em] bg-gold ml-1 align-middle opacity-0" aria-hidden="true"></span>
         </h1>
         <p class="font-jakarta text-subtle text-base sm:text-lg md:text-xl max-w-3xl mx-auto mt-8 leading-relaxed">
           Las webs estáticas tradicionales ya no venden. Diseña un ecosistema premium de alta conversión que califique prospectos en piloto automático, se posicione en motores de búsqueda con IA y optimice tus operaciones comerciales.
         </p>
 
-        <div class="mt-12 flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6">
+        <!-- Resumen TL;DR / 5 Puntos Clave -->
+        <div class="max-w-3xl mx-auto text-left my-8">
+          <KeyTakeaways 
+            points={[
+              "Ecosistema Completo: Unificamos landing de alta conversión, precalificación con IA y sincronización con tu CRM.",
+              "Posicionamiento Dual: Diseñada para indexar en Google y alimentar respuestas en ChatGPT, Perplexity y Claude.",
+              "Automatización Comercial: Los prospectos son atendidos en segundos sin esperar a un SDR humano.",
+              "Rendimiento Extremo: Arquitectura web con tiempos de carga ultrarrápidos y diseño editorial premium.",
+              "Propiedad Total: Sin costos por usuario abusivos; la infraestructura y los datos son de tu empresa."
+            ]}
+          />
+        </div>
+
+        <div class="mt-8 flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6">
           <a 
             href="#paquetes" 
             class="w-full sm:w-auto font-jakarta text-sm font-semibold text-charcoal bg-gold hover:bg-gold/90 px-8 py-4 rounded-xl transition-all duration-300 shadow-xl shadow-gold/10 text-center active:scale-95 cta-shine-sweep cta-magnetic"
           >
             <span class="cta-magnetic-inner inline-block">Ver Planes de Infraestructura</span>
           </a>
-          <a 
-            href="#dolor" 
-            class="w-full sm:w-auto font-jakarta text-sm font-semibold text-offwhite border border-white/10 hover:border-white/20 bg-white/5 hover:bg-white/10 px-8 py-4 rounded-xl transition-all duration-300 text-center active:scale-95"
-          >
-            ¿Por qué tu web actual pierde dinero?
-          </a>
+          <ShareButton title="Infraestructura Digital con IA para Empresas B2B" text="Conoce el servicio de Infraestructura Digital de Tap-IA:" url="https://tap-ia.tech/infraestructura-digital" />
         </div>
       </div>
     </section>

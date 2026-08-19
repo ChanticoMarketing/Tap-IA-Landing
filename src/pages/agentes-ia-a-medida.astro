@@ -4,11 +4,13 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import CtaWhatsApp from '../components/CtaWhatsApp.astro';
 import SchemaService from '../components/SchemaService.astro';
+import KeyTakeaways from '../components/KeyTakeaways.astro';
+import ShareButton from '../components/ShareButton.astro';
 ---
 
 <Layout 
-    title="Agentes IA a Medida | Automatización Inteligente | TAP-IA"
-    description="Desarrollo de agentes IA a medida para automatizar procesos reales: calificación de leads, soporte técnico y extracción de datos."
+    title="Agentes IA a Medida para Empresas | Automatización Inteligente | TAP-IA"
+    description="Desarrollo de agentes IA a medida para automatizar procesos comerciales y operativos: calificación de prospectos, soporte técnico y flujos RAG."
 >
     <Header />
     <SchemaService 
@@ -25,15 +27,34 @@ import SchemaService from '../components/SchemaService.astro';
         <div class="max-w-7xl mx-auto w-full relative z-10 flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-8">
             <!-- Text Column (Left) -->
             <div class="w-full lg:w-[58%] flex flex-col items-start text-left relative">
-                <span class="editorial-label text-gold mb-4 block">Automatización de Próxima Generación</span>
+                <span class="editorial-label text-gold mb-4 block">Automatización Avanzada</span>
                 <h1 class="font-playfair text-3xl md:text-4xl lg:text-5xl mb-5 text-offwhite leading-[1.1]">
-                    No es un chatbot. <span class="italic font-light text-white/60 block mt-2">Es un colaborador autónomo.</span>
+                    Agentes IA a medida para automatizar procesos reales, no solo responder mensajes
                 </h1>
                 <div class="gold-rule mb-6"></div>
-                <p class="text-base md:text-lg text-subtle font-light max-w-xl mb-8 leading-relaxed">
-                    Diseñamos agentes de IA que no solo responden preguntas, sino que ejecutan tareas, cualifican leads y se integran con tus herramientas actuales (CRM, WhatsApp, Email) para liberar a tu equipo de la carga operativa.
+
+                <!-- Respuesta Directa a la Intención de Búsqueda -->
+                <p class="text-base md:text-lg text-offwhite/90 font-light max-w-xl mb-4 leading-relaxed">
+                    Un agente de IA es un sistema de software autónomo impulsado por modelos de lenguaje que razona, planifica y ejecuta acciones complejas (agendar citas en CRM, consultar inventarios, procesar documentos o responder por WhatsApp) sin intervención humana repetitiva.
                 </p>
-                <CtaWhatsApp align="start" text="Solicitar demo de Agente IA" microcopy="Ve cómo un agente puede manejar tu operación en vivo." />
+
+                <!-- Resumen TL;DR / 5 Puntos Clave -->
+                <KeyTakeaways 
+                    points={[
+                        "Autonomía Operativa: Ejecutan tareas completas y toman decisiones contextuales, superando a los chatbots rígidos.",
+                        "Integración RAG: Conectan tus manuales, políticas y bases de datos para responder con precisión quirúrgica.",
+                        "Conexión con CRM y APIs: Sincronizan datos de forma bidireccional en HubSpot, Salesforce, WhatsApp o bases de datos.",
+                        "SDR y Ventas 24/7: Califican prospectos con tus criterios de negocio y agendan reuniones solo con clientes ideales.",
+                        "Retorno de Inversión Claro: Puedes calcular el ahorro en horas con nuestra calculadora de ROI de IA."
+                    ]}
+                    class="w-full max-w-xl my-4"
+                />
+
+                <!-- CTA Inmediato -->
+                <div class="w-full flex flex-col sm:flex-row items-start sm:items-center gap-4 mt-2">
+                    <CtaWhatsApp align="start" text="Solicitar demo de Agente IA" microcopy="Ve cómo un agente puede operar en tu empresa en vivo." />
+                    <ShareButton title="Agentes IA a Medida para Empresas" text="Conoce el desarrollo de Agentes IA autónomos de Tap-IA:" url="https://tap-ia.tech/agentes-ia-a-medida" />
+                </div>
             </div>
 
             <!-- Visual Column (Right) -->
@@ -42,7 +63,7 @@ import SchemaService from '../components/SchemaService.astro';
                     <div class="absolute inset-0 bg-gold/10 rounded-full blur-[80px] pointer-events-none -z-10"></div>
                     <img
                         src="/images/soluciones/agentes-ia.webp"
-                        alt="Agentes de Inteligencia Artificial"
+                        alt="Desarrollo de Agentes de Inteligencia Artificial a medida para empresas"
                         class="relative z-10 block w-full h-auto object-contain drop-shadow-[0_0_50px_rgba(212,175,55,0.15)] animate-float"
                         width="500"
                         height="500"
@@ -59,40 +80,41 @@ import SchemaService from '../components/SchemaService.astro';
     <section class="py-24 px-6 relative border-t border-white/5 bg-white/[0.01]">
         <div class="max-w-5xl mx-auto">
             <div class="text-center mb-16">
-                <h3 class="text-3xl md:text-4xl text-white font-light">La diferencia entre <span class="line-through opacity-40">responder</span> y <span class="text-gold italic">resolver</span>.</h3>
+                <h2 class="text-3xl md:text-4xl text-white font-light">La diferencia entre <span class="line-through opacity-40">responder</span> y <span class="text-gold italic">resolver</span>.</h2>
             </div>
+            
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div class="p-10 rounded-2xl border border-white/5 bg-[#0a0b0e]/50">
-                    <h4 class="text-white/60 text-lg mb-6 uppercase tracking-widest font-bold">Chatbot Tradicional</h4>
+                    <h3 class="text-white/60 text-lg mb-6 uppercase tracking-widest font-bold">Chatbot Tradicional</h3>
                     <ul class="space-y-4 text-subtle text-sm">
                         <li class="flex items-center gap-3">
                             <i class="fa-solid fa-xmark text-red-500/50"></i>
-                            <span>Basado en reglas rígidas (IF/THEN).</span>
+                            <span>Basado en árboles de decisión rígidos (IF/THEN).</span>
                         </li>
                         <li class="flex items-center gap-3">
                             <i class="fa-solid fa-xmark text-red-500/50"></i>
-                            <span>Se frustra si la pregunta no es exacta.</span>
+                            <span>Se bloquea si el usuario formula una pregunta inesperada.</span>
                         </li>
                         <li class="flex items-center gap-3">
                             <i class="fa-solid fa-xmark text-red-500/50"></i>
-                            <span>Solo entrega información estática.</span>
+                            <span>No puede ejecutar acciones en tus herramientas externas.</span>
                         </li>
                     </ul>
                 </div>
                 <div class="p-10 rounded-2xl border border-gold/20 bg-gold/[0.02] shadow-[0_0_40px_rgba(212,175,55,0.05)]">
-                    <h4 class="text-gold text-lg mb-6 uppercase tracking-widest font-bold">Agente Tap-IA</h4>
+                    <h3 class="text-gold text-lg mb-6 uppercase tracking-widest font-bold">Agente Tap-IA Autónomo</h3>
                     <ul class="space-y-4 text-white/90 text-sm">
                         <li class="flex items-center gap-3">
                             <i class="fa-solid fa-check text-gold"></i>
-                            <span>Entiende el contexto y la intención del usuario.</span>
+                            <span>Comprende contexto, intención y matices en lenguaje natural.</span>
                         </li>
                         <li class="flex items-center gap-3">
                             <i class="fa-solid fa-check text-gold"></i>
-                            <span>Accede a tu base de conocimientos en tiempo real.</span>
+                            <span>Accede a tu base de conocimientos (RAG) en tiempo real.</span>
                         </li>
                         <li class="flex items-center gap-3">
                             <i class="fa-solid fa-check text-gold"></i>
-                            <span>Realiza acciones: agenda citas, crea leads, envía correos.</span>
+                            <span>Ejecuta tareas reales: agenda reuniones, actualiza CRM y envía emails.</span>
                         </li>
                     </ul>
                 </div>
@@ -106,21 +128,21 @@ import SchemaService from '../components/SchemaService.astro';
             <div class="text-center mb-16">
                 <span class="editorial-label block mb-3">Aplicaciones Reales</span>
                 <div class="gold-rule mx-auto mb-6"></div>
-                <h3 class="text-white">¿Dónde poner a trabajar a tu agente?</h3>
+                <h2 class="text-white text-3xl">¿Dónde poner a trabajar a tu agente?</h2>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="matte-card p-10 rounded-2xl border border-white/5 group hover:border-gold/30 transition-all">
-                    <h4 class="text-white text-xl mb-4 font-light">Ventas & SDR</h4>
-                    <p class="text-subtle text-sm leading-relaxed mb-6">Un agente que contacta a los leads que llegan por tu web, los cualifica bajo tus criterios y solo te agenda a los que realmente pueden comprar.</p>
+                    <h3 class="text-white text-xl mb-4 font-light">Ventas & SDR Autónomo</h3>
+                    <p class="text-subtle text-sm leading-relaxed mb-6">Atiende y califica a los prospectos que llegan por tu web o WhatsApp según tu presupuesto ideal, agendando directamente en el calendario del equipo comercial.</p>
                 </div>
                 <div class="matte-card p-10 rounded-2xl border border-white/5 group hover:border-gold/30 transition-all">
-                    <h4 class="text-white text-xl mb-4 font-light">Soporte Técnico</h4>
-                    <p class="text-subtle text-sm leading-relaxed mb-6">Entrenado con tus manuales y procedimientos para resolver el 80% de las dudas recurrentes de tus clientes sin saturar a tu equipo humano.</p>
+                    <h3 class="text-white text-xl mb-4 font-light">Soporte Técnico Especializado</h3>
+                    <p class="text-subtle text-sm leading-relaxed mb-6">Entrenado con tus manuales de producto para resolver consultas de alta complejidad técnica sin saturar a los ingenieros de soporte.</p>
                 </div>
                 <div class="matte-card p-10 rounded-2xl border border-white/5 group hover:border-gold/30 transition-all">
-                    <h4 class="text-white text-xl mb-4 font-light">Operación Interna</h4>
-                    <p class="text-subtle text-sm leading-relaxed mb-6">Agentes que ayudan a tu equipo a navegar documentos internos, reportar incidencias o gestionar pedidos de forma conversacional.</p>
+                    <h3 class="text-white text-xl mb-4 font-light">Operación y Documentos Internos</h3>
+                    <p class="text-subtle text-sm leading-relaxed mb-6">Agentes que navegan normativas, contratos y bases de datos para responder consultas del equipo interno en segundos con nuestra arquitectura de <a href="/webapps-ia-a-medida" class="text-gold hover:underline">WebApps con IA</a>.</p>
                 </div>
             </div>
         </div>
@@ -132,26 +154,69 @@ import SchemaService from '../components/SchemaService.astro';
             <div class="text-center mb-16">
                 <span class="editorial-label block mb-3">Nuestro Proceso</span>
                 <div class="gold-rule mx-auto mb-6"></div>
-                <h3 class="text-white font-serif text-3xl md:text-4xl">Cómo construimos tu agente en 4 fases</h3>
+                <h2 class="text-white font-serif text-3xl md:text-4xl">Cómo construimos tu agente en 4 fases</h2>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-4 gap-6 text-left">
                 <div class="p-6 border-l-2 border-gold/30">
                     <span class="text-gold font-serif text-xl italic block mb-2">01 / Diagnóstico</span>
-                    <p class="text-subtle text-xs leading-relaxed">Analizamos tus procesos actuales, identificamos cuellos de botella operativos y validamos la viabilidad del agente.</p>
+                    <p class="text-subtle text-xs leading-relaxed">Mapeamos los flujos de trabajo e identificamos los cuellos de botella mediante una <a href="/consultoria-inteligencia-artificial" class="text-gold hover:underline">consultoría previa</a>.</p>
                 </div>
                 <div class="p-6 border-l-2 border-gold/30">
                     <span class="text-gold font-serif text-xl italic block mb-2">02 / Estructuración</span>
-                    <p class="text-subtle text-xs leading-relaxed">Conectamos tus bases de datos, manuales o CRM usando RAG para que el agente responda con absoluta precisión técnica.</p>
+                    <p class="text-subtle text-xs leading-relaxed">Conectamos tus bases de datos mediante RAG para que el agente responda con veracidad y sin alucinaciones.</p>
                 </div>
                 <div class="p-6 border-l-2 border-gold/30">
                     <span class="text-gold font-serif text-xl italic block mb-2">03 / Integración</span>
-                    <p class="text-subtle text-xs leading-relaxed">Conectamos las APIs necesarias para que el agente ejecute acciones reales en tu software (CRM, ERP, WhatsApp, Email).</p>
+                    <p class="text-subtle text-xs leading-relaxed">Conectamos webhooks y APIs a tu CRM, WhatsApp Business y pasarelas de pago para ejecutar acciones.</p>
                 </div>
                 <div class="p-6 border-l-2 border-gold/30">
                     <span class="text-gold font-serif text-xl italic block mb-2">04 / Despliegue</span>
-                    <p class="text-subtle text-xs leading-relaxed">Lanzamos en producción controlada, monitoreamos interacciones y optimizamos continuamente el modelo con datos reales.</p>
+                    <p class="text-subtle text-xs leading-relaxed">Lanzamiento supervisado, monitoreo de métricas y afinación continua de los modelos en producción.</p>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PREGUNTAS FRECUENTES (FAQ) -->
+    <section class="py-20 px-6 relative border-t border-white/5 bg-charcoal">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-12">
+                <span class="editorial-label block mb-3">FAQ</span>
+                <div class="gold-rule mx-auto mb-6"></div>
+                <h2 class="text-3xl text-white">Preguntas Frecuentes sobre Agentes IA</h2>
+            </div>
+
+            <div class="space-y-4">
+                <details class="matte-card p-6 rounded-2xl border border-white/5 group cursor-pointer">
+                    <summary class="flex justify-between items-center text-white font-medium text-lg list-none select-none">
+                        <span>¿Cuál es la diferencia entre un chatbot y un Agente de IA?</span>
+                        <i class="fa-solid fa-chevron-down text-gold group-open:rotate-180 transition-transform text-sm"></i>
+                    </summary>
+                    <p class="mt-4 text-subtle text-sm md:text-base leading-relaxed font-light">
+                        Un chatbot sigue secuencias preconfiguradas y se rompe ante imprevistos. Un Agente IA comprende el contexto general, razona sobre el objetivo de la conversación y utiliza herramientas externas para ejecutar acciones de negocio en tiempo real.
+                    </p>
+                </details>
+
+                <details class="matte-card p-6 rounded-2xl border border-white/5 group cursor-pointer">
+                    <summary class="flex justify-between items-center text-white font-medium text-lg list-none select-none">
+                        <span>¿Se puede integrar el agente con HubSpot, Salesforce u otros CRM?</span>
+                        <i class="fa-solid fa-chevron-down text-gold group-open:rotate-180 transition-transform text-sm"></i>
+                    </summary>
+                    <p class="mt-4 text-subtle text-sm md:text-base leading-relaxed font-light">
+                        Sí. Desarrollamos conectores con APIs para actualizar estados de oportunidad, asignar leads a ejecutivos humanos y consultar registros de clientes de forma segura.
+                    </p>
+                </details>
+
+                <details class="matte-card p-6 rounded-2xl border border-white/5 group cursor-pointer">
+                    <summary class="flex justify-between items-center text-white font-medium text-lg list-none select-none">
+                        <span>¿Cómo puedo calcular el retorno de inversión de un Agente IA?</span>
+                        <i class="fa-solid fa-chevron-down text-gold group-open:rotate-180 transition-transform text-sm"></i>
+                    </summary>
+                    <p class="mt-4 text-subtle text-sm md:text-base leading-relaxed font-light">
+                        Puedes utilizar nuestra <a href="/recursos/calculadora-roi-ia" class="text-gold hover:underline">Calculadora de ROI de IA</a> interactiva para estimar el ahorro mensual en horas operativas y el retorno proyectado antes de iniciar el desarrollo.
+                    </p>
+                </details>
             </div>
         </div>
     </section>
@@ -159,7 +224,7 @@ import SchemaService from '../components/SchemaService.astro';
     <!-- ÚLTIMO CTA -->
     <section class="py-24 px-6 relative border-t border-white/5 bg-[#0a0b0e]">
         <div class="max-w-4xl mx-auto text-center">
-            <h3 class="mb-8 text-white font-light">Tu empresa no duerme. <span class="text-gold italic">Tu atención tampoco debería.</span></h3>
+            <h2 class="mb-8 text-white font-light text-3xl">Tu empresa no duerme. <span class="text-gold italic">Tu atención comercial tampoco debería.</span></h2>
             <p class="text-xl text-subtle mb-12">Desarrollamos e implementamos tu agente personalizado en menos de 3 semanas, integrado a tu stack actual.</p>
             <CtaWhatsApp text="Hablar con un Especialista" />
         </div>
@@ -172,18 +237,26 @@ import SchemaService from '../components/SchemaService.astro';
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "¿Cuál es la diferencia entre un chatbot tradicional y un Agente de IA?",
+          "name": "¿Cuál es la diferencia entre un chatbot y un Agente de IA?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Un chatbot tradicional funciona bajo reglas estrictas ('Si dicen X, responde Y'). Un Agente IA entiende la intención del usuario, puede tomar decisiones autónomas basadas en una base de conocimiento (RAG) y ejecutar acciones complejas conectándose a otras APIs o herramientas externas."
+            "text": "Un chatbot sigue secuencias preconfiguradas y se rompe ante imprevistos. Un Agente IA comprende el contexto general, razona sobre el objetivo de la conversación y utiliza herramientas externas para ejecutar acciones de negocio en tiempo real."
           }
         },
         {
           "@type": "Question",
-          "name": "¿Pueden integrar el agente IA con mi CRM actual (HubSpot, Salesforce, etc)?",
+          "name": "¿Se puede integrar el agente con HubSpot, Salesforce u otros CRM?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Absolutamente. Desarrollamos la arquitectura para que el Agente IA pueda consultar, actualizar y gestionar datos directamente en tu CRM, herramientas de ticketing o ERP a través de webhooks y APIs, operando de forma bidireccional."
+            "text": "Sí. Desarrollamos conectores con APIs para actualizar estados de oportunidad, asignar leads a ejecutivos humanos y consultar registros de clientes de forma segura."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cómo puedo calcular el retorno de inversión de un Agente IA?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Puedes utilizar nuestra Calculadora de ROI de IA interactiva en tap-ia.tech/recursos/calculadora-roi-ia para estimar el ahorro mensual en horas operativas y el retorno proyectado antes de iniciar el desarrollo."
           }
         }
       ]
@@ -191,4 +264,3 @@ import SchemaService from '../components/SchemaService.astro';
 
     <Footer />
 </Layout>
-

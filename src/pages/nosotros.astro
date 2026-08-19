@@ -3,11 +3,13 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import PremiumSectionHeader from '../components/PremiumSectionHeader.astro';
+import KeyTakeaways from '../components/KeyTakeaways.astro';
+import ShareButton from '../components/ShareButton.astro';
 ---
 
 <Layout 
-    title="Sobre TAP-IA | Arquitectura de Dominio Digital"
-    description="Descubre TAP-IA: consultores en Inteligencia Artificial y arquitectos de estrategias digitales B2B impulsadas con criterio."
+    title="Sobre TAP-IA | Consultoría de IA y Estrategia B2B"
+    description="Conoce TAP-IA: consultores en Inteligencia Artificial y arquitectos de estrategias digitales y SEO/GEO para empresas B2B."
 >
     <Header />
 
@@ -20,28 +22,42 @@ import PremiumSectionHeader from '../components/PremiumSectionHeader.astro';
         <section class="min-h-[60vh] pt-36 pb-16 px-6 relative flex items-center">
             <div class="max-w-4xl mx-auto">
                 <span class="editorial-label block mb-6">Nuestra Filosofía</span>
-                <h1 class="font-serif text-5xl md:text-7xl mb-8 text-white leading-tight">
-                    Nosotros construimos su <span class="text-gold italic block mt-2 text-4xl md:text-6xl font-light">Arquitectura de Dominio Digital</span>
+                <h1 class="font-serif text-4xl md:text-6xl mb-8 text-white leading-tight">
+                    Arquitectura de dominio digital e inteligencia artificial con criterio de negocio
                 </h1>
-                <p class="text-xl text-subtle font-light leading-relaxed mb-8">
-                    En Tap-IA, entendemos que la IA no es solo una moda; es la infraestructura del futuro. 
-                    No diseñamos páginas decorativas ni implementamos automatizaciones sueltas. Construimos sistemas integrados que posicionan a su empresa como la autoridad indiscutible en su sector.
+                
+                <!-- Respuesta Directa a la Intención de Búsqueda -->
+                <p class="text-xl text-offwhite/90 font-light leading-relaxed mb-6">
+                    Tap-IA es una firma de consultoría y desarrollo técnico especializada en conectar la inteligencia artificial con el núcleo de negocio de las empresas. No diseñamos páginas decorativas ni vendemos automatizaciones sueltas; creamos ecosistemas que multiplican la ventaja operativa, la captación de prospectos y la autoridad orgánica.
                 </p>
-                <p class="text-xl text-subtle font-light leading-relaxed">
-                    Nuestra misión es transformar la complejidad tecnológica en claridad estratégica y resultados de negocio tangibles.
-                </p>
+
+                <!-- Resumen TL;DR / 5 Puntos Clave -->
+                <KeyTakeaways 
+                    points={[
+                        "Criterio Antes de Herramientas: La IA solo genera retorno cuando se aplica a procesos operativos y comerciales claros.",
+                        "Enfoque de Estratega Técnico: Diagnosticamos, diseñamos y programamos soluciones a medida sin tercerización opaca.",
+                        "Pioneros en SEO/GEO: Construimos activos digitales indexables en Google y citables por ChatGPT, Claude y Perplexity.",
+                        "Gobernanza y Privacidad: Garantizamos la seguridad y confidencialidad absoluta de los datos de cada cliente.",
+                        "Impacto Medible: Cada proyecto cuenta con métricas financieras y operativas definidas desde el primer día."
+                    ]}
+                    class="my-8"
+                />
+
+                <div class="flex items-center gap-4 mt-6">
+                    <ShareButton title="Sobre TAP-IA: Arquitectura de Dominio Digital" text="Conoce la filosofía y enfoque de consultoría en IA de Tap-IA:" url="https://tap-ia.tech/nosotros" />
+                </div>
             </div>
         </section>
 
         <!-- VISIÓN Y PROPÓSITO -->
         <section class="py-20 px-6 relative border-t border-white/5 bg-charcoal">
             <div class="max-w-4xl mx-auto text-left space-y-6">
-                <h3 class="font-serif text-2xl md:text-3xl text-white">Sistemas que trascienden el hype</h3>
-                <p class="text-subtle text-sm leading-relaxed">
-                    La rápida evolución de los modelos fundacionales ha creado una saturación de herramientas temporales. En Tap-IA nos alejamos de las modas tecnológicas pasajeras. Diseñamos soluciones basadas en principios de ingeniería robustos y estrategias de marketing probadas, asegurando que tu infraestructura digital crezca y sea sostenible en el mediano y largo plazo.
+                <h2 class="font-serif text-2xl md:text-3xl text-white">Sistemas que trascienden el hype tecnológico</h2>
+                <p class="text-subtle text-base leading-relaxed">
+                    La rápida evolución de los modelos fundacionales ha creado una saturación de herramientas temporales. En Tap-IA nos alejamos de las modas pasajeras. Diseñamos soluciones basadas en principios de ingeniería robustos y estrategias de marketing probadas, asegurando que tu infraestructura digital crezca y sea sostenible en el mediano y largo plazo.
                 </p>
-                <p class="text-subtle text-sm leading-relaxed">
-                    Entendemos que cada negocio tiene procesos únicos. Por ello, en lugar de forzar soluciones genéricas de caja, adaptamos el procesamiento del lenguaje natural (NLP), la recuperación de información (RAG) y los agentes autónomos para integrarse armónicamente con tus operaciones y CRM existentes, maximizando el valor estratégico de tu conocimiento propietario.
+                <p class="text-subtle text-base leading-relaxed">
+                    Entendemos que cada negocio tiene procesos únicos. Por ello, adaptamos arquitecturas RAG, agentes autónomos y posicionamiento <a href="/servicios/seo-geo" class="text-gold hover:underline">SEO/GEO</a> para integrarse armónicamente con tus operaciones y CRM existentes, maximizando el valor estratégico de tu conocimiento propietario.
                 </p>
             </div>
         </section>
@@ -52,7 +68,7 @@ import PremiumSectionHeader from '../components/PremiumSectionHeader.astro';
                 <PremiumSectionHeader 
                     label="Diferenciador" 
                     title="Tecnología con <span class='italic text-white/60'>Criterio</span>" 
-                    subtitle="Por qué el mercado B2B nos elige para liderar su transición hacia la inteligencia artificial."
+                    subtitle="Por qué los líderes B2B eligen a Tap-IA para liderar su transición hacia la inteligencia artificial."
                     centered={false}
                 />
 
@@ -61,9 +77,9 @@ import PremiumSectionHeader from '../components/PremiumSectionHeader.astro';
                         <div class="w-12 h-12 rounded-xl bg-gold/5 border border-gold/20 flex items-center justify-center text-gold mb-6">
                             <i class="fa-solid fa-chess" aria-hidden="true"></i>
                         </div>
-                        <h3 class="font-playfair text-xl text-white mb-3 font-light">Claridad Ejecutiva</h3>
+                        <h3 class="font-playfair text-xl text-white mb-3 font-light">1. Claridad Ejecutiva</h3>
                         <p class="text-sm text-subtle font-light leading-relaxed">
-                            No te abrumaremos con tecnicismos. Traducimos la complejidad de los modelos generativos y los agentes de IA en roadmaps operativos y retornos de inversión medibles.
+                            Traducimos la complejidad técnica de los modelos generativos y los <a href="/agentes-ia-a-medida" class="text-gold hover:underline">agentes de IA</a> en roadmaps operativos y retornos de inversión medibles.
                         </p>
                     </div>
 
@@ -71,9 +87,9 @@ import PremiumSectionHeader from '../components/PremiumSectionHeader.astro';
                         <div class="w-12 h-12 rounded-xl bg-gold/5 border border-gold/20 flex items-center justify-center text-gold mb-6">
                             <i class="fa-solid fa-code" aria-hidden="true"></i>
                         </div>
-                        <h3 class="font-playfair text-xl text-white mb-3 font-light">Sistemas Propios</h3>
+                        <h3 class="font-playfair text-xl text-white mb-3 font-light">2. Sistemas Propios</h3>
                         <p class="text-sm text-subtle font-light leading-relaxed">
-                            Desarrollamos soluciones a medida (WebApps y Agentes) que se acoplan directamente a tu CRM y bases de datos. No dependes de herramientas de terceros ni licencias innecesarias.
+                            Desarrollamos <a href="/webapps-ia-a-medida" class="text-gold hover:underline">WebApps personalizadas</a> y agentes conectados a tus bases de datos sin depender de plataformas intermedias con costos ocultos.
                         </p>
                     </div>
 
@@ -81,9 +97,9 @@ import PremiumSectionHeader from '../components/PremiumSectionHeader.astro';
                         <div class="w-12 h-12 rounded-xl bg-gold/5 border border-gold/20 flex items-center justify-center text-gold mb-6">
                             <i class="fa-solid fa-radar" aria-hidden="true"></i>
                         </div>
-                        <h3 class="font-playfair text-xl text-white mb-3 font-light">Optimización SEO/GEO</h3>
+                        <h3 class="font-playfair text-xl text-white mb-3 font-light">3. Optimización SEO/GEO</h3>
                         <p class="text-sm text-subtle font-light leading-relaxed">
-                            Somos pioneros en GEO (Generative Engine Optimization). Diseñamos señales de autoridad para que los LLMs (como ChatGPT y Claude) entiendan, recomienden y citen a tu marca.
+                            Diseñamos la estructura semántica y de datos estructurados para que los LLMs reconozcan y citen a tu empresa como referente en su sector.
                         </p>
                     </div>
                 </div>
@@ -99,7 +115,7 @@ import PremiumSectionHeader from '../components/PremiumSectionHeader.astro';
                     <div class="w-40 h-40 md:w-48 md:h-48 rounded-full overflow-hidden border-2 border-gold/30 shrink-0 bg-[#12141a] shadow-[0_0_30px_rgba(212,175,55,0.15)]">
                         <img 
                             src="/assets/emmanuel_tapia.jpg" 
-                            alt="Emmanuel Tapia" 
+                            alt="Emmanuel Tapia, Fundador y Estratega Técnico en IA de TAP-IA" 
                             class="w-full h-full object-cover"
                             width="250"
                             height="250"
@@ -115,10 +131,10 @@ import PremiumSectionHeader from '../components/PremiumSectionHeader.astro';
                             Especialista en estructuración de sistemas de marketing digital, optimización para motores de respuesta de IA (GEO) y desarrollo de agentes autónomos para la optimización de procesos de negocio.
                         </p>
                         <a 
-                            href="/sobre/emmanuel-tapia" 
+                            href="/nosotros/emmanuel-tapia" 
                             class="inline-flex items-center text-xs font-mono tracking-widest uppercase text-gold hover:text-white transition-colors gap-2"
                         >
-                            Leer perfil completo <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                            Leer perfil profesional completo <i class="fa-solid fa-arrow-right text-[10px]"></i>
                         </a>
                     </div>
                 </div>
@@ -130,8 +146,8 @@ import PremiumSectionHeader from '../components/PremiumSectionHeader.astro';
     <script type="application/ld+json" is:inline set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "AboutPage",
-      "@id": "https://tap-ia.tech/sobre#webpage",
-      "url": "https://tap-ia.tech/sobre",
+      "@id": "https://tap-ia.tech/nosotros#webpage",
+      "url": "https://tap-ia.tech/nosotros",
       "name": "Sobre TAP-IA | Arquitectura de Dominio Digital",
       "description": "Descubre TAP-IA: consultores en Inteligencia Artificial y arquitectos de estrategias digitales B2B.",
       "mainEntity": {
@@ -140,7 +156,7 @@ import PremiumSectionHeader from '../components/PremiumSectionHeader.astro';
         "name": "TAP-IA",
         "founder": {
           "@type": "Person",
-          "@id": "https://tap-ia.tech/sobre/emmanuel-tapia#person",
+          "@id": "https://tap-ia.tech/nosotros/emmanuel-tapia#person",
           "name": "Emmanuel Tapia"
         }
       }

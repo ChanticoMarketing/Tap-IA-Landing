@@ -1,0 +1,85 @@
+---
+// src/components/ShareButton.astro
+// Botón para compartir el contenido actual mediante Web Share API o copiado al portapapeles.
+
+interface Props {
+  title?: string;
+  text?: string;
+  url?: string;
+  class?: string;
+}
+
+const {
+  title = "Compartir esta página",
+  text = "Mira este contenido sobre IA y marketing de Tap-IA:",
+  url = "",
+  class: className = ""
+} = Astro.props;
+---
+
+<div class={`inline-flex items-center gap-2 ${className}`}>
+  <button
+    type="button"
+    class="share-button-trigger inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/[0.04] hover:bg-gold/10 border border-white/10 hover:border-gold/40 text-subtle hover:text-offwhite text-xs font-semibold tracking-wider uppercase transition-all active:scale-95 shadow-sm"
+    data-share-title={title}
+    data-share-text={text}
+    data-share-url={url}
+    aria-label="Compartir este contenido"
+  >
+    <i class="fa-solid fa-share-nodes text-gold" aria-hidden="true"></i>
+    <span>Compartir</span>
+  </button>
+  
+  <span class="share-toast text-xs text-gold opacity-0 transition-opacity duration-300 font-mono pointer-events-none" aria-live="polite">
+    ¡Enlace copiado!
+  </span>
+</div>
+
+<script>
+  function initShareButtons() {
+    const shareButtons = document.querySelectorAll<HTMLButtonElement>('.share-button-trigger');
+
+    shareButtons.forEach((button) => {
+      // Evitar registrar listeners duplicados
+      if (button.dataset.hasListener === 'true') return;
+      button.dataset.hasListener = 'true';
+
+      button.addEventListener('click', async () => {
+        const title = button.dataset.shareTitle || document.title;
+        const text = button.dataset.shareText || document.title;
+        const url = button.dataset.shareUrl || window.location.href;
+        const toast = button.parentElement?.querySelector<HTMLElement>('.share-toast');
+
+        if (navigator.share) {
+          try {
+            await navigator.share({
+              title,
+              text,
+              url,
+            });
+            return;
+          } catch (err: any) {
+            if (err.name === 'AbortError') return;
+          }
+        }
+
+        // Fallback a portapapeles
+        try {
+          await navigator.clipboard.writeText(url);
+          if (toast) {
+            toast.style.opacity = '1';
+            setTimeout(() => {
+              toast.style.opacity = '0';
+            }, 2500);
+          }
+        } catch (copyErr) {
+          console.warn('No se pudo copiar al portapapeles', copyErr);
+        }
+      });
+    });
+  }
+
+  // Inicializar al cargar el DOM y en navegación de Astro
+  document.addEventListener('DOMContentLoaded', initShareButtons);
+  document.addEventListener('astro:page-load', initShareButtons);
+</script>

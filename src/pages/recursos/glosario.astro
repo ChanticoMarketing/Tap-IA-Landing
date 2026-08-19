@@ -2,7 +2,8 @@
 import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
-import PremiumSectionHeader from '../../components/PremiumSectionHeader.astro';
+import KeyTakeaways from '../../components/KeyTakeaways.astro';
+import ShareButton from '../../components/ShareButton.astro';
 
 // Definición de los términos del glosario para renderizado dinámico
 const terms = [
@@ -66,8 +67,8 @@ const faqSchema = {
 ---
 
 <Layout
-    title="Glosario IA Aplicada a Negocios | Recursos Tap-IA"
-    description="Glosario de conceptos técnicos de Inteligencia Artificial, SEO/GEO, y automatización explicados con criterio y orientados a resultados de negocio."
+    title="Glosario de Inteligencia Artificial y GEO para Negocios | TAP-IA"
+    description="Glosario de conceptos técnicos de Inteligencia Artificial, SEO/GEO, RAG y AEO explicados con criterio y orientados a resultados de negocio."
 >
     <Header />
     
@@ -101,12 +102,32 @@ const faqSchema = {
                 </ol>
             </nav>
 
-            <PremiumSectionHeader 
-                label="Activo de Citabilidad" 
-                title="Glosario de Inteligencia <br/><span class='italic text-white/60'>Artificial Aplicada</span>" 
-                subtitle="Definiciones concisas y orientadas a la práctica de términos clave en la era de la búsqueda y la automatización inteligente."
-                centered={false}
-            />
+            <div class="mb-12">
+                <span class="editorial-label block mb-3">Activo de Citabilidad GEO</span>
+                <div class="gold-rule mb-6"></div>
+                <h1 class="font-playfair text-4xl md:text-5xl lg:text-6xl text-offwhite mb-6 leading-tight">
+                    Glosario de Inteligencia Artificial aplicada a negocios y marketing
+                </h1>
+                <p class="text-subtle text-base md:text-lg max-w-3xl leading-relaxed">
+                    Definiciones concisas, rigurosas y orientadas a la práctica de términos clave en la era de la búsqueda generativa y la automatización empresarial.
+                </p>
+
+                <div class="max-w-3xl my-6">
+                    <KeyTakeaways 
+                        points={[
+                            "GEO (Generative Engine Optimization): Técnicas para hacer tu marca comprensible y citable por modelos de IA.",
+                            "RAG (Retrieval-Augmented Generation): Conexión de LLMs con bases de conocimiento privadas sin reentrenar modelos.",
+                            "AEO (Answer Engine Optimization): Respuestas directas diseñadas para fragmentos destacados de Google y asistentes.",
+                            "Agentes IA: Sistemas autónomos multitarea capaces de razonar y llamar a APIs externas en tiempo real.",
+                            "LLMs.txt: Formato Markdown en la raíz del dominio que orienta el contexto a rastreadores de IA."
+                        ]}
+                    />
+                </div>
+
+                <div class="mt-4">
+                    <ShareButton title="Glosario de Inteligencia Artificial y GEO para Negocios" text="Consulta este glosario estratégico de IA aplicada a negocios de Tap-IA:" url="https://tap-ia.tech/recursos/glosario" />
+                </div>
+            </div>
 
             <!-- INTRODUCCIÓN ESTÁTICA -->
             <div class="mt-8 mb-12 max-w-3xl text-subtle text-sm leading-relaxed space-y-4">
@@ -166,7 +187,7 @@ const faqSchema = {
                     <a href="/contacto" class="px-6 py-3 bg-gold text-charcoal font-medium text-xs font-mono tracking-widest uppercase rounded hover:bg-white transition-colors duration-500">
                         Solicitar Diagnóstico
                     </a>
-                    <a href="/soluciones/seo-geo" class="px-6 py-3 border border-white/20 text-white font-medium text-xs font-mono tracking-widest uppercase rounded hover:bg-white/5 transition-colors duration-500">
+                    <a href="/servicios/seo-geo" class="px-6 py-3 border border-white/20 text-white font-medium text-xs font-mono tracking-widest uppercase rounded hover:bg-white/5 transition-colors duration-500">
                         Ver Servicio SEO/GEO
                     </a>
                 </div>

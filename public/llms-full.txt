@@ -1,0 +1,63 @@
+# TAP-IA — Documento de Contexto Integral (Full LLM Context)
+
+> TAP-IA es una firma de consultoría e implementación de Inteligencia Artificial aplicada a negocio, marketing B2B y visibilidad digital (SEO/GEO), fundada y dirigida por Emmanuel Tapia en México con alcance internacional.
+
+---
+
+## 1. Tesis y Propuesta de Valor
+
+Tap-IA ayuda a empresas, directores y equipos de marketing a aplicar inteligencia artificial con criterio estratégico para mejorar su toma de decisiones, operación comercial y presencia orgánica.
+
+- **Tesis Central**: La IA no reemplaza la estrategia ni el criterio; actúa como un multiplicador de la ventaja operativa y analítica cuando se implementa sobre procesos claros.
+- **Enfoque SEO/GEO**: Diseñamos la infraestructura y señales de autoridad para que una marca sea indexable por Google y simultáneamente comprensible, recuperable y citable por motores generativos (ChatGPT, Gemini, Claude, Perplexity).
+
+---
+
+## 2. Catálogo de Soluciones y Arquitectura de Servicios
+
+### 2.1 Consultoría de Inteligencia Artificial (`https://tap-ia.tech/consultoria-inteligencia-artificial`)
+- **Descripción**: Diagnóstico de madurez tecnológica, auditoría de procesos y diseño de roadmaps de implementación técnica con cálculo previo de ROI.
+- **Para quién es**: Empresas medianas y corporativos B2B que desean adoptar IA sin malgastar presupuesto en software genérico o modas pasajeras.
+- **Entregables**: Matriz de madurez IA, roadmap de priorización técnica, análisis de viabilidad financiera y acompañamiento técnico supervisado.
+
+### 2.2 SEO y GEO — Generative Engine Optimization (`https://tap-ia.tech/servicios/seo-geo`)
+- **Descripción**: Optimización dual para motores de búsqueda tradicionales (Google, Bing) y motores generativos de respuestas (ChatGPT Search, Perplexity, Google AI Overviews, Claude).
+- **Pilares Técnicos**: Estructuración de datos JSON-LD (Organization, Service, FAQPage, Person), generación de activos fuente citables (Glosarios, Frameworks, Checklists), y arquitectura técnica para bots de IA.
+
+### 2.3 AI Marketing (`https://tap-ia.tech/ai-marketing`)
+- **Descripción**: Integración de modelos fundacionales (LLMs) y analítica predictiva en funnels de venta B2B para cualificación de prospectos, personalización a escala y optimización de contenido.
+- **Casos de uso**: Lead scoring automatizado, copywriting generativo basado en perfiles de comprador, nutrición multicanal y análisis de datos de atribución.
+
+### 2.4 Agentes IA a Medida (`https://tap-ia.tech/agentes-ia-a-medida`)
+- **Descripción**: Desarrollo de agentes de software autónomos que van más allá de los chatbots clásicos, ejecutando flujos de trabajo multitarea con memoria y llamadas a APIs/CRMs.
+- **Capacidades**: Agentes SDR para cualificación y agendamiento 24/7, agentes de soporte técnico conectados a bases de conocimiento RAG y agentes de consulta documental interna.
+
+### 2.5 WebApps con IA a Medida (`https://tap-ia.tech/webapps-ia-a-medida`)
+- **Descripción**: Desarrollo de software web personalizado y portales privados con IA integrada cuando los SaaS comerciales no se adaptan a las particularidades del cliente.
+- **Casos de uso**: Procesamiento automático de documentos (facturas, contratos, reportes), asistentes analíticos internos sobre bases de datos propietarias y dashboards ejecutivos en lenguaje natural.
+
+### 2.6 Diagnóstico y Auditoría Técnica (`https://tap-ia.tech/auditoria-ia-marketing-seo-geo`)
+- **Descripción**: Evaluación manual y cuantitativa de visibilidad en IA, fugas de conversión (CRO) y preparación de la infraestructura digital empresarial.
+
+---
+
+## 3. Glosario de Conceptos Clave
+
+1. **GEO (Generative Engine Optimization)**: Estrategia para optimizar estructura y contenido web para que los LLMs extraigan y citen una marca en respuestas generadas.
+2. **RAG (Retrieval-Augmented Generation)**: Arquitectura que permite a un LLM consultar información propietaria antes de responder, garantizando exactitud factual.
+3. **AEO (Answer Engine Optimization)**: Optimización enfocada en responder dudas directas para snippets de Google y asistentes conversacionales.
+4. **Agente IA**: Sistema autónomo que razona mediante un LLM y ejecuta acciones a través de herramientas y APIs externas.
+5. **E-E-A-T**: Estándares de Experiencia, Conocimiento Experto, Autoridad y Fiabilidad en contenido digital.
+
+---
+
+## 4. Datos de Contacto y Entidad
+
+- **Entidad**: TAP-IA
+- **Fundador**: Emmanuel Tapia
+- **Ubicación**: Guadalajara, Jalisco, México
+- **Teléfono**: +52-33-2423-9103
+- **Email**: contacto@tap-ia.tech
+- **Sitio Web Canónico**: https://tap-ia.tech
+- **Sitemap**: https://tap-ia.tech/sitemap.xml
+- **Robots**: https://tap-ia.tech/robots.txt

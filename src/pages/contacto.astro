@@ -3,6 +3,8 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import ContactWizard from '../components/ContactWizard.astro';
+import KeyTakeaways from '../components/KeyTakeaways.astro';
+import ShareButton from '../components/ShareButton.astro';
 
 const url = Astro.url;
 const plan = url.searchParams.get('plan') ?? '';
@@ -27,21 +29,21 @@ const SERVICIO_LABELS: Record<string, string> = {
 
 let pageTitle = 'Solicitar diagnóstico de encaje';
 let pageSubtitle =
-  'En 3–4 minutos me cuentas tu caso. Respondo en 1 día hábil con el siguiente paso claro.';
+  'En 3–4 minutos nos cuentas tu caso. Respondemos en 1 día hábil con el siguiente paso claro.';
 
 if (plan && PLAN_LABELS[plan]) {
   pageTitle = `Quiero avanzar con ${PLAN_LABELS[plan]}`;
   pageSubtitle =
-    'Reviso si el paquete encaja con tu situación antes de comprometer producción.';
+    'Revisamos si el paquete encaja con tu situación antes de comprometer producción.';
 } else if (problem) {
   pageTitle = 'Reconozco este reto en mi negocio';
   pageSubtitle = 'Partimos de tu obstáculo; el resto del formulario adapta la propuesta.';
 } else if (servicio && SERVICIO_LABELS[servicio]) {
   pageTitle = `Consulta sobre ${SERVICIO_LABELS[servicio]}`;
-  pageSubtitle = 'Cuéntame tu contexto y priorizo una respuesta alineada a ese servicio.';
+  pageSubtitle = 'Cuéntanos tu contexto y priorizamos una respuesta alineada a ese servicio.';
 } else if (demo === 'agent-waitlist') {
   pageTitle = 'Lista de espera — Agentes IA';
-  pageSubtitle = 'Te aviso del lanzamiento y evalúo tu caso con prioridad.';
+  pageSubtitle = 'Te avisamos del lanzamiento y evaluamos tu caso con prioridad.';
 }
 
 const waText = encodeURIComponent('¡Hola Tap-IA! Estoy en tu web y prefiero platicarte mi idea directamente por chat para ver cómo lo ves. ¿Platicamos? 📲');
@@ -49,8 +51,8 @@ const waHref = `https://wa.me/5213324239103?text=${waText}`;
 ---
 
 <Layout
-  title="Contacto B2B | TAP-IA"
-  description="Solicita un diagnóstico de encaje con TAP-IA. Evaluamos tu caso de IA, marketing y visibilidad digital sin compromiso."
+  title="Contacto y Diagnóstico de IA para Empresas B2B | TAP-IA"
+  description="Solicita un diagnóstico de encaje con TAP-IA. Evaluamos tu caso de inteligencia artificial, marketing y visibilidad SEO/GEO en 24 horas hábiles."
 >
   <Header />
 
@@ -60,10 +62,29 @@ const waHref = `https://wa.me/5213324239103?text=${waText}`;
     ></div>
 
     <div class="max-w-3xl mx-auto w-full relative z-10">
-      <h1 class="mb-4 text-center text-white">{pageTitle}</h1>
-      <p class="text-subtle mb-8 text-center text-base md:text-lg max-w-xl mx-auto">
-        {pageSubtitle}
-      </p>
+      <div class="text-center mb-8">
+        <span class="editorial-label block mb-3">Contacto Directo</span>
+        <h1 class="font-serif text-3xl md:text-5xl text-white mb-4">{pageTitle}</h1>
+        <p class="text-subtle text-base md:text-lg max-w-xl mx-auto mb-6">
+          {pageSubtitle}
+        </p>
+
+        <div class="text-left my-6">
+          <KeyTakeaways 
+            points={[
+              "Respuesta Rápida: Evaluamos tu consulta y respondemos en menos de 24 horas hábiles.",
+              "Trato Directo: Conversas con el equipo técnico y estratégico, sin intermediarios comerciales.",
+              "Claridad de Presupuesto: Presentamos alcances, tiempos y costos transparentes.",
+              "Enfoque Confidencial: Toda la información compartida se maneja bajo estricta privacidad.",
+              "Opción por WhatsApp: Si prefieres inmediatez, puedes escribirnos directamente por chat."
+            ]}
+          />
+        </div>
+
+        <div class="flex justify-center mb-6">
+          <ShareButton title="Contacto y Diagnóstico de IA — TAP-IA" text="Ponte en contacto con los especialistas en IA de Tap-IA:" url="https://tap-ia.tech/contacto" />
+        </div>
+      </div>
 
       <ContactWizard
         wizardId="contact"

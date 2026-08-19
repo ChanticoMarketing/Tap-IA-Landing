@@ -1,0 +1,107 @@
+---
+// src/components/SchemaLocalBusiness.astro
+// JSON-LD Schema Markup para LocalBusiness / ProfessionalService.
+// Refuerza señales locales (México) y entidad de servicio para motores tradicionales y generativos.
+---
+
+<script type="application/ld+json" is:inline set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "@id": "https://tap-ia.tech/#localbusiness",
+  "name": "TAP-IA",
+  "alternateName": "Tap IA Consultoría",
+  "image": "https://tap-ia.tech/logo.png",
+  "url": "https://tap-ia.tech",
+  "telephone": "+52-33-2423-9103",
+  "email": "contacto@tap-ia.tech",
+  "priceRange": "$$$",
+  "currenciesAccepted": "MXN, USD",
+  "paymentAccepted": "Transferencia Bancaria, Tarjeta de Crédito, Stripe",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Guadalajara",
+    "addressRegion": "Jalisco",
+    "addressCountry": "MX"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": "20.6597",
+    "longitude": "-103.3496"
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "09:00",
+      "closes": "18:00"
+    }
+  ],
+  "areaServed": [
+    {
+      "@type": "Country",
+      "name": "México"
+    },
+    {
+      "@type": "AdministrativeArea",
+      "name": "Latinoamérica"
+    }
+  ],
+  "knowsLanguage": ["es", "en"],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Servicios de Inteligencia Artificial y Marketing",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Consultoría de Inteligencia Artificial",
+          "url": "https://tap-ia.tech/consultoria-inteligencia-artificial"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "SEO y GEO (Generative Engine Optimization)",
+          "url": "https://tap-ia.tech/servicios/seo-geo"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "AI Marketing B2B",
+          "url": "https://tap-ia.tech/ai-marketing"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Agentes IA a Medida",
+          "url": "https://tap-ia.tech/agentes-ia-a-medida"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "WebApps con IA",
+          "url": "https://tap-ia.tech/webapps-ia-a-medida"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Auditoría IA, Marketing y SEO/GEO",
+          "url": "https://tap-ia.tech/auditoria-ia-marketing-seo-geo"
+        }
+      }
+    ]
+  },
+  "sameAs": [
+    "https://www.linkedin.com/in/emmanuel-tapia-ia"
+  ]
+})} />
