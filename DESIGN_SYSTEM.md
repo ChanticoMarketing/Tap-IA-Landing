@@ -42,25 +42,22 @@ El sitio utiliza una combinación clásica/moderna para transmitir autoridad y t
 
 ### Clases Tipográficas Predefinidas (¡Úsalas!)
 - `.ui-caption`: Texto pequeño, en mayúsculas, espaciado (`letter-spacing`), color sutil. Ideal para overlines o etiquetas de UI.
-- `.editorial-label`: Texto pequeño, en mayúsculas, color **oro**, muy espaciado. Ideal para "taglines" encima de los H2.
+- `.editorial-label`: Texto pequeño, en mayúsculas, color **offwhite/zafiro tenue**, espaciado elegante. Ideal para "taglines" encima de los H2.
 
 ---
 
 ## 💎 4. Componentes Visuales Premium (Clases CSS)
 
-Para mantener la estética "Glassmorphism" y de alta gama, utiliza estas clases globales ya programadas en `styles.css`. No intentes recrear estos efectos con múltiples clases de Tailwind de utilidad si ya existe la clase base.
+Para mantener la estética "Borderless Glassmorphism" y de alta gama, utiliza estas clases globales ya programadas en `Layout.astro` / `styles.css`:
 
-1. **`.card-glow` (Tarjetas Interactivas - ¡Recomendado!)**
-   - **Qué hace:** Aplica un fondo glassmorphism, un borde sutil, sombra, y un efecto de luz radial que sigue al cursor en hover.
+1. **`.card-glow` (Superficies Interactivas Borderless)**
+   - **Qué hace:** Aplica un fondo translúcido zafiro/carbón, borde imperceptible, y un halo zafiro reactivo al hover.
    - **Uso:** Tarjetas de servicios, features, perfiles.
-2. **`.matte-card` (Tarjetas Estáticas)**
-   - **Qué hace:** Aplica un fondo translúcido oscuro sin el efecto hover avanzado.
-   - **Uso:** Formularios, modales, contenedores de contenido estático.
-3. **`.gold-rule` (Separador)**
-   - **Qué hace:** Una línea horizontal muy fina con un degradado dorado a transparente.
-   - **Uso:** Separar secciones o debajo de títulos.
-4. **`.input-field` (Formularios)**
-   - **Qué hace:** Estiliza inputs y textareas con fondo oscuro, borde sutil y glow dorado al enfocar.
+2. **`.matte-card` (Superficies Estáticas)**
+   - **Qué hace:** Aplica un fondo translúcido oscuro sin marcos rígidos.
+   - **Uso:** Formularios, modales, contenedores de contenido.
+3. **`.input-field` (Formularios)**
+   - **Qué hace:** Estiliza inputs y textareas con fondo oscuro, borde sutil y glow zafiro/oro al enfocar.
 
 ---
 
